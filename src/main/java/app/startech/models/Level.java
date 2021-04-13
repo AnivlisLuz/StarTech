@@ -9,12 +9,12 @@ package app.startech.models;
  *
  * @author luzch
  */
-public class Category {
+public class Level {
 
     private final int id;
     private final String title;
 
-    public Category(int id, String title) {
+    public Level(int id, String title) {
         this.id = id;
         this.title = title;
     }
