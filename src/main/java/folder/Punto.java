@@ -1,15 +1,6 @@
-package app.startech;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+package folder;
 
-/**
- *
- * @author Criss
- */
 public class Punto {
     private int x;
     private int y;
@@ -24,5 +15,12 @@ public class Punto {
     }
     public int getY(){
         return y;
+    }
+    public boolean igual(Punto a){
+        boolean res = false;
+        if(x == a.getX() && y == a.getY()){
+            res = true;
+        }
+        return res;
     }
 }

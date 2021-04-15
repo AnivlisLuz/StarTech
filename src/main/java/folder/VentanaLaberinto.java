@@ -1,18 +1,6 @@
-package app.startech;
 
+package folder;
 
-import javax.swing.JButton;
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author Criss
- */
 public class VentanaLaberinto extends javax.swing.JFrame {
 
     private Laberinto l;
@@ -21,19 +9,21 @@ public class VentanaLaberinto extends javax.swing.JFrame {
     public VentanaLaberinto() {
         l = new Laberinto("Secuencia", 1, "Hola");
         l.mostrarMatriz();
-        botones = new Boton[l.getLaberinto().length][l.getLaberinto()[0].length];
+        botones = new Boton[l.getMatriz().getLaberinto().length][l.getMatriz().getLaberinto()[0].length];
         initComponents();
         mostrarLaberinto();
     }
     
     public void mostrarLaberinto(){
         int x=0, y = 0, m = 50, n = 50;
-        int[][] laberinto = l.getLaberinto();
+        int[][] laberinto = l.getMatriz().getLaberinto();
         int tamX = laberinto.length;
         int tamY = laberinto[0].length;
         for(int i = 0; i<tamX; i++ ){
             for (int j = 0; j < tamY; j++) {
-                botones[i][j] = new Boton(x, y, m, n);
+                Punto p = new Punto(i, j);
+                Boton b = new Boton(x, y, m, n, l.getMatriz(), i, j);
+                botones[i][j] = b;
                 int nom = laberinto[i][j];      
                 String nomCadena= String.valueOf(nom);
                 botones[i][j].setText(nomCadena);
@@ -44,6 +34,7 @@ public class VentanaLaberinto extends javax.swing.JFrame {
             y+=n;
         } 
     }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -52,15 +43,17 @@ public class VentanaLaberinto extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setPreferredSize(new java.awt.Dimension(540, 550));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 373, Short.MAX_VALUE)
+            .addGap(0, 540, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 442, Short.MAX_VALUE)
+            .addGap(0, 550, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -68,24 +61,22 @@ public class VentanaLaberinto extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(151, 151, 151)
+                .addGap(201, 201, 201)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(195, Short.MAX_VALUE))
+                .addContainerGap(259, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(123, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
