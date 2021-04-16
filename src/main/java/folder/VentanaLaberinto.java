@@ -15,7 +15,14 @@ public class VentanaLaberinto extends javax.swing.JFrame {
     }
     
     public void mostrarLaberinto(){
-        int x=0, y = 0, m = 50, n = 50;
+        int x=0, y = 0, m = 54, n = 55;
+        if(l.getMatriz().getLaberinto().length == 6){
+            m = 73; n = 75;
+        }else if(l.getMatriz().getLaberinto().length == 8){
+            m = 67; n = 68;
+        }else if(l.getMatriz().getLaberinto().length == 10){
+            m = 54; n = 55;
+        }
         int[][] laberinto = l.getMatriz().getLaberinto();
         int tamX = laberinto.length;
         int tamY = laberinto[0].length;
