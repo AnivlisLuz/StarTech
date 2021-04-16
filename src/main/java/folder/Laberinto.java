@@ -19,12 +19,18 @@ public class Laberinto{
     
     public void mostrarMatriz(){
         if(titulo.equals("Secuencia")){
-            for (int i = 1; i < 6; i++) {
-                if(nivel == i){
-                    matriz = new Secuencia(i*3);
-                    matriz.generarLaberinto();
-                    matriz.rellenarLaberinto();
-                    break;
+            if(nivel == 1){
+                matriz = new Secuencia(3);
+                matriz.generarLaberinto();
+                matriz.rellenarLaberinto();
+            }else{
+                for (int i = 2; i < 6; i++) {
+                    if(nivel == i){
+                        matriz = new Secuencia(i*2);
+                        matriz.generarLaberinto();
+                        matriz.rellenarLaberinto();
+                        break;
+                    }
                 }
             }
         }else if(titulo.equals("Suma")){
