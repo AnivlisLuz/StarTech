@@ -13,10 +13,12 @@ public class Level {
 
     private final int id;
     private final String title;
+    private boolean active;
 
-    public Level(int id, String title) {
+    public Level(int id, String title, boolean active) {
         this.id = id;
         this.title = title;
+        this.active = active;
     }
 
     public int getId() {
@@ -25,6 +27,10 @@ public class Level {
 
     public String getTitle() {
         return title;
+    }
+    
+    public boolean active(){
+        return active;
     }
 
 }

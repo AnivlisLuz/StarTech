@@ -45,6 +45,7 @@ public class LevelScreen extends javax.swing.JFrame {
             JPanel panel = new JPanel();
             JButton button = new JButton(level.getTitle());
             button.setPreferredSize(new Dimension(200, 50));
+            button.setEnabled(level.active());
             panel.add(button);
             buttons.add(panel);
         }
@@ -53,7 +54,8 @@ public class LevelScreen extends javax.swing.JFrame {
         options.setSize(new Dimension(200, 50));
         options.setBorder(new EmptyBorder(10, 10, 10, 10));
         
-        JButton buton = new JButton("Atras");        
+        JButton buton = new JButton("Atras"); 
+        buton.addActionListener((action)->{dispose();});
         buton.setPreferredSize(new Dimension(200, 50));        
         options.add(buton, WEST);
         
@@ -66,20 +68,5 @@ public class LevelScreen extends javax.swing.JFrame {
         add(options, SOUTH);
         
         setVisible(true);
-    }
-
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                LevelScreen levelScreen = new LevelScreen("Secuencia de números",new Level[]{
-                    new Level(1, "1 al 9"), 
-                    new Level(2, "1 al 20"),
-                    new Level(3, "1 al 30"),
-                    new Level(4, "1 al 40"),
-                    new Level(5, "1 al 50")
-                });
-            }
-        });
     }
 }

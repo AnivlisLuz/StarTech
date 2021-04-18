@@ -13,10 +13,14 @@ public class Category {
 
     private final int id;
     private final String title;
+    private boolean active;
+    private Level[] levels;
 
-    public Category(int id, String title) {
+    public Category(int id, String title,boolean active, Level[] level) {
         this.id = id;
         this.title = title;
+        this.active= active;
+        this.levels = level;
     }
 
     public int getId() {
@@ -26,5 +30,14 @@ public class Category {
     public String getTitle() {
         return title;
     }
+    
+    public boolean getActive(){
+        return active;
+    }
+    
+    public Level[] getLevels(){
+        return levels;
+    }
+    
 
 }
