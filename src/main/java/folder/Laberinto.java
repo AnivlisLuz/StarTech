@@ -18,12 +18,12 @@ public class Laberinto{
     }
     
     public void mostrarMatriz(){
-        if(titulo.equals("Secuencia")){
-            if(nivel == 1){
-                matriz = new Secuencia(3);
-                matriz.generarLaberinto();
-                matriz.rellenarLaberinto();
-            }else{
+        if(titulo.equals("Secuencia")){     // laberinto Secuencia tendria las siguientes matrices:
+            if(nivel == 1){                 // lvl 1 = tamaño 3                 
+                matriz = new Secuencia(3);  // lvl 2 = tamaño 4
+                matriz.generarLaberinto();  // lvl 3 = tamaño 6
+                matriz.rellenarLaberinto(); // lvl 4 = tamaño 8
+            }else{                          // lvl 5 = tamaño 10
                 for (int i = 2; i < 6; i++) {
                     if(nivel == i){
                         matriz = new Secuencia(i*2);
