@@ -89,7 +89,8 @@ public class GrupoPreguntas {
                 ventana.setVisible(false);
                 java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                CategoryScreen categoryScreen = new CategoryScreen(DataController.exampleCategory);
+                DataController.suma.setActive(resultadoS==3);
+                CategoryScreen categoryScreen = new CategoryScreen(DataController.getAllCategories());
             }
         });
             }

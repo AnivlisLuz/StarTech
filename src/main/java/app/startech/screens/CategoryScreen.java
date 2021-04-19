@@ -61,15 +61,6 @@ public class CategoryScreen extends javax.swing.JFrame {
             panel.add(button);
             buttons.add(panel);
             panel.setBackground(new Color(0, 0, 0, 0));
-            if(category.getId()==2 && resultadoS!=3){
-                button.setEnabled(false);
-            }else if(category.getId()==3 && resultadoR!=3){
-                button.setEnabled(false);
-            }else if(category.getId()==4 && resultadoM!=3){
-                button.setEnabled(false);
-            }else if(category.getId()==5 && resultadoD!=3){
-                button.setEnabled(false);
-            }
         }
 
         JPanel title = new JPanel(new BorderLayout());
@@ -81,15 +72,8 @@ public class CategoryScreen extends javax.swing.JFrame {
 
         JButton buton = new JButton("Realizar TEST");
         buton.addActionListener((action) -> {
-            cuestionario=0;
-            resultadoS=0;
-            resultadoR=0;
-            resultadoM=0;
-            resultadoD=0;
-            resultado=0;
-            Cuestionario test = new Cuestionario(grupos);
+            Cuestionario.showQuestionary();
             setVisible(false);
-            ventana.setVisible(true);
         });
         buton.setPreferredSize(new Dimension(200, 50));
         options.add(buton, EAST);
@@ -103,10 +87,8 @@ public class CategoryScreen extends javax.swing.JFrame {
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
-            CategoryScreen categoryScreen = new CategoryScreen(DataController.exampleCategory);
+            DataController.secuencia.setActive(true);
+            CategoryScreen categoryScreen = new CategoryScreen(DataController.getAllCategories());
         });
-    }
-    public void panPrin(){
-        
     }
 }

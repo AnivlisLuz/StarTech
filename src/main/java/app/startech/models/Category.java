@@ -34,6 +34,9 @@ public class Category {
     public boolean getActive(){
         return active;
     }
+    public void setActive(boolean active){
+    this.active=active;
+    }
     
     public Level[] getLevels(){
         return levels;
