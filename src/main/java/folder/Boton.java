@@ -47,7 +47,13 @@ public class Boton extends JButton implements ActionListener {
                 if(i==0){
                     //Menú principal
                 }else{
-                    //Reiniciar juego, mismo laberinto
+                    //Reiniciar juego, mismo laberinto, menos vidas
+//                    if(vidas == 0){
+//                        nuevo laberinto
+//                    }else{
+//                        vidas--;
+//                        mismo laberinto, desde el inicio  
+//                    }
                 }
         }
     }
