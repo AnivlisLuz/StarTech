@@ -40,6 +40,7 @@ public class VentanaLaberinto extends javax.swing.JFrame {
             x = 0;
             y+=n;
         } 
+        setLocationRelativeTo(null);
     }
     
     @SuppressWarnings("unchecked")

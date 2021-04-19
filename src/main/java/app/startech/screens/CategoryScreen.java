@@ -20,7 +20,14 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import preguntas.Cuestionario;
+import static preguntas.Cuestionario.cuestionario;
 import static preguntas.Cuestionario.grupos;
+import static preguntas.Cuestionario.ventana;
+import static preguntas.Pregunta.resultado;
+import static preguntas.Pregunta.resultadoD;
+import static preguntas.Pregunta.resultadoM;
+import static preguntas.Pregunta.resultadoR;
+import static preguntas.Pregunta.resultadoS;
 
 /**
  *
@@ -39,6 +46,7 @@ public class CategoryScreen extends javax.swing.JFrame {
     private void initComponent() {
         setSize(800, 500);
         setTitle("StarTech");
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         JPanel buttons = new JPanel(new GridLayout(categories.length, 1));
         buttons.setBackground(Color.blue);
@@ -53,6 +61,15 @@ public class CategoryScreen extends javax.swing.JFrame {
             panel.add(button);
             buttons.add(panel);
             panel.setBackground(new Color(0, 0, 0, 0));
+            if(category.getId()==2 && resultadoS!=3){
+                button.setEnabled(false);
+            }else if(category.getId()==3 && resultadoR!=3){
+                button.setEnabled(false);
+            }else if(category.getId()==4 && resultadoM!=3){
+                button.setEnabled(false);
+            }else if(category.getId()==5 && resultadoD!=3){
+                button.setEnabled(false);
+            }
         }
 
         JPanel title = new JPanel(new BorderLayout());
@@ -64,7 +81,15 @@ public class CategoryScreen extends javax.swing.JFrame {
 
         JButton buton = new JButton("Realizar TEST");
         buton.addActionListener((action) -> {
+            cuestionario=0;
+            resultadoS=0;
+            resultadoR=0;
+            resultadoM=0;
+            resultadoD=0;
+            resultado=0;
             Cuestionario test = new Cuestionario(grupos);
+            setVisible(false);
+            ventana.setVisible(true);
         });
         buton.setPreferredSize(new Dimension(200, 50));
         options.add(buton, EAST);
@@ -80,5 +105,8 @@ public class CategoryScreen extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(() -> {
             CategoryScreen categoryScreen = new CategoryScreen(DataController.exampleCategory);
         });
+    }
+    public void panPrin(){
+        
     }
 }
