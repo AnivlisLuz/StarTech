@@ -38,6 +38,10 @@ public class Cuestionario {
     public static final int alto=600;
     
     private static Thread thread;
+
+    public static void showQuestionary() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     public Cuestionario(GrupoPreguntas[] grupoPreguntas){
         thread=new Thread();
