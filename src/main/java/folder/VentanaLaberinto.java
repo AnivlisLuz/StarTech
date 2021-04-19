@@ -12,9 +12,11 @@ public class VentanaLaberinto extends javax.swing.JFrame {
         botones = new Boton[l.getMatriz().getLaberinto().length][l.getMatriz().getLaberinto()[0].length];
         initComponents();
         mostrarLaberinto();
+        setLocationRelativeTo(null);
     }
     
     public void mostrarLaberinto(){
+        jLabel1.setText(l.getTitulo());
         int x=0, y = 0, m = 54, n = 55;
         if(l.getMatriz().getLaberinto().length == 6){
             m = 73; n = 75;
@@ -48,39 +50,25 @@ public class VentanaLaberinto extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 65));
         jLabel1.setFont(new java.awt.Font("Impact", 1, 48)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("SECUENCIA");
+        jLabel1.setText("A");
 
         jPanel1.setPreferredSize(new java.awt.Dimension(540, 550));
-
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(362, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(101, 101, 101))
+            .addGap(0, 540, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(122, 122, 122)
-                .addComponent(jButton1)
-                .addContainerGap(396, Short.MAX_VALUE))
+            .addGap(0, 550, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -106,12 +94,7 @@ public class VentanaLaberinto extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    
+   
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -145,7 +128,6 @@ public class VentanaLaberinto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
