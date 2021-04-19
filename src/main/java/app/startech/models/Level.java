@@ -5,6 +5,8 @@
  */
 package app.startech.models;
 
+import folder.Laberinto;
+
 /**
  *
  * @author luzch
@@ -14,6 +16,7 @@ public class Level {
     private final int id;
     private final String title;
     private boolean active;
+    public Laberinto laberinto = new Laberinto("Secuencia", 1, "Hola");
 
     public Level(int id, String title, boolean active) {
         this.id = id;
@@ -28,8 +31,8 @@ public class Level {
     public String getTitle() {
         return title;
     }
-    
-    public boolean active(){
+
+    public boolean active() {
         return active;
     }
 

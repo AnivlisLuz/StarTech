@@ -6,12 +6,12 @@
 package app.startech.screens;
 
 import app.startech.models.Level;
+import folder.VentanaLaberinto;
 import java.awt.BorderLayout;
 import static java.awt.BorderLayout.CENTER;
 import static java.awt.BorderLayout.NORTH;
 import static java.awt.BorderLayout.WEST;
 import static java.awt.BorderLayout.SOUTH;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -39,7 +39,7 @@ public class LevelScreen extends javax.swing.JFrame {
         setSize(800, 500);
         setTitle("StarTech");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        
+
         JPanel buttons = new JPanel(
                 new GridLayout(
                         levels.length <= 5
@@ -54,6 +54,7 @@ public class LevelScreen extends javax.swing.JFrame {
             button.setPreferredSize(new Dimension(200, 50));
             button.setEnabled(level.active());
             button.addActionListener((action) -> {
+                new VentanaLaberinto(level.laberinto).setVisible(true);
             });
             panel.add(button);
             buttons.add(panel);

@@ -6,8 +6,8 @@ public class VentanaLaberinto extends javax.swing.JFrame {
     private Laberinto l;
     private Boton[][] botones;
     
-    public VentanaLaberinto() {
-        l = new Laberinto("Secuencia", 1, "Hola");
+    public VentanaLaberinto(Laberinto laberinto) {
+        l =laberinto;
         l.mostrarMatriz();
         botones = new Boton[l.getMatriz().getLaberinto().length][l.getMatriz().getLaberinto()[0].length];
         initComponents();
@@ -139,7 +139,7 @@ public class VentanaLaberinto extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VentanaLaberinto().setVisible(true);
+                new VentanaLaberinto(new Laberinto("Secuencia", 1, "Hola")).setVisible(true);
             }
         });
     }
