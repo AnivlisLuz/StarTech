@@ -12,10 +12,14 @@ public abstract class Matriz {
     public Matriz(int tamaño){
         matriz = new int[tamaño][tamaño];
         laberinto = new int[tamaño][tamaño];
-        inicio = null; meta = null;
+        inicio = null; meta = new Punto(2, 2);
         camino = new Punto[]{new Punto(0,0), new Punto(0, 1), new Punto(0, 2), new Punto(1, 0), new Punto(1, 2), new Punto(2, 0), new Punto(2, 2)};
         //camino = new ArrayList<Punto>();
         pos = 0;
+    }
+    
+    public Punto getMeta(){
+        return meta;
     }
     
     public boolean verificarMovimiento(Punto p){

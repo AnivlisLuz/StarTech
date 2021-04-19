@@ -17,6 +17,14 @@ public class Laberinto{
         matriz = null;
     }
     
+    public String getTitulo(){
+        return titulo;
+    }       
+    
+    public String getMensaje(){
+        return mensaje;
+    }
+    
     public void mostrarMatriz(){
         if(titulo.equals("Secuencia")){     // laberinto Secuencia tendria las siguientes matrices:
             if(nivel == 1){                 // lvl 1 = tamaño 3                 
