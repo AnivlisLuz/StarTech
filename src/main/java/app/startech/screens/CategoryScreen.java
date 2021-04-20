@@ -19,8 +19,7 @@ import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import preguntas.Cuestionario;
-import static preguntas.Cuestionario.grupos;
+import preguntas.GrupoPreguntas;
 
 /**
  *
@@ -39,6 +38,7 @@ public class CategoryScreen extends javax.swing.JFrame {
     private void initComponent() {
         setSize(800, 500);
         setTitle("StarTech");
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         JPanel buttons = new JPanel(new GridLayout(categories.length, 1));
         buttons.setBackground(Color.blue);
@@ -64,7 +64,8 @@ public class CategoryScreen extends javax.swing.JFrame {
 
         JButton buton = new JButton("Realizar TEST");
         buton.addActionListener((action) -> {
-            Cuestionario test = new Cuestionario(grupos);
+            GrupoPreguntas.showQuestionary();
+            setVisible(false);
         });
         buton.setPreferredSize(new Dimension(200, 50));
         options.add(buton, EAST);
@@ -78,7 +79,8 @@ public class CategoryScreen extends javax.swing.JFrame {
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
-            CategoryScreen categoryScreen = new CategoryScreen(DataController.exampleCategory);
+            DataController.secuencia.setActive(true);
+            CategoryScreen categoryScreen = new CategoryScreen(DataController.getAllCategories());
         });
     }
 }
