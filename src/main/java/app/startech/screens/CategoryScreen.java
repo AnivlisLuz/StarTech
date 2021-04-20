@@ -19,15 +19,7 @@ import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import preguntas.Cuestionario;
-import static preguntas.Cuestionario.cuestionario;
-import static preguntas.Cuestionario.grupos;
-import static preguntas.Cuestionario.ventana;
-import static preguntas.Pregunta.resultado;
-import static preguntas.Pregunta.resultadoD;
-import static preguntas.Pregunta.resultadoM;
-import static preguntas.Pregunta.resultadoR;
-import static preguntas.Pregunta.resultadoS;
+import preguntas.GrupoPreguntas;
 
 /**
  *
@@ -72,7 +64,7 @@ public class CategoryScreen extends javax.swing.JFrame {
 
         JButton buton = new JButton("Realizar TEST");
         buton.addActionListener((action) -> {
-            Cuestionario.showQuestionary();
+            GrupoPreguntas.showQuestionary();
             setVisible(false);
         });
         buton.setPreferredSize(new Dimension(200, 50));
