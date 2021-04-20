@@ -33,7 +33,7 @@ public class CategoryScreen extends javax.swing.JFrame {
     public CategoryScreen(Category[] categories) {
         this.categories = categories;
         initComponent();
-
+        setLocationRelativeTo(null);
     }
 
     private void initComponent() {
@@ -48,7 +48,7 @@ public class CategoryScreen extends javax.swing.JFrame {
             button.setPreferredSize(new Dimension(200, 50));
             button.setEnabled(category.getActive());
             button.addActionListener((action) -> {
-                LevelScreen levelScreen = new LevelScreen(category.getTitle(), category.getLevels());
+                LevelScreen levelScreen = new LevelScreen(category);
             });
             panel.add(button);
             buttons.add(panel);

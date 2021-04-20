@@ -14,7 +14,7 @@ public class Laberinto{
         this.titulo = titulo;
         vidas = 3;
         this.mensaje = mensaje;
-        matriz = null;
+        mostrarMatriz();
     }
     
     public String getTitulo(){
@@ -59,7 +59,7 @@ public class Laberinto{
                     break;
                 }
             }
-        }else if(titulo.equals("Multiplicacion")){
+        }else if(titulo.equals("Multiplicación")){
             for (int i = 1; i < 10; i++) {
                 if (nivel == i) {
                     matriz = new Multiplicacion(10, i+1);
@@ -68,7 +68,7 @@ public class Laberinto{
                     break;
                 }
             }
-        }else if(titulo.equals("Divicion")){
+        }else if(titulo.equals("Divición")){
             for (int i = 1; i < 10; i++) {
                 if (nivel == i) {
                     matriz = new Divicion(10, i+1);

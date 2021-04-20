@@ -38,6 +38,16 @@ public class Category {
     public Level[] getLevels(){
         return levels;
     }
+
+    public Level nextLevel(Level level) {
+        for(int i= 0; i < levels.length ; i++){
+            Level lev = levels[i];
+            if(level.equals(lev)){
+                return levels[i+1]; 
+            }
+        }
+        return null; 
+    }
     
 
 }

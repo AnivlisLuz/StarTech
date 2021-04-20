@@ -5,6 +5,7 @@
  */
 package app.startech.screens;
 
+import app.startech.models.Category;
 import app.startech.models.Level;
 import folder.VentanaLaberinto;
 import java.awt.BorderLayout;
@@ -28,11 +29,14 @@ public class LevelScreen extends javax.swing.JFrame {
 
     private final String title;
     private final Level[] levels;
+    private Category category;
 
-    public LevelScreen(String title, Level[] levels) {
-        this.levels = levels;
-        this.title = title;
+    public LevelScreen(Category category) {
+        levels = category.getLevels();
+        title = category.getTitle();
+        this.category = category;
         initComponent();
+        setLocationRelativeTo(null);
     }
 
     private void initComponent() {
@@ -54,7 +58,7 @@ public class LevelScreen extends javax.swing.JFrame {
             button.setPreferredSize(new Dimension(200, 50));
             button.setEnabled(level.active());
             button.addActionListener((action) -> {
-                new VentanaLaberinto(level.laberinto).setVisible(true);
+                new VentanaLaberinto(category, level).setVisible(true);
             });
             panel.add(button);
             buttons.add(panel);

@@ -1,38 +1,49 @@
 
 package folder;
 
+import app.startech.models.Category;
+import app.startech.models.Level;
+import java.awt.Color;
+
 public class VentanaLaberinto extends javax.swing.JFrame {
 
-    private Laberinto l;
+    private Laberinto laberinto;
     private Boton[][] botones;
+    private Category category;
+    private Level level;
     
-    public VentanaLaberinto(Laberinto laberinto) {
-        l = laberinto;
-        l.mostrarMatriz();
-        botones = new Boton[l.getMatriz().getLaberinto().length][l.getMatriz().getLaberinto()[0].length];
+    public VentanaLaberinto(Category c, Level l) {
+        laberinto = l.getLaberinto();
+        category = c;
+        level = l;
+        laberinto.mostrarMatriz();
+        botones = new Boton[laberinto.getMatriz().getLaberinto().length][laberinto.getMatriz().getLaberinto()[0].length];
         initComponents();
         mostrarLaberinto();
         setLocationRelativeTo(null);
     }
     
     public void mostrarLaberinto(){
-        jLabel1.setText(l.getTitulo());
-        jLabel2.setText(l.getMensaje());
+        jLabel1.setText(laberinto.getTitulo());
+        jTextArea1.setText(laberinto.getMensaje());
+        jTextArea1.setLineWrap(true);
+        jTextArea1.setWrapStyleWord(true);
+        jTextArea1.setEditable(false);
         int x=0, y = 0, m = 54, n = 55;
-        if(l.getMatriz().getLaberinto().length == 6){
+        if(laberinto.getMatriz().getLaberinto().length == 6){
             m = 73; n = 75;
-        }else if(l.getMatriz().getLaberinto().length == 8){
+        }else if(laberinto.getMatriz().getLaberinto().length == 8){
             m = 67; n = 68;
-        }else if(l.getMatriz().getLaberinto().length == 10){
+        }else if(laberinto.getMatriz().getLaberinto().length == 10){
             m = 54; n = 55;
         }
-        int[][] laberinto = l.getMatriz().getLaberinto();
+        int[][] laberinto = this.laberinto.getMatriz().getLaberinto();
         int tamX = laberinto.length;
         int tamY = laberinto[0].length;
         for(int i = 0; i<tamX; i++ ){
             for (int j = 0; j < tamY; j++) {
                 Punto p = new Punto(i, j);
-                Boton b = new Boton(x, y, m, n, l.getMatriz(), i, j);
+                Boton b = new Boton(x, y, m, n, this.laberinto, i, j, category, level, this);
                 botones[i][j] = b;
                 int nom = laberinto[i][j];      
                 String nomCadena= String.valueOf(nom);
@@ -45,13 +56,24 @@ public class VentanaLaberinto extends javax.swing.JFrame {
         } 
     }
     
+    public void refresh(){
+        for(int i = 0; i<botones.length; i++ ){
+            for (int j = 0; j <botones.length; j++) {
+                Boton b = botones[i][j];
+                b.setBackground(Color.BLUE);
+            }
+        }
+        laberinto.getMatriz().reset();
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,7 +95,14 @@ public class VentanaLaberinto extends javax.swing.JFrame {
             .addGap(0, 550, Short.MAX_VALUE)
         );
 
-        jLabel2.setText("jLabel2");
+        jTextArea1.setBackground(new java.awt.Color(102, 0, 255));
+        jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Arial Narrow", 2, 18)); // NOI18N
+        jTextArea1.setLineWrap(true);
+        jTextArea1.setRows(5);
+        jTextArea1.setBorder(null);
+        jTextArea1.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setViewportView(jTextArea1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -85,15 +114,15 @@ public class VentanaLaberinto extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(23, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -131,14 +160,15 @@ public class VentanaLaberinto extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VentanaLaberinto(new Laberinto("Secuencia", 1, "Hola")).setVisible(true);
+                //new VentanaLaberinto(new Laberinto("Secuencia", 1, "Hola")).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }

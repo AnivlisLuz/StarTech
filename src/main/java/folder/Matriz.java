@@ -59,4 +59,7 @@ public abstract class Matriz {
     public Punto[] getCamino(){
         return camino;
     }
+    public void reset(){
+        pos = 0;
+    }
 }
