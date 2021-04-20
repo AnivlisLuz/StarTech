@@ -61,7 +61,7 @@ public class VentanaLaberinto extends javax.swing.JFrame {
         for(int i = 0; i<botones.length; i++ ){
             for (int j = 0; j <botones.length; j++) {
                 Boton b = botones[i][j];
-                b.setBackground(Color.BLUE);
+                b.setBackground(null);
             }
         }
         laberinto.getMatriz().reset();
@@ -96,7 +96,7 @@ public class VentanaLaberinto extends javax.swing.JFrame {
             .addGap(0, 550, Short.MAX_VALUE)
         );
 
-        jTextArea1.setBackground(new java.awt.Color(102, 0, 255));
+        jTextArea1.setBackground(new Color(0,0,0,0));
         jTextArea1.setColumns(20);
         jTextArea1.setFont(new java.awt.Font("Arial Narrow", 2, 18)); // NOI18N
         jTextArea1.setLineWrap(true);
