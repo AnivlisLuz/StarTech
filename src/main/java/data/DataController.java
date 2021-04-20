@@ -23,7 +23,7 @@ public class DataController {
             new Level(4, "1 al 40", false, new Laberinto("Secuencia", 4, "A veces, cuando estás en un lugar oscuro, crees que has sido enterrado, pero en realidad te han plantado.")),
             new Level(5, "1 al 50", false, new Laberinto("Secuencia", 5, "Hay algo en ti que el mundo necesita."))
         }),
-        new Category(2, "Suma", true, new Level[]{
+        new Category(2, "Suma", false, new Level[]{
             new Level(1, "2", true, new Laberinto("Suma", 1, "He aquí un consejo que una vez oí dar a un joven: “Haz siempre lo que temas hacer”. Ralph Waldo Emerson")),
             new Level(2, "3", false, new Laberinto("Suma", 2, "A veces se necesita una ruptura abrumadora para tener un avance innegable.")),
             new Level(3, "4", false, new Laberinto("Suma", 3, "Sé que ha sido duro, pero todavía te estoy animando." )),
@@ -34,7 +34,7 @@ public class DataController {
             new Level(3, "9", false, new Laberinto("Suma", 8, "Algún día todo tendrá perfecto sentido. Así que por ahora ríete de la confusión, sonríe a través de las lágrimas y sigue recordándote a ti mismo que todo sucede por una razón.")),
             new Level(4, "10", false, new Laberinto("Suma", 9, "Siempre que dudes lo lejos que puedes llegar. Solo recuerda lo lejos que has llegado. Recuerda todo lo que has enfrentado, todas las batallas que has ganado y todos los temores que has superado."))
         }),
-        new Category(3, "Resta", true, new Level[]{
+        new Category(3, "Resta", false, new Level[]{
             new Level(1, "1", true, new Laberinto("Resta", 1, "La vida me susurraba constantemente que me haría feliz, pero antes de todo me quería hacer fuerte.")),
             new Level(1, "2", true, new Laberinto("Resta", 2, "Eres capaz de cosas increíbles.")),
             new Level(2, "3", false, new Laberinto("Resta", 3, "Pronto, cuando todo este bien, vas a mirar hacia atrás y estarás contento de ver que nunca te rendiste. Brittany Burgunder")),

@@ -7,6 +7,8 @@ package folder;
 
 import app.startech.models.Category;
 import app.startech.models.Level;
+import app.startech.screens.CategoryScreen;
+import app.startech.screens.LevelScreen;
 import data.DataController;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -24,9 +26,13 @@ public class Boton extends JButton implements ActionListener {
     private Category categoria;
     private Level level;
     private VentanaLaberinto ventana;
+    private LevelScreen ventanaLevel;
+    private CategoryScreen ventanaCategoria;
     
-    public Boton(int posx, int posy, int ancho, int alto, Laberinto l, int i, int j, Category c, Level level, VentanaLaberinto ventana){
+    public Boton(int posx, int posy, int ancho, int alto, Laberinto l, int i, int j, Category c, Level level, VentanaLaberinto ventana, LevelScreen ventanaLevel, CategoryScreen ventanaCategoria){
         setBounds(posx, posy, ancho, alto);
+        this.ventanaLevel = ventanaLevel;
+        this.ventanaCategoria = ventanaCategoria;
         categoria = c;
         this.level = level;
         this.ventana = ventana;
@@ -48,9 +54,20 @@ public class Boton extends JButton implements ActionListener {
                 int i = JOptionPane.showOptionDialog(null, "Lo lograste!!!", "StarTech", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE, null, mensajeContinuar, mensajeContinuar[0]);
                 if(i==0){
                     //Siguinte nivel 
-                    
-                     new VentanaLaberinto(categoria, categoria.nextLevel(level)).setVisible(true);
-                     ventana.dispose();
+                    Level sig = categoria.nextLevel(level);
+                    if(sig != null){
+                        sig.setActive();
+                        ventanaLevel.dispose();
+                        ventanaLevel = new LevelScreen(categoria, ventanaCategoria);
+                        ventanaLevel.setVisible(false);
+                        new VentanaLaberinto(categoria, sig, ventanaLevel, ventanaCategoria).setVisible(true);
+                    }else{
+                        // Siguiente Categoria
+                        Category cat = ventanaCategoria.nexCategory(categoria);
+                        cat.setActive();
+                        ventanaCategoria.refresh();
+                    }
+                    ventana.dispose();
                 }
             }
         }else{
@@ -58,6 +75,7 @@ public class Boton extends JButton implements ActionListener {
             int i = JOptionPane.showOptionDialog(null, "Game Over", "StarTech", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE, null, mensajeGameOver, mensajeGameOver[0]);
                 if(i==0){
                     //Menú principal
+                    ventanaLevel.setVisible(true);
                     ventana.dispose();
                 }else{
                     ventana.refresh();

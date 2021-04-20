@@ -10,7 +10,7 @@
                 <goal>org.codehaus.mojo:exec-maven-plugin:3.0.0:exec</goal>
             </goals>
             <properties>
-                <exec.args>-classpath %classpath folder.VentanaLaberinto</exec.args>
+                <exec.args>-classpath %classpath app.startech.screens.CategoryScreen</exec.args>
                 <exec.executable>java</exec.executable>
                 <exec.workingdir>C:\Users\Criss\Documents\GitHub\StarTech</exec.workingdir>
             </properties>
@@ -25,7 +25,7 @@
                 <goal>org.codehaus.mojo:exec-maven-plugin:3.0.0:exec</goal>
             </goals>
             <properties>
-                <exec.args>-agentlib:jdwp=transport=dt_socket,server=n,address=${jpda.address} -classpath %classpath folder.VentanaLaberinto</exec.args>
+                <exec.args>-agentlib:jdwp=transport=dt_socket,server=n,address=${jpda.address} -classpath %classpath app.startech.screens.CategoryScreen</exec.args>
                 <exec.executable>java</exec.executable>
                 <jpda.listen>true</jpda.listen>
                 <exec.workingdir>C:\Users\Criss\Documents\GitHub\StarTech</exec.workingdir>
@@ -41,7 +41,7 @@
                 <goal>org.codehaus.mojo:exec-maven-plugin:3.0.0:exec</goal>
             </goals>
             <properties>
-                <exec.args>-classpath %classpath folder.VentanaLaberinto</exec.args>
+                <exec.args>-classpath %classpath app.startech.screens.CategoryScreen</exec.args>
                 <exec.executable>java</exec.executable>
                 <exec.workingdir>C:\Users\Criss\Documents\GitHub\StarTech</exec.workingdir>
             </properties>

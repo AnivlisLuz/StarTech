@@ -30,15 +30,17 @@ public class LevelScreen extends javax.swing.JFrame {
     private final String title;
     private final Level[] levels;
     private Category category;
+    private CategoryScreen ventanaCategorias;
 
-    public LevelScreen(Category category) {
+    public LevelScreen(Category category, CategoryScreen ventanaCategorias) {
         levels = category.getLevels();
         title = category.getTitle();
+        this.ventanaCategorias = ventanaCategorias;
         this.category = category;
         initComponent();
         setLocationRelativeTo(null);
     }
-
+    
     private void initComponent() {
         setSize(800, 500);
         setTitle("StarTech");
@@ -58,7 +60,8 @@ public class LevelScreen extends javax.swing.JFrame {
             button.setPreferredSize(new Dimension(200, 50));
             button.setEnabled(level.active());
             button.addActionListener((action) -> {
-                new VentanaLaberinto(category, level).setVisible(true);
+                new VentanaLaberinto(category, level, this, ventanaCategorias).setVisible(true);
+                setVisible(false);
             });
             panel.add(button);
             buttons.add(panel);
@@ -71,6 +74,7 @@ public class LevelScreen extends javax.swing.JFrame {
         JButton buton = new JButton("Atras");
         buton.addActionListener((action) -> {
             dispose();
+            ventanaCategorias.setVisible(true);
         });
         buton.setPreferredSize(new Dimension(200, 50));
         options.add(buton, WEST);

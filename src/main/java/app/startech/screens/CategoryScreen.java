@@ -35,7 +35,29 @@ public class CategoryScreen extends javax.swing.JFrame {
         initComponent();
         setLocationRelativeTo(null);
     }
-
+    
+    public Category nexCategory(Category categoria){
+        Category res = null;
+        for(int i= 0; i < categories.length ; i++){
+            Category cat = categories[i];
+            if(categoria.equals(cat)){
+                if(i+1 == categories.length){
+                    res = null;
+                }else{
+                res = categories[i+1]; 
+                }
+                break;
+            }
+        }
+        return res;
+    }
+    
+    public void refresh(){
+        initComponent();
+    }
+    public void setCategories(){
+        
+    }
     private void initComponent() {
         setSize(800, 500);
         setTitle("StarTech");
@@ -48,12 +70,13 @@ public class CategoryScreen extends javax.swing.JFrame {
             button.setPreferredSize(new Dimension(200, 50));
             button.setEnabled(category.getActive());
             button.addActionListener((action) -> {
-                LevelScreen levelScreen = new LevelScreen(category);
+                LevelScreen levelScreen = new LevelScreen(category, this);
+                setVisible(false);
             });
             panel.add(button);
             buttons.add(panel);
             panel.setBackground(new Color(0, 0, 0, 0));
-        }
+        };
 
         JPanel title = new JPanel(new BorderLayout());
         title.setBorder(new EmptyBorder(0, 0, 50, 0));

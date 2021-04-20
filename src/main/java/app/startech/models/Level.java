@@ -25,6 +25,10 @@ public class Level {
         this.active = active;
     }
     
+    public void setActive(){
+        active = true;
+    }
+    
     public int getId() {
         return id;
     }

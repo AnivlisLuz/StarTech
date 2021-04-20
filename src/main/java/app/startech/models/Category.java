@@ -22,6 +22,10 @@ public class Category {
         this.active= active;
         this.levels = level;
     }
+    
+    public void setActive(){
+        active = true;
+    }
 
     public int getId() {
         return id;
@@ -40,13 +44,19 @@ public class Category {
     }
 
     public Level nextLevel(Level level) {
+        Level res = null;
         for(int i= 0; i < levels.length ; i++){
             Level lev = levels[i];
             if(level.equals(lev)){
-                return levels[i+1]; 
+                if(i+1 == levels.length){
+                    res = null;
+                }else{
+                res = levels[i+1]; 
+                }
+                break;
             }
         }
-        return null; 
+        return res;
     }
     
 
