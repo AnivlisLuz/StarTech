@@ -17,73 +17,81 @@ import javax.swing.JPanel;
 
 public class Cuestionario {
 
-    public static JFrame ventana;
+    private static JFrame ventana;
+
+    private JLabel etiqueta;
+    private JButton boton;
+    private ActionListener oyenteAccion;
+
     public static JPanel panel;
-    public static JLabel etiqueta;
-    public static JButton boton;
     public static ImageIcon imagen;
-    public static ActionListener oyenteAccion;
-    
-    public static String pregunta;
-    public static String[] respuestas;
-    public static boolean[] incisos;
-    public static int cuestionario=0;
-    
-    public static Pregunta laPregunta;
-    public static Pregunta[] preguntas;
-    public static GrupoPreguntas grupo;
+
     public static GrupoPreguntas[] grupos;
-    
-    public static final int ancho=800;
-    public static final int alto=600;
-    
-    private static Thread thread;
-    
-    public Cuestionario(GrupoPreguntas[] grupoPreguntas){
-        thread=new Thread();
-        ventana=new JFrame();
-        panel=new JPanel();
-        etiqueta=new JLabel();
-        boton=new JButton();
-        imagen=new ImageIcon("recursos/imagenes/fondo.jpg");
-        oyenteAccion=new ActionListener() {
+    public static Pregunta[] preguntas;
+
+    public static final int ancho = 800;
+    public static final int alto = 600;
+
+    private Thread thread;
+
+    public Cuestionario(GrupoPreguntas[] grupoPreguntas) {
+        thread = new Thread();
+        ventana = new JFrame();
+        panel = new JPanel();
+        etiqueta = new JLabel();
+        boton = new JButton();
+        imagen = new ImageIcon("recursos/imagenes/fondo.jpg");
+        oyenteAccion = new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                GrupoPreguntas grupo=new GrupoPreguntas(preguntas);
+                GrupoPreguntas grupo = new GrupoPreguntas(preguntas);
             }
         };
         ventana();
-        hoja();  
+        hoja();
         fondo();
         inicio();
     }
-    public static void main(String args[]){
-        Cuestionario test=new Cuestionario(grupos);
+
+    public static void main(String args[]) {
+        Cuestionario test = new Cuestionario(grupos);
     }
-    public void ventana(){
+
+    public void ventana() {
         thread.start();
         ventana.setVisible(true);
-        ventana.setSize(ancho,alto);
+        ventana.setSize(ancho, alto);
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ventana.getContentPane().add(panel);
         ventana.setLocationRelativeTo(null);
         ventana.setResizable(false);
     }
-    public void hoja(){
-        panel.setSize(ancho,alto);
+
+    public void hoja() {
+        panel.setSize(ancho, alto);
         panel.setLayout(null);
         panel.add(boton);
         panel.add(etiqueta);
     }
-    public void fondo(){
-        etiqueta.setBounds(0,0,ancho,alto);
+
+    public void fondo() {
+        etiqueta.setBounds(0, 0, ancho, alto);
         etiqueta.setOpaque(true);
-        etiqueta.setIcon(new ImageIcon(imagen.getImage().getScaledInstance(etiqueta.getWidth(),etiqueta.getHeight(),Image.SCALE_SMOOTH)));
+        etiqueta.setIcon(new ImageIcon(imagen.getImage().getScaledInstance(etiqueta.getWidth(), etiqueta.getHeight(), Image.SCALE_SMOOTH)));
     }
-    public void inicio(){
-        boton.setBounds((ancho/2-150),alto/2-50,300,100);
+
+    public void inicio() {
+        boton.setBounds((ancho / 2 - 150), alto / 2 - 50, 300, 100);
         boton.setText("Iniciar Cuestionario");
         boton.setEnabled(true);
         boton.addActionListener(oyenteAccion);
-        boton.setFont(new Font("calibri",Font.ITALIC,30));
+        boton.setFont(new Font("calibri", Font.ITALIC, 30));
+    }
+
+    public static void Ocultar() {
+        ventana.setVisible(false);
+    }
+
+    public static void DesOcultar() {
+        ventana.setVisible(true);
     }
 }
