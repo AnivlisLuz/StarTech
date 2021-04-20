@@ -6,6 +6,8 @@
 package forms;
 
 import javax.swing.JOptionPane;
+import preguntas.Cuestionario;
+import static preguntas.Cuestionario.grupos;
 
 /**
  *
@@ -103,7 +105,9 @@ public class usuario extends javax.swing.JFrame {
      }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
      
-// TODO add your handling code here:
+
+        Cuestionario test = new Cuestionario(grupos);
+        this.dispose();
      
     }//GEN-LAST:event_jButton1ActionPerformed
 
