@@ -57,14 +57,32 @@ public class Boton extends JButton implements ActionListener {
                     Level sig = categoria.nextLevel(level);
                     if(sig != null){
                         sig.setActive();
-                        ventanaLevel.dispose();
-                        ventanaLevel = new LevelScreen(categoria, ventanaCategoria);
-                        ventanaLevel.setVisible(false);
-                        new VentanaLaberinto(categoria, sig, ventanaLevel, ventanaCategoria).setVisible(true);
+                        java.awt.EventQueue.invokeLater(new Runnable() {
+                            public void run() { 
+                                ventanaCategoria = new CategoryScreen(DataController.getAllCategories());
+                                ventanaCategoria.setVisible(false);
+                                ventanaLevel = new LevelScreen(categoria, ventanaCategoria);
+                            }
+                        });
+                        //ventanaLevel.dispose();
+                        //ventanaLevel = new LevelScreen(categoria, ventanaCategoria);
+                        //ventanaLevel.setVisible(false);
+                        //new VentanaLaberinto(categoria, sig, ventanaLevel, ventanaCategoria).setVisible(true);
                     }else{
                         // Siguiente Categoria
                         Category cat = ventanaCategoria.nexCategory(categoria);
-                        cat.setActive();
+                        java.awt.EventQueue.invokeLater(new Runnable() {
+                            public void run() {
+                                cat.setActive(true);
+                                cat.getLevels()[0].setActive();
+                               // DataController.suma.getLevels()[0].setActive();
+//                                DataController.resta.setActive(true); 
+//                                DataController.multiplicacion.setActive(true); 
+//                                DataController.division.setActive(true);  
+                                CategoryScreen categoryScreen = new CategoryScreen(DataController.getAllCategories());
+                            }
+                        });
+                        //cat.setActive();
                         //ventanaCategoria.refresh();
                     }
                     ventana.dispose();
@@ -78,15 +96,14 @@ public class Boton extends JButton implements ActionListener {
                     ventanaLevel.setVisible(true);
                     ventana.dispose();
                 }else{
-                    ventana.refresh();
-//                   //Reiniciar juego, mismo laberinto, menos vidas
-//                    if(vidas == 0){
-// //                      nuevo laberinto
-//                   }else{
-//                        //levelvidas--;
-// //                       mismo laberinto, desde el inicio  
-//                        
-//                   }
+                    if(l.getVidas() == 0){
+                        //Reiniciar juego, nuevo laberinto
+                        //-------------
+                    }else{
+                        //Reiniciar juego, mismo laberinto, menos vidas
+                        ventana.refresh();
+                        l.setVidas();
+                    }
                 }
         }
     }

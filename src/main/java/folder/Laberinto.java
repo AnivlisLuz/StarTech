@@ -15,6 +15,13 @@ public class Laberinto {
         this.mensaje = mensaje;
         mostrarMatriz();
     }
+    
+    public void setVidas(){
+        vidas--;
+    }
+    public int getVidas(){
+        return vidas;
+    }
 
     public String getTitulo() {
         return titulo;
