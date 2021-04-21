@@ -29,7 +29,7 @@ public class Boton extends JButton implements ActionListener {
     private LevelScreen ventanaLevel;
     private CategoryScreen ventanaCategoria;
     
-    public Boton(int posx, int posy, int ancho, int alto, Laberinto l, int i, int j, Category c, Level level, VentanaLaberinto ventana, LevelScreen ventanaLevel, CategoryScreen ventanaCategoria){
+    public Boton(int posx, int posy, int ancho, int alto, Laberinto l, int i, int j, Category c, Level level, VentanaLaberinto ventana, CategoryScreen ventanaCategoria, LevelScreen ventanaLevel){
         setBounds(posx, posy, ancho, alto);
         this.ventanaLevel = ventanaLevel;
         this.ventanaCategoria = ventanaCategoria;
@@ -40,7 +40,7 @@ public class Boton extends JButton implements ActionListener {
         this.l = l;
         p = new Punto(i, j);
     }
-    
+
     public void cambiarNombre(String nombre){
         setText(nombre);
     }
@@ -65,7 +65,7 @@ public class Boton extends JButton implements ActionListener {
                         // Siguiente Categoria
                         Category cat = ventanaCategoria.nexCategory(categoria);
                         cat.setActive();
-                        ventanaCategoria.refresh();
+                        //ventanaCategoria.refresh();
                     }
                     ventana.dispose();
                 }

@@ -3,6 +3,8 @@ package folder;
 
 import app.startech.models.Category;
 import app.startech.models.Level;
+import app.startech.screens.CategoryScreen;
+import app.startech.screens.LevelScreen;
 import java.awt.Color;
 
 public class VentanaLaberinto extends javax.swing.JFrame {
@@ -11,8 +13,12 @@ public class VentanaLaberinto extends javax.swing.JFrame {
     private Boton[][] botones;
     private Category category;
     private Level level;
+    private LevelScreen ventanaLevel;
+    private CategoryScreen ventanaCategory;
     
-    public VentanaLaberinto(Category c, Level l) {
+    public VentanaLaberinto(Category c, Level l, LevelScreen ventanaLevel, CategoryScreen ventanaCategory) {
+        this.ventanaCategory = ventanaCategory;
+        this.ventanaLevel = ventanaLevel;
         laberinto = l.getLaberinto();
         category = c;
         level = l;
@@ -43,7 +49,7 @@ public class VentanaLaberinto extends javax.swing.JFrame {
         for(int i = 0; i<tamX; i++ ){
             for (int j = 0; j < tamY; j++) {
                 Punto p = new Punto(i, j);
-                Boton b = new Boton(x, y, m, n, this.laberinto, i, j, category, level, this);
+                Boton b = new Boton(x, y, m, n, this.laberinto, i, j, category, level, this, ventanaCategory, ventanaLevel);
                 botones[i][j] = b;
                 int nom = laberinto[i][j];      
                 String nomCadena= String.valueOf(nom);

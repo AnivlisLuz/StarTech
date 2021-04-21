@@ -51,9 +51,9 @@ public class CategoryScreen extends javax.swing.JFrame {
         return res;
     }
     
-    public void refresh(){
-        initComponent();
-    }
+//    public void refresh(Category actual){
+//        DataController.getAllCategories().
+//    }
     public void setCategories(){
         
     }

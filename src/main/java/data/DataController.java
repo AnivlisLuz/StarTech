@@ -22,8 +22,8 @@ public class DataController {
         new Level(4, "1 al 40", false, new Laberinto("Secuencia", 4, "A veces, cuando estás en un lugar oscuro, crees que has sido enterrado, pero en realidad te han plantado.")),
         new Level(5, "1 al 50", false, new Laberinto("Secuencia", 5, "Hay algo en ti que el mundo necesita."))
     });
-    public static Category suma = new Category(2, "Suma", true, new Level[]{
-        new Level(1, "2", true, new Laberinto("Suma", 1, "He aquí un consejo que una vez oí dar a un joven: “Haz siempre lo que temas hacer”. Ralph Waldo Emerson")),
+    public static Category suma = new Category(2, "Suma", false, new Level[]{
+        new Level(1, "2", false, new Laberinto("Suma", 1, "He aquí un consejo que una vez oí dar a un joven: “Haz siempre lo que temas hacer”. Ralph Waldo Emerson")),
         new Level(2, "3", false, new Laberinto("Suma", 2, "A veces se necesita una ruptura abrumadora para tener un avance innegable.")),
         new Level(3, "4", false, new Laberinto("Suma", 3, "Sé que ha sido duro, pero todavía te estoy animando." )),
         new Level(4, "5", false, new Laberinto("Suma", 4, "Un poco de progreso todos los días se suma a los grandes resultados." )),
@@ -34,9 +34,9 @@ public class DataController {
         new Level(4, "10", false, new Laberinto("Suma", 9, "Siempre que dudes lo lejos que puedes llegar. Solo recuerda lo lejos que has llegado. Recuerda todo lo que has enfrentado, todas las batallas que has ganado y todos los temores que has superado."))
     
     });
-    public static Category resta = new Category(3, "Resta", true, new Level[]{
-        new Level(1, "1", true, new Laberinto("Resta", 1, "La vida me susurraba constantemente que me haría feliz, pero antes de todo me quería hacer fuerte.")),
-        new Level(1, "2", true, new Laberinto("Resta", 2, "Eres capaz de cosas increíbles.")),
+    public static Category resta = new Category(3, "Resta", false, new Level[]{
+        new Level(1, "1", false, new Laberinto("Resta", 1, "La vida me susurraba constantemente que me haría feliz, pero antes de todo me quería hacer fuerte.")),
+        new Level(1, "2", false, new Laberinto("Resta", 2, "Eres capaz de cosas increíbles.")),
         new Level(2, "3", false, new Laberinto("Resta", 3, "Pronto, cuando todo este bien, vas a mirar hacia atrás y estarás contento de ver que nunca te rendiste. Brittany Burgunder")),
         new Level(3, "4", false, new Laberinto("Resta", 4, "Se te ha asignado esta montaña para mostrarles a otros que se puede mover." )),
         new Level(4, "5", false, new Laberinto("Resta", 5, "Nunca debes tener miedo de lo que estás haciendo cuando es correcto. Rosa Parks")),
@@ -48,7 +48,7 @@ public class DataController {
     
     });
     public static Category multiplicacion = new Category(4, "Multiplicación", false, new Level[]{
-        new Level(1, "2", true, new Laberinto("Multiplicación", 1, "Solo sé tú mismo. Deja que la gente vea a la persona real, imperfecta, extraña, bella y mágica que eres.")),
+        new Level(1, "2", false, new Laberinto("Multiplicación", 1, "Solo sé tú mismo. Deja que la gente vea a la persona real, imperfecta, extraña, bella y mágica que eres.")),
         new Level(2, "3", false, new Laberinto("Multiplicación", 2, "Nunca he conocido a una persona fuerte con un pasado fácil.")),
         new Level(3, "4", false, new Laberinto("Multiplicación", 3, "A mí también me tocó pasar por lo peor para darme cuenta de cómo lo tenía que hacer para llegar a lo mejor.")),
         new Level(4, "5", false, new Laberinto("Multiplicación", 4, "Despierta. Levántate. Repite.")),
@@ -60,7 +60,7 @@ public class DataController {
    
     });
     public static Category division = new Category(5, "División", false, new Level[]{
-        new Level(1, "2", true, new Laberinto("Divición", 1, "Comienza donde estás. Usa lo que tienes. Haz lo que puedas. Arthur Ashe")),
+        new Level(1, "2", false, new Laberinto("Divición", 1, "Comienza donde estás. Usa lo que tienes. Haz lo que puedas. Arthur Ashe")),
         new Level(2, "3", false, new Laberinto("Divición", 2, "La mejor revancha es el éxito masivo. Frank Sinatra")),
         new Level(3, "4", false, new Laberinto("Divición", 3, "No lo pienses, solo hazlo. Horace")),
         new Level(4, "5", false, new Laberinto("Divición", 4, "Nunca dejes que una mala situación saque lo peor de ti. ¡Elije mantenerte positivo y ser la persona fuerte que Dios creó!")),
