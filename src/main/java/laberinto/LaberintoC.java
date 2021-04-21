@@ -14,7 +14,7 @@ import java.util.Random;
  *
  * @author Carlos
  */
-public class Laberinto
+public class LaberintoC
 {
     //aux
     private int aux1;
@@ -27,11 +27,11 @@ public class Laberinto
     private Casilla[][] casillas;
     private Random random = new Random();
 
-    public Laberinto(int tamano) {
+    public LaberintoC(int tamano) {
         this(tamano, tamano);
     }
 
-    public Laberinto(int x, int y)
+    public LaberintoC(int x, int y)
     {
         X = x;
         Y = y;
@@ -288,7 +288,7 @@ public class Laberinto
     
     public static int[][] generarMatriz(int tamano)
     {
-        Laberinto laberinto = new Laberinto(tamano);
+        LaberintoC laberinto = new LaberintoC(tamano);
         laberinto.solve();
         laberinto.updateMat();
         
