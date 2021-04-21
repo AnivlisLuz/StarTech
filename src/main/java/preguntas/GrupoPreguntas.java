@@ -82,10 +82,11 @@ public class GrupoPreguntas {
                 Cuestionario.Ocultar();
                 java.awt.EventQueue.invokeLater(new Runnable() {
                     public void run() {
-                        DataController.suma.setActive(Pregunta.getResulS() == 3);
-                        DataController.resta.setActive(Pregunta.getResulR() == 3);
-                        DataController.multiplicacion.setActive(Pregunta.getResulM() == 3);
-                        DataController.division.setActive(Pregunta.getResulD() == 3);
+                        DataController.suma.setActive(Pregunta.getResulS() == 3);                   //1    1 nivel              3           suma
+                        //DataController.suma.getLevels()[0].setActive();
+                        DataController.resta.setActive(Pregunta.getResulR() == 3);                  //2    1 nivel              2          1 nivel      
+                        DataController.multiplicacion.setActive(Pregunta.getResulM() == 3);          //3   10 niveles           0           -----
+                        DataController.division.setActive(Pregunta.getResulD() == 3);                 //0  1 nivel              3           -----
                         CategoryScreen categoryScreen = new CategoryScreen(DataController.getAllCategories());
                     }
                 });

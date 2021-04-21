@@ -19,6 +19,6 @@ public class Resta extends Matriz{
     }
     
     public void rellenarLaberinto(){
-        
+       
     }
 }
