@@ -5,8 +5,6 @@
  */
 package app.startech.models;
 
-import preguntas.Pregunta;
-
 /**
  *
  * @author luzch
@@ -16,7 +14,7 @@ public class Category {
     private final int id;
     private final String title;
     private boolean active;
-    private Level[] levels;
+    private final Level[] levels;
 
     public Category(int id, String title, boolean active, Level[] level) {
         this.id = id;
@@ -24,8 +22,8 @@ public class Category {
         this.active = active;
         this.levels = level;
     }
-    
-    public void setActive(){
+
+    public void setActive() {
         active = true;
     }
 
@@ -51,19 +49,18 @@ public class Category {
 
     public Level nextLevel(Level level) {
         Level res = null;
-        for(int i= 0; i < levels.length ; i++){
+        for (int i = 0; i < levels.length; i++) {
             Level lev = levels[i];
-            if(level.equals(lev)){
-                if(i+1 == levels.length){
+            if (level.equals(lev)) {
+                if (i + 1 == levels.length) {
                     res = null;
-                }else{
-                res = levels[i+1]; 
+                } else {
+                    res = levels[i + 1];
                 }
                 break;
             }
         }
         return res;
     }
-    
 
 }

@@ -16,10 +16,10 @@ public class Level {
     private final int id;
     private final String title;
     private boolean active;
-    public Laberinto laberinto;
+    private final Laberinto laberinto;
 
-    public Level(int id, String title, boolean active, Laberinto l) {
-        laberinto = l;
+    public Level(int id, String title, boolean active, Laberinto laberinto) {
+        this.laberinto = laberinto;
         this.id = id;
         this.title = title;
         this.active = active;
