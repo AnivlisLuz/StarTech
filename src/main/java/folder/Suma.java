@@ -19,6 +19,6 @@ public class Suma extends Matriz{
     }
     
     public void rellenarLaberinto(){
-        
+//c        laberinto = lab.rellenarLab(condicion);        
     }
 }
