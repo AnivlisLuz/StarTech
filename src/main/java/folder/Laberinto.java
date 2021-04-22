@@ -19,6 +19,9 @@ public class Laberinto {
     public void setVidas(){
         vidas--;
     }
+    public void restaurarVidas(){
+        vidas = 3;
+    }
     public int getVidas(){
         return vidas;
     }
