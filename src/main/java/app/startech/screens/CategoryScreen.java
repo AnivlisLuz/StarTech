@@ -20,6 +20,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import preguntas.GrupoPreguntas;
+import preguntas.Pregunta;
 
 /**
  *

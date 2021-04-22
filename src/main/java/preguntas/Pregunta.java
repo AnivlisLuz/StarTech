@@ -28,6 +28,10 @@ public class Pregunta {
     private static int resultadoR;
     private static int resultadoM;
     private static int resultadoD;
+    private static Boolean resS = false;
+    private static Boolean resR = false;
+    private static Boolean resM = false;
+    private static Boolean resD = false;
 
     private int auxiliar;
     private int esCorrecto;
@@ -358,8 +362,27 @@ public class Pregunta {
         resultadoD = 0;
     }
 
+    public static void restQuestChekPoint() {
+        if (resultadoS == 3) {
+            resS = true;
+        }
+        if (resultadoR == 3) {
+            resR = true;
+        }
+        if (resultadoM == 3) {
+            resM = true;
+        }
+        if (resultadoD == 3) {
+            resD = true;
+        }
+    }
+
     public static int getCuestio() {
         return cuestionario;
+    }
+
+    public static void setCuestio() {
+        cuestionario = 13;
     }
 
     public static void setCuestionario() {
@@ -384,5 +407,50 @@ public class Pregunta {
 
     public static int getResulD() {
         return resultadoD;
+    }
+
+    public static void setResulS() {
+        resultadoS = 3;
+    }
+
+    public static void setResulR() {
+        resultadoR = 3;
+    }
+
+    public static void setResulM() {
+        resultadoM = 3;
+    }
+
+    public static void setResulD() {
+        resultadoD = 3;
+    }
+
+    public static boolean getS() {
+        return resS;
+    }
+
+    public static boolean getR() {
+        return resR;
+    }
+
+    public static boolean getM() {
+        return resM;
+    }
+
+    public static boolean getD() {
+        return resD;
+    }
+
+    public static void setQuestCategory() {
+        cuestionario = cuestionario + 3;
+    }
+    public static void setRestCategory() {
+        resultado=resultado + 3;
+    }
+    public static void setRestBCateg(){
+        resS=false;
+        resR=false;
+        resM=false;
+        resD=false;
     }
 }
