@@ -3,12 +3,14 @@ package folder;
 public class Laberinto {
 
     private String titulo;
+    private String condicion;
     private int nivel;
     private int vidas;
     private String mensaje;
     private Matriz matriz;
 
-    public Laberinto(String titulo, int nivel, String mensaje) {
+    public Laberinto(String titulo, int nivel, String mensaje, String condicion) {
+        this.condicion = condicion;
         this.nivel = nivel;
         this.titulo = titulo;
         vidas = 3;
@@ -16,6 +18,9 @@ public class Laberinto {
         mostrarMatriz();
     }
     
+    public String getCondicion(){
+        return condicion;
+    }
     public void setVidas(){
         vidas--;
     }

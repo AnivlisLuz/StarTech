@@ -130,7 +130,9 @@ public class Boton extends JButton implements ActionListener {
                     l.restaurarVidas();
                 } else {
                     ventana.refresh();
+                    ventana.ocultarVida();
                     l.setVidas();
+                    
                 }
             }
         }
