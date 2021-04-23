@@ -6,10 +6,11 @@ public class Secuencia extends Matriz {
     
     public Secuencia(int tamaño){
         super(tamaño);
+        rellenarLaberinto();
     }
     
     public void rellenarLaberinto(){
-//c        laberinto = lab.rellenarLab(1);
+        laberinto = lab.generarCamino(matriz, 1);
     }
     
 

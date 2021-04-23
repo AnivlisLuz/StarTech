@@ -288,8 +288,8 @@ public class LaberintoC
             {
                 output += mat[x][y];
             }
-            output += "\n";
-        }
+           output += "\n";
+       }
         return output;
     }
     

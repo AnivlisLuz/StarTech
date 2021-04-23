@@ -16,9 +16,10 @@ public class Multiplicacion extends Matriz{
     public Multiplicacion(int tamaño, int condicion){
         super(tamaño);
         this.condicion = condicion;
+        rellenarLaberinto();
     }
     
     public void rellenarLaberinto(){
-        
+        laberinto = lab.generarCamino(matriz, condicion);   
     }
 }
