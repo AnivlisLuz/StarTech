@@ -2,7 +2,7 @@
 package folder;
 
 import java.util.ArrayList;
-import laberinto.LaberintoC;
+import laberintoc.LaberintoC;
 
 public abstract class Matriz {
     private int tamaño;

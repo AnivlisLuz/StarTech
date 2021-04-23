@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and abierta the template in the editor.
  */
-package laberinto;
+package laberintoc;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,6 +17,7 @@ import java.util.Random;
 public class LaberintoC
 {
     //aux
+    private static ArrayList<Punto> puntos = new ArrayList<>();
     private int aux1;
     private int aux2;
     private int[][] auxMat;
@@ -201,7 +202,7 @@ public class LaberintoC
         for (int x = 0; x < matX; x ++)
             for (int y = 0; y < matY; y ++)
                 mat[x][y] = blanco;
-
+        
         for (int x = 0; x < matX; x ++)
             for (int y = 0; y < matY; y ++)
                 if (x % 4 == 0 || y % 2 == 0)
@@ -216,6 +217,12 @@ public class LaberintoC
                 
                 if (act.enCamino)
                 {
+                    if (matX % 2 == 0 && matX % 4 != 0 && matY % 2 != 0)
+                    {
+                        Punto punto = new Punto(1, true, matX, matY);
+                        puntos.add(punto);
+                    }
+                    
                     mat[matX][matY] = camino;
                     
                     if (act.estaDebajo())
@@ -264,7 +271,7 @@ public class LaberintoC
             }
         }
     }
-
+    
     public void dibujar()
     {
         System.out.println(this);
@@ -321,14 +328,116 @@ public class LaberintoC
         }
         
         return auxMat;
+    }
+    
+    public char[][] generarMatrizChar(int tamano)
+    {
+        LaberintoC laberinto = new LaberintoC(tamano);
+        laberinto.solve();
+        laberinto.updateMat();
         
+        char[][] matriz = new char[laberinto.mat.length][(laberinto.mat.length) - (tamano * 2)];
+        for (int i = 0; i<laberinto.mat.length; i++)
+        {
+            for (int j = 0; j<laberinto.mat[i].length; j++)
+            {
+                if (laberinto.mat[i][j] == '*')
+                    matriz[i][j] = 1;
+                else
+                    matriz[i][j] = 0;
+            }
+        }
         
+        char[][] auxMat = new char[tamano][tamano];
+        int p = 2;
+        for (int col = 0; col<auxMat.length; col++)
+        {
+            int q = 1;
+            for (int fil = 0; fil<auxMat[col].length; fil++)
+            {
+                if (matriz[p][q] == 1)
+                    auxMat[col][fil] = '1';
+                else
+                    auxMat[col][fil] = '0';
+                q = q + 2;
+            }
+            p = p + 4;
+        }
+        
+        auxMat[auxMat.length-1][auxMat.length-1] = 'X';
+        
+        return auxMat;
+    }
+    
+    public static int[][] generarCamino(int[][] mat, int condicion)
+    {
+        Punto[][] matriz = new Punto[mat.length][mat.length];
+        for (int i = 0; i<mat.length; i++)
+        {
+            for (int j = 0; j<mat[i].length; j++)
+            {
+                matriz[i][j] = new Punto(mat[i][j], false, i, j);
+            }
+        }
+        return generarCamino(0, 0, condicion, matriz);
     }
 
+    public static int[][] generarCamino(int x, int y, int condicion, Punto mat[][])
+    {
+        int[][] matAux = new int[mat.length][mat.length];
+        if (x == mat.length-1 && y == mat.length-1)
+        {
+            for (int i = 0; i<mat.length; i++)
+                for (int j = 0; j<mat.length; j++)
+                    matAux[i][j] = mat[i][j].getValor();
+        }
+        else
+        {
+            if (esValido(mat, x, y+1))
+            {
+                mat[x][y+1].setVisitada(true);
+                mat[x][y+1].setValor(condicion + 1);
+                matAux = generarCamino(x, y+1, condicion + 1, mat);
+            }
+            else
+            {
+                if (esValido(mat, x+1, y))
+                {
+                    mat[x+1][y].setVisitada(true);
+                    mat[x+1][y].setValor(condicion + 1);
+                    matAux = generarCamino(x+1, y, condicion + 1, mat);
+                }
+                else
+                {
+                    if (esValido(mat, x, y-1))
+                    {
+                        mat[x][y-1].setVisitada(true);
+                        mat[x][y-1].setValor(condicion + 1);
+                        matAux = generarCamino(x, y-1, condicion + 1, mat);
+                    }
+                    else
+                    {
+                        if (esValido(mat, x-1, y))
+                        {
+                            mat[x-1][y].setVisitada(true);
+                            mat[x-1][y].setValor(condicion + 1);
+                            matAux = generarCamino(x-1, y, condicion + 1, mat);
+                        }
+                    }
+                }
+            }
+        }
+        return matAux;
+    }
+    
+    public static boolean esValido(Punto[][] mat, int x, int y)
+    {
+        return !(x < 0 || x >= mat.length || y < 0 || y >= mat.length) && (mat[x][y].getValor() != 0 && !mat[x][y].getVisitada());
+    }
+    
     public static void main(String[] args)
     {
-        /*
-        int tamano = 10;
+        /*int tamano = 10;
         Laberinto laberinto = new Laberinto(tamano);
         laberinto.solve();
         laberinto.dibujar();
@@ -367,17 +476,29 @@ public class LaberintoC
         dibujarMatriz(matriz);
         dibujarMatriz(laberinto.mat);
         dibujarMatriz(auxMat);
-        System.out.println(matriz.length);
+        System.out.println(puntos.size());
+        for (int i = 0; i< puntos.size(); i++)
+        {
+            System.out.println(puntos.get(i).getPosX() + " , " + puntos.get(i).getPosY());
+            System.out.println();
+        }
         */
-        
-        dibujarMatriz(generarMatriz(5));
+        //System.out.println(matriz.length);
+        int tamano = 10;
+        int[][] mat = new int[tamano][tamano];
+        mat = generarMatriz(tamano);
+        System.out.println();
+        dibujarMatriz(mat);
+        int[][] matAux = new int[tamano][tamano];
+        matAux = generarCamino(mat, 1);
+        dibujarMatriz(matAux);
     }
     
     public static void dibujarMatriz(int[][] matrix)
     {
         for (int i = 0; i < matrix.length; i++) {
          for (int j = 0; j < matrix[i].length; j++) {
-            System.out.print(matrix[i][j] + "");
+            System.out.print(matrix[i][j] + " ");
          }
          System.out.println();
       }
