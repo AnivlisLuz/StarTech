@@ -24,6 +24,12 @@ public class Punto {
 
     public Punto() {
     }
+    
+    public Punto(int valor, int posX, int posY) {
+        this.valor = valor;
+        this.posX = posX;
+        this.posY = posY;
+    }
 
     public int getPosX() {
         return posX;
