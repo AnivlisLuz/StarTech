@@ -16,13 +16,16 @@ public class usuario extends javax.swing.JFrame {
     /**
      * Creates new form usuario
      */
+    
     public usuario() {
         initComponents();
-         añadirUsuario();
+       //  añadirUsuario();
+        // usuario=new usuarioSave();
     
        
      
     }
+   // private usuarioSave usuario;
     
 
     /**
@@ -97,10 +100,10 @@ public class usuario extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    public void añadirUsuario()
-     {
-         txtUsuario.addItem("home");
-     }
+   // public void añadirUsuario()
+    // {
+    //     txtUsuario.addItem("home");
+   //  }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
      
 // TODO add your handling code here:
