@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package laberinto;
+package laberintoc;
 
 /**
  *
@@ -54,6 +54,12 @@ public class Casilla {
     boolean estaDerecha()
     {
         return this.vecinos.contains(new Casilla(this.x + 1, this.y));
+    }
+    
+    boolean esCasilla()
+    {
+        boolean es = false;
+        return es;
     }
     
     @Override
