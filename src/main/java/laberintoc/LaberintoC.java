@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  *
@@ -272,25 +273,9 @@ public class LaberintoC
         }
     }
     
-    public void dibujar()
+    public static int getRandom(int min, int max)
     {
-        System.out.println(this);
-    }
-
-    @Override
-    public String toString()
-    {
-        updateMat();
-        String output = "";
-        for (int y = 0; y < matY; y++)
-        {
-            for (int x = 0; x < matX; x++)
-            {
-                output += mat[x][y];
-            }
-            output += "\n";
-        }
-        return output;
+        return ThreadLocalRandom.current().nextInt(min, max + 1);
     }
     
     public static int[][] generarMatriz(int tamano)
@@ -405,6 +390,75 @@ public class LaberintoC
         return matAux;
     }
     
+    public static int getMayor(ArrayList<Integer> arr)
+    {
+        int n = arr.get(0);
+        for (int i = 0; i < arr.size(); i++)
+            if (n > arr.get(i))
+                n = arr.get(i);
+        return n;
+    }
+    
+    public static int getMenor(ArrayList<Integer> arr)
+    {
+        int n = arr.get(0);
+        for (int i = 0; i < arr.size(); i++)
+            if (n < arr.get(i))
+                n = arr.get(i);
+        return n;
+    }
+    
+    public static boolean esIgualAVecino(int n, ArrayList<Integer> vecinos)
+    {
+        boolean es = false;
+        for (int i = 0; i < vecinos.size(); i++)
+            if (n == vecinos.get(i));
+                es = true;
+        return es;
+    }
+    
+    public static boolean noEsPared(int[][] mat, int x, int y)
+    {
+        return !(x < 0 || x >= mat.length || y < 0 || y >= mat.length) && (mat[x][y] != 0);
+    }
+    
+    public static int[][] generarParedes(int[][] mat)
+    {
+        int[][] matAux = mat;
+        for (int i = 0; i < matAux.length; i++)
+            for (int j = 0; j < matAux.length; j++)
+                if (matAux[i][j] == 0)
+                {
+                    ArrayList<Integer> vecinos = new ArrayList<Integer>();
+                    
+                    if (noEsPared(matAux, i-1, j-1))
+                        vecinos.add(matAux[i-1][j-1]);
+                    if (noEsPared(matAux, i, j-1))
+                        vecinos.add(matAux[i][j-1]);
+                    if (noEsPared(matAux, i+1, j-1))
+                        vecinos.add(matAux[i+1][j-1]);
+                    if (noEsPared(matAux, i-1, j))
+                        vecinos.add(matAux[i-1][j]);
+                    if (noEsPared(matAux, i+1, j))
+                        vecinos.add(matAux[i+1][j]);
+                    if (noEsPared(matAux, i-1, j+1))
+                        vecinos.add(matAux[i-1][j+1]);
+                    if (noEsPared(matAux, i, j+1))
+                        vecinos.add(matAux[i][j+1]);
+                    if (noEsPared(matAux, i+1, j+1))
+                        vecinos.add(matAux[i+1][j+1]);
+                    
+                    int rand = getRandom(matAux[i][j], matAux[i][j] + 1);
+                    
+                    while (esIgualAVecino(rand, vecinos))
+                    {
+                        rand = getRandom(getMayor(vecinos), getMenor(vecinos) + 5);
+                    }
+                    matAux[i][j] = rand;
+                }
+        return matAux;
+    }
+    
     public static boolean esValido(Punto[][] mat, int x, int y)
     {
         return !(x < 0 || x >= mat.length || y < 0 || y >= mat.length) && (mat[x][y].getValor() != 0 && !mat[x][y].getVisitada());
@@ -435,62 +489,23 @@ public class LaberintoC
     
     public static void main(String[] args)
     {
-        /*int tamano = 10;
-        Laberinto laberinto = new Laberinto(tamano);
-        laberinto.solve();
-        laberinto.dibujar();
-        
-        System.out.println(laberinto.mat[2][2]);
-        System.out.println(laberinto.mat.length);
-        
-        int[][] matriz = new int[laberinto.mat.length][(laberinto.mat.length) - (tamano * 2)];
-        for (int i = 0; i<laberinto.mat.length; i++)
-        {
-            for (int j = 0; j<laberinto.mat[i].length; j++)
-            {
-                if (laberinto.mat[i][j] == '*')
-                    matriz[i][j] = 1;
-                else
-                    matriz[i][j] = 0;
-            }
-        }
-        
-        int[][] auxMat = new int[tamano][tamano];
-        int p = 2;
-        for (int col = 0; col<auxMat.length; col++)
-        {
-            int q = 1;
-            for (int fil = 0; fil<auxMat[col].length; fil++)
-            {
-                if (matriz[p][q] == 1)
-                    auxMat[col][fil] = 1;
-                else
-                    auxMat[col][fil] = 0;
-                q = q + 2;
-            }
-            p = p + 4;
-        }
-        
-        dibujarMatriz(matriz);
-        dibujarMatriz(laberinto.mat);
-        dibujarMatriz(auxMat);
-        System.out.println(puntos.size());
-        for (int i = 0; i< puntos.size(); i++)
-        {
-            System.out.println(puntos.get(i).getPosX() + " , " + puntos.get(i).getPosY());
-            System.out.println();
-        }
+        /*
+        int[][] arr = {
+            {1, 0, 0, 0, 0, 0, 0, 1, 1, 1},
+            {1, 0, 0, 0, 0, 1, 1, 1, 1, 1},
+            {1, 1, 1, 0, 0, 1, 1, 1, 1, 0},
+            {1, 1, 1, 0, 0, 1, 1, 1, 0, 0},
+            {0, 0, 1, 1, 1, 1, 0, 1, 0, 0},
+            {0, 0, 0, 0, 1, 1, 0, 1, 0, 0},
+            {0, 0, 0, 0, 1, 1, 1, 1, 0, 0},
+            {0, 0, 0, 0, 1, 1, 1, 0, 0, 0},
+            {0, 0, 0, 0, 1, 1, 1, 0, 0, 0},
+            {0, 0, 0, 0, 1, 1, 1, 1, 1, 1}
+        };
         */
-        //System.out.println(matriz.length);
-        int tamano = 10;
-        int[][] mat = new int[tamano][tamano];
-        mat = generarMatriz(tamano);
-        System.out.println();
+        int[][] mat = generarMatriz(5);
         dibujarMatriz(mat);
-        int[][] matAux = new int[tamano][tamano];
-        matAux = generarCamino(mat, 1);
-        dibujarMatriz(matAux);
-        dibujarCamino(getCamino(matAux));
+        dibujarMatriz(generarParedes(mat));
     }
     
     public static void dibujarCamino(ArrayList<Punto> arr)
