@@ -16,9 +16,10 @@ public class Resta extends Matriz{
     public Resta(int tamaño, int condicion){
         super(tamaño);
         this.condicion = condicion;
+        rellenarLaberinto();
     }
     
     public void rellenarLaberinto(){
-//c        laberinto = lab.rellenarLab(condicion);       
+        laberinto = lab.generarCamino(matriz, condicion);       
     }
 }

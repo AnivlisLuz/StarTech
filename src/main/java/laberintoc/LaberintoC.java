@@ -275,7 +275,23 @@ public class LaberintoC
     
     public static int getRandom(int min, int max)
     {
-        return ThreadLocalRandom.current().nextInt(min, max + 1);
+        System.out.println(this);
+    }
+
+    @Override
+    public String toString()
+    {
+        updateMat();
+        String output = "";
+        for (int y = 0; y < matY; y++)
+        {
+            for (int x = 0; x < matX; x++)
+            {
+                output += mat[x][y];
+            }
+           output += "\n";
+       }
+        return output;
     }
     
     public static int[][] generarMatriz(int tamano)

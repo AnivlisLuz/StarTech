@@ -6,13 +6,13 @@ import laberintoc.LaberintoC;
 
 public abstract class Matriz {
     private int tamaño;
-    private int[][] matriz;
+    protected int[][] matriz;
     protected int[][] laberinto;
     private Punto   inicio;
     private Punto   meta;
     //private ArrayList<Punto> camino;
     private Punto[] camino;
-    private LaberintoC lab;
+    protected LaberintoC lab;
     private int pos;
     
     public Matriz(int tamaño){
@@ -64,8 +64,11 @@ public abstract class Matriz {
 //            {1, 0, 1, 0, 1, 0, 1, 0, 1, 0},
 //            {1, 0, 1, 0, 1, 0, 1, 0, 1, 0}
 //        };
-        return matriz;
+        return laberinto;
     }
+//    public ArrayList<Punto> getCamino(){
+//        return camino;
+//    }
     public Punto[] getCamino(){
         return camino;
     }
