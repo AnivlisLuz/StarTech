@@ -5,10 +5,12 @@
  */
 package forms;
 
-import forms.usuario;
-import forms.usuario1;
+import forms.Login;
+import forms.Usuario;
 import forms.usuarioSave;
 import javax.swing.JOptionPane;
+import preguntas.Cuestionario;
+import static preguntas.Cuestionario.grupos;
 
 /**
  *
@@ -135,14 +137,16 @@ public class nuevoPerfil extends javax.swing.JFrame {
          
             JOptionPane.showMessageDialog(null,"usuario es incorrecto");
            
-        }else if(usuario1.verificarUsuario(nombre)== -1)
+        }else if(!Usuario.verificarUsuario(nombre))
          {
-              usuario1 obj=new usuario1();
+              Usuario obj=new Usuario();
               obj.setNombre(nombre);
               obj.setEdad(edad);
               usuarioSave.agregar(obj);
             
               JOptionPane.showMessageDialog(null,"se registro correctamente");
+              Cuestionario test = new Cuestionario(grupos);
+                this.dispose();
          }else{
               JOptionPane.showMessageDialog(null,"ya existe este usuario");
          }
@@ -163,7 +167,7 @@ public class nuevoPerfil extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        usuario abrir=new usuario();
+        Login abrir=new Login();
         abrir.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed

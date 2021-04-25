@@ -60,7 +60,7 @@ public class Boton extends JButton implements ActionListener {
                         sig.setActive();
                         java.awt.EventQueue.invokeLater(new Runnable() {
                             public void run() {
-                                ventanaCategoria = new CategoryScreen(DataController.getAllCategories());
+                                ventanaCategoria = new CategoryScreen(DataController.instance.getUsuarioActual().category.getAllCategories());
                                 ventanaCategoria.setVisible(false);
                                 ventanaLevel = new LevelScreen(categoria, ventanaCategoria);
                             }
@@ -80,7 +80,7 @@ public class Boton extends JButton implements ActionListener {
 //                                DataController.resta.setActive(true); 
 //                                DataController.multiplicacion.setActive(true); 
 //                                DataController.division.setActive(true);  
-                                CategoryScreen categoryScreen = new CategoryScreen(DataController.getAllCategories());
+                                CategoryScreen categoryScreen = new CategoryScreen(DataController.instance.getUsuarioActual().category.getAllCategories());
                             }
                         });
                         //cat.setActive();

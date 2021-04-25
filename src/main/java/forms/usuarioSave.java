@@ -5,6 +5,7 @@
  */
 package forms;
 
+import java.util.ArrayList;
 import java.util.Vector;
 
 /**
@@ -13,12 +14,12 @@ import java.util.Vector;
  */
 public class usuarioSave {
     
-    private static Vector<usuario1> datos= new Vector<usuario1>();
-    public static void agregar(usuario1 obj ){
-      datos.addElement(obj);
+    private static ArrayList<Usuario> usuarios= new ArrayList<Usuario>();
+    public static void agregar(Usuario obj ){
+      usuarios.add(obj);
     }   
-     public static  Vector mostrar(){
-      return datos ;
+     public static  ArrayList<Usuario> mostrar(){
+      return usuarios ;
     }   
    
 }

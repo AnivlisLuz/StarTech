@@ -6,6 +6,10 @@
 package interfaz;
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 /**
  *
@@ -34,6 +38,15 @@ public class Login extends javax.swing.JFrame {
         catch (Exception e)
         {
             JOptionPane.showMessageDialog(null, e);
+        }
+        
+        try {
+            FileWriter fr = new FileWriter("Usuarios.txt");
+            
+            fr.append("Nombre,34");
+            fr.close();
+        } catch (Exception ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

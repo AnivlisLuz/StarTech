@@ -89,35 +89,35 @@ public class GrupoPreguntas {
                 Cuestionario.Ocultar();
                 java.awt.EventQueue.invokeLater(new Runnable() {
                     public void run() {
-                        DataController.suma.setActive(Pregunta.getResulS() >= 1);
-                        DataController.suma.getLevels()[0].setActive(true);
+                        DataController.instance.getUsuarioActual().category.suma.setActive(Pregunta.getResulS() >= 1);
+                        DataController.instance.getUsuarioActual().category.suma.getLevels()[0].setActive(true);
                         if (Pregunta.getResulS() == 3) {
-                            for (int i = 0; i < DataController.suma.getLevels().length; i++) {
-                                DataController.suma.getLevels()[i].setActive(true);
+                            for (int i = 0; i < DataController.instance.getUsuarioActual().category.suma.getLevels().length; i++) {
+                                DataController.instance.getUsuarioActual().category.suma.getLevels()[i].setActive(true);
                             }
                         }
-                        DataController.resta.setActive(Pregunta.getResulR() >= 1);
-                        DataController.resta.getLevels()[0].setActive(true);
+                        DataController.instance.getUsuarioActual().category.resta.setActive(Pregunta.getResulR() >= 1);
+                        DataController.instance.getUsuarioActual().category.resta.getLevels()[0].setActive(true);
                         if (Pregunta.getResulR() == 3) {
-                            for (int i = 0; i < DataController.resta.getLevels().length; i++) {
-                                DataController.resta.getLevels()[i].setActive(true);
+                            for (int i = 0; i < DataController.instance.getUsuarioActual().category.resta.getLevels().length; i++) {
+                                DataController.instance.getUsuarioActual().category.resta.getLevels()[i].setActive(true);
                             }
                         }
-                        DataController.multiplicacion.setActive(Pregunta.getResulM() >= 1);
-                        DataController.multiplicacion.getLevels()[0].setActive(true);
+                        DataController.instance.getUsuarioActual().category.multiplicacion.setActive(Pregunta.getResulM() >= 1);
+                        DataController.instance.getUsuarioActual().category.multiplicacion.getLevels()[0].setActive(true);
                         if (Pregunta.getResulM() == 3) {
-                            for (int i = 0; i < DataController.multiplicacion.getLevels().length; i++) {
-                                DataController.multiplicacion.getLevels()[i].setActive(true);
+                            for (int i = 0; i < DataController.instance.getUsuarioActual().category.multiplicacion.getLevels().length; i++) {
+                                DataController.instance.getUsuarioActual().category.multiplicacion.getLevels()[i].setActive(true);
                             }
                         }
-                        DataController.division.setActive(Pregunta.getResulD() >= 1);
-                        DataController.division.getLevels()[0].setActive(true);
+                        DataController.instance.getUsuarioActual().category.division.setActive(Pregunta.getResulD() >= 1);
+                        DataController.instance.getUsuarioActual().category.division.getLevels()[0].setActive(true);
                         if (Pregunta.getResulD() == 3) {
-                            for (int i = 0; i < DataController.division.getLevels().length; i++) {
-                                DataController.division.getLevels()[i].setActive(true);
+                            for (int i = 0; i < DataController.instance.getUsuarioActual().category.division.getLevels().length; i++) {
+                                DataController.instance.getUsuarioActual().category.division.getLevels()[i].setActive(true);
                             }
                         }
-                        CategoryScreen categoryScreen = new CategoryScreen(DataController.getAllCategories());
+                        CategoryScreen categoryScreen = new CategoryScreen(DataController.instance.getUsuarioActual().category.getAllCategories());
                     }
                 });
             }

@@ -8,6 +8,8 @@ package app.startech.screens;
 import app.startech.models.Category;
 import app.startech.models.Level;
 import data.DataController;
+import forms.Login;
+import forms.Usuario;
 import java.awt.BorderLayout;
 import static java.awt.BorderLayout.CENTER;
 import static java.awt.BorderLayout.EAST;
@@ -89,6 +91,14 @@ public class CategoryScreen extends javax.swing.JFrame {
         });
         buton.setPreferredSize(new Dimension(200, 50));
         options.add(buton, EAST);
+        JButton atras = new JButton("Realizar TEST");
+        atras.addActionListener((action) -> {
+           Login abrir=new Login();
+        abrir.setVisible(true);
+            setVisible(false);
+        });
+        atras.setPreferredSize(new Dimension(200, 50));
+        options.add(atras, CENTER);
 
         add(buttons, CENTER);
         add(options, SOUTH);
@@ -99,8 +109,9 @@ public class CategoryScreen extends javax.swing.JFrame {
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
-            DataController.secuencia.setActive(true);
-            CategoryScreen categoryScreen = new CategoryScreen(DataController.getAllCategories());
+           DataController.instance.setUsuarioActual(0);
+           // DataController.secuencia.setActive(true);
+            CategoryScreen categoryScreen = new CategoryScreen( DataController.instance.getUsuarioActual().category.getAllCategories());
         });
     }
 }

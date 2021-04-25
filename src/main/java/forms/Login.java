@@ -5,6 +5,10 @@
  */
 package forms;
 
+import app.startech.screens.CategoryScreen;
+import data.DataController;
+import static forms.Usuario.mostrar;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import preguntas.Cuestionario;
 import static preguntas.Cuestionario.grupos;
@@ -13,12 +17,12 @@ import static preguntas.Cuestionario.grupos;
  *
  * @author chovis
  */
-public class usuario extends javax.swing.JFrame {
+public class Login extends javax.swing.JFrame {
 
     /**
      * Creates new form usuario
      */
-    public usuario() {
+    public Login() {
         initComponents();
          añadirUsuario();
     
@@ -59,7 +63,11 @@ public class usuario extends javax.swing.JFrame {
             }
         });
 
-        txtUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        txtUsuario.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                txtUsuarioItemStateChanged(evt);
+            }
+        });
         txtUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUsuarioActionPerformed(evt);
@@ -101,12 +109,14 @@ public class usuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     public void añadirUsuario()
      {
-         txtUsuario.addItem("home");
+        for (Usuario user : DataController.instance.usuarios) {            
+         txtUsuario.addItem(user.getNombre());
+        }
      }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-     
-
-        Cuestionario test = new Cuestionario(grupos);
+        int index=txtUsuario.getSelectedIndex();
+        DataController.instance.setUsuarioActual(index);
+        CategoryScreen categoryScreen = new CategoryScreen(DataController.instance.getUsuarioActual().category.getAllCategories());
         this.dispose();
      
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -121,6 +131,10 @@ public class usuario extends javax.swing.JFrame {
         abrir.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void txtUsuarioItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_txtUsuarioItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUsuarioItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -139,20 +153,21 @@ public class usuario extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(usuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(usuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(usuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(usuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new usuario().setVisible(true);
+                new Login().setVisible(true);
             }
         });
     }

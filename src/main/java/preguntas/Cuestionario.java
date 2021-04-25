@@ -5,6 +5,7 @@
  */
 package preguntas;
 
+import forms.Usuario;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -55,6 +56,8 @@ public class Cuestionario {
     public static void main(String args[]) {
         Cuestionario test = new Cuestionario(grupos);
     }
+
+ 
 
     public void ventana() {
         thread.start();
