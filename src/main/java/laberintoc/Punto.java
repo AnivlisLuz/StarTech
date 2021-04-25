@@ -30,6 +30,12 @@ public class Punto {
         this.posX = posX;
         this.posY = posY;
     }
+    
+    public Punto( int posX, int posY) {
+        this.valor = 0;
+        this.posX = posX;
+        this.posY = posY;
+    }
 
     public int getPosX() {
         return posX;
@@ -71,5 +77,12 @@ public class Punto {
             
         }
         return aux;
+    }
+        public boolean igual(Punto a){
+        boolean res = false;
+        if(posX == a.getPosX() && posY == a.getPosY()){
+            res = true;
+        }
+        return res;
     }
 }

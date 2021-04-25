@@ -275,7 +275,7 @@ public class LaberintoC
     
     public static int getRandom(int min, int max)
     {
-        System.out.println(this);
+        return min;
     }
 
     @Override
@@ -333,6 +333,7 @@ public class LaberintoC
     
     public static int[][] generarCamino(int[][] mat, int condicion)
     {
+        System.out.println("paso");
         Punto[][] matriz = new Punto[mat.length][mat.length];
         for (int i = 0; i<mat.length; i++)
         {

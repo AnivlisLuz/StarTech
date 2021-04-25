@@ -6,6 +6,7 @@ import app.startech.models.Level;
 import app.startech.screens.CategoryScreen;
 import app.startech.screens.LevelScreen;
 import java.awt.Color;
+import laberintoc.Punto;
 
 public class VentanaLaberinto extends javax.swing.JFrame {
 
