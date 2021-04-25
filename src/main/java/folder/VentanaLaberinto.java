@@ -37,13 +37,18 @@ public class VentanaLaberinto extends javax.swing.JFrame {
         jTextArea1.setLineWrap(true);
         jTextArea1.setWrapStyleWord(true);
         jTextArea1.setEditable(false);
-        int x=0, y = 0, m = 54, n = 55;
-        if(laberinto.getMatriz().getLaberinto().length == 6){
-            m = 73; n = 75;
-        }else if(laberinto.getMatriz().getLaberinto().length == 8){
-            m = 67; n = 68;
-        }else if(laberinto.getMatriz().getLaberinto().length == 10){
+        int x=0, y = 0, m = 0, n = 0;
+        int aux = laberinto.getMatriz().getLaberinto().length;
+        if(aux == 10){
             m = 54; n = 55;
+        }else if(aux == 8){
+            m = 67; n = 68;
+        }else if(aux == 6){
+            m = 73; n = 75;
+        }else if(aux == 4){
+            m = 85; n = 87;
+        }else{
+            m = 113; n = 116;
         }
         int[][] laberinto = this.laberinto.getMatriz().getLaberinto();
         int tamX = laberinto.length;
@@ -96,9 +101,9 @@ public class VentanaLaberinto extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jLabelVida1 = new javax.swing.JLabel();
-        jLabelVida2 = new javax.swing.JLabel();
         jLabelVida3 = new javax.swing.JLabel();
+        jLabelVida2 = new javax.swing.JLabel();
+        jLabelVida1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -165,11 +170,11 @@ public class VentanaLaberinto extends javax.swing.JFrame {
         jLabel2.setText("jLabel2");
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
 
-        jLabelVida1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\recursos\\VidaRojo.png")); // NOI18N
+        jLabelVida3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\recursos\\VidaRojo.png")); // NOI18N
 
         jLabelVida2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\recursos\\VidaRojo.png")); // NOI18N
 
-        jLabelVida3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\recursos\\VidaRojo.png")); // NOI18N
+        jLabelVida1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\recursos\\VidaRojo.png")); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -186,15 +191,15 @@ public class VentanaLaberinto extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(99, 99, 99)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(45, 45, 45)
+                .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelVida3)
+                        .addComponent(jLabelVida1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabelVida2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelVida1)))
+                        .addComponent(jLabelVida3)))
                 .addGap(17, 17, 17))
         );
         layout.setVerticalGroup(
@@ -204,9 +209,9 @@ public class VentanaLaberinto extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabelVida1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, Short.MAX_VALUE)
+                            .addComponent(jLabelVida3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, Short.MAX_VALUE)
                             .addComponent(jLabelVida2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(jLabelVida3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                            .addComponent(jLabelVida1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(14, Short.MAX_VALUE)
                         .addComponent(jLabel1)
