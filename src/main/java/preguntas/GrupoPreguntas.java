@@ -24,6 +24,7 @@ import static preguntas.Cuestionario.panel;
 public class GrupoPreguntas {
 
     public static void showQuestionary() {
+        Pregunta.restQuestChekPoint();
         Pregunta.restQuest();
         Cuestionario.DesOcultar();
         GrupoPreguntas grupo = new GrupoPreguntas(Cuestionario.preguntas);
@@ -44,6 +45,7 @@ public class GrupoPreguntas {
 
     public static MouseListener comando;
     public static MouseListener comando0;
+    public static MouseListener Denuevo;
 
     private Thread thread;
 
@@ -53,6 +55,11 @@ public class GrupoPreguntas {
         thread.start();
         categoria0 = new JButton();
         reiniciar = new JButton();
+        etiqueta = new JLabel();
+        etiqueta1 = new JLabel();
+        etiqueta2 = new JLabel();
+        imagen1 = new ImageIcon("recursos/imagenes/perdiste.jpg");
+        imagen2 = new ImageIcon("recursos/imagenes/lograste.jpg");
         comando = new MouseListener() {
             public void mouseClicked(MouseEvent e) {
             }
@@ -82,11 +89,34 @@ public class GrupoPreguntas {
                 Cuestionario.Ocultar();
                 java.awt.EventQueue.invokeLater(new Runnable() {
                     public void run() {
-                        DataController.suma.setActive(Pregunta.getResulS() == 3);                   //1    1 nivel              3           suma
-                        //DataController.suma.getLevels()[0].setActive();
-                        DataController.resta.setActive(Pregunta.getResulR() == 3);                  //2    1 nivel              2          1 nivel      
-                        DataController.multiplicacion.setActive(Pregunta.getResulM() == 3);          //3   10 niveles           0           -----
-                        DataController.division.setActive(Pregunta.getResulD() == 3);                 //0  1 nivel              3           -----
+                        DataController.suma.setActive(Pregunta.getResulS() >= 1);
+                        DataController.suma.getLevels()[0].setActive(true);
+                        if (Pregunta.getResulS() == 3) {
+                            for (int i = 0; i < DataController.suma.getLevels().length; i++) {
+                                DataController.suma.getLevels()[i].setActive(true);
+                            }
+                        }
+                        DataController.resta.setActive(Pregunta.getResulR() >= 1);
+                        DataController.resta.getLevels()[0].setActive(true);
+                        if (Pregunta.getResulR() == 3) {
+                            for (int i = 0; i < DataController.resta.getLevels().length; i++) {
+                                DataController.resta.getLevels()[i].setActive(true);
+                            }
+                        }
+                        DataController.multiplicacion.setActive(Pregunta.getResulM() >= 1);
+                        DataController.multiplicacion.getLevels()[0].setActive(true);
+                        if (Pregunta.getResulM() == 3) {
+                            for (int i = 0; i < DataController.multiplicacion.getLevels().length; i++) {
+                                DataController.multiplicacion.getLevels()[i].setActive(true);
+                            }
+                        }
+                        DataController.division.setActive(Pregunta.getResulD() >= 1);
+                        DataController.division.getLevels()[0].setActive(true);
+                        if (Pregunta.getResulD() == 3) {
+                            for (int i = 0; i < DataController.division.getLevels().length; i++) {
+                                DataController.division.getLevels()[i].setActive(true);
+                            }
+                        }
                         CategoryScreen categoryScreen = new CategoryScreen(DataController.getAllCategories());
                     }
                 });
@@ -98,56 +128,49 @@ public class GrupoPreguntas {
             public void mouseExited(MouseEvent e) {
             }
         };
-        if (Pregunta.getCuestio() < 12) {
-            Pregunta.setCuestionario();
-            System.out.println(Pregunta.getCuestio());
-            Pregunta pregunta = new Pregunta(pregunta0, respuestas, incisos);
-        } else {
-            etiqueta = new JLabel();
-            etiqueta1 = new JLabel();
-            etiqueta2 = new JLabel();
-            imagen1 = new ImageIcon("recursos/imagenes/perdiste.jpg");
-            imagen2 = new ImageIcon("recursos/imagenes/lograste.jpg");
-
-            limpiar();
-            hoja();
-            fondo();
-            resp();
-            irCategoria();
-            rst();
-
-            if (Pregunta.getResul() == Pregunta.getCuestio()) {
-                limpiar();
-                panel.add(etiqueta2);
-                hoja();
-                fondo();
-
-                etiqueta1.setBounds(ancho / 2 - 300, 100, 600, 50);
-                etiqueta1.setText("felicidades respondiste todas las preguntas");
-
-                etiqueta2.setBounds(ancho / 2 - 150, alto / 2 - 150, 300, 300);
-                etiqueta2.setOpaque(true);
-                etiqueta2.setIcon(new ImageIcon(imagen2.getImage().getScaledInstance(etiqueta2.getWidth(), etiqueta2.getHeight(), Image.SCALE_DEFAULT)));
-
-            } else if (Pregunta.getResul() == 0) {
-                limpiar();
-                panel.add(etiqueta2);
-                hoja();
-                fondo();
-
-                etiqueta1.setBounds(ancho / 2 - 300, 100, 600, 50);
-                etiqueta1.setText("No pudiste responder ninguna pregunta");
-
-                etiqueta2.setBounds(ancho / 2 - 150, alto / 2 - 150, 300, 300);
-                etiqueta2.setOpaque(true);
-                etiqueta2.setIcon(new ImageIcon(imagen1.getImage().getScaledInstance(etiqueta2.getWidth(), etiqueta2.getHeight(), Image.SCALE_DEFAULT)));
+        Denuevo=new MouseListener() {
+            public void mouseClicked(MouseEvent e) {
             }
 
-            etiqueta1.setOpaque(true);
-            etiqueta1.setFont(new Font("calibri", Font.ITALIC, 30));
+            public void mousePressed(MouseEvent e) {
+            }
 
-            System.out.println(etiqueta1.getText());
+            public void mouseReleased(MouseEvent e) {
+                Pregunta.setRestBCateg();
+                Pregunta.restQuest();
+                GrupoPreguntas grupo = new GrupoPreguntas(Cuestionario.preguntas);
+                
+            }
 
+            public void mouseEntered(MouseEvent e) {
+            }
+
+            public void mouseExited(MouseEvent e) {
+            }
+        };
+        condicionDeCategoria();
+        if (Pregunta.getCuestio() < 12) {
+            if (Pregunta.getResulS() < 3 && Pregunta.getCuestio() == 3) {
+                finalizarC();
+            } else if (Pregunta.getResulR() < 3 && Pregunta.getCuestio() == 6) {
+                finalizarC();
+            } else if (Pregunta.getResulM() < 3 && Pregunta.getCuestio() == 9) {
+                finalizarC();
+            } else if (Pregunta.getResulD() < 3 && Pregunta.getCuestio() == 12) {
+                finalizarC();
+            } else {
+                Pregunta.setCuestionario();
+                System.out.println(Pregunta.getCuestio());
+                Pregunta pregunta = new Pregunta(pregunta0, respuestas, incisos);
+            }
+
+        } else {
+            finalizarC();
+            if(Pregunta.getS() && Pregunta.getR() && Pregunta.getM() && Pregunta.getD()){
+                etiqueta1.setText("Ya respondiste todas las preguntas");
+                reiniciar.setText("Reiniciar todo");
+                reiniciar.addMouseListener(Denuevo);
+            }
         }
 
     }
@@ -194,5 +217,72 @@ public class GrupoPreguntas {
         reiniciar.setText("Reiniciar");
         reiniciar.setHorizontalAlignment(SwingConstants.CENTER);
         reiniciar.addMouseListener(comando);
+    }
+
+    public void finalizarC() {
+
+        limpiar();
+        hoja();
+        fondo();
+        resp();
+        irCategoria();
+        rst();
+
+        if (Pregunta.getResul() == Pregunta.getCuestio()) {
+            limpiar();
+            panel.add(etiqueta2);
+            hoja();
+            fondo();
+
+            etiqueta1.setBounds(ancho / 2 - 300, 100, 600, 50);
+            etiqueta1.setText("felicidades respondiste todas las preguntas");
+
+            etiqueta2.setBounds(ancho / 2 - 150, alto / 2 - 150, 300, 300);
+            etiqueta2.setOpaque(true);
+            etiqueta2.setIcon(new ImageIcon(imagen2.getImage().getScaledInstance(etiqueta2.getWidth(), etiqueta2.getHeight(), Image.SCALE_DEFAULT)));
+
+        } else if (Pregunta.getResul() == 0) {
+            limpiar();
+            panel.add(etiqueta2);
+            hoja();
+            fondo();
+
+            etiqueta1.setBounds(ancho / 2 - 300, 100, 600, 50);
+            etiqueta1.setText("No pudiste responder ninguna pregunta");
+
+            etiqueta2.setBounds(ancho / 2 - 150, alto / 2 - 150, 300, 300);
+            etiqueta2.setOpaque(true);
+            etiqueta2.setIcon(new ImageIcon(imagen1.getImage().getScaledInstance(etiqueta2.getWidth(), etiqueta2.getHeight(), Image.SCALE_DEFAULT)));
+        }
+
+        etiqueta1.setOpaque(true);
+        etiqueta1.setFont(new Font("calibri", Font.ITALIC, 30));
+
+        System.out.println(etiqueta1.getText());
+
+    }
+
+    public void condicionDeCategoria() {
+        if (Pregunta.getCuestio() == 0) {
+            if (Pregunta.getS() == true) {
+                Pregunta.setQuestCategory();
+                Pregunta.setResulS();
+            }
+        }if (Pregunta.getCuestio() == 3) {
+            if (Pregunta.getR() == true) {
+                Pregunta.setQuestCategory();
+                Pregunta.setResulR();
+            }
+        }if (Pregunta.getCuestio() == 6) {
+            if (Pregunta.getM() == true) {
+                Pregunta.setQuestCategory();
+                Pregunta.setResulM();
+            }
+        }if (Pregunta.getCuestio() == 9) {
+            if (Pregunta.getD() == true) {
+                Pregunta.setQuestCategory();
+                Pregunta.setResulD();
+            }
+        }
     }
 }

@@ -45,4 +45,7 @@ public class Level {
         return laberinto;
     }
 
+    public void setActive(boolean b) {
+        active = true;
+    }
 }
