@@ -11,6 +11,7 @@ package laberintoc;
  */
 public class Punto {
     private int valor;
+    private int orden;
     private boolean visitada;
     private int posX;
     private int posY;
@@ -23,6 +24,13 @@ public class Punto {
     }
 
     public Punto() {
+    }
+    
+    public Punto(int valor, int orden, int posX, int posY) {
+        this.valor = valor;
+        this.orden = orden;
+        this.posX = posX;
+        this.posY = posY;
     }
     
     public Punto(int valor, int posX, int posY) {
@@ -84,5 +92,13 @@ public class Punto {
             res = true;
         }
         return res;
+    }
+        
+        public int getOrden() {
+        return orden;
+    }
+
+    public void setOrden(int orden) {
+        this.orden = orden;
     }
 }
