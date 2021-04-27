@@ -5,12 +5,14 @@
  */
 package forms;
 
+import data.DataController;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  *
@@ -34,39 +36,29 @@ public class UserSaver {
             fb.close();
             fwu.close();
 
+            DataController.instance.usuarios.add(usuario);
+            DataController.instance.setUsuarioActual(usuario);
         } catch (IOException e) {
             System.out.println("error 404" + e);
         }
 
     }
 
-    public boolean lectura(String nombre) {
-        boolean verificar = false;
+    public ArrayList<Usuario> lectura() {
+        ArrayList<Usuario> result = new ArrayList<Usuario>();
         try {
             FileReader fr = new FileReader(filePAth);
             BufferedReader bw = new BufferedReader(fr);
-            String valor = null;
+            String valor;
             while ((valor = bw.readLine()) != null) {
-                if (valor.equals(nombre)) {
-                    verificar = true;
-                }
+                String[] userData = valor.split(",");
+                Usuario usuario = new Usuario(userData[0], userData[1]);
+                result.add(usuario);
             }
-
-            return verificar;
-
         } catch (IOException e) {
             System.out.println("error 404" + e);
         }
-
-        // int valor = fr.read();
-        //while(valor!= -1)
-        //  {
-        //   System.out.print((char)valor);
-        //    valor= fr.read() ;
-        // }
-        //fr.close();
-        //  FileReader fr = new FileReader("Usuarios\\" + nombreUsuario + "\\" + categoria + ".txt");
-        return verificar;
+        return result;
     }
 
 }

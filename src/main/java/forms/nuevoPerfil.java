@@ -5,6 +5,7 @@
  */
 package forms;
 
+import data.DataController;
 import forms.Login;
 import forms.Usuario;
 import forms.usuarioSave;
@@ -135,9 +136,9 @@ public class nuevoPerfil extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "usuario es incorrecto");
 
         } else if (!Usuario.verificarUsuario(nombre)) {
-            Usuario obj = new Usuario(nombre,edad);
+            Usuario usuario = new Usuario(nombre,edad);
             UserSaver nUser = new UserSaver();
-            nUser.escritura(obj);
+            nUser.escritura(usuario);
             JOptionPane.showMessageDialog(null, "se registro correctamente");
             Cuestionario test = new Cuestionario(grupos);
             this.dispose();

@@ -8,6 +8,7 @@ package data;
 import app.startech.models.Category;
 import app.startech.models.Level;
 import folder.Laberinto;
+import forms.UserSaver;
 import forms.Usuario;
 import java.util.ArrayList;
 
@@ -19,27 +20,29 @@ public class DataController {
 
     final public static DataController instance = new DataController();
 
-    public DataController() {        
-         usuarios.add(new Usuario("a","10"));
-         usuarios.add(new Usuario("b","20"));
+    public DataController() {
+        load();
     }
-    
+
     public ArrayList<Usuario> usuarios = new ArrayList();
     private Usuario usuarioActual = null;
 
-
+    private void load() {
+        UserSaver userSaver = new UserSaver();
+        usuarios = userSaver.lectura();
+    }
 
     public Usuario getUsuarioActual() {
         return usuarioActual;
     }
 
     public void setUsuarioActual(Usuario usuarioActual) {
-        this.usuarioActual = usuarioActual;       
-        
-    }    
+        this.usuarioActual = usuarioActual;
+
+    }
 
     public void setUsuarioActual(int index) {
-        usuarioActual=usuarios.get(index);
+        usuarioActual = usuarios.get(index);
     }
 
 }
