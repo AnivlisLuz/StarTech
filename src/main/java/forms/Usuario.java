@@ -59,4 +59,8 @@ public class Usuario {
         return false;
     }
 
+    public String toFile() {
+        return nombre + "," + edad;
+    }
+
 }

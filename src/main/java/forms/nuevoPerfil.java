@@ -127,54 +127,25 @@ public class nuevoPerfil extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-         String nombre;
-         
-         nombre=txtNombre.getText();
-         String edad = intEdad.getText();
-        
-          if(nombre.isEmpty() || edad.isEmpty() )
-        {
-         
-            JOptionPane.showMessageDialog(null,"usuario es incorrecto");
-           
-<<<<<<< Updated upstream
-        }else if(!Usuario.verificarUsuario(nombre))
-         {
-              Usuario obj=new Usuario();
-=======
-        }else if(saveUser.lectura(nombre)== false)
-         {
-             /* usuario1 obj=new usuario1();
->>>>>>> Stashed changes
-              obj.setNombre(nombre);
-              obj.setEdad(edad);
-              usuarioSave.agregar(obj);*/
-              saveUser nUser= new saveUser();
-              nUser.escritura(nombre,edad);
-              JOptionPane.showMessageDialog(null,"se registro correctamente");
-            
-             // JOptionPane.showMessageDialog(null,"se registro correctamente");
-         }
-          /*else{
-              saveUser nUser= new saveUser();
-              nUser.escritura(nombre,edad);
-              JOptionPane.showMessageDialog(null,"se registro correctamente");
-<<<<<<< Updated upstream
-              Cuestionario test = new Cuestionario(grupos);
-                this.dispose();
-         }else{
-=======
+        String nombre;
+        nombre = txtNombre.getText();
+        String edad = intEdad.getText();
 
-              
-          }*/
-          
-          else{
->>>>>>> Stashed changes
-              JOptionPane.showMessageDialog(null,"ya existe este usuario");
+        if (nombre.isEmpty() || edad.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "usuario es incorrecto");
+
+        } else if (!Usuario.verificarUsuario(nombre)) {
+            Usuario obj = new Usuario(nombre,edad);
+            UserSaver nUser = new UserSaver();
+            nUser.escritura(obj);
+            JOptionPane.showMessageDialog(null, "se registro correctamente");
+            Cuestionario test = new Cuestionario(grupos);
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "ya existe este usuario");
         }
-    
-             
-        
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void intEdadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_intEdadActionPerformed
@@ -182,14 +153,14 @@ public class nuevoPerfil extends javax.swing.JFrame {
     }//GEN-LAST:event_intEdadActionPerformed
 
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
-        
+
 // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_txtNombreActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        Login abrir=new Login();
+        Login abrir = new Login();
         abrir.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
