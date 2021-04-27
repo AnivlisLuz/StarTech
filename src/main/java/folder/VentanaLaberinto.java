@@ -152,7 +152,7 @@ public class VentanaLaberinto extends javax.swing.JFrame {
         jTextArea1.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(jTextArea1);
 
-        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\recursos\\boton menú 1.png")); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(".\\src\\main\\java\\recursos\\boton menú 1.png")); // NOI18N
         jButton1.setBorder(null);
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
@@ -185,11 +185,11 @@ public class VentanaLaberinto extends javax.swing.JFrame {
         jLabel2.setText("jLabel2");
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
 
-        jLabelVida3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\recursos\\VidaRojo.png")); // NOI18N
+        jLabelVida3.setIcon(new javax.swing.ImageIcon(".\\src\\main\\java\\recursos\\VidaRojo.png")); // NOI18N
 
-        jLabelVida2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\recursos\\VidaRojo.png")); // NOI18N
+        jLabelVida2.setIcon(new javax.swing.ImageIcon(".\\src\\main\\java\\recursos\\VidaRojo.png")); // NOI18N
 
-        jLabelVida1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\recursos\\VidaRojo.png")); // NOI18N
+        jLabelVida1.setIcon(new javax.swing.ImageIcon(".\\src\\main\\java\\recursos\\VidaRojo.png")); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
