@@ -137,19 +137,41 @@ public class nuevoPerfil extends javax.swing.JFrame {
          
             JOptionPane.showMessageDialog(null,"usuario es incorrecto");
            
+<<<<<<< Updated upstream
         }else if(!Usuario.verificarUsuario(nombre))
          {
               Usuario obj=new Usuario();
+=======
+        }else if(saveUser.lectura(nombre)== false)
+         {
+             /* usuario1 obj=new usuario1();
+>>>>>>> Stashed changes
               obj.setNombre(nombre);
               obj.setEdad(edad);
-              usuarioSave.agregar(obj);
-            
+              usuarioSave.agregar(obj);*/
+              saveUser nUser= new saveUser();
+              nUser.escritura(nombre,edad);
               JOptionPane.showMessageDialog(null,"se registro correctamente");
+            
+             // JOptionPane.showMessageDialog(null,"se registro correctamente");
+         }
+          /*else{
+              saveUser nUser= new saveUser();
+              nUser.escritura(nombre,edad);
+              JOptionPane.showMessageDialog(null,"se registro correctamente");
+<<<<<<< Updated upstream
               Cuestionario test = new Cuestionario(grupos);
                 this.dispose();
          }else{
+=======
+
+              
+          }*/
+          
+          else{
+>>>>>>> Stashed changes
               JOptionPane.showMessageDialog(null,"ya existe este usuario");
-         }
+        }
     
              
         
