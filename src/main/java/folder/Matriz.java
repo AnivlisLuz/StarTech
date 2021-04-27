@@ -6,7 +6,7 @@ import laberintoc.Punto;
 
 public abstract class Matriz {
 
-    private int tamaño;
+    public int tamaño;
     protected int[][] matriz;
     protected int[][] laberinto;
     private Punto inicio;
@@ -22,7 +22,7 @@ public abstract class Matriz {
         matriz = new int[tamaño][tamaño];
         laberinto = new int[tamaño][tamaño];
         inicio = null;
-        meta = new Punto(tamaño-1, tamaño-1);
+        meta = new Punto(tamaño - 1, tamaño - 1);
         //camino = new Punto[]{new Punto(0,0), new Punto(0, 1), new Punto(0, 2), new Punto(1, 0), new Punto(1, 2), new Punto(2, 0), new Punto(2, 2)};
         camino = new ArrayList<Punto>();
         pos = 0;
@@ -52,7 +52,7 @@ public abstract class Matriz {
 
     public void generarLaberinto() {
         matriz = lab.generarMatriz(tamaño);
-        int[][] matAux = lab.generarCamino(matriz,1);
+        int[][] matAux = lab.generarCamino(matriz, 1);
         camino = lab.getCamino(matAux);
     }
 

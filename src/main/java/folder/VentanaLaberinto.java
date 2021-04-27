@@ -1,4 +1,3 @@
-
 package folder;
 
 import app.startech.models.Category;
@@ -16,7 +15,7 @@ public class VentanaLaberinto extends javax.swing.JFrame {
     private Level level;
     private LevelScreen ventanaLevel;
     private CategoryScreen ventanaCategory;
-    
+
     public VentanaLaberinto(Category c, Level l, LevelScreen ventanaLevel, CategoryScreen ventanaCategory) {
         this.ventanaCategory = ventanaCategory;
         this.ventanaLevel = ventanaLevel;
@@ -29,67 +28,86 @@ public class VentanaLaberinto extends javax.swing.JFrame {
         mostrarLaberinto();
         setLocationRelativeTo(null);
     }
-    
-    public void mostrarLaberinto(){
+
+    public void mostrarLaberinto() {
         jLabel1.setText(laberinto.getTitulo());
         jLabel2.setText(laberinto.getCondicion());
         jTextArea1.setText(laberinto.getMensaje());
         jTextArea1.setLineWrap(true);
         jTextArea1.setWrapStyleWord(true);
         jTextArea1.setEditable(false);
-        int x=0, y = 0, m = 0, n = 0;
         int aux = laberinto.getMatriz().getLaberinto().length;
-        if(aux == 10){
-            m = 54; n = 55;
-        }else if(aux == 8){
-            m = 67; n = 68;
-        }else if(aux == 6){
-            m = 73; n = 75;
-        }else if(aux == 4){
-            m = 85; n = 87;
-        }else{
-            m = 113; n = 116;
+        int x = 0, y = 0, m = 0, n = 0;
+        if (aux == 3) {
+            x = 100;
+            y = 0;
+            m = 113;
+            n = 116;
+        } else if (aux == 4) {
+            x = 90;
+            y = 0;
+            m = 85;
+            n = 87;
+        } else if (aux == 6) {
+            x = 60;
+            y = 0;
+            m = 73;
+            n = 75;
+        } else if (aux == 8) {
+            m = 67;
+            n = 68;
+        } else if (aux == 10) {
+            m = 54;
+            n = 55;
         }
         int[][] laberinto = this.laberinto.getMatriz().getLaberinto();
         int tamX = laberinto.length;
         int tamY = laberinto[0].length;
-        for(int i = 0; i<tamX; i++ ){
+        for (int i = 0; i < tamX; i++) {
             for (int j = 0; j < tamY; j++) {
                 Punto p = new Punto(i, j);
                 Boton b = new Boton(x, y, m, n, this.laberinto, i, j, category, level, this, ventanaCategory, ventanaLevel);
                 botones[i][j] = b;
-                int nom = laberinto[i][j];      
-                String nomCadena= String.valueOf(nom);
+                int nom = laberinto[i][j];
+                String nomCadena = String.valueOf(nom);
                 botones[i][j].setText(nomCadena);
                 jPanel1.add(botones[i][j]);
-                x+=m;
+                x += m;
             }
-            x = 0;
-            y+=n;
-        } 
+            if (aux == 3) {
+                x = 100;
+            } else if (aux == 4) {
+                x = 90;
+            } else if (aux == 6) {
+                x = 60;
+            } else {
+                x = 0;
+            }
+            y += n;
+        }
         setLocationRelativeTo(null);
     }
-    
-    public void refresh(){
-        for(int i = 0; i<botones.length; i++ ){
-            for (int j = 0; j <botones.length; j++) {
+
+    public void refresh() {
+        for (int i = 0; i < botones.length; i++) {
+            for (int j = 0; j < botones.length; j++) {
                 Boton b = botones[i][j];
                 b.setBackground(null);
             }
         }
         laberinto.getMatriz().reset();
     }
-    
-    public void ocultarVida(){
-        if(laberinto.getVidas() == 3){
+
+    public void ocultarVida() {
+        if (laberinto.getVidas() == 3) {
             jLabelVida1.setVisible(false);
-        }else if(laberinto.getVidas() == 2){
+        } else if (laberinto.getVidas() == 2) {
             jLabelVida2.setVisible(false);
-        }else{
+        } else {
             jLabelVida3.setVisible(false);
         }
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -134,14 +152,11 @@ public class VentanaLaberinto extends javax.swing.JFrame {
         jTextArea1.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(jTextArea1);
 
-        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\recursos\\boton menú 1.png")); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/boton menú 1.png"))); // NOI18N
         jButton1.setBorder(null);
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.setRolloverIcon(new javax.swing.ImageIcon("C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\recursos\\boton menú 2.png")); // NOI18N
-        jButton1.setRolloverSelectedIcon(new javax.swing.ImageIcon("C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\recursos\\boton menú 2.png")); // NOI18N
-        jButton1.setSelectedIcon(new javax.swing.ImageIcon("C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\recursos\\boton menú 2.png")); // NOI18N
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -170,11 +185,11 @@ public class VentanaLaberinto extends javax.swing.JFrame {
         jLabel2.setText("jLabel2");
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
 
-        jLabelVida3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\recursos\\VidaRojo.png")); // NOI18N
+        jLabelVida3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/VidaRojo.png"))); // NOI18N
 
-        jLabelVida2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\recursos\\VidaRojo.png")); // NOI18N
+        jLabelVida2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/VidaRojo.png"))); // NOI18N
 
-        jLabelVida1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\recursos\\VidaRojo.png")); // NOI18N
+        jLabelVida1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/VidaRojo.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -209,7 +224,7 @@ public class VentanaLaberinto extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabelVida3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, Short.MAX_VALUE)
+                            .addComponent(jLabelVida3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabelVida2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                             .addComponent(jLabelVida1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
