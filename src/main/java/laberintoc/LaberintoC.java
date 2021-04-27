@@ -485,6 +485,7 @@ public class LaberintoC {
         for (int i = 0; i<mat.length; i++)
                 for (int j = 0; j<mat.length; j++)
                     if (mat[i][j] != 0)
+                        //camino.add(new Punto(mat[i][j], i, j));
                         camino.add(new Punto(mat[i][j], mat[i][j], i, j));
         camino = ordenar(camino);
         return camino;
