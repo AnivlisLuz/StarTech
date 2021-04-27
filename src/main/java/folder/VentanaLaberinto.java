@@ -100,11 +100,11 @@ public class VentanaLaberinto extends javax.swing.JFrame {
 
     public void ocultarVida() {
         if (laberinto.getVidas() == 3) {
-            jLabelVida3.setVisible(false);
+            jLabelVida1.setVisible(false);
         } else if (laberinto.getVidas() == 2) {
             jLabelVida2.setVisible(false);
         } else {
-            jLabelVida1.setVisible(false);
+            jLabelVida3.setVisible(false);
         }
     }
 
@@ -152,6 +152,7 @@ public class VentanaLaberinto extends javax.swing.JFrame {
         jTextArea1.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(jTextArea1);
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/boton menú 1.png"))); // NOI18N
         jButton1.setBorder(null);
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
@@ -185,6 +186,10 @@ public class VentanaLaberinto extends javax.swing.JFrame {
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
 
         jLabelVida3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/VidaRojo.png"))); // NOI18N
+
+        jLabelVida2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/VidaRojo.png"))); // NOI18N
+
+        jLabelVida1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/VidaRojo.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -220,8 +225,8 @@ public class VentanaLaberinto extends javax.swing.JFrame {
                         .addGap(15, 15, 15)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabelVida3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabelVida2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(jLabelVida1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)))
+                            .addComponent(jLabelVida2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(jLabelVida1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(14, Short.MAX_VALUE)
                         .addComponent(jLabel1)
