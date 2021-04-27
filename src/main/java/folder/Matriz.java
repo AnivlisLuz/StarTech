@@ -6,7 +6,7 @@ import laberintoc.Punto;
 
 public abstract class Matriz {
 
-    private int tamaño;
+    public int tamaño;
     protected int[][] matriz;
     protected int[][] laberinto;
     private Punto inicio;
