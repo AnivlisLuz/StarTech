@@ -16,7 +16,6 @@ public class Divicion extends Matriz{
     public Divicion(int tamaño, int condicion){
         super(tamaño);
         this.condicion = condicion;
-        rellenarLaberinto();
     }
     
     public void rellenarLaberinto(){

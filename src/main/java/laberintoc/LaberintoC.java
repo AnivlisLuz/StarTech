@@ -442,7 +442,7 @@ public class LaberintoC {
         return res;
     }
     public int[][] rellenarJ2(int[][] matAux, int condicion){
-        int[][] res = matAux;
+        int[][] res = limpiarUnos(matAux);
         for(int a=0; a<camJ.size(); a++){
             Punto act = camJ.get(a);
             if(a == 0){
@@ -452,14 +452,6 @@ public class LaberintoC {
                 act.setValor(ant.getValor()-condicion);
             }
         }
-        for(int i=0; i<res.length; i++){
-            for(int j= 0; j<res.length; j++){
-                int act = matAux[i][j];
-                if(act == 0){
-                    res[i][j] = (int)(Math.random()*20+1);
-                }
-            }
-        }
         int pos = 0;
         while(pos < camJ.size()){
             Punto aux = camJ.get(pos);
@@ -467,25 +459,32 @@ public class LaberintoC {
             res[x][y] = camJ.get(pos).getValor();
             pos++;
         }
+        for(int i=0; i<res.length; i++){
+            for(int j= 0; j<res.length; j++){
+                int act = res[i][j];
+                if(act == 0){
+                    ArrayList<Integer> vecinos = obtenerVecinos(i,j, res);
+                    Random  rnd = new Random();
+                    int rand = (int)(rnd.nextDouble()*(camJ.get(1).getValor()+5)+2);
+                    while(esIgualAVecino2(rand, vecinos, condicion)){
+                        rand = (int)(rnd.nextDouble()*(camJ.get(1).getValor()+5)+2);
+                    }
+                    res[i][j] = rand;
+                }
+            }
+        }
+        
         return res;
     }
     public int[][] rellenarJ3(int[][] matAux, int condicion){
-        int[][] res = matAux;
+        int[][] res = limpiarUnos(matAux);
         for(int a=0; a<camJ.size(); a++){
             Punto act = camJ.get(a);
             if(a == 0){
                 act.setValor(condicion);
             }else{
-                int rand = (int)(Math.random()*(12-2+1)+2);
+                int rand = (int)(Math.random()*12+1);
                 act.setValor(rand*condicion);
-            }
-        }
-        for(int i=0; i<res.length; i++){
-            for(int j= 0; j<res.length; j++){
-                int act = matAux[i][j];
-                if(act == 0){
-                    res[i][j] = (int)(Math.random()*25+1)*2+1;
-                }
             }
         }
         int pos = 0;
@@ -495,6 +494,20 @@ public class LaberintoC {
             res[x][y] = camJ.get(pos).getValor();
             pos++;
         }
+        for(int i=0; i<res.length; i++){
+            for(int j= 0; j<res.length; j++){
+                int act = res[i][j];
+                if(act == 0){
+                    Random  rnd = new Random();
+                    int rand = (int)(rnd.nextDouble()*100+1);
+                    while(esIgualAVecino3(rand, condicion)){
+                        rand = (int)(rnd.nextDouble()*100+1);
+                    }
+                    res[i][j] = rand;
+                }
+            }
+        }
+        
         return res;
     }
     
@@ -518,7 +531,7 @@ public class LaberintoC {
         return n;
     }
 
-    public boolean esIgualAVecino(int n, ArrayList<Integer> vecinos, int condicion) {
+    private boolean esIgualAVecino(int n, ArrayList<Integer> vecinos, int condicion) {
         boolean res = false;
         for (int i = 0; i < vecinos.size(); i++) {
             if (n == (vecinos.get(i)+condicion)){
@@ -526,6 +539,23 @@ public class LaberintoC {
                 break;
             }
         }
+        return res;
+    }
+    private boolean esIgualAVecino2(int n, ArrayList<Integer> vecinos, int condicion) {
+        boolean res = false;
+        for (int i = 0; i < vecinos.size(); i++) {
+            if (n == (vecinos.get(i)-condicion)){
+                res = true;
+                break;
+            }
+        }
+        return res;
+    }
+    private boolean esIgualAVecino3(int n, int condicion) {
+        boolean res = false;
+            if (n%condicion == 0){
+                res = true;
+            }
         return res;
     }
 

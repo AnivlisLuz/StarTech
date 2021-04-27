@@ -33,8 +33,8 @@ public class CategoryManager {
         new Level(9, "Nivel 9", false, new Laberinto("Suma", 9, "Siempre que dudes lo lejos que puedes llegar. Solo recuerda lo lejos que has llegado. Recuerda todo lo que has enfrentado, todas las batallas que has ganado y todos los temores que has superado.", "Para avanzar suma de diez en diez"))
 
     });
-    public  Category resta = new Category(3, "Resta", false, new Level[]{
-        new Level(1, "Nivel 1", false, new Laberinto("Resta", 1, "La vida me susurraba constantemente que me haría feliz, pero antes de todo me quería hacer fuerte.", "Para avanzar resta de uno en uno")),
+    public  Category resta = new Category(3, "Resta", true, new Level[]{
+        new Level(1, "Nivel 1", true, new Laberinto("Resta", 1, "La vida me susurraba constantemente que me haría feliz, pero antes de todo me quería hacer fuerte.", "Para avanzar resta de uno en uno")),
         new Level(1, "Nivel 2", false, new Laberinto("Resta", 2, "Eres capaz de cosas increíbles.", "Para avanzar resta de dos en dos")),
         new Level(2, "Nivel 3", false, new Laberinto("Resta", 3, "Pronto, cuando todo este bien, vas a mirar hacia atrás y estarás contento de ver que nunca te rendiste. Brittany Burgunder", "Para avanzar resta de tres en tres")),
         new Level(3, "Nivel 4", false, new Laberinto("Resta", 4, "Se te ha asignado esta montaña para mostrarles a otros que se puede mover.", "Para avanzar resta de cuatro en cuatro")),
@@ -46,28 +46,28 @@ public class CategoryManager {
         new Level(9, "Nivel 10", false, new Laberinto("Resta", 10, "Solo fallas cuando dejas de intentarlo.", "Para avanzar resta de diez en diez uno"))
 
     });
-    public  Category multiplicacion = new Category(4, "Multiplicación", false, new Level[]{
-        new Level(1, "Nivel 1", false, new Laberinto("Multiplicación", 1, "Solo sé tú mismo. Deja que la gente vea a la persona real, imperfecta, extraña, bella y mágica que eres.", "Para avanzar encuentra los números que sean resultado de la multiplicación por 2")),
-        new Level(2, "Nivel 2", false, new Laberinto("Multiplicación", 2, "Nunca he conocido a una persona fuerte con un pasado fácil.", "Para avanzar encuentra los números que sean resultado de la multiplicación por 3")),
-        new Level(3, "Nivel 3", false, new Laberinto("Multiplicación", 3, "A mí también me tocó pasar por lo peor para darme cuenta de cómo lo tenía que hacer para llegar a lo mejor.", "Para avanzar encuentra los números que sean resultado de la multiplicación por 4")),
-        new Level(4, "Nivel 4", false, new Laberinto("Multiplicación", 4, "Despierta. Levántate. Repite.", "Para avanzar encuentra los números que sean resultado de la multiplicación por 5")),
-        new Level(5, "Nivel 5", false, new Laberinto("Multiplicación", 5, "No le temo a las tormentas, porque estoy aprendiendo cómo navegar en mi barco.", "Para avanzar encuentra los números que sean resultado de la multiplicación por 6")),
-        new Level(6, "Nivel 6", false, new Laberinto("Multiplicación", 6, "Hazlo siempre lo mejor que puedas. Lo que siembres ahora, cosecharás más tarde. Og Mandino", "Para avanzar encuentra los números que sean resultado de la multiplicación por 7")),
-        new Level(7, "Nivel 7", false, new Laberinto("Multiplicación", 7, "Un hombre puede ser tan bueno como quiera ser. Si crees en ti mismo y tienes el coraje, la determinación, la dedicación, el impulso competitivo y estás dispuesto a sacrificar las pequeñas cosas de la vida, pagando el precio por las cosas que valen la pena, se puede hacer. Vince Lombardi", "Para avanzar encuentra los números que sean resultado de la multiplicación por 8")),
-        new Level(8, "Nivel 8", false, new Laberinto("Multiplicación", 8, "Sé gentil contigo mismo. ¡Estás haciendo lo mejor que puedes!", "Para avanzar encuentra los números que sean resultado de la multiplicación por 9")),
-        new Level(9, "Nivel 9", false, new Laberinto("Multiplicación", 9, "Las dificultades a menudo preparan a la gente común para un destino extraordinario.", "Para avanzar encuentra los números que sean resultado de la multiplicación por 10"))
+    public  Category multiplicacion = new Category(4, "Multiplicación", true, new Level[]{
+        new Level(1, "Nivel 1", true, new Laberinto("Multiplicación", 1, "Solo sé tú mismo. Deja que la gente vea a la persona real, imperfecta, extraña, bella y mágica que eres.", "Para avanzar encuentra los números multiplos de 2")),
+        new Level(2, "Nivel 2", false, new Laberinto("Multiplicación", 2, "Nunca he conocido a una persona fuerte con un pasado fácil.", "Para avanzar encuentra los números multiplos de 3")),
+        new Level(3, "Nivel 3", false, new Laberinto("Multiplicación", 3, "A mí también me tocó pasar por lo peor para darme cuenta de cómo lo tenía que hacer para llegar a lo mejor.", "Para avanzar encuentra los números multiplos de 4")),
+        new Level(4, "Nivel 4", false, new Laberinto("Multiplicación", 4, "Despierta. Levántate. Repite.", "Para avanzar encuentra los números multiplos de 5")),
+        new Level(5, "Nivel 5", false, new Laberinto("Multiplicación", 5, "No le temo a las tormentas, porque estoy aprendiendo cómo navegar en mi barco.", "Para avanzar encuentra los números multiplos de 6")),
+        new Level(6, "Nivel 6", false, new Laberinto("Multiplicación", 6, "Hazlo siempre lo mejor que puedas. Lo que siembres ahora, cosecharás más tarde. Og Mandino", "Para avanzar encuentra los números multiplos de 7")),
+        new Level(7, "Nivel 7", false, new Laberinto("Multiplicación", 7, "Un hombre puede ser tan bueno como quiera ser. Si crees en ti mismo y tienes el coraje, la determinación, la dedicación, el impulso competitivo y estás dispuesto a sacrificar las pequeñas cosas de la vida, pagando el precio por las cosas que valen la pena, se puede hacer. Vince Lombardi", "Para avanzar encuentra los números multiplos de 8")),
+        new Level(8, "Nivel 8", false, new Laberinto("Multiplicación", 8, "Sé gentil contigo mismo. ¡Estás haciendo lo mejor que puedes!", "Para avanzar encuentra los números multiplos de 9")),
+        new Level(9, "Nivel 9", true, new Laberinto("Multiplicación", 9, "Las dificultades a menudo preparan a la gente común para un destino extraordinario.", "Para avanzar encuentra los números multiplos de 10"))
 
     });
-    public  Category division = new Category(5, "División", false, new Level[]{
-        new Level(1, "Nivel 1", false, new Laberinto("Divición", 1, "Comienza donde estás. Usa lo que tienes. Haz lo que puedas. Arthur Ashe", "Para avanzar encuentra los números que sean resultado de la divición entre 2")),
-        new Level(2, "Nivel 2", false, new Laberinto("Divición", 2, "La mejor revancha es el éxito masivo. Frank Sinatra", "Para avanzar encuentra los números que sean resultado de la divición entre 3")),
-        new Level(3, "Nivel 3", false, new Laberinto("Divición", 3, "No lo pienses, solo hazlo. Horace", "Para avanzar encuentra los números que sean resultado de la divición entre 4")),
-        new Level(4, "Nivel 4", false, new Laberinto("Divición", 4, "Nunca dejes que una mala situación saque lo peor de ti. ¡Elije mantenerte positivo y ser la persona fuerte que Dios creó!", "Para avanzar encuentra los números que sean resultado de la divición entre 5")),
-        new Level(5, "Nivel 5", false, new Laberinto("Divición", 5, "Siempre parece imposible hasta que se hace. Nelson Mandela", "Para avanzar encuentra los números que sean resultado de la divición entre 6")),
-        new Level(6, "Nivel 6", false, new Laberinto("Divición", 6, "No se puede vencer a la persona que nunca se rinde. Babe Ruth", "Para avanzar encuentra los números que sean resultado de la divición entre 7")),
-        new Level(7, "Nivel 7", false, new Laberinto("Divición", 7, "Cuanto más difícil es el conflicto, más glorioso es el triunfo. Thomas Paine", "Para avanzar encuentra los números que sean resultado de la divición entre 8")),
-        new Level(8, "Nivel 8", false, new Laberinto("Divición", 8, "Establece metas altas, y no te detengas hasta que llegues allí. Bo Jackson", "Para avanzar encuentra los números que sean resultado de la divición entre 9")),
-        new Level(9, "Nivel 9", false, new Laberinto("Divición", 9, "Para tener éxito, primero debemos creer que podemos. Nikos Kazantzakis", "Para avanzar encuentra los números que sean resultado de la divición entre 10"))
+    public  Category division = new Category(5, "División", true, new Level[]{
+        new Level(1, "Nivel 1", true, new Laberinto("Divición", 1, "Comienza donde estás. Usa lo que tienes. Haz lo que puedas. Arthur Ashe", "Para avanzar encuentra los números divisibles entre 2")),
+        new Level(2, "Nivel 2", false, new Laberinto("Divición", 2, "La mejor revancha es el éxito masivo. Frank Sinatra", "Para avanzar encuentra los números divisibles entre 3")),
+        new Level(3, "Nivel 3", false, new Laberinto("Divición", 3, "No lo pienses, solo hazlo. Horace", "Para avanzar encuentra los números divisibles entre 4")),
+        new Level(4, "Nivel 4", false, new Laberinto("Divición", 4, "Nunca dejes que una mala situación saque lo peor de ti. ¡Elije mantenerte positivo y ser la persona fuerte que Dios creó!", "Para avanzar encuentra los números divisibles entre 5")),
+        new Level(5, "Nivel 5", false, new Laberinto("Divición", 5, "Siempre parece imposible hasta que se hace. Nelson Mandela", "Para avanzar encuentra los números divisibles entre 6")),
+        new Level(6, "Nivel 6", false, new Laberinto("Divición", 6, "No se puede vencer a la persona que nunca se rinde. Babe Ruth", "Para avanzar encuentra los números divisibles entre 7")),
+        new Level(7, "Nivel 7", false, new Laberinto("Divición", 7, "Cuanto más difícil es el conflicto, más glorioso es el triunfo. Thomas Paine", "Para avanzar encuentra los números divisibles entre 8")),
+        new Level(8, "Nivel 8", false, new Laberinto("Divición", 8, "Establece metas altas, y no te detengas hasta que llegues allí. Bo Jackson", "Para avanzar encuentra los números divisibles entre 9")),
+        new Level(9, "Nivel 9", true, new Laberinto("Divición", 9, "Para tener éxito, primero debemos creer que podemos. Nikos Kazantzakis", "Para avanzar encuentra los números divisibles entre 10"))
     });
 
     public  Category[] getAllCategories() {
