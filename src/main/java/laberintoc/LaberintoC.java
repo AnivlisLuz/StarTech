@@ -18,7 +18,8 @@ import java.util.concurrent.ThreadLocalRandom;
 public class LaberintoC {
 
     //aux
-    private  ArrayList<Punto> puntos = new ArrayList<>();
+    private static ArrayList<Punto> puntos = new ArrayList<>();
+    
     private ArrayList<Punto> camJ;
     private int aux1;
     private int aux2;
@@ -268,7 +269,7 @@ public class LaberintoC {
         }
     }
 
-    public int getRandom(int min, int max) {
+    public static int getRandom(int min, int max) {
         return ThreadLocalRandom.current().nextInt(min, max + 1);
     }
 
@@ -342,6 +343,7 @@ public class LaberintoC {
             if (esValido(mat, x, y + 1)) {
                 mat[x][y + 1].setVisitada(true);
                 mat[x][y + 1].setValor(condicion + 1);
+                camJ.add(new Punto(x, y));
                 matAux = generarCamino(x, y + 1, condicion + 1, mat);
             } else {
                 //Se verifica si la casilla de abajo es válida
@@ -366,6 +368,7 @@ public class LaberintoC {
                 }
             }
         }
+        //return rellenarJ(matAux, condicion);
         return matAux;
     }
     
@@ -453,7 +456,7 @@ public class LaberintoC {
         }
         return res;
     }
-
+    
     public int getMenor(ArrayList<Integer> arr) {
         int n = arr.get(0);
         for (int i = 0; i < arr.size(); i++) {
@@ -569,11 +572,15 @@ public class LaberintoC {
 
     public ArrayList<Punto> getCamino(int[][] mat) {
         ArrayList<Punto> camino = new ArrayList<Punto>();
-        for (int i = 0; i<mat.length; i++)
-                for (int j = 0; j<mat.length; j++)
-                    if (mat[i][j] != 0)
-                        camino.add(new Punto(mat[i][j], mat[i][j], i, j));
+        for (int i = 0; i < mat.length; i++) {
+            for (int j = 0; j < mat.length; j++) {
+                if (mat[i][j] != 0) {
+                    camino.add(new Punto(mat[i][j], i, j));
+                }
+            }
+        }
         camino = ordenar(camino);
+        camJ = camino;
         return camino;
     }
 
@@ -603,7 +610,7 @@ public class LaberintoC {
         return aux;
     }
 
-    public ArrayList<Punto> generarCaminoMult(ArrayList<Punto> arr, int mult) {
+    public static ArrayList<Punto> generarCaminoMult(ArrayList<Punto> arr, int mult) {
         ArrayList<Punto> camino = new ArrayList<Punto>();
         for (int i = 0; i < arr.size(); i++) {
             int rand = 0;
@@ -685,96 +692,9 @@ public class LaberintoC {
     }
 
     
-    public void main(String[] args)
-    {
-        /*
-        int[][] arr = {
-            {1, 0, 0, 0, 0, 0, 0, 1, 1, 1},
-            {1, 0, 0, 0, 0, 1, 1, 1, 1, 1},
-            {1, 1, 1, 0, 0, 1, 1, 1, 1, 0},
-            {1, 1, 1, 0, 0, 1, 1, 1, 0, 0},
-            {0, 0, 1, 1, 1, 1, 0, 1, 0, 0},
-            {0, 0, 0, 0, 1, 1, 0, 1, 0, 0},
-            {0, 0, 0, 0, 1, 1, 1, 1, 0, 0},
-            {0, 0, 0, 0, 1, 1, 1, 0, 0, 0},
-            {0, 0, 0, 0, 1, 1, 1, 0, 0, 0},
-            {0, 0, 0, 0, 1, 1, 1, 1, 1, 1}
-        };
-        */
-        int[][] mat = generarMatriz(10);
-        dibujarMatriz(mat);
-        System.out.println();
-        
-        int camino[][] = generarCamino(mat, 1);
-        ArrayList<Punto> cam = getCamino(camino);
-        ArrayList<Punto> orden = getCam(camino);
-        ArrayList<Punto> orden2 = generarCaminoSec(orden, 1, 1);
-        
-        System.out.println();
-        
-        int[][] matSec = generarMatrizSec(orden2, camino);
-        
-        dibujarMatriz(matSec);
-        
-        System.out.println();
-        
-        dibujarMatriz(invertirMatriz(matSec));
-        
-        System.out.println();
-        
-        dibujarCamino(orden2);
-        
-        ArrayList<Punto> camMult = generarCaminoMult(orden, 3);
-        
-        int[][] matMult = generarMatrizMult(camMult, 3, mat);
-        
-        dibujarMatriz(matMult);
-        /*
-        dibujarOrden(orden);
-        dibujarMatriz(camino);
-        System.out.println();
-        dibujarMatriz(genPar(camino, cam));*/
-        
-        /*
-        Para crear una nueva matriz de secuencia (Secuencia o suma)
-        
-        int[][] matriz = generarMatriz(tamaño);
-        int[][] matrizCamino = generarCamino(matriz, 1); siempre tiene que ser 1, es para generar el orden.
-        ArrayList<Punto> orden = generarCaimnoSec(getCam(matrizCamino), (número inicial de la matriz), (condición, es decir número que se suma));
-                            |
-                            |---> Éste es el ArrayList con el orden de puntos para hacer la verificación.
-        
-        int[][] matrizSecuencia = generarMatrizSec(orden, matrizCamino); ---> Ésta es la matriz con los números para rellenar los botones.
-        
-        --------------- ***** --------------- ***** --------------- ***** ---------------
-        
-        Para crear una nueva matriz de resta
-        
-        *Todos los pasos anteriores
-        int[][] matrizResta = invertirMatriz(matrizSeciencia); ---> Ésta es la matriz con los números para rellenar los botones.
-        ArrayList<Punto> ordenResta = invertirCamino(orden); ---> Éste es el ArrayList con el orden de puntos para hacer la verificación.
-        
-        --------------- ***** --------------- ***** --------------- ***** ---------------
-        
-        Para crear una nueva matriz de Multiplicación o de División
-        
-        int[][] matriz = generarMatriz(tamaño);
-        int[][] matrizCamino = generarCamino(matriz, 1);
-        ArrayList<Punto> orden = generarCaminoMult(getCam(matrizCamino, (Condición, es decir los múltiplos que tendrá el camino));
-                            |
-                            |---> Éste es el ArrayList con el orden de puntos para hacer la verificación.
-        
-        int[][] matrizMultiplos = generarMatrizMult(orden, (condición), matriz); ---> Ésta es la matriz con los números para rellenar los botones.
-        
-        */
-    }
-    
-    
-    
-    public void dibujarCamino(ArrayList<Punto> arr)
-    {
-        for (int i = 0; i < arr.size(); i++)
-        {
+
+    public void dibujarCamino(ArrayList<Punto> arr) {
+        for (int i = 0; i < arr.size(); i++) {
             System.out.println(arr.get(i).getValor());
         }
     }
