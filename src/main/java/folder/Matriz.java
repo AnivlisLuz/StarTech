@@ -12,7 +12,7 @@ public abstract class Matriz {
     private Punto inicio;
     private Punto meta;
     private ArrayList<Punto> camino;
-    // private Punto[] camino;
+    //private Punto[] camino;
     protected LaberintoC lab;
     private int pos;
 
@@ -23,22 +23,21 @@ public abstract class Matriz {
         laberinto = new int[tamaño][tamaño];
         inicio = null;
         meta = new Punto(tamaño - 1, tamaño - 1);
-        // camino = new Punto[]{new Punto(0,0), new Punto(0, 1), new Punto(0, 2), new
-        // Punto(1, 0), new Punto(1, 2), new Punto(2, 0), new Punto(2, 2)};
+        //camino = new Punto[]{new Punto(0,0), new Punto(0, 1), new Punto(0, 2), new Punto(1, 0), new Punto(1, 2), new Punto(2, 0), new Punto(2, 2)};
         camino = new ArrayList<Punto>();
         pos = 0;
     }
 
-    // public void setCamino(){
-    // camino = lab.getCamino();
-    // }
+//    public void setCamino(){
+//        camino = lab.getCamino();
+//    }
     public Punto getMeta() {
         return meta;
     }
 
     public boolean verificarMovimiento(Punto p) {
         Punto a = camino.get(pos);
-        // Punto a = camino[pos];
+        //Punto a = camino[pos];
         boolean res = false;
         if (p.igual(a)) {
             res = true;
@@ -53,23 +52,23 @@ public abstract class Matriz {
 
     public void generarLaberinto() {
         matriz = lab.generarMatriz(tamaño);
-        int[][] matAux = lab.generarCamino(matriz, 1);
-        camino = lab.getCamino(matAux);
+        int[][] matAux = LaberintoC.generarCamino(matriz, 1);
+        camino = LaberintoC.getCamino(matAux);
     }
 
     public int[][] getLaberinto() {
-        // int[][] laberinto = {
-        // {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-        // {1, 0, 1, 0, 1, 0, 1, 0, 1, 0},
-        // {1, 0, 1, 0, 1, 0, 1, 0, 1, 0},
-        // {1, 0, 1, 0, 1, 0, 1, 0, 1, 0},
-        // {1, 0, 1, 0, 1, 0, 1, 0, 1, 0},
-        // {1, 0, 1, 0, 1, 0, 1, 0, 1, 0},
-        // {1, 0, 1, 0, 1, 0, 1, 0, 1, 0},
-        // {1, 0, 1, 0, 1, 0, 1, 0, 1, 0},
-        // {1, 0, 1, 0, 1, 0, 1, 0, 1, 0},
-        // {1, 0, 1, 0, 1, 0, 1, 0, 1, 0}
-        // };
+//        int[][] laberinto = {
+//            {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+//            {1, 0, 1, 0, 1, 0, 1, 0, 1, 0},
+//            {1, 0, 1, 0, 1, 0, 1, 0, 1, 0},
+//            {1, 0, 1, 0, 1, 0, 1, 0, 1, 0},
+//            {1, 0, 1, 0, 1, 0, 1, 0, 1, 0},
+//            {1, 0, 1, 0, 1, 0, 1, 0, 1, 0},
+//            {1, 0, 1, 0, 1, 0, 1, 0, 1, 0},
+//            {1, 0, 1, 0, 1, 0, 1, 0, 1, 0},
+//            {1, 0, 1, 0, 1, 0, 1, 0, 1, 0},
+//            {1, 0, 1, 0, 1, 0, 1, 0, 1, 0}
+//        };
         return laberinto;
     }
 
@@ -77,7 +76,7 @@ public abstract class Matriz {
         return camino;
     }
     // public Punto[] getCamino(){
-    // return camino;
+    //     return camino;
     // }
 
     public void reset() {

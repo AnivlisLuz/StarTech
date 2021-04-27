@@ -12,17 +12,22 @@ import laberintoc.Punto;
  *
  * @author Criss
  */
-public class Multiplicacion extends Matriz {
-
+public class Multiplicacion extends Matriz{
+    
     private int condicion;
-
-    public Multiplicacion(int tamaño, int condicion) {
+    
+    public Multiplicacion(int tamaño, int condicion){
         super(tamaño);
         this.condicion = condicion;
         rellenarLaberinto();
     }
-
-    public void rellenarLaberinto() {
-        laberinto = lab.rellenarJ3(matriz, condicion);
+    
+    public void rellenarLaberinto(){
+        //laberinto = lab.generarCamino(matriz, condicion);  
+        
+        int[][] matriz = lab.generarMatriz(tamaño);
+        int[][] matrizCamino = lab.generarCamino(matriz, 1);
+        ArrayList<Punto> orden = lab.generarCaminoMult(lab.getCam(matrizCamino), condicion);
+        laberinto = lab.generarMatrizMult(orden, (condicion), matriz);
     }
 }

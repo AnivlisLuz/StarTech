@@ -17,14 +17,12 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public class LaberintoC {
 
-    // aux
+    //aux
     private static ArrayList<Punto> puntos = new ArrayList<>();
-
-    private ArrayList<Punto> camJ;
     private int aux1;
     private int aux2;
     private int[][] auxMat;
-    // fin aux
+    //fin aux
     private int X, Y;
     private int matX, matY;
     private char[][] mat;
@@ -40,13 +38,12 @@ public class LaberintoC {
         Y = y;
         matX = x * 4 + 1;
         matY = y * 2 + 1;
-        // aux
+        //aux
         aux1 = x;
         aux2 = y;
         auxMat = new int[aux1][aux2];
-        // fin aux
+        //fin aux
         mat = new char[matX][matY];
-        camJ = new ArrayList<>();
         init();
         generarLaberinto();
     }
@@ -87,9 +84,12 @@ public class LaberintoC {
 
             ArrayList<Casilla> vecinos = new ArrayList<>();
 
-            Casilla[] posiblesVecinos = new Casilla[] { getCasilla(casilla.x + 1, casilla.y),
-                    getCasilla(casilla.x, casilla.y + 1), getCasilla(casilla.x - 1, casilla.y),
-                    getCasilla(casilla.x, casilla.y - 1) };
+            Casilla[] posiblesVecinos = new Casilla[]{
+                getCasilla(casilla.x + 1, casilla.y),
+                getCasilla(casilla.x, casilla.y + 1),
+                getCasilla(casilla.x - 1, casilla.y),
+                getCasilla(casilla.x, casilla.y - 1)
+            };
 
             for (Casilla aux : posiblesVecinos) {
                 if (aux == null || aux.pared || !aux.abierta) {
@@ -171,7 +171,8 @@ public class LaberintoC {
                 break;
             }
             for (Casilla vecino : act.vecinos) {
-                double projDist = getDistancia(vecino, act.pisada + 1, casillaFin);
+                double projDist = getDistancia(vecino,
+                        act.pisada + 1, casillaFin);
                 if (!vecino.visitado || projDist < vecino.distancia) {
                     vecino.padre = act;
                     vecino.visitado = true;
@@ -269,7 +270,7 @@ public class LaberintoC {
         return ThreadLocalRandom.current().nextInt(min, max + 1);
     }
 
-    public int[][] generarMatriz(int tamano) {
+    public static int[][] generarMatriz(int tamano) {
         LaberintoC laberinto = new LaberintoC(tamano);
         laberinto.solve();
         laberinto.updateMat();
@@ -303,7 +304,7 @@ public class LaberintoC {
         return auxMat;
     }
 
-    public int[][] generarCamino(int[][] mat, int condicion) {
+    public static int[][] generarCamino(int[][] mat, int condicion) {
         Punto[][] matriz = new Punto[mat.length][mat.length];
         for (int i = 0; i < mat.length; i++) {
             for (int j = 0; j < mat[i].length; j++) {
@@ -313,10 +314,10 @@ public class LaberintoC {
         return generarCamino(0, 0, condicion, matriz);
     }
 
-    public int[][] generarCamino(int x, int y, int condicion, Punto mat[][]) {
+    public static int[][] generarCamino(int x, int y, int condicion, Punto mat[][]) {
         int[][] matAux = new int[mat.length][mat.length];
         if (x == mat.length - 1 && y == mat.length - 1) {
-            // Se "limpia" la parte del camino que no se utilizó.
+            //Se "limpia" la parte del camino que no se utilizó.
             for (int i = 0; i < mat.length; i++) {
                 for (int j = 0; j < mat.length; j++) {
                     if (!mat[i][j].getVisitada()) {
@@ -325,36 +326,35 @@ public class LaberintoC {
                 }
             }
 
-            // Se crea una matriz de enteros con los valores de la matriz anterior.
+            //Se crea una matriz de enteros con los valores de la matriz anterior.
             for (int i = 0; i < mat.length; i++) {
                 for (int j = 0; j < mat.length; j++) {
                     matAux[i][j] = mat[i][j].getValor();
                 }
             }
 
-            // Se asegura que la primera casilla sea igual a 1
+            //Se asegura que la primera casilla sea igual a 1
             matAux[0][0] = 1;
         } else {
-            // Se verifica si la casilla de la derecha es válida
+            //Se verifica si la casilla de la derecha es válida
             if (esValido(mat, x, y + 1)) {
                 mat[x][y + 1].setVisitada(true);
                 mat[x][y + 1].setValor(condicion + 1);
-                camJ.add(new Punto(x, y));
                 matAux = generarCamino(x, y + 1, condicion + 1, mat);
             } else {
-                // Se verifica si la casilla de abajo es válida
+                //Se verifica si la casilla de abajo es válida
                 if (esValido(mat, x + 1, y)) {
                     mat[x + 1][y].setVisitada(true);
                     mat[x + 1][y].setValor(condicion + 1);
                     matAux = generarCamino(x + 1, y, condicion + 1, mat);
                 } else {
-                    // Se verifica si la casilla de la izquierda es válida
+                    //Se verifica si la casilla de la izquierda es válida
                     if (esValido(mat, x, y - 1)) {
                         mat[x][y - 1].setVisitada(true);
                         mat[x][y - 1].setValor(condicion + 1);
                         matAux = generarCamino(x, y - 1, condicion + 1, mat);
                     } else {
-                        // Se verifica si la casilla de arriba es válida
+                        //Se verifica si la casilla de arriba es válida
                         if (esValido(mat, x - 1, y)) {
                             mat[x - 1][y].setVisitada(true);
                             mat[x - 1][y].setValor(condicion + 1);
@@ -364,101 +364,10 @@ public class LaberintoC {
                 }
             }
         }
-        // return rellenarJ(matAux, condicion);
         return matAux;
     }
 
-    public int[][] rellenarJ(int[][] matAux, int condicion) {
-        int[][] res = matAux;
-        for (int a = 0; a < camJ.size(); a++) {
-            Punto act = camJ.get(a);
-            if (a == 0) {
-                act.setValor(1);
-            } else {
-                Punto ant = camJ.get(a - 1);
-                act.setValor(ant.getValor() + condicion);
-            }
-        }
-        for (int i = 0; i < res.length; i++) {
-            for (int j = 0; j < res.length; j++) {
-                int act = matAux[i][j];
-                if (act == 0) {
-                    res[i][j] = (int) (Math.random() * 20 + 1);
-                }
-            }
-        }
-        int pos = 0;
-        while (pos < camJ.size()) {
-            Punto aux = camJ.get(pos);
-            int x = aux.getPosX();
-            int y = aux.getPosY();
-            res[x][y] = camJ.get(pos).getValor();
-            pos++;
-        }
-        return res;
-    }
-
-    public int[][] rellenarJ2(int[][] matAux, int condicion) {
-        int[][] res = matAux;
-        for (int a = 0; a < camJ.size(); a++) {
-            Punto act = camJ.get(a);
-            if (a == 0) {
-                act.setValor(camJ.size() * condicion);
-            } else {
-                Punto ant = camJ.get(a - 1);
-                act.setValor(ant.getValor() - condicion);
-            }
-        }
-        for (int i = 0; i < res.length; i++) {
-            for (int j = 0; j < res.length; j++) {
-                int act = matAux[i][j];
-                if (act == 0) {
-                    res[i][j] = (int) (Math.random() * 20 + 1);
-                }
-            }
-        }
-        int pos = 0;
-        while (pos < camJ.size()) {
-            Punto aux = camJ.get(pos);
-            int x = aux.getPosX();
-            int y = aux.getPosY();
-            res[x][y] = camJ.get(pos).getValor();
-            pos++;
-        }
-        return res;
-    }
-
-    public int[][] rellenarJ3(int[][] matAux, int condicion) {
-        int[][] res = matAux;
-        for (int a = 0; a < camJ.size(); a++) {
-            Punto act = camJ.get(a);
-            if (a == 0) {
-                act.setValor(condicion);
-            } else {
-                int rand = (int) (Math.random() * (12 - 2 + 1) + 2);
-                act.setValor(rand * condicion);
-            }
-        }
-        for (int i = 0; i < res.length; i++) {
-            for (int j = 0; j < res.length; j++) {
-                int act = matAux[i][j];
-                if (act == 0) {
-                    res[i][j] = (int) (Math.random() * 25 + 1) * 2 + 1;
-                }
-            }
-        }
-        int pos = 0;
-        while (pos < camJ.size()) {
-            Punto aux = camJ.get(pos);
-            int x = aux.getPosX();
-            int y = aux.getPosY();
-            res[x][y] = camJ.get(pos).getValor();
-            pos++;
-        }
-        return res;
-    }
-
-    public int getMenor(ArrayList<Integer> arr) {
+    public static int getMenor(ArrayList<Integer> arr) {
         int n = arr.get(0);
         for (int i = 0; i < arr.size(); i++) {
             if (n > arr.get(i)) {
@@ -468,7 +377,7 @@ public class LaberintoC {
         return n;
     }
 
-    public int getMayor(ArrayList<Integer> arr) {
+    public static int getMayor(ArrayList<Integer> arr) {
         int n = arr.get(0);
         for (int i = 0; i < arr.size(); i++) {
             if (n < arr.get(i)) {
@@ -478,22 +387,21 @@ public class LaberintoC {
         return n;
     }
 
-    public boolean esIgualAVecino(int n, ArrayList<Integer> vecinos) {
+    public static boolean esIgualAVecino(int n, ArrayList<Integer> vecinos) {
         boolean es = false;
         for (int i = 0; i < vecinos.size(); i++) {
-            if (n == vecinos.get(i))
-                ;
+            if (n == vecinos.get(i));
             es = true;
             break;
         }
         return es;
     }
 
-    public boolean noEsPared(int[][] mat, int x, int y) {
+    public static boolean noEsPared(int[][] mat, int x, int y) {
         return !(x < 0 || x >= mat.length || y < 0 || y >= mat.length) && (mat[x][y] != 0);
     }
 
-    public int[][] generarParedes(int[][] mat) {
+    public static int[][] generarParedes(int[][] mat) {
         int[][] matAux = mat;
         for (int i = 0; i < matAux.length; i++) {
             for (int j = 0; j < matAux.length; j++) {
@@ -525,8 +433,12 @@ public class LaberintoC {
                         vecinos.add(matAux[i + 1][j + 1]);
                     }
                     /*
-                     * int rand; do { rand = getRandom(getMenor(vecinos), getMayor(vecinos) + 5); }
-                     * while(!esIgualAVecino(rand, vecinos));
+                    int rand;
+                    do
+                    {
+                        rand = getRandom(getMenor(vecinos), getMayor(vecinos) + 5);
+                    }
+                    while(!esIgualAVecino(rand, vecinos));
                      */
                     int rand = getRandom(getMayor(vecinos) + 1, getMayor(vecinos) + 5);
 
@@ -537,7 +449,7 @@ public class LaberintoC {
         return matAux;
     }
 
-    public int[][] genPar(int[][] mat, ArrayList<Punto> camino) {
+    public static int[][] genPar(int[][] mat, ArrayList<Punto> camino) {
         int[][] matAux = mat;
         for (int i = 0; i < matAux.length; i++) {
             for (int j = 0; j < matAux.length; j++) {
@@ -550,7 +462,7 @@ public class LaberintoC {
         return matAux;
     }
 
-    public int getPuntoMayor(int x, int y, ArrayList<Punto> camino) {
+    public static int getPuntoMayor(int x, int y, ArrayList<Punto> camino) {
         ArrayList<Integer> puntos = new ArrayList<Integer>();
         for (int i = 0; i < camino.size(); i++) {
             if (x == camino.get(i).getPosX()) {
@@ -564,24 +476,22 @@ public class LaberintoC {
         return getMayor(puntos);
     }
 
-    public boolean esValido(Punto[][] mat, int x, int y) {
-        return !(x < 0 || x >= mat.length || y < 0 || y >= mat.length)
-                && (mat[x][y].getValor() != 0 && !mat[x][y].getVisitada());
+    public static boolean esValido(Punto[][] mat, int x, int y) {
+        return !(x < 0 || x >= mat.length || y < 0 || y >= mat.length) && (mat[x][y].getValor() != 0 && !mat[x][y].getVisitada());
     }
 
-    public ArrayList<Punto> getCamino(int[][] mat) {
+    public static ArrayList<Punto> getCamino(int[][] mat) {
         ArrayList<Punto> camino = new ArrayList<Punto>();
-        for (int i = 0; i < mat.length; i++)
-            for (int j = 0; j < mat.length; j++)
-                if (mat[i][j] != 0)
-                    camino.add(new Punto(mat[i][j], mat[i][j], i, j));
+        for (int i = 0; i<mat.length; i++)
+                for (int j = 0; j<mat.length; j++)
+                    if (mat[i][j] != 0)
+                        camino.add(new Punto(mat[i][j], mat[i][j], i, j));
         camino = ordenar(camino);
-        camJ = camino;
         return camino;
     }
 
     // +++
-    public ArrayList<Punto> getCam(int[][] mat) {
+    public static ArrayList<Punto> getCam(int[][] mat) {
         ArrayList<Punto> camino = new ArrayList<Punto>();
         for (int i = 0; i < mat.length; i++) {
             for (int j = 0; j < mat.length; j++) {
@@ -594,7 +504,7 @@ public class LaberintoC {
         return camino;
     }
 
-    public ArrayList<Punto> ordenar(ArrayList<Punto> arr) {
+    public static ArrayList<Punto> ordenar(ArrayList<Punto> arr) {
         ArrayList<Punto> aux = arr;
         for (int i = 0; i < aux.size() - 1; i++) {
             for (int j = 0; j < aux.size() - i - 1; j++) {
@@ -613,15 +523,15 @@ public class LaberintoC {
             do {
                 rand = getRandom(1, arr.size() + 10);
             } while (rand % mult != 0);
-            // Se genera un Punto con (valor, orden, posX, posY).
+            //Se genera un Punto con (valor, orden, posX, posY).
             camino.add(new Punto(rand, i, arr.get(i).getPosX(), arr.get(i).getPosY()));
         }
         return camino;
     }
 
-    public int[][] generarMatrizMult(ArrayList<Punto> camino, int mult, int[][] mat) {
+    public static int[][] generarMatrizMult(ArrayList<Punto> camino, int mult, int[][] mat) {
         int[][] matAux = mat;
-        // Se crea una matriz con valores que no son múltiplos de mult.
+        //Se crea una matriz con valores que no son múltiplos de mult.
         for (int i = 0; i < matAux.length; i++) {
             for (int j = 0; j < matAux.length; j++) {
                 int rand;
@@ -632,7 +542,7 @@ public class LaberintoC {
                 matAux[i][j] = rand;
             }
         }
-        // Se sustituyen los valores correspondientes al camino.
+        //Se sustituyen los valores correspondientes al camino.
         for (int i = 0; i < camino.size(); i++) {
             matAux[camino.get(i).getPosX()][camino.get(i).getPosY()] = camino.get(i).getValor();
         }
@@ -640,7 +550,7 @@ public class LaberintoC {
         return matAux;
     }
 
-    public ArrayList<Punto> generarCaminoSec(ArrayList<Punto> arr, int ini, int condicion) {
+    public static ArrayList<Punto> generarCaminoSec(ArrayList<Punto> arr, int ini, int condicion) {
         ArrayList<Punto> camino = new ArrayList<Punto>();
         int aux = ini;
         for (int i = 0; i < arr.size(); i++) {
@@ -650,7 +560,7 @@ public class LaberintoC {
         return camino;
     }
 
-    public int[][] invertirMatriz(int[][] mat) {
+    public static int[][] invertirMatriz(int[][] mat) {
         int[][] matInv = new int[mat.length][mat.length];
         int p = 0;
         for (int i = mat.length - 1; i >= 0; i--) {
@@ -664,12 +574,12 @@ public class LaberintoC {
         return matInv;
     }
 
-    public ArrayList<Punto> invertirCamino(ArrayList<Punto> camino) {
+    public static ArrayList<Punto> invertirCamino(ArrayList<Punto> camino) {
         Collections.reverse(camino);
         return camino;
     }
 
-    public int[][] generarMatrizSec(ArrayList<Punto> camino, int[][] mat) {
+    public static int[][] generarMatrizSec(ArrayList<Punto> camino, int[][] mat) {
         int[][] matAux = mat;
         for (int i = 0; i < matAux.length; i++) {
             for (int j = 0; j < matAux.length; j++) {
@@ -687,17 +597,108 @@ public class LaberintoC {
         return matAux;
     }
 
+    
+    public static void main(String[] args)
+    {
+        /*
+        int[][] arr = {
+            {1, 0, 0, 0, 0, 0, 0, 1, 1, 1},
+            {1, 0, 0, 0, 0, 1, 1, 1, 1, 1},
+            {1, 1, 1, 0, 0, 1, 1, 1, 1, 0},
+            {1, 1, 1, 0, 0, 1, 1, 1, 0, 0},
+            {0, 0, 1, 1, 1, 1, 0, 1, 0, 0},
+            {0, 0, 0, 0, 1, 1, 0, 1, 0, 0},
+            {0, 0, 0, 0, 1, 1, 1, 1, 0, 0},
+            {0, 0, 0, 0, 1, 1, 1, 0, 0, 0},
+            {0, 0, 0, 0, 1, 1, 1, 0, 0, 0},
+            {0, 0, 0, 0, 1, 1, 1, 1, 1, 1}
+        };
+        */
+        int[][] mat = generarMatriz(10);
+        dibujarMatriz(mat);
+        System.out.println();
+        
+        int camino[][] = generarCamino(mat, 1);
+        ArrayList<Punto> cam = getCamino(camino);
+        ArrayList<Punto> orden = getCam(camino);
+        ArrayList<Punto> orden2 = generarCaminoSec(orden, 1, 1);
+        
+        System.out.println();
+        
+        int[][] matSec = generarMatrizSec(orden2, camino);
+        
+        dibujarMatriz(matSec);
+        
+        System.out.println();
+        
+        dibujarMatriz(invertirMatriz(matSec));
+        
+        System.out.println();
+        
+        dibujarCamino(orden2);
+        
+        ArrayList<Punto> camMult = generarCaminoMult(orden, 3);
+        
+        int[][] matMult = generarMatrizMult(camMult, 3, mat);
+        
+        dibujarMatriz(matMult);
+        /*
+        dibujarOrden(orden);
+        dibujarMatriz(camino);
+        System.out.println();
+        dibujarMatriz(genPar(camino, cam));*/
+        
+        /*
+        Para crear una nueva matriz de secuencia (Secuencia o suma)
+        
+        int[][] matriz = generarMatriz(tamaño);
+        int[][] matrizCamino = generarCamino(matriz, 1); siempre tiene que ser 1, es para generar el orden.
+        ArrayList<Punto> orden = generarCaimnoSec(getCam(matrizCamino), (número inicial de la matriz), (condición, es decir número que se suma));
+                            |
+                            |---> Éste es el ArrayList con el orden de puntos para hacer la verificación.
+        
+        int[][] matrizSecuencia = generarMatrizSec(orden, matrizCamino); ---> Ésta es la matriz con los números para rellenar los botones.
+        
+        --------------- ***** --------------- ***** --------------- ***** ---------------
+        
+        Para crear una nueva matriz de resta
+        
+        *Todos los pasos anteriores
+        int[][] matrizResta = invertirMatriz(matrizSeciencia); ---> Ésta es la matriz con los números para rellenar los botones.
+        ArrayList<Punto> ordenResta = invertirCamino(orden); ---> Éste es el ArrayList con el orden de puntos para hacer la verificación.
+        
+        --------------- ***** --------------- ***** --------------- ***** ---------------
+        
+        Para crear una nueva matriz de Multiplicación o de División
+        
+        int[][] matriz = generarMatriz(tamaño);
+        int[][] matrizCamino = generarCamino(matriz, 1);
+        ArrayList<Punto> orden = generarCaminoMult(getCam(matrizCamino, (Condición, es decir los múltiplos que tendrá el camino));
+                            |
+                            |---> Éste es el ArrayList con el orden de puntos para hacer la verificación.
+        
+        int[][] matrizMultiplos = generarMatrizMult(orden, (condición), matriz); ---> Ésta es la matriz con los números para rellenar los botones.
+        
+        */
+    }
+    
+    
+    
+    public static void dibujarCamino(ArrayList<Punto> arr)
+    {
+        for (int i = 0; i < arr.size(); i++)
+        {
             System.out.println(arr.get(i).getValor());
         }
     }
 
-    public void dibujarOrden(ArrayList<Punto> arr) {
+    public static void dibujarOrden(ArrayList<Punto> arr) {
         for (int i = 0; i < arr.size(); i++) {
             System.out.println(arr.get(i).getOrden());
         }
     }
 
-    public void dibujarMatriz(int[][] matrix) {
+    public static void dibujarMatriz(int[][] matrix) {
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
                 System.out.print(matrix[i][j] + " ");
@@ -706,7 +707,7 @@ public class LaberintoC {
         }
     }
 
-    public void dibujarMatriz(char[][] matrix) {
+    public static void dibujarMatriz(char[][] matrix) {
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
                 System.out.print(matrix[i][j] + "");
