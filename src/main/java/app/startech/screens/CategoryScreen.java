@@ -110,11 +110,4 @@ public class CategoryScreen extends javax.swing.JFrame {
         setVisible(true);
     }
 
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(() -> {
-            DataController.instance.setUsuarioActual(0);
-            // DataController.secuencia.setActive(true);
-            CategoryScreen categoryScreen = new CategoryScreen(DataController.instance.getUsuarioActual().category.getAllCategories());
-        });
-    }
 }
