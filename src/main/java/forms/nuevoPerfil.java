@@ -47,16 +47,16 @@ public class nuevoPerfil extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        jButton1.setText("aceptar");
+        jButton1.setText("Aceptar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("nombre");
+        jLabel1.setText("Nombre");
 
-        jLabel2.setText("edad");
+        jLabel2.setText("Edad");
 
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,7 +70,7 @@ public class nuevoPerfil extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("nuevo perfil");
+        jLabel3.setText("Nuevo Perfil");
 
         jButton2.setText("cancelar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {

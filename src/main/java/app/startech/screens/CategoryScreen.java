@@ -65,7 +65,7 @@ public class CategoryScreen extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         JPanel buttons = new JPanel(new GridLayout(categories.length, 1));
-        buttons.setBackground(Color.blue);
+        buttons.setBackground(new Color(0, 0, 0, 0));
         for (Category category : categories) {
             JPanel panel = new JPanel();
             JButton button = new JButton(category.getTitle());
