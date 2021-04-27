@@ -24,10 +24,12 @@ public class Multiplicacion extends Matriz{
     
     public void rellenarLaberinto(){
         //laberinto = lab.generarCamino(matriz, condicion);  
-        
-        int[][] matriz = lab.generarMatriz(tamaño);
-        int[][] matrizCamino = lab.generarCamino(matriz, 1);
-        ArrayList<Punto> orden = lab.generarCaminoMult(lab.getCam(matrizCamino), condicion);
-        laberinto = lab.generarMatrizMult(orden, (condicion), matriz);
+//        
+//        int[][] matriz = lab.generarMatriz(tamaño);
+//        int[][] matrizCamino = lab.generarCamino(matriz, 1);
+//        ArrayList<Punto> orden = lab.generarCaminoMult(lab.getCam(matrizCamino), condicion);
+//        laberinto = lab.generarMatrizMult(orden, (condicion), matriz);
+
+        laberinto = lab.rellenarJ3(matriz, condicion);
     }
 }

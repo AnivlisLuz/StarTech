@@ -52,8 +52,8 @@ public abstract class Matriz {
 
     public void generarLaberinto() {
         matriz = lab.generarMatriz(tamaño);
-        int[][] matAux = LaberintoC.generarCamino(matriz, 1);
-        camino = LaberintoC.getCamino(matAux);
+        int[][] matAux = lab.generarCamino(matriz, 1);
+        camino = lab.getCamino(matAux);
     }
 
     public int[][] getLaberinto() {
