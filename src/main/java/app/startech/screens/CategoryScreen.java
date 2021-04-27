@@ -15,6 +15,7 @@ import static java.awt.BorderLayout.CENTER;
 import static java.awt.BorderLayout.EAST;
 import static java.awt.BorderLayout.SOUTH;
 import static java.awt.BorderLayout.NORTH;
+import static java.awt.BorderLayout.WEST;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -37,25 +38,27 @@ public class CategoryScreen extends javax.swing.JFrame {
         initComponent();
         setLocationRelativeTo(null);
     }
-    
-    public Category nexCategory(Category categoria){
+
+    public Category nexCategory(Category categoria) {
         Category res = null;
-        for(int i= 0; i < categories.length ; i++){
+        for (int i = 0; i < categories.length; i++) {
             Category cat = categories[i];
-            if(categoria.equals(cat)){
-                if(i+1 == categories.length){
+            if (categoria.equals(cat)) {
+                if (i + 1 == categories.length) {
                     res = null;
-                }else{
-                res = categories[i+1]; 
+                } else {
+                    res = categories[i + 1];
                 }
                 break;
             }
         }
         return res;
     }
-    public void setCategories(){
-        
+
+    public void setCategories() {
+
     }
+
     private void initComponent() {
         setSize(800, 500);
         setTitle("StarTech");
@@ -91,14 +94,14 @@ public class CategoryScreen extends javax.swing.JFrame {
         });
         buton.setPreferredSize(new Dimension(200, 50));
         options.add(buton, EAST);
-        JButton atras = new JButton("Realizar TEST");
+        JButton atras = new JButton("Atras");
         atras.addActionListener((action) -> {
-           Login abrir=new Login();
-        abrir.setVisible(true);
+            Login abrir = new Login();
+            abrir.setVisible(true);
             setVisible(false);
         });
         atras.setPreferredSize(new Dimension(200, 50));
-        options.add(atras, CENTER);
+        options.add(atras, WEST);
 
         add(buttons, CENTER);
         add(options, SOUTH);
@@ -109,9 +112,9 @@ public class CategoryScreen extends javax.swing.JFrame {
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
-           DataController.instance.setUsuarioActual(0);
-           // DataController.secuencia.setActive(true);
-            CategoryScreen categoryScreen = new CategoryScreen( DataController.instance.getUsuarioActual().category.getAllCategories());
+            DataController.instance.setUsuarioActual(0);
+            // DataController.secuencia.setActive(true);
+            CategoryScreen categoryScreen = new CategoryScreen(DataController.instance.getUsuarioActual().category.getAllCategories());
         });
     }
 }
