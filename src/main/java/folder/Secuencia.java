@@ -6,7 +6,6 @@ public class Secuencia extends Matriz {
     
     public Secuencia(int tamaño){
         super(tamaño);
-        rellenarLaberinto();
     }
     
     public void rellenarLaberinto(){
