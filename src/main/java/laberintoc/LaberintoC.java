@@ -371,9 +371,43 @@ public class LaberintoC {
         //return rellenarJ(matAux, condicion);
         return matAux;
     }
-    
+    private ArrayList<Integer> obtenerVecinos(int i, int j, int[][] mat){
+        ArrayList<Integer> res = new ArrayList<>();
+        if(esValido(i-1,j, mat)){
+            res.add(mat[i-1][j]);
+        }
+        if(esValido(i+1,j, mat)){
+            res.add(mat[i+1][j]);
+        }
+        if(esValido(i,j-1, mat)){
+            res.add(mat[i][j-1]);
+        }
+        if(esValido(i,j+1, mat)){
+            res.add(mat[i][j+1]);
+        }
+        return res;
+    }
+    private boolean esValido(int i, int j, int[][] mat){
+        boolean res = false;
+        if(i >= 0 && j>=0 && i<mat.length && j<mat.length){
+            res = true;
+        }
+            //(x < 0 || x >= mat.length || y < 0 || y >= mat.length) && (mat[x][y] != 0);
+        return res;
+    }
+    private int[][] limpiarUnos(int[][] matAux){
+        int[][] res = new int[matAux.length][matAux.length];
+        int pos = 0;
+        while(pos < camJ.size()){
+            int i = camJ.get(pos).getPosX();
+            int j = camJ.get(pos).getPosY();
+            res[i][j] = 1;
+            pos++;
+        }
+        return res;
+    }
     public int[][] rellenarJ(int[][] matAux, int condicion){
-        int[][] res = matAux;
+        int[][] res = limpiarUnos(matAux);
         for(int a=0; a<camJ.size(); a++){
             Punto act = camJ.get(a);
             if(a == 0){
@@ -383,20 +417,27 @@ public class LaberintoC {
                 act.setValor(ant.getValor()+condicion);
             }
         }
-        for(int i=0; i<res.length; i++){
-            for(int j= 0; j<res.length; j++){
-                int act = matAux[i][j];
-                if(act == 0){
-                    res[i][j] = (int)(Math.random()*20+1);
-                }
-            }
-        }
         int pos = 0;
         while(pos < camJ.size()){
             Punto aux = camJ.get(pos);
             int x = aux.getPosX(); int y = aux.getPosY();
             res[x][y] = camJ.get(pos).getValor();
             pos++;
+        }
+        
+        for(int i=0; i<res.length; i++){
+            for(int j= 0; j<res.length; j++){
+                int act = res[i][j];
+                if(act == 0){
+                    ArrayList<Integer> vecinos = obtenerVecinos(i,j, res);
+                    Random  rnd = new Random();
+                    int rand = (int)(rnd.nextDouble()*(camJ.get(camJ.size()-1).getValor()+5)+2);
+                    while(esIgualAVecino(rand, vecinos, condicion)){
+                        rand = (int)(rnd.nextDouble()*(camJ.get(camJ.size()-1).getValor()+5)+2);
+                    }
+                    res[i][j] = rand;
+                }
+            }
         }
         return res;
     }
@@ -477,67 +518,68 @@ public class LaberintoC {
         return n;
     }
 
-    public boolean esIgualAVecino(int n, ArrayList<Integer> vecinos) {
-        boolean es = false;
+    public boolean esIgualAVecino(int n, ArrayList<Integer> vecinos, int condicion) {
+        boolean res = false;
         for (int i = 0; i < vecinos.size(); i++) {
-            if (n == vecinos.get(i));
-            es = true;
-            break;
+            if (n == (vecinos.get(i)+condicion)){
+                res = true;
+                break;
+            }
         }
-        return es;
+        return res;
     }
 
     public boolean noEsPared(int[][] mat, int x, int y) {
         return !(x < 0 || x >= mat.length || y < 0 || y >= mat.length) && (mat[x][y] != 0);
     }
 
-    public int[][] generarParedes(int[][] mat) {
-        int[][] matAux = mat;
-        for (int i = 0; i < matAux.length; i++) {
-            for (int j = 0; j < matAux.length; j++) {
-                if (matAux[i][j] == 0) {
-                    ArrayList<Integer> vecinos = new ArrayList<Integer>();
-
-                    if (noEsPared(matAux, i - 1, j - 1)) {
-                        vecinos.add(matAux[i - 1][j - 1]);
-                    }
-                    if (noEsPared(matAux, i, j - 1)) {
-                        vecinos.add(matAux[i][j - 1]);
-                    }
-                    if (noEsPared(matAux, i + 1, j - 1)) {
-                        vecinos.add(matAux[i + 1][j - 1]);
-                    }
-                    if (noEsPared(matAux, i - 1, j)) {
-                        vecinos.add(matAux[i - 1][j]);
-                    }
-                    if (noEsPared(matAux, i + 1, j)) {
-                        vecinos.add(matAux[i + 1][j]);
-                    }
-                    if (noEsPared(matAux, i - 1, j + 1)) {
-                        vecinos.add(matAux[i - 1][j + 1]);
-                    }
-                    if (noEsPared(matAux, i, j + 1)) {
-                        vecinos.add(matAux[i][j + 1]);
-                    }
-                    if (noEsPared(matAux, i + 1, j + 1)) {
-                        vecinos.add(matAux[i + 1][j + 1]);
-                    }
-                    /*
-                    int rand;
-                    do
-                    {
-                        rand = getRandom(getMenor(vecinos), getMayor(vecinos) + 5);
-                    }
-                    while(!esIgualAVecino(rand, vecinos));
-                     */
-                    int rand = getRandom(getMayor(vecinos) + 1, getMayor(vecinos) + 5);
-
-                    matAux[i][j] = rand;
-                }
-            }
-        }
-        return matAux;
-    }
+//    public int[][] generarParedes(int[][] mat) {
+//        int[][] matAux = mat;
+//        for (int i = 0; i < matAux.length; i++) {
+//            for (int j = 0; j < matAux.length; j++) {
+//                if (matAux[i][j] == 0) {
+//                    ArrayList<Integer> vecinos = new ArrayList<Integer>();
+//
+//                    if (noEsPared(matAux, i - 1, j - 1)) {
+//                        vecinos.add(matAux[i - 1][j - 1]);
+//                    }
+//                    if (noEsPared(matAux, i, j - 1)) {
+//                        vecinos.add(matAux[i][j - 1]);
+//                    }
+//                    if (noEsPared(matAux, i + 1, j - 1)) {
+//                        vecinos.add(matAux[i + 1][j - 1]);
+//                    }
+//                    if (noEsPared(matAux, i - 1, j)) {
+//                        vecinos.add(matAux[i - 1][j]);
+//                    }
+//                    if (noEsPared(matAux, i + 1, j)) {
+//                        vecinos.add(matAux[i + 1][j]);
+//                    }
+//                    if (noEsPared(matAux, i - 1, j + 1)) {
+//                        vecinos.add(matAux[i - 1][j + 1]);
+//                    }
+//                    if (noEsPared(matAux, i, j + 1)) {
+//                        vecinos.add(matAux[i][j + 1]);
+//                    }
+//                    if (noEsPared(matAux, i + 1, j + 1)) {
+//                        vecinos.add(matAux[i + 1][j + 1]);
+//                    }
+//                    /*
+//                    int rand;
+//                    do
+//                    {
+//                        rand = getRandom(getMenor(vecinos), getMayor(vecinos) + 5);
+//                    }
+//                    while(!esIgualAVecino(rand, vecinos));
+//                     */
+//                    int rand = getRandom(getMayor(vecinos) + 1, getMayor(vecinos) + 5);
+//
+//                    matAux[i][j] = rand;
+//                }
+//            }
+//        }
+//        return matAux;
+//    }
 
     public int[][] genPar(int[][] mat, ArrayList<Punto> camino) {
         int[][] matAux = mat;

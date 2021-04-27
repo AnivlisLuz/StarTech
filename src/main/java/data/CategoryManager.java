@@ -21,8 +21,8 @@ public class CategoryManager {
         new Level(4, "Nivel 4", false, new Laberinto("Secuencia", 4, "A veces, cuando estás en un lugar oscuro, crees que has sido enterrado, pero en realidad te han plantado.", "Avanza de uno en uno")),
         new Level(5, "Nivel 5", false, new Laberinto("Secuencia", 5, "Hay algo en ti que el mundo necesita.", "Avanza de uno en uno"))
     });
-    public  Category suma = new Category(2, "Suma", false, new Level[]{
-        new Level(1, "Nivel 1", false, new Laberinto("Suma", 1, "He aquí un consejo que una vez oí dar a un joven: “Haz siempre lo que temas hacer”. Ralph Waldo Emerson", "Para avanzar suma de dos en dos")),
+    public  Category suma = new Category(2, "Suma", true, new Level[]{
+        new Level(1, "Nivel 1", true, new Laberinto("Suma", 1, "He aquí un consejo que una vez oí dar a un joven: “Haz siempre lo que temas hacer”. Ralph Waldo Emerson", "Para avanzar suma de dos en dos")),
         new Level(2, "Nivel 2", false, new Laberinto("Suma", 2, "A veces se necesita una ruptura abrumadora para tener un avance innegable.", "Para avanzar suma de tres en tres")),
         new Level(3, "Nivel 3", false, new Laberinto("Suma", 3, "Sé que ha sido duro, pero todavía te estoy animando.", "Para avanzar suma de cuatro en cuatro")),
         new Level(4, "Nivel 4", false, new Laberinto("Suma", 4, "Un poco de progreso todos los días se suma a los grandes resultados.", "Para avanzar suma de cinco en cinco")),

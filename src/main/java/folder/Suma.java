@@ -16,7 +16,6 @@ public class Suma extends Matriz{
     public Suma(int tamaño, int condicion){
         super(tamaño);
         this.condicion = condicion;
-        rellenarLaberinto();
     }
     
     public void rellenarLaberinto(){
