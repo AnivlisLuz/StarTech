@@ -672,6 +672,39 @@ public class LaberintoC
         dibujarMatriz(camino);
         System.out.println();
         dibujarMatriz(genPar(camino, cam));*/
+        
+        /*
+        Para crear una nueva matriz de secuencia (Secuencia o suma)
+        
+        int[][] matriz = generarMatriz(tamaño);
+        int[][] matrizCamino = generarCamino(matriz, 1); siempre tiene que ser 1, es para generar el orden.
+        ArrayList<Punto> orden = generarCaimnoSec(getCam(matrizCamino), (número inicial de la matriz), (condición, es decir número que se suma));
+                            |
+                            |---> Éste es el ArrayList con el orden de puntos para hacer la verificación.
+        
+        int[][] matrizSecuencia = generarMatrizSec(orden, matrizCamino); ---> Ésta es la matriz con los números para rellenar los botones.
+        
+        --------------- ***** --------------- ***** --------------- ***** ---------------
+        
+        Para crear una nueva matriz de resta
+        
+        *Todos los pasos anteriores
+        int[][] matrizResta = invertirMatriz(matrizSeciencia); ---> Ésta es la matriz con los números para rellenar los botones.
+        ArrayList<Punto> ordenResta = invertirCamino(orden); ---> Éste es el ArrayList con el orden de puntos para hacer la verificación.
+        
+        --------------- ***** --------------- ***** --------------- ***** ---------------
+        
+        Para crear una nueva matriz de Multiplicación o de División
+        
+        int[][] matriz = generarMatriz(tamaño);
+        int[][] matrizCamino = generarCamino(matriz, 1);
+        ArrayList<Punto> orden = generarCaminoMult(getCam(matrizCamino, (Condición, es decir los múltiplos que tendrá el camino));
+                            |
+                            |---> Éste es el ArrayList con el orden de puntos para hacer la verificación.
+        
+        int[][] matrizMultiplos = generarMatrizMult(orden, (condición), matriz); ---> Ésta es la matriz con los números para rellenar los botones.
+        
+        */
     }
     
     
