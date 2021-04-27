@@ -6,12 +6,12 @@ import laberintoc.Punto;
 
 public abstract class Matriz {
 
-    public int tamaño;
+    protected int tamaño;
     protected int[][] matriz;
     protected int[][] laberinto;
     private Punto inicio;
     private Punto meta;
-    private ArrayList<Punto> camino;
+    protected ArrayList<Punto> camino;
     //private Punto[] camino;
     protected LaberintoC lab;
     private int pos;
@@ -49,11 +49,19 @@ public abstract class Matriz {
     }
 
     abstract public void rellenarLaberinto();
+    
+    public int[][] getMatriz()
+    {
+        matriz = lab.generarMatriz(tamaño);
+        int[][] matAux = lab.generarCamino(matriz,1);
+        camino = lab.getCamino(matAux);
+        return matriz;
+    }
 
     public void generarLaberinto() {
         matriz = lab.generarMatriz(tamaño);
-        int[][] matAux = LaberintoC.generarCamino(matriz,1);
-        camino = LaberintoC.getCamino(matAux);
+        int[][] matAux = lab.generarCamino(matriz,1);
+        camino = lab.getCamino(matAux);
     }
 
     public int[][] getLaberinto() {
