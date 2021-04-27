@@ -15,19 +15,22 @@ public class Laberinto {
         this.titulo = titulo;
         vidas = 3;
         this.mensaje = mensaje;
-        mostrarMatriz();
+//        mostrarMatriz();
     }
-    
-    public String getCondicion(){
+
+    public String getCondicion() {
         return condicion;
     }
-    public void setVidas(){
+
+    public void setVidas() {
         vidas--;
     }
-    public void restaurarVidas(){
+
+    public void restaurarVidas() {
         vidas = 3;
     }
-    public int getVidas(){
+
+    public int getVidas() {
         return vidas;
     }
 
