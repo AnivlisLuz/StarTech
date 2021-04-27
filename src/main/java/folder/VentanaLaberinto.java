@@ -1,4 +1,3 @@
-
 package folder;
 
 import app.startech.models.Category;
@@ -16,7 +15,7 @@ public class VentanaLaberinto extends javax.swing.JFrame {
     private Level level;
     private LevelScreen ventanaLevel;
     private CategoryScreen ventanaCategory;
-    
+
     public VentanaLaberinto(Category c, Level l, LevelScreen ventanaLevel, CategoryScreen ventanaCategory) {
         this.ventanaCategory = ventanaCategory;
         this.ventanaLevel = ventanaLevel;
@@ -29,62 +28,86 @@ public class VentanaLaberinto extends javax.swing.JFrame {
         mostrarLaberinto();
         setLocationRelativeTo(null);
     }
-    
-    public void mostrarLaberinto(){
+
+    public void mostrarLaberinto() {
         jLabel1.setText(laberinto.getTitulo());
         jLabel2.setText(laberinto.getCondicion());
         jTextArea1.setText(laberinto.getMensaje());
         jTextArea1.setLineWrap(true);
         jTextArea1.setWrapStyleWord(true);
         jTextArea1.setEditable(false);
-        int x=0, y = 0, m = 54, n = 55;
-        if(laberinto.getMatriz().getLaberinto().length == 6){
-            m = 73; n = 75;
-        }else if(laberinto.getMatriz().getLaberinto().length == 8){
-            m = 67; n = 68;
-        }else if(laberinto.getMatriz().getLaberinto().length == 10){
-            m = 54; n = 55;
+        int aux = laberinto.getMatriz().getLaberinto().length;
+        int x = 0, y = 0, m = 0, n = 0;
+        if (aux == 3) {
+            x = 100;
+            y = 0;
+            m = 113;
+            n = 116;
+        } else if (aux == 4) {
+            x = 90;
+            y = 0;
+            m = 85;
+            n = 87;
+        } else if (aux == 6) {
+            x = 60;
+            y = 0;
+            m = 73;
+            n = 75;
+        } else if (aux == 8) {
+            m = 67;
+            n = 68;
+        } else if (aux == 10) {
+            m = 54;
+            n = 55;
         }
         int[][] laberinto = this.laberinto.getMatriz().getLaberinto();
         int tamX = laberinto.length;
         int tamY = laberinto[0].length;
-        for(int i = 0; i<tamX; i++ ){
+        for (int i = 0; i < tamX; i++) {
             for (int j = 0; j < tamY; j++) {
                 Punto p = new Punto(i, j);
                 Boton b = new Boton(x, y, m, n, this.laberinto, i, j, category, level, this, ventanaCategory, ventanaLevel);
                 botones[i][j] = b;
-                int nom = laberinto[i][j];      
-                String nomCadena= String.valueOf(nom);
+                int nom = laberinto[i][j];
+                String nomCadena = String.valueOf(nom);
                 botones[i][j].setText(nomCadena);
                 jPanel1.add(botones[i][j]);
-                x+=m;
+                x += m;
             }
-            x = 0;
-            y+=n;
-        } 
+            if (aux == 3) {
+                x = 100;
+            } else if (aux == 4) {
+                x = 90;
+            } else if (aux == 6) {
+                x = 60;
+            } else {
+                x = 0;
+            }
+            y += n;
+        }
         setLocationRelativeTo(null);
     }
-    
-    public void refresh(){
-        for(int i = 0; i<botones.length; i++ ){
-            for (int j = 0; j <botones.length; j++) {
+
+    public void refresh() {
+        for (int i = 0; i < botones.length; i++) {
+            for (int j = 0; j < botones.length; j++) {
                 Boton b = botones[i][j];
                 b.setBackground(null);
             }
         }
         laberinto.getMatriz().reset();
     }
-    
-    public void ocultarVida(){
-        if(laberinto.getVidas() == 3){
-            jLabelVida1.setVisible(false);
-        }else if(laberinto.getVidas() == 2){
-            jLabelVida2.setVisible(false);
-        }else{
+
+    public void ocultarVida() {
+        if (laberinto.getVidas() == 3) {
             jLabelVida3.setVisible(false);
+        } else if (laberinto.getVidas() == 2) {
+            jLabelVida2.setVisible(false);
+        } else {
+            jLabelVida1.setVisible(false);
         }
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -229,7 +252,7 @@ public class VentanaLaberinto extends javax.swing.JFrame {
         dispose();
         ventanaLevel.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
-   
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
