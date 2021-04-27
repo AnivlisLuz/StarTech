@@ -10,7 +10,8 @@ public class Secuencia extends Matriz {
     }
     
     public void rellenarLaberinto(){
-        laberinto = lab.generarCamino(matriz, 1);
+//        laberinto = lab.generarCamino(matriz, 1);
+          laberinto = lab.rellenarJ(matriz, 1);
     }
     
 

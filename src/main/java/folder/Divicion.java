@@ -20,6 +20,6 @@ public class Divicion extends Matriz{
     }
     
     public void rellenarLaberinto(){
-        laberinto = lab.generarCamino(matriz, condicion);   
+        laberinto = lab.rellenarJ3(matriz, condicion);
     }
 }
