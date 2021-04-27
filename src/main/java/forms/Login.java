@@ -20,7 +20,7 @@ import static preguntas.Cuestionario.grupos;
 public class Login extends javax.swing.JFrame {
 
     /**
-     * Creaw form usuario
+     * Creates new form usuario
      */
     public Login() {
         initComponents();
@@ -46,9 +46,6 @@ public class Login extends javax.swing.JFrame {
         txtUsuario = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setLocation(new java.awt.Point(0, 0));
-        setResizable(false);
 
         jLabel1.setText("       Usuario");
 
@@ -109,7 +106,6 @@ public class Login extends javax.swing.JFrame {
         );
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
     public void añadirUsuario()
      {
