@@ -15,6 +15,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import javax.swing.WindowConstants;
 import laberintoc.Punto;
 
 public class Boton extends JButton implements ActionListener {
@@ -72,17 +73,24 @@ public class Boton extends JButton implements ActionListener {
                     } else {
                         // Siguiente Categoria
                         Category cat = ventanaCategoria.nexCategory(categoria);
-                        java.awt.EventQueue.invokeLater(new Runnable() {
-                            public void run() {
-                                cat.setActive(true);
-                                cat.getLevels()[0].setActive();
-                                // DataController.suma.getLevels()[0].setActive();
-//                                DataController.resta.setActive(true); 
-//                                DataController.multiplicacion.setActive(true); 
-//                                DataController.division.setActive(true);  
-                                CategoryScreen categoryScreen = new CategoryScreen(DataController.instance.getUsuarioActual().category.getAllCategories());
-                            }
-                        });
+                        if(cat != null){
+                            java.awt.EventQueue.invokeLater(new Runnable() {
+                                public void run() {
+                                    cat.setActive(true);
+                                    cat.getLevels()[0].setActive();
+                                    // DataController.suma.getLevels()[0].setActive();
+    //                                DataController.resta.setActive(true); 
+    //                                DataController.multiplicacion.setActive(true); 
+    //                                DataController.division.setActive(true);  
+                                    CategoryScreen categoryScreen = new CategoryScreen(DataController.instance.getUsuarioActual().category.getAllCategories());
+                                }
+                            });
+                        }else{
+                            JOptionPane.showMessageDialog(null, "Felicidad!!! Ganaste");
+                            ventanaCategoria.setVisible(true);
+//                            ventana.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+//                            System.exit(0);
+                        }
                         //cat.setActive();
                         //ventanaCategoria.refresh();
                     }
