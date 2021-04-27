@@ -20,7 +20,6 @@ public class Resta extends Matriz{
     }
     
     public void rellenarLaberinto(){
-//        laberinto = lab.generarCamino(matriz, condicion);       
-        laberinto = lab.rellenarJ2(matriz, condicion);
+        laberinto = lab.generarCamino(matriz, condicion);       
     }
 }
