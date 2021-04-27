@@ -53,10 +53,6 @@ public class Cuestionario {
         inicio();
     }
 
-    public static void main(String args[]) {
-        Cuestionario test = new Cuestionario(grupos);
-    }
-
  
 
     public void ventana() {
