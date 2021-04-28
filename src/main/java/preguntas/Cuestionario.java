@@ -35,6 +35,7 @@ public class Cuestionario {
 
     private Thread thread;
 
+    //Iniciar Cuestionario
     public Cuestionario(GrupoPreguntas[] grupoPreguntas) {
         thread = new Thread();
         ventana = new JFrame();
@@ -54,7 +55,7 @@ public class Cuestionario {
     }
 
  
-
+    //Ejecuta la ventana del Cuestionario
     public void ventana() {
         thread.start();
         ventana.setVisible(true);
@@ -65,19 +66,22 @@ public class Cuestionario {
         ventana.setResizable(false);
     }
 
+    //Pone un panel que estara manejando botones, etiquetas
     public void hoja() {
         panel.setSize(ancho, alto);
         panel.setLayout(null);
         panel.add(boton);
         panel.add(etiqueta);
     }
-
+    
+    //Etiqueta que contiene el fondo
     public void fondo() {
         etiqueta.setBounds(0, 0, ancho, alto);
         etiqueta.setOpaque(true);
         etiqueta.setIcon(new ImageIcon(imagen.getImage().getScaledInstance(etiqueta.getWidth(), etiqueta.getHeight(), Image.SCALE_SMOOTH)));
     }
 
+    //Establece el boton para entrar al cuestionario
     public void inicio() {
         boton.setBounds((ancho / 2 - 150), alto / 2 - 50, 300, 100);
         boton.setText("Iniciar Cuestionario");
@@ -86,10 +90,12 @@ public class Cuestionario {
         boton.setFont(new Font("calibri", Font.ITALIC, 30));
     }
 
+    //Metodo para usar cuando ocultar la ventana
     public static void Ocultar() {
         ventana.setVisible(false);
     }
 
+    //Metodo para usar cuando desocultar la ventana
     public static void DesOcultar() {
         ventana.setVisible(true);
     }

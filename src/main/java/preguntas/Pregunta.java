@@ -62,6 +62,8 @@ public class Pregunta {
         boton = new JButton();
         boton1 = new JButton();
         boton2 = new JButton();
+        
+        //Da reaccion al boton de opcion 1
         oyenteAccion = new MouseListener() {
             public void mouseClicked(MouseEvent e) {
             }
@@ -105,6 +107,7 @@ public class Pregunta {
             }
         };
 
+        //Da reaccion al boton de opcion 2
         oyenteAccion1 = new MouseListener() {
             public void mouseClicked(MouseEvent e) {
             }
@@ -148,6 +151,7 @@ public class Pregunta {
             }
         };
 
+        //Da reaccion al boton de opcion 3
         oyenteAccion2 = new MouseListener() {
             public void mouseClicked(MouseEvent e) {
             }
@@ -190,6 +194,8 @@ public class Pregunta {
             public void mouseExited(MouseEvent e) {
             }
         };
+        
+        //Ejecuta los metodos
         limpiar();
         hoja();
         fondo();
@@ -200,6 +206,7 @@ public class Pregunta {
         getVRes();
     }
 
+    //Pone el panel que contiene la pregunta
     public static void hoja() {
         panel.add(etiqueta1);
         panel.add(boton);
@@ -208,12 +215,14 @@ public class Pregunta {
         panel.add(etiqueta);
     }
 
+    //Establece el fondo
     public static void fondo() {
         etiqueta.setBounds(0, 0, ancho, alto);
         etiqueta.setOpaque(true);
         etiqueta.setIcon(new ImageIcon(imagen.getImage().getScaledInstance(etiqueta.getWidth(), etiqueta.getHeight(), Image.SCALE_SMOOTH)));
     }
 
+    //Establece la pregunta
     public void pregun() {
         pregunta = generadorP();
         etiqueta1.setBounds(ancho / 2 - 100, 50, 200, 50);
@@ -224,6 +233,7 @@ public class Pregunta {
         etiqueta1.setFont(new Font("calibri", Font.ITALIC, 30));
     }
 
+    //Establece el inciso 1
     public void inciso() {
         boton.setBounds(ancho / 4 - 75, 400, 150, 50);
         boton.setText(generadorR());
@@ -232,6 +242,7 @@ public class Pregunta {
         boton.setFont(new Font("calibri", Font.ITALIC, 30));
     }
 
+    //Establece el inciso 2
     public void inciso1() {
         boton1.setBounds(ancho / 2 - 75, 400, 150, 50);
         boton1.setText(generadorR());
@@ -240,6 +251,7 @@ public class Pregunta {
         boton1.addMouseListener(oyenteAccion1);
     }
 
+    //Establece el inciso 3
     public void inciso2() {
         boton2.setBounds((ancho * 3) / 4 - 75, 400, 150, 50);
         boton2.setText(generadorR());
@@ -248,6 +260,7 @@ public class Pregunta {
         boton2.addMouseListener(oyenteAccion2);
     }
 
+    //genera la pregunta
     public String generadorP() {
         Random r = new Random();
         int a = r.nextInt(10);
@@ -303,6 +316,7 @@ public class Pregunta {
         return pregunta;
     }
 
+    //genera una respuesta
     public String generadorR() {
         Random r = new Random();
         int a;
@@ -318,6 +332,7 @@ public class Pregunta {
         return w;
     }
 
+    //obtiene el valor real
     public void getVRes() {
         Random r = new Random();
         int a = r.nextInt(3);
@@ -331,6 +346,7 @@ public class Pregunta {
         }
     }
 
+    //metodo de espera por segundos
     public static void esperar(int segundos) {
         try {
             Thread.sleep(segundos * 1000);
@@ -339,6 +355,7 @@ public class Pregunta {
         }
     }
 
+    //metodo de espera por 0,1 segundos
     public static void esperarDecimo(int segundos) {
         try {
             Thread.sleep(segundos * 100);
@@ -347,12 +364,14 @@ public class Pregunta {
         }
     }
 
+    //Metodo de limpieza para nuevos atributos
     public static void limpiar() {
         panel.removeAll();
         panel.repaint();
         panel.revalidate();
     }
 
+    //Metodo para reiniciar los resultados del cuestionario
     public static void restQuest() {
         cuestionario = 0;
         resultado = 0;
@@ -362,6 +381,7 @@ public class Pregunta {
         resultadoD = 0;
     }
 
+    //Obtencion de booleans por cada categoria 
     public static void restQuestChekPoint() {
         if (resultadoS == 3) {
             resS = true;
@@ -377,76 +397,97 @@ public class Pregunta {
         }
     }
 
+    //obtener el valor de posicion actual del cuestionario
     public static int getCuestio() {
         return cuestionario;
     }
 
+    //establecer finalidad del cuestionario
     public static void setCuestio() {
         cuestionario = 13;
     }
 
+    //establecer siguiente posicion del cuestionario
     public static void setCuestionario() {
         cuestionario++;
     }
 
+    //obtener el valor del resultado final
     public static int getResul() {
         return resultado;
     }
 
+    //obtener el valor del resultado suma
     public static int getResulS() {
         return resultadoS;
     }
 
+    //obtener el valor del resultado resta
     public static int getResulR() {
         return resultadoR;
     }
 
+    //obtener el valor del resultado multiplicacion
     public static int getResulM() {
         return resultadoM;
     }
 
+    //obtener el valor del resultado division
     public static int getResulD() {
         return resultadoD;
     }
 
+    //establecer valor final del suma
     public static void setResulS() {
         resultadoS = 3;
     }
 
+    //establecer valor final del resta
     public static void setResulR() {
         resultadoR = 3;
     }
 
+    //establecer valor final del multiplicacion
     public static void setResulM() {
         resultadoM = 3;
     }
 
+    //establecer valor final del division
     public static void setResulD() {
         resultadoD = 3;
     }
 
+    //obtener el boolean para categoria suma
     public static boolean getS() {
         return resS;
     }
 
+    //obtener el boolean para categoria resta
     public static boolean getR() {
         return resR;
     }
 
+    //obtener el boolean para categoria multiplicacion
     public static boolean getM() {
         return resM;
     }
 
+    //obtener el boolean para categoria division
     public static boolean getD() {
         return resD;
     }
 
+    //establecer posicion de cuestionario por categoria
     public static void setQuestCategory() {
         cuestionario = cuestionario + 3;
     }
+    
+    //establecer valor de resultado por categoria
     public static void setRestCategory() {
         resultado=resultado + 3;
     }
+    
+    //establecer nulo para las categorias por reinicio total del cuestionario
     public static void setRestBCateg(){
         resS=false;
         resR=false;

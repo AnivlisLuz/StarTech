@@ -23,6 +23,7 @@ import static preguntas.Cuestionario.panel;
 
 public class GrupoPreguntas {
 
+    //Metodo para iniciar el Cuestionario en categoria
     public static void showQuestionary() {
         Pregunta.restQuestChekPoint();
         Pregunta.restQuest();
@@ -49,7 +50,6 @@ public class GrupoPreguntas {
 
     private Thread thread;
 
-    //public static Category[] ca;
     public GrupoPreguntas(Pregunta[] preguntas) {
         thread = new Thread();
         thread.start();
@@ -60,6 +60,8 @@ public class GrupoPreguntas {
         etiqueta2 = new JLabel();
         imagen1 = new ImageIcon("recursos/imagenes/perdiste.jpg");
         imagen2 = new ImageIcon("recursos/imagenes/lograste.jpg");
+        
+        //Da reaccion al boton de reiniciar Cuestionario
         comando = new MouseListener() {
             public void mouseClicked(MouseEvent e) {
             }
@@ -78,6 +80,8 @@ public class GrupoPreguntas {
             public void mouseExited(MouseEvent e) {
             }
         };
+        
+        //Da reaccion al boton de iniciar Juego entrando primero a la categoria
         comando0 = new MouseListener() {
             public void mouseClicked(MouseEvent e) {
             }
@@ -128,6 +132,8 @@ public class GrupoPreguntas {
             public void mouseExited(MouseEvent e) {
             }
         };
+        
+        //Da reaccion al boton de reiniciar el Cuestionario desde el principio
         Denuevo=new MouseListener() {
             public void mouseClicked(MouseEvent e) {
             }
@@ -175,6 +181,7 @@ public class GrupoPreguntas {
 
     }
 
+    //Pone panel para el final del Cuestionario 
     public void hoja() {
         panel.add(reiniciar);
         panel.add(categoria0);
@@ -182,12 +189,14 @@ public class GrupoPreguntas {
         panel.add(etiqueta);
     }
 
+    //Pone el fondo 
     public void fondo() {
         etiqueta.setBounds(0, 0, ancho, alto);
         etiqueta.setOpaque(true);
         etiqueta.setIcon(new ImageIcon(imagen.getImage().getScaledInstance(etiqueta.getWidth(), etiqueta.getHeight(), Image.SCALE_DEFAULT)));
     }
 
+    //Caja de texto que muestra los resultados del Cuestionario
     public void resp() {
         etiqueta1.setBounds(ancho / 2 - 200, 100, 400, 200);
         etiqueta1.setHorizontalAlignment(SwingConstants.CENTER);
@@ -195,16 +204,19 @@ public class GrupoPreguntas {
 
     }
 
+    //Convierte texto de una linea a muchas lineas mas
     public static String convertToMultiline(String orig) {
         return "<html>" + orig.replaceAll("\n", "<br>");
     }
 
+    //limpia la pantalla
     public static void limpiar() {
         panel.removeAll();
         panel.repaint();
         panel.revalidate();
     }
 
+    //Boton para ir a categoria
     public static void irCategoria() {
         categoria0.setBounds(ancho - 270, alto - 120, 200, 50);
         categoria0.setText("Jugar");
@@ -212,6 +224,7 @@ public class GrupoPreguntas {
         categoria0.addMouseListener(comando0);
     }
 
+    //boton para reiniciar
     public static void rst() {
         reiniciar.setBounds(70, alto - 120, 200, 50);
         reiniciar.setText("Reiniciar");
@@ -219,6 +232,7 @@ public class GrupoPreguntas {
         reiniciar.addMouseListener(comando);
     }
 
+    //Metodo para finalizar cuestionario
     public void finalizarC() {
 
         limpiar();
@@ -262,6 +276,7 @@ public class GrupoPreguntas {
 
     }
 
+    //Metodo para obtener la condicion al finalizar el cuestionario
     public void condicionDeCategoria() {
         if (Pregunta.getCuestio() == 0) {
             if (Pregunta.getS() == true) {
