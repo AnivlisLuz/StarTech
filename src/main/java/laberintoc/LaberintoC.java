@@ -20,7 +20,8 @@ public class LaberintoC {
     //aux
     private static ArrayList<Punto> puntos = new ArrayList<>();
     
-    private ArrayList<Punto> camJ;
+    private ArrayList<Punto> camJ; //camino en el laberinto
+    
     private int aux1;
     private int aux2;
     private int[][] auxMat;
@@ -371,6 +372,8 @@ public class LaberintoC {
         //return rellenarJ(matAux, condicion);
         return matAux;
     }
+    
+    //Retorna una lista de los números vecinos de arriba, abajo, izquierda y derecha
     private ArrayList<Integer> obtenerVecinos(int i, int j, int[][] mat){
         ArrayList<Integer> res = new ArrayList<>();
         if(esValido(i-1,j, mat)){
@@ -387,14 +390,17 @@ public class LaberintoC {
         }
         return res;
     }
+    
+    //verifica si la posición es valida (si esta dentro de los límites de la matriz)
     private boolean esValido(int i, int j, int[][] mat){
         boolean res = false;
         if(i >= 0 && j>=0 && i<mat.length && j<mat.length){
             res = true;
         }
-            //(x < 0 || x >= mat.length || y < 0 || y >= mat.length) && (mat[x][y] != 0);
         return res;
     }
+    
+    //Retorna la matriz de ceros (paredes) y unos (camino)
     private int[][] limpiarUnos(int[][] matAux){
         int[][] res = new int[matAux.length][matAux.length];
         int pos = 0;
@@ -406,8 +412,18 @@ public class LaberintoC {
         }
         return res;
     }
+    
+    /*
+    Rellena el laberinto necesario para el proyecto con números aleatorios,
+    éste método es para secuencia y suma.
+    @Param
+        Una matriz de ceros y unos. 
+        Una condición, para rellenar el camino.
+    */
     public int[][] rellenarJ(int[][] matAux, int condicion){
-        int[][] res = limpiarUnos(matAux);
+        int[][] res = limpiarUnos(matAux); 
+        //En éste for, los puntos de la lista camJ(camino) actualizan su valor 
+        //según la condición, el primer valor es uno
         for(int a=0; a<camJ.size(); a++){
             Punto act = camJ.get(a);
             if(a == 0){
@@ -417,6 +433,8 @@ public class LaberintoC {
                 act.setValor(ant.getValor()+condicion);
             }
         }
+        //En este while se rellena el laberinto con todos los valores de
+        //los Puntos de la lista camJ(camino)
         int pos = 0;
         while(pos < camJ.size()){
             Punto aux = camJ.get(pos);
@@ -424,7 +442,9 @@ public class LaberintoC {
             res[x][y] = camJ.get(pos).getValor();
             pos++;
         }
-        
+        //En este for se rellena los espacios que faltan en el laberinto
+        //primeramente verifica que no haya problemas con los vecinos
+        //y luego rellena con un número Random
         for(int i=0; i<res.length; i++){
             for(int j= 0; j<res.length; j++){
                 int act = res[i][j];
@@ -441,8 +461,17 @@ public class LaberintoC {
         }
         return res;
     }
+    /*
+    Rellena el laberinto necesario para el proyecto con números aleatorios,
+    éste método es para resta.
+    @Param
+        Una matriz de ceros y unos. 
+        Una condición, para rellenar el camino.
+    */
     public int[][] rellenarJ2(int[][] matAux, int condicion){
         int[][] res = limpiarUnos(matAux);
+        //En éste for, los puntos de la lista camJ actualizan su valor 
+        //según la condición, el primer valor es el tamaño del camJ(camino)*condicion 
         for(int a=0; a<camJ.size(); a++){
             Punto act = camJ.get(a);
             if(a == 0){
@@ -452,6 +481,8 @@ public class LaberintoC {
                 act.setValor(ant.getValor()-condicion);
             }
         }
+        //En este while se rellena el laberinto con todos los valores de
+        //los Puntos de la lista camJ(camino)
         int pos = 0;
         while(pos < camJ.size()){
             Punto aux = camJ.get(pos);
@@ -459,6 +490,9 @@ public class LaberintoC {
             res[x][y] = camJ.get(pos).getValor();
             pos++;
         }
+        //En este for se rellena los espacios que faltan en el laberinto
+        //primeramente verifica que no haya problemas con los vecinos
+        //y luego rellena con un número Random
         for(int i=0; i<res.length; i++){
             for(int j= 0; j<res.length; j++){
                 int act = res[i][j];
@@ -476,8 +510,17 @@ public class LaberintoC {
         
         return res;
     }
+    /*
+    Rellena el laberinto necesario para el proyecto con números aleatorios,
+    éste método es para multiplicación y divición.
+    @Param
+        Una matriz de ceros y unos. 
+        Una condición, para rellenar el camino.
+    */
     public int[][] rellenarJ3(int[][] matAux, int condicion){
         int[][] res = limpiarUnos(matAux);
+        //En éste for, los puntos de la lista camJ actualizan su valor 
+        //según la condición, el primer valor es la condición
         for(int a=0; a<camJ.size(); a++){
             Punto act = camJ.get(a);
             if(a == 0){
@@ -487,6 +530,8 @@ public class LaberintoC {
                 act.setValor(rand*condicion);
             }
         }
+        //En este while se rellena el laberinto con todos los valores de
+        //los Puntos de la lista camJ(camino)
         int pos = 0;
         while(pos < camJ.size()){
             Punto aux = camJ.get(pos);
@@ -494,6 +539,9 @@ public class LaberintoC {
             res[x][y] = camJ.get(pos).getValor();
             pos++;
         }
+        //En este for se rellena los espacios que faltan en el laberinto
+        //primeramente verifica que no haya problemas con los vecinos
+        //y luego rellena con un número Random
         for(int i=0; i<res.length; i++){
             for(int j= 0; j<res.length; j++){
                 int act = res[i][j];
@@ -530,7 +578,8 @@ public class LaberintoC {
         }
         return n;
     }
-
+    //Verifica que el número dado no tenga problemas con los vecinos
+    //Este método es para secuencia y suma
     private boolean esIgualAVecino(int n, ArrayList<Integer> vecinos, int condicion) {
         boolean res = false;
         for (int i = 0; i < vecinos.size(); i++) {
@@ -541,6 +590,8 @@ public class LaberintoC {
         }
         return res;
     }
+    //Verifica que el número dado no tenga problemas con los vecinos
+    //Este método es para resta
     private boolean esIgualAVecino2(int n, ArrayList<Integer> vecinos, int condicion) {
         boolean res = false;
         for (int i = 0; i < vecinos.size(); i++) {
@@ -551,6 +602,8 @@ public class LaberintoC {
         }
         return res;
     }
+    //Verifica que el número dado no tenga problemas con los vecinos
+    //Este método es para multiplicación y divición
     private boolean esIgualAVecino3(int n, int condicion) {
         boolean res = false;
             if (n%condicion == 0){
@@ -562,54 +615,6 @@ public class LaberintoC {
     public boolean noEsPared(int[][] mat, int x, int y) {
         return !(x < 0 || x >= mat.length || y < 0 || y >= mat.length) && (mat[x][y] != 0);
     }
-
-//    public int[][] generarParedes(int[][] mat) {
-//        int[][] matAux = mat;
-//        for (int i = 0; i < matAux.length; i++) {
-//            for (int j = 0; j < matAux.length; j++) {
-//                if (matAux[i][j] == 0) {
-//                    ArrayList<Integer> vecinos = new ArrayList<Integer>();
-//
-//                    if (noEsPared(matAux, i - 1, j - 1)) {
-//                        vecinos.add(matAux[i - 1][j - 1]);
-//                    }
-//                    if (noEsPared(matAux, i, j - 1)) {
-//                        vecinos.add(matAux[i][j - 1]);
-//                    }
-//                    if (noEsPared(matAux, i + 1, j - 1)) {
-//                        vecinos.add(matAux[i + 1][j - 1]);
-//                    }
-//                    if (noEsPared(matAux, i - 1, j)) {
-//                        vecinos.add(matAux[i - 1][j]);
-//                    }
-//                    if (noEsPared(matAux, i + 1, j)) {
-//                        vecinos.add(matAux[i + 1][j]);
-//                    }
-//                    if (noEsPared(matAux, i - 1, j + 1)) {
-//                        vecinos.add(matAux[i - 1][j + 1]);
-//                    }
-//                    if (noEsPared(matAux, i, j + 1)) {
-//                        vecinos.add(matAux[i][j + 1]);
-//                    }
-//                    if (noEsPared(matAux, i + 1, j + 1)) {
-//                        vecinos.add(matAux[i + 1][j + 1]);
-//                    }
-//                    /*
-//                    int rand;
-//                    do
-//                    {
-//                        rand = getRandom(getMenor(vecinos), getMayor(vecinos) + 5);
-//                    }
-//                    while(!esIgualAVecino(rand, vecinos));
-//                     */
-//                    int rand = getRandom(getMayor(vecinos) + 1, getMayor(vecinos) + 5);
-//
-//                    matAux[i][j] = rand;
-//                }
-//            }
-//        }
-//        return matAux;
-//    }
 
     public int[][] genPar(int[][] mat, ArrayList<Punto> camino) {
         int[][] matAux = mat;

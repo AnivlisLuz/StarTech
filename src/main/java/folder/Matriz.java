@@ -7,12 +7,10 @@ import laberintoc.Punto;
 public abstract class Matriz {
 
     public int tamaño;
-    protected int[][] matriz;
-    protected int[][] laberinto;
-    private Punto inicio;
+    protected int[][] matriz;//matriz de ceros y unos
+    protected int[][] laberinto;//laberinto relleno de números 
     private Punto meta;
-    private ArrayList<Punto> camino;
-    //private Punto[] camino;
+    private ArrayList<Punto> camino;//camino del laberinto
     protected LaberintoC lab;
     private int pos;
 
@@ -21,20 +19,17 @@ public abstract class Matriz {
         lab = new LaberintoC(tamaño);
         matriz = new int[tamaño][tamaño];
         laberinto = new int[tamaño][tamaño];
-        inicio = null;
         meta = new Punto(tamaño - 1, tamaño - 1);
-        //camino = new Punto[]{new Punto(0,0), new Punto(0, 1), new Punto(0, 2), new Punto(1, 0), new Punto(1, 2), new Punto(2, 0), new Punto(2, 2)};
         camino = new ArrayList<Punto>();
         pos = 0;
     }
 
-//    public void setCamino(){
-//        camino = lab.getCamino();
-//    }
+    //Punto final en el camino correcto del laberinto
     public Punto getMeta() {
         return meta;
     }
 
+    //Método para verificar el avance del usuario en el laberinto
     public boolean verificarMovimiento(Punto p) {
         Punto a = camino.get(pos);
         //Punto a = camino[pos];
@@ -48,37 +43,22 @@ public abstract class Matriz {
         return res;
     }
 
+    //Método abstracto para rellenar el laberinto segun la categoria
     abstract public void rellenarLaberinto();
 
+    //genera la matriz de ceros y unos, y el camino 
     public void generarLaberinto() {
         matriz = lab.generarMatriz(tamaño);
         int[][] matAux = lab.generarCamino(matriz, 1);
         camino = lab.getCamino(matAux);
     }
 
+    //retorna el laberinto
     public int[][] getLaberinto() {
-//        int[][] laberinto = {
-//            {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-//            {1, 0, 1, 0, 1, 0, 1, 0, 1, 0},
-//            {1, 0, 1, 0, 1, 0, 1, 0, 1, 0},
-//            {1, 0, 1, 0, 1, 0, 1, 0, 1, 0},
-//            {1, 0, 1, 0, 1, 0, 1, 0, 1, 0},
-//            {1, 0, 1, 0, 1, 0, 1, 0, 1, 0},
-//            {1, 0, 1, 0, 1, 0, 1, 0, 1, 0},
-//            {1, 0, 1, 0, 1, 0, 1, 0, 1, 0},
-//            {1, 0, 1, 0, 1, 0, 1, 0, 1, 0},
-//            {1, 0, 1, 0, 1, 0, 1, 0, 1, 0}
-//        };
         return laberinto;
     }
 
-    public ArrayList<Punto> getCamino() {
-        return camino;
-    }
-    // public Punto[] getCamino(){
-    //     return camino;
-    // }
-
+    //pone en cero la posicion. para la verificacion segun el camino
     public void reset() {
         pos = 0;
     }

@@ -1,25 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package folder;
 
-/**
- *
- * @author Criss
- */
-public class Suma extends Matriz{
-    
-    private int condicion;
-    
-    public Suma(int tamaño, int condicion){
+public class Suma extends Matriz {
+
+    private int condicion;//Condición para avanzar en el laberinto
+
+    public Suma(int tamaño, int condicion) {
         super(tamaño);
         this.condicion = condicion;
     }
-    
-    public void rellenarLaberinto(){
-//        laberinto = lab.generarCamino(matriz, condicion);   
+
+    //Método para crear un Laberinto según la condición o nivel
+    public void rellenarLaberinto() {
         laberinto = lab.rellenarJ(matriz, condicion);
     }
 }

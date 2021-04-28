@@ -7,14 +7,15 @@ import app.startech.screens.LevelScreen;
 import java.awt.Color;
 import laberintoc.Punto;
 
+//Clase que se encarga de la parte visual del laberinto
 public class VentanaLaberinto extends javax.swing.JFrame {
 
     private Laberinto laberinto;
     private Boton[][] botones;
-    private Category category;
-    private Level level;
+    private Category category;//--
+    private Level level;//--
     private LevelScreen ventanaLevel;
-    private CategoryScreen ventanaCategory;
+    private CategoryScreen ventanaCategory;//--
 
     public VentanaLaberinto(Category c, Level l, LevelScreen ventanaLevel, CategoryScreen ventanaCategory) {
         this.ventanaCategory = ventanaCategory;
@@ -23,22 +24,23 @@ public class VentanaLaberinto extends javax.swing.JFrame {
         category = c;
         level = l;
         laberinto.mostrarMatriz();
-        botones = new Boton[laberinto.getMatriz().getLaberinto().length][laberinto.getMatriz().getLaberinto()[0].length];
+        botones = new Boton[laberinto.getMatriz().getLaberinto().length][laberinto.getMatriz().getLaberinto()[0].length];//matriz de botones...para la parte visual
         initComponents();
         mostrarLaberinto();
         setLocationRelativeTo(null);
     }
 
+    //Método para ordenar y mostrar el laberinto de botones
     public void mostrarLaberinto() {
-        jLabel1.setText(laberinto.getTitulo());
-        jLabel2.setText(laberinto.getCondicion());
-        jTextArea1.setText(laberinto.getMensaje());
+        jLabel1.setText(laberinto.getTitulo());//Título. Ejm: Secuencia/Suma/Resta/Multiplicación/Divición
+        jLabel2.setText(laberinto.getCondicion());//Condicion para cada nivel. Ejm: Suma de uno en uno, Resta de dos en dos
+        jTextArea1.setText(laberinto.getMensaje());//Mensaje motivacional que aparece en cada laberinto.
         jTextArea1.setLineWrap(true);
         jTextArea1.setWrapStyleWord(true);
         jTextArea1.setEditable(false);
-        int aux = laberinto.getMatriz().getLaberinto().length;
-        int x = 0, y = 0, m = 0, n = 0;
-        if (aux == 3) {
+        int aux = laberinto.getMatriz().getLaberinto().length;//Tamaño del laberinto (todos los laberintos son cuadrados)
+        int x = 0, y = 0, m = 0, n = 0;//x,y: posicion en pantalla. m,n: tamaño del boton
+        if (aux == 3) {//En estos if/else se modifica la posicion y el tamaño de los botones segun el tamaño del laberinto
             x = 100;
             y = 0;
             m = 113;
@@ -65,16 +67,16 @@ public class VentanaLaberinto extends javax.swing.JFrame {
         int tamY = laberinto[0].length;
         for (int i = 0; i < tamX; i++) {
             for (int j = 0; j < tamY; j++) {
-                Punto p = new Punto(i, j);
+                //Creamos un objeto de clase Boton con sus parámetros necesarios
                 Boton b = new Boton(x, y, m, n, this.laberinto, i, j, category, level, this, ventanaCategory, ventanaLevel);
-                botones[i][j] = b;
-                int nom = laberinto[i][j];
-                String nomCadena = String.valueOf(nom);
-                botones[i][j].setText(nomCadena);
-                jPanel1.add(botones[i][j]);
-                x += m;
+                botones[i][j] = b;//añadimos el Boton creado
+                int nom = laberinto[i][j];//obtenemos el número del laberinto en la posicion i,j
+                String nomCadena = String.valueOf(nom);//convertimos en cadena ese número obtenido
+                botones[i][j].setText(nomCadena);//cambiamos el texto del boton por el numero obtenido
+                jPanel1.add(botones[i][j]);//se añade el boton en el jPanel
+                x += m;//se recorre la posicion para el siguiente Boton
             }
-            if (aux == 3) {
+            if (aux == 3) {//En estos if/else se reinicia la posición inicial segun el tamaño del laberinto
                 x = 100;
             } else if (aux == 4) {
                 x = 90;
@@ -88,6 +90,7 @@ public class VentanaLaberinto extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }
 
+    //se refresca el mismo laberinto, cambiando a su color inicial de los botones     
     public void refresh() {
         for (int i = 0; i < botones.length; i++) {
             for (int j = 0; j < botones.length; j++) {
@@ -98,6 +101,7 @@ public class VentanaLaberinto extends javax.swing.JFrame {
         laberinto.getMatriz().reset();
     }
 
+    //Pierde una vida. De forma visual oculta el jLabel para simular que pierde una vida
     public void ocultarVida() {
         if (laberinto.getVidas() == 3) {
             jLabelVida1.setVisible(false);
@@ -245,12 +249,13 @@ public class VentanaLaberinto extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //Boton para cerrar la ventana del laberinto y volver a la ventana del menú de niveles 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         laberinto.restaurarVidas();
         dispose();
         ventanaLevel.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
-   
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
