@@ -6,10 +6,7 @@
 package app.startech.screens;
 
 import app.startech.models.Category;
-import app.startech.models.Level;
-import data.DataController;
 import forms.Login;
-import forms.Usuario;
 import java.awt.BorderLayout;
 import static java.awt.BorderLayout.CENTER;
 import static java.awt.BorderLayout.EAST;
@@ -23,7 +20,6 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import preguntas.GrupoPreguntas;
-import preguntas.Pregunta;
 
 /**
  *
@@ -60,16 +56,25 @@ public class CategoryScreen extends javax.swing.JFrame {
     }
 
     private void initComponent() {
+        // Se coloca el tamaño de la pantalla por defecto
         setSize(800, 500);
+        // Se configura el titulo
         setTitle("StarTech");
+        //Esta porción de código sirve para centrar
         setLocationRelativeTo(null);
+        //Esta porción de código sirve para que no se cierra el programa cuando se cierra una sola ventana
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        // Se establece el contenedor de los botones
         JPanel buttons = new JPanel(new GridLayout(categories.length, 1));
         buttons.setBackground(new Color(0, 0, 0, 0));
+        // Se itera categorias
         for (Category category : categories) {
+            // Se crea una nueva instancia de panel
             JPanel panel = new JPanel();
+            // Se coloca el titulo de categoria al boton
             JButton button = new JButton(category.getTitle());
             button.setPreferredSize(new Dimension(200, 50));
+            // 
             button.setEnabled(category.getActive());
             button.addActionListener((action) -> {
                 LevelScreen levelScreen = new LevelScreen(category, this);
@@ -78,22 +83,23 @@ public class CategoryScreen extends javax.swing.JFrame {
             panel.add(button);
             buttons.add(panel);
             panel.setBackground(new Color(0, 0, 0, 0));
-        };
-
+        }
+        // Se establece el contenedor de arriba para el titulo con un borde vacio
         JPanel title = new JPanel(new BorderLayout());
         title.setBorder(new EmptyBorder(0, 0, 50, 0));
-
+        // Se establece el contenedor de abajo para los botones atras y realizar test con la dimensión y un borde vacio
         JPanel options = new JPanel(new BorderLayout());
         options.setSize(new Dimension(200, 50));
         options.setBorder(new EmptyBorder(10, 10, 10, 10));
-
-        JButton buton = new JButton("Realizar TEST");
-        buton.addActionListener((action) -> {
+        // Se instancia el boton para hacer el test y su funcionamiento
+        JButton startTest = new JButton("Realizar TEST");
+        startTest.addActionListener((action) -> {
             GrupoPreguntas.showQuestionary();
             setVisible(false);
         });
-        buton.setPreferredSize(new Dimension(200, 50));
-        options.add(buton, EAST);
+        startTest.setPreferredSize(new Dimension(200, 50));
+        options.add(startTest, EAST);
+        // Se instancia el boton de atras, que lleva al login
         JButton atras = new JButton("Atras");
         atras.addActionListener((action) -> {
             Login abrir = new Login();
@@ -102,7 +108,7 @@ public class CategoryScreen extends javax.swing.JFrame {
         });
         atras.setPreferredSize(new Dimension(200, 50));
         options.add(atras, WEST);
-
+        // se estable la ubicación de los distintos contenedores
         add(buttons, CENTER);
         add(options, SOUTH);
         add(title, NORTH);

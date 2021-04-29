@@ -43,12 +43,15 @@ public class LevelScreen extends javax.swing.JFrame {
     }
     
     private void initComponent() {
-        
+        // Se coloca el tamaño de la pantalla por defecto
         setSize(800, 500);
+        // Se configura el titulo
         setTitle("StarTech");
+        //Esta porción de código sirve para centrar
         setLocationRelativeTo(null);
+        //Esta porción de código sirve para que no se cierra el programa cuando se cierra una sola ventana
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-
+        //Se establece la distribución de los botones
         JPanel buttons = new JPanel(
                 new GridLayout(
                         levels.length <= 5
@@ -56,7 +59,7 @@ public class LevelScreen extends javax.swing.JFrame {
                                 : levels.length / 2,
                         1)
         );
-
+        //Se itiera los niveles, intanciando un panel, ponendo titulo a cada boton y estableciendo una dimensión 
         for (Level level : levels) {
             JPanel panel = new JPanel();
             JButton button = new JButton(level.getTitle());
@@ -69,11 +72,11 @@ public class LevelScreen extends javax.swing.JFrame {
             panel.add(button);
             buttons.add(panel);
         }
-
+        //Se estableceel contenedor de abajo para el boton de Atras, con dimensión y borde vacio.
         JPanel options = new JPanel(new BorderLayout());
         options.setSize(new Dimension(200, 50));
         options.setBorder(new EmptyBorder(10, 10, 10, 10));
-
+         // Se instancia el boton de atras, que lleva a la ventana de categorias
         JButton buton = new JButton("Atras");
         buton.addActionListener((action) -> {
             dispose();
@@ -81,13 +84,13 @@ public class LevelScreen extends javax.swing.JFrame {
         });
         buton.setPreferredSize(new Dimension(200, 50));
         options.add(buton, WEST);
-
+        //Se establece el contenedor de arriba para el titulo dando un tamaño y un borde vacio
         JPanel titleContainer = new JPanel();
         JLabel titulo = new JLabel(title);
         titulo.setFont(new Font(titulo.getFont().getFamily(), titulo.getFont().getStyle(), 20));
         titleContainer.setBorder(new EmptyBorder(10, 10, 10, 10));
         titleContainer.add(titulo);
-
+        // se estable la ubicación de los distintos contenedores
         add(titleContainer, NORTH);
         add(buttons, CENTER);
         add(options, SOUTH);
