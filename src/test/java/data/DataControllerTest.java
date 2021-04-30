@@ -48,8 +48,6 @@ public class DataControllerTest {
         Usuario expResult = null;
         Usuario result = instance.getUsuarioActual();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -58,11 +56,12 @@ public class DataControllerTest {
     @Test
     public void testSetUsuarioActual_Usuario() {
         System.out.println("setUsuarioActual");
-        Usuario usuarioActual = null;
+        Usuario usuarioActual = new Usuario();
         DataController instance = new DataController();
         instance.setUsuarioActual(usuarioActual);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Usuario expResult = usuarioActual;
+        Usuario result = instance.getUsuarioActual();
+        assertEquals(expResult, result);
     }
 
     /**
@@ -74,8 +73,9 @@ public class DataControllerTest {
         int index = 0;
         DataController instance = new DataController();
         instance.setUsuarioActual(index);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Usuario expResult = instance.usuarios.get(0);
+        Usuario result = instance.getUsuarioActual();
+        assertEquals(expResult, result);
     }
     
 }

@@ -70,11 +70,12 @@ public class UsuarioTest {
     @Test
     public void testSetNombre() {
         System.out.println("setNombre");
-        String nombre = "";
-        Usuario instance = new Usuario("nombre","20");
+        String nombre = "nombre";
+        Usuario instance = new Usuario();
+        
         instance.setNombre(nombre);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String result = instance.getNombre();
+        assertEquals(nombre, result);
     }
 
     /**
@@ -83,11 +84,12 @@ public class UsuarioTest {
     @Test
     public void testSetEdad() {
         System.out.println("setEdad");
-        String edad = "";
+        String edad = "9";
         Usuario instance = new Usuario();
+
         instance.setEdad(edad);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String result = instance.getEdad();
+        assertEquals(edad, result);
     }
 
     /**
@@ -96,11 +98,9 @@ public class UsuarioTest {
     @Test
     public void testMostrar() {
         System.out.println("mostrar");
-        ArrayList<Usuario> expResult = null;
+        ArrayList<Usuario> expResult = new ArrayList<>();
         ArrayList<Usuario> result = Usuario.mostrar();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -113,8 +113,6 @@ public class UsuarioTest {
         boolean expResult = false;
         boolean result = Usuario.verificarUsuario(nombre);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**

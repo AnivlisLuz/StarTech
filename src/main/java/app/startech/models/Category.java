@@ -46,7 +46,7 @@ public class Category {
     public Level[] getLevels() {
         return levels;
     }
-    
+    // Se obtiene el siguiente nivel, si esque lo tuviera
     public Level nextLevel(Level level) {
         Level res = null;
         for (int i = 0; i < levels.length; i++) {

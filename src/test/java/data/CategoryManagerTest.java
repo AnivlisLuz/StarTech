@@ -18,22 +18,22 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author luzch
  */
 public class CategoryManagerTest {
-    
+
     public CategoryManagerTest() {
     }
-    
+
     @BeforeAll
     public static void setUpClass() {
     }
-    
+
     @AfterAll
     public static void tearDownClass() {
     }
-    
+
     @BeforeEach
     public void setUp() {
     }
-    
+
     @AfterEach
     public void tearDown() {
     }
@@ -45,11 +45,15 @@ public class CategoryManagerTest {
     public void testGetAllCategories() {
         System.out.println("getAllCategories");
         CategoryManager instance = new CategoryManager();
-        Category[] expResult = null;
+        Category[] expResult = new Category[]{
+            instance.secuencia,
+            instance.suma,
+            instance.resta,
+            instance.multiplicacion,
+            instance.division
+        };
         Category[] result = instance.getAllCategories();
         assertArrayEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
-    
+
 }
