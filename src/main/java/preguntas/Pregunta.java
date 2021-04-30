@@ -33,7 +33,7 @@ public class Pregunta {
     private static Boolean resM = false;
     private static Boolean resD = false;
 
-    private int auxiliar;
+    private static int auxiliar;
     private int esCorrecto;
 
     public static JLabel etiqueta;
@@ -190,14 +190,16 @@ public class Pregunta {
             public void mouseExited(MouseEvent e) {
             }
         };
-        limpiar();
-        hoja();
-        fondo();
-        pregun();
-        inciso();
-        inciso1();
-        inciso2();
-        getVRes();
+        if (preguntas.Cuestionario.panel != null) {
+            limpiar();
+            hoja();
+            fondo();
+            pregun();
+            inciso();
+            inciso1();
+            inciso2();
+            getVRes();
+        }
     }
 
     public static void hoja() {
@@ -444,13 +446,19 @@ public class Pregunta {
     public static void setQuestCategory() {
         cuestionario = cuestionario + 3;
     }
+
     public static void setRestCategory() {
-        resultado=resultado + 3;
+        resultado = resultado + 3;
     }
-    public static void setRestBCateg(){
-        resS=false;
-        resR=false;
-        resM=false;
-        resD=false;
+
+    public static void setRestBCateg() {
+        resS = false;
+        resR = false;
+        resM = false;
+        resD = false;
+    }
+
+    public static int getAuxiliar() {
+        return auxiliar;
     }
 }
