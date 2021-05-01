@@ -33,7 +33,7 @@ public class Pregunta {
     private static Boolean resM = false;
     private static Boolean resD = false;
 
-    private int auxiliar;
+    private static int auxiliar;
     private int esCorrecto;
 
     public static JLabel etiqueta;
@@ -484,7 +484,7 @@ public class Pregunta {
     
     //establecer valor de resultado por categoria
     public static void setRestCategory() {
-        resultado=resultado + 3;
+        resultado = resultado + 3;
     }
     
     //establecer nulo para las categorias por reinicio total del cuestionario

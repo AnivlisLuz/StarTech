@@ -45,8 +45,10 @@ public class CategoryTest {
         System.out.println("setActive");
         Category instance = new Category(1,"title",false,null);
         instance.setActive();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
+        boolean expResult = true;
+        boolean result = instance.getActive();
+        assertEquals(expResult, result);
     }
 
     /**
@@ -97,8 +99,6 @@ public class CategoryTest {
         boolean active = false;
         Category instance = new Category(1,"title",false,null);
         instance.setActive(active);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -121,7 +121,7 @@ public class CategoryTest {
     public void testNextLevel() {
         System.out.println("nextLevel");
         Level level = null;
-        Category instance = new Category(1,"title",false,null);
+        Category instance = new Category(1,"title",false,new Level[0]);
         
         Level expResult = null;
         Level result = instance.nextLevel(level);

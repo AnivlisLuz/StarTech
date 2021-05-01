@@ -74,12 +74,14 @@ public class CategoryScreen extends javax.swing.JFrame {
             // Se coloca el titulo de categoria al boton
             JButton button = new JButton(category.getTitle());
             button.setPreferredSize(new Dimension(200, 50));
-            // 
+            // Habilita y deshabilita según la categoria
             button.setEnabled(category.getActive());
+            // Se ejecuta la accion al hacer click
             button.addActionListener((action) -> {
                 LevelScreen levelScreen = new LevelScreen(category, this);
                 setVisible(false);
             });
+            
             panel.add(button);
             buttons.add(panel);
             panel.setBackground(new Color(0, 0, 0, 0));
@@ -108,7 +110,7 @@ public class CategoryScreen extends javax.swing.JFrame {
         });
         atras.setPreferredSize(new Dimension(200, 50));
         options.add(atras, WEST);
-        // se estable la ubicación de los distintos contenedores
+        // Se estable la ubicación de los distintos contenedores
         add(buttons, CENTER);
         add(options, SOUTH);
         add(title, NORTH);

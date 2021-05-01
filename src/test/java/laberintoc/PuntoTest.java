@@ -17,22 +17,22 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author luzch
  */
 public class PuntoTest {
-    
+
     public PuntoTest() {
     }
-    
+
     @BeforeAll
     public static void setUpClass() {
     }
-    
+
     @AfterAll
     public static void tearDownClass() {
     }
-    
+
     @BeforeEach
     public void setUp() {
     }
-    
+
     @AfterEach
     public void tearDown() {
     }
@@ -48,7 +48,6 @@ public class PuntoTest {
         int result = instance.getPosX();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -61,7 +60,7 @@ public class PuntoTest {
         Punto instance = new Punto();
         instance.setPosX(posX);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(instance.getPosX(), posX);
     }
 
     /**
@@ -75,7 +74,6 @@ public class PuntoTest {
         int result = instance.getPosY();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -88,7 +86,7 @@ public class PuntoTest {
         Punto instance = new Punto();
         instance.setPosY(posY);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(instance.getPosY(), posY);
     }
 
     /**
@@ -102,7 +100,6 @@ public class PuntoTest {
         int result = instance.getValor();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -115,7 +112,7 @@ public class PuntoTest {
         Punto instance = new Punto();
         instance.setValor(valor);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(instance.getValor(), valor);
     }
 
     /**
@@ -129,7 +126,6 @@ public class PuntoTest {
         boolean result = instance.getVisitada();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -142,37 +138,42 @@ public class PuntoTest {
         Punto instance = new Punto();
         instance.setVisitada(visitada);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(instance.getVisitada(), visitada);
     }
 
     /**
      * Test of getSiguiente method, of class Punto.
      */
-    @Test
+    /* @Test
     public void testGetSiguiente() {
-        System.out.println("getSiguiente");
-        Punto punto = null;
-        Punto instance = new Punto();
-        Punto expResult = null;
-        Punto result = instance.getSiguiente(punto);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
+    System.out.println("getSiguiente");
+    int a=0;
+    boolean b=false;
+    int c=0;
+    int d=0;
+    Punto punto = new Punto(a,b,c,d);
+    Punto instance = new Punto();
+    Punto expResult = new Punto(a,b,c,d);
+    Punto result = instance.getSiguiente(punto);
+    assertEquals(expResult, result);
+    // TODO review the generated test code and remove the default call to fail.
+    }*/
     /**
      * Test of igual method, of class Punto.
      */
     @Test
     public void testIgual() {
         System.out.println("igual");
-        Punto a = null;
+        int a = 0;
+        boolean b = false;
+        int c = 0;
+        int d = 0;
+        Punto p = new Punto(a,b,c,d);
         Punto instance = new Punto();
-        boolean expResult = false;
-        boolean result = instance.igual(a);
+        boolean expResult = true;
+        boolean result = instance.igual(p);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -186,7 +187,6 @@ public class PuntoTest {
         int result = instance.getOrden();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -199,7 +199,7 @@ public class PuntoTest {
         Punto instance = new Punto();
         instance.setOrden(orden);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(instance.getOrden(), orden);
     }
-    
+
 }
