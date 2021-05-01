@@ -17,7 +17,7 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public class LaberintoC {
 
-    //aux
+    //Declaración de atributos de la clase.
     private static ArrayList<Punto> puntos = new ArrayList<>();
     
     private ArrayList<Punto> camJ; //camino en el laberinto
@@ -32,26 +32,24 @@ public class LaberintoC {
     private Casilla[][] casillas;
     private Random random = new Random();
 
+    //Constructor únicamente con el parámetro de tamaño.
     public LaberintoC(int tamano) {
         this(tamano, tamano);
     }
 
+    //Constructor con coordenadas x e y, que en este contexto sería el tamaño.
     public LaberintoC(int x, int y) {
         X = x;
         Y = y;
         matX = x * 4 + 1;
         matY = y * 2 + 1;
-        //aux
-        aux1 = x;
-        aux2 = y;
-        auxMat = new int[aux1][aux2];
-        //fin aux
         mat = new char[matX][matY];
         camJ = new ArrayList<>();
         init();
         generarLaberinto();
     }
 
+    //Método para inicializar el laberinto y para generar una matriz de casillas que no son pared del laberinto.
     private void init() {
         casillas = new Casilla[X][Y];
         for (int x = 0; x < X; x++) {
@@ -61,33 +59,43 @@ public class LaberintoC {
         }
     }
 
+    //Parte del método para generar laberinto, este llama al método del mismo nombre pero con la coordenada inicial de (0,0)
     private void generarLaberinto() {
         generarLaberinto(0, 0);
     }
-
+    
+    //Segunda parte del método para generar la matriz de casillas, esta mandará la casilla inical que sea ingresada.
     private void generarLaberinto(int x, int y) {
         generarLaberinto(getCasilla(x, y));
     }
 
+    //Éste método rellena la matriz a partir de una casilla inicial.
     private void generarLaberinto(Casilla ini) {
+        //Si la casilla inical ingresada no tiene ningún valor el método para.
         if (ini == null) {
             return;
         }
+        //Se declara el parámetro de casilla abierta o disponible como false.
         ini.abierta = false;
         ArrayList<Casilla> casillas = new ArrayList<>();
         casillas.add(ini);
 
+        //Ciclo que se repite hasta que el arreglo de casilla esté vacío.
         while (!casillas.isEmpty()) {
             Casilla casilla;
 
+            //Se genera un número al azar
             if (random.nextInt(10) == 0) {
+                //Se elimina una posición aleatoria del arreglo.
                 casilla = casillas.remove(random.nextInt(casillas.size()));
             } else {
+                //Se elimina una posición aleatoria del arreglo.
                 casilla = casillas.remove(casillas.size() - 1);
             }
 
             ArrayList<Casilla> vecinos = new ArrayList<>();
 
+            //Se genera un arreglo con posibles vecinos.
             Casilla[] posiblesVecinos = new Casilla[]{
                 getCasilla(casilla.x + 1, casilla.y),
                 getCasilla(casilla.x, casilla.y + 1),
@@ -95,6 +103,7 @@ public class LaberintoC {
                 getCasilla(casilla.x, casilla.y - 1)
             };
 
+            //Se le añaden vecinos al arreglo.
             for (Casilla aux : posiblesVecinos) {
                 if (aux == null || aux.pared || !aux.abierta) {
                     continue;
@@ -106,6 +115,7 @@ public class LaberintoC {
                 continue;
             }
 
+            //Se añade una casilla al azar al arreglo de vecinos.
             Casilla seleccionada = vecinos.get(random.nextInt(vecinos.size()));
             seleccionada.abierta = false;
             casilla.addVecino(seleccionada);
@@ -114,6 +124,7 @@ public class LaberintoC {
         }
     }
 
+    //Método para devolver una casilla.
     public Casilla getCasilla(int x, int y) {
         try {
             return casillas[x][y];
@@ -122,11 +133,13 @@ public class LaberintoC {
         }
     }
 
+    //Método que "Resuelve el laberinto" (Sirve para generar el camino de la matriz).
     public void solve() {
         this.solve(0, 0, X - 1, Y - 1);
     }
 
     public void solve(int iniX, int iniY, int finX, int finY) {
+        //Se genera un arreglo de nuevas casillas.
         for (Casilla[] filaCasilla : this.casillas) {
             for (Casilla casilla : filaCasilla) {
                 casilla.padre = null;
@@ -137,9 +150,12 @@ public class LaberintoC {
             }
         }
 
+        //Se genera un nuevo arreglo de las casillas disponibles o abiertas.
         ArrayList<Casilla> casillasAbiertas = new ArrayList<>();
+        //Se declara una nueva casilla final.
         Casilla casillaFin = getCasilla(finX, finY);
 
+        //Se obtiene la distancia entre la casilla inicial y la final y se declara las casillas como visitadas.
         if (casillaFin == null) {
             return;
         }
@@ -152,11 +168,14 @@ public class LaberintoC {
             ini.visitado = true;
             casillasAbiertas.add(ini);
         }
-        boolean resolvifino = true;
-        while (resolvifino) {
+        
+        //Comprobación para saber si se está resolviendo.
+        boolean resolviendo = true;
+        while (resolviendo) {
             if (casillasAbiertas.isEmpty()) {
                 return;
             }
+            //Sobreescritura del método compare para comparar la distancia de dos casillas.
             Collections.sort(casillasAbiertas, new Comparator<Casilla>() {
                 @Override
                 public int compare(Casilla cas1, Casilla cas2) {
@@ -170,10 +189,16 @@ public class LaberintoC {
                     }
                 }
             });
+            
+            //Se remueve la casilla actual de las casillas disponibles.
             Casilla act = casillasAbiertas.remove(0);
+            
+            //Si la casilla actual es igual a la casilla final el método termina.
             if (act == casillaFin) {
                 break;
             }
+            
+            //Se declaran los atributos de pisada y visitada de las casillas.
             for (Casilla vecino : act.vecinos) {
                 double projDist = getDistancia(vecino,
                         act.pisada + 1, casillaFin);
@@ -190,6 +215,7 @@ public class LaberintoC {
             }
         }
 
+        //Si la casilla "backtracking" forma parte del camino, se declara como la casilla padre.
         Casilla backtracking = casillaFin;
         backtracking.enCamino = true;
         while (backtracking.padre != null) {
@@ -198,18 +224,22 @@ public class LaberintoC {
         }
     }
 
+    //Método para obtener la distancia de dos casillas.
     public double getDistancia(Casilla act, double pisada, Casilla fin) {
         return pisada + Math.abs(act.x - fin.x) + Math.abs(act.y - act.x);
     }
 
+    //Convierte la matriz de Casillas en una matriz gráfica de caracteres.
     public void updateMat() {
         char blanco = ' ', pared = '#', casilla = ' ', camino = '*';
+        //Se declara toda la matriz en blanco.
         for (int x = 0; x < matX; x++) {
             for (int y = 0; y < matY; y++) {
                 mat[x][y] = blanco;
             }
         }
 
+        //Si la posición es múltiplo de 4 y de 2, se declara como pared.
         for (int x = 0; x < matX; x++) {
             for (int y = 0; y < matY; y++) {
                 if (x % 4 == 0 || y % 2 == 0) {
@@ -218,19 +248,23 @@ public class LaberintoC {
             }
         }
 
+        //Se hace un recorrido iterativo de la matriz.
         for (int x = 0; x < X; x++) {
             for (int y = 0; y < Y; y++) {
                 Casilla act = getCasilla(x, y);
                 int matX = x * 4 + 2, matY = y * 2 + 1;
 
+                //Si la posición actual está en medio del camino:
                 if (act.enCamino) {
                     if (matX % 2 == 0 && matX % 4 != 0 && matY % 2 != 0) {
                         Punto punto = new Punto(1, true, matX, matY);
                         puntos.add(punto);
                     }
 
+                    //Se declara como camino.
                     mat[matX][matY] = camino;
 
+                    //Se comprueba la casilla que está debajo y se le ponen los caracteres correspondientes.
                     if (act.estaDebajo()) {
                         if (getCasilla(x, y + 1).enCamino) {
                             mat[matX][matY + 1] = camino;
@@ -242,6 +276,7 @@ public class LaberintoC {
                             mat[matX - 1][matY + 1] = blanco;
                         }
                     }
+                    //Se comprueba la casilla que está a la derecha y se le ponen los caracteres correspondientes.
                     if (act.estaDerecha()) {
                         if (getCasilla(x + 1, y).enCamino) {
                             mat[matX + 2][matY] = camino;
@@ -255,11 +290,13 @@ public class LaberintoC {
                     }
                 } else {
                     mat[matX][matY] = casilla;
+                    //Se comprueba la casilla que está debajo y se le ponen los caracteres correspondientes.
                     if (act.estaDebajo()) {
                         mat[matX][matY + 1] = casilla;
                         mat[matX + 1][matY + 1] = blanco;
                         mat[matX - 1][matY + 1] = blanco;
                     }
+                    //Se comprueba la casilla que está a la derecha y se le ponen los caracteres correspondientes.
                     if (act.estaDerecha()) {
                         mat[matX + 2][matY] = casilla;
                         mat[matX + 1][matY] = casilla;
@@ -270,15 +307,19 @@ public class LaberintoC {
         }
     }
 
+    //Método para generar un número aleatorio dado un número mínimo y un número máximo.
     public static int getRandom(int min, int max) {
         return ThreadLocalRandom.current().nextInt(min, max + 1);
     }
 
+    //A partir de la matriz de caracteres generada en el método Solve y updateMat, se genera una matriz de 1 y 0, dado un tamaño.
     public int[][] generarMatriz(int tamano) {
+        //Se construye una nueva matriz aleatoria de caracteres a partir de un tamaño.
         LaberintoC laberinto = new LaberintoC(tamano);
         laberinto.solve();
         laberinto.updateMat();
 
+        //Se sustituye los caracteres '*' por 1, y los demás por 0 a través de un recorrido iterativo.
         int[][] matriz = new int[laberinto.mat.length][(laberinto.mat.length) - (tamano * 2)];
         for (int i = 0; i < laberinto.mat.length; i++) {
             for (int j = 0; j < laberinto.mat[i].length; j++) {
@@ -290,6 +331,7 @@ public class LaberintoC {
             }
         }
 
+        //Ahora se construye una nueva matriz de 1 y 0 pero más pequeña, dado el tamaño que pusimos.
         int[][] auxMat = new int[tamano][tamano];
         int p = 2;
         for (int col = 0; col < auxMat.length; col++) {
@@ -304,10 +346,10 @@ public class LaberintoC {
             }
             p = p + 4;
         }
-
         return auxMat;
     }
 
+    //Primero se genera una nueva matriz de Puntos y se hace un llamado al método recursivo.
     public int[][] generarCamino(int[][] mat, int condicion) {
         Punto[][] matriz = new Punto[mat.length][mat.length];
         for (int i = 0; i < mat.length; i++) {
@@ -318,6 +360,8 @@ public class LaberintoC {
         return generarCamino(0, 0, condicion, matriz);
     }
 
+    //El método recursivo que tiene la función de hacer un recorrido por amplitud para devolver el camino en orden en forma de un arreglo
+    //de puntos.
     public int[][] generarCamino(int x, int y, int condicion, Punto mat[][]) {
         int[][] matAux = new int[mat.length][mat.length];
         if (x == mat.length - 1 && y == mat.length - 1) {
@@ -369,11 +413,10 @@ public class LaberintoC {
                 }
             }
         }
-        //return rellenarJ(matAux, condicion);
         return matAux;
     }
     
-    //Retorna una lista de los números vecinos de arriba, abajo, izquierda y derecha
+    //Se recibe una cordenada y una matriz y se devuelven los vecinos de ese punto.
     private ArrayList<Integer> obtenerVecinos(int i, int j, int[][] mat){
         ArrayList<Integer> res = new ArrayList<>();
         if(esValido(i-1,j, mat)){
@@ -391,7 +434,7 @@ public class LaberintoC {
         return res;
     }
     
-    //verifica si la posición es valida (si esta dentro de los límites de la matriz)
+    //Se recibe una coordenada y una matriz y se verifica si ese Punto es válido.
     private boolean esValido(int i, int j, int[][] mat){
         boolean res = false;
         if(i >= 0 && j>=0 && i<mat.length && j<mat.length){
@@ -400,7 +443,7 @@ public class LaberintoC {
         return res;
     }
     
-    //Retorna la matriz de ceros (paredes) y unos (camino)
+    //Se limpian los unos que restaron del recorrido por amplitud.
     private int[][] limpiarUnos(int[][] matAux){
         int[][] res = new int[matAux.length][matAux.length];
         int pos = 0;
@@ -559,6 +602,7 @@ public class LaberintoC {
         return res;
     }
     
+    //Dado un ArrayList se devuelve el menor de los componentes.
     public int getMenor(ArrayList<Integer> arr) {
         int n = arr.get(0);
         for (int i = 0; i < arr.size(); i++) {
@@ -569,6 +613,7 @@ public class LaberintoC {
         return n;
     }
 
+    //Dado un ArrayList se devuelve el mayor de los componentes.
     public int getMayor(ArrayList<Integer> arr) {
         int n = arr.get(0);
         for (int i = 0; i < arr.size(); i++) {
@@ -578,8 +623,8 @@ public class LaberintoC {
         }
         return n;
     }
-    //Verifica que el número dado no tenga problemas con los vecinos
-    //Este método es para secuencia y suma
+
+    //Devuelve si un Punto es vecino de otro.
     private boolean esIgualAVecino(int n, ArrayList<Integer> vecinos, int condicion) {
         boolean res = false;
         for (int i = 0; i < vecinos.size(); i++) {
@@ -590,8 +635,8 @@ public class LaberintoC {
         }
         return res;
     }
-    //Verifica que el número dado no tenga problemas con los vecinos
-    //Este método es para resta
+    
+    //Devuelve si un Punto es vecino de otro.
     private boolean esIgualAVecino2(int n, ArrayList<Integer> vecinos, int condicion) {
         boolean res = false;
         for (int i = 0; i < vecinos.size(); i++) {
@@ -602,8 +647,8 @@ public class LaberintoC {
         }
         return res;
     }
-    //Verifica que el número dado no tenga problemas con los vecinos
-    //Este método es para multiplicación y divición
+    
+    //Devuelve si un Punto es vecino de otro.
     private boolean esIgualAVecino3(int n, int condicion) {
         boolean res = false;
             if (n%condicion == 0){
@@ -612,10 +657,12 @@ public class LaberintoC {
         return res;
     }
 
+    //Devuelve si un punto es una pared o no.
     public boolean noEsPared(int[][] mat, int x, int y) {
         return !(x < 0 || x >= mat.length || y < 0 || y >= mat.length) && (mat[x][y] != 0);
     }
 
+    //Devuelve una matriz con las paredes generadas a partir del arreglo de camino.
     public int[][] genPar(int[][] mat, ArrayList<Punto> camino) {
         int[][] matAux = mat;
         for (int i = 0; i < matAux.length; i++) {
@@ -628,7 +675,8 @@ public class LaberintoC {
         }
         return matAux;
     }
-
+    
+    //Devuelve el punto mayor de un arreglo.
     public int getPuntoMayor(int x, int y, ArrayList<Punto> camino) {
         ArrayList<Integer> puntos = new ArrayList<Integer>();
         for (int i = 0; i < camino.size(); i++) {
@@ -643,10 +691,12 @@ public class LaberintoC {
         return getMayor(puntos);
     }
 
+    //Devuelve el resultado de un punto, si es válido o no.
     public boolean esValido(Punto[][] mat, int x, int y) {
         return !(x < 0 || x >= mat.length || y < 0 || y >= mat.length) && (mat[x][y].getValor() != 0 && !mat[x][y].getVisitada());
     }
 
+    //Devuelve el camino de putnos ordenado en forma de arreglo.
     public ArrayList<Punto> getCamino(int[][] mat) {
         ArrayList<Punto> camino = new ArrayList<Punto>();
         for (int i = 0; i < mat.length; i++) {
@@ -661,7 +711,7 @@ public class LaberintoC {
         return camino;
     }
 
-    // +++
+    //Devuelve el camino de putnos ordenado en forma de arreglo.
     public ArrayList<Punto> getCam(int[][] mat) {
         ArrayList<Punto> camino = new ArrayList<Punto>();
         for (int i = 0; i < mat.length; i++) {
@@ -675,6 +725,7 @@ public class LaberintoC {
         return camino;
     }
 
+    //Dado un arreglo, lo devuelve ordenado en base al índice numérico.
     public ArrayList<Punto> ordenar(ArrayList<Punto> arr) {
         ArrayList<Punto> aux = arr;
         for (int i = 0; i < aux.size() - 1; i++) {
@@ -687,6 +738,7 @@ public class LaberintoC {
         return aux;
     }
 
+    //Devuelve un camino de múltiplos en forma de arreglo.
     public static ArrayList<Punto> generarCaminoMult(ArrayList<Punto> arr, int mult) {
         ArrayList<Punto> camino = new ArrayList<Punto>();
         for (int i = 0; i < arr.size(); i++) {
@@ -700,6 +752,7 @@ public class LaberintoC {
         return camino;
     }
 
+    //Devuelve una matriz con no múltiplos y con el camino generado en el método generarCaminoMult integrado.
     public int[][] generarMatrizMult(ArrayList<Punto> camino, int mult, int[][] mat) {
         int[][] matAux = mat;
         //Se crea una matriz con valores que no son múltiplos de mult.
@@ -721,6 +774,7 @@ public class LaberintoC {
         return matAux;
     }
 
+    //A partir de una arreglo, un número inicial y una condición, devuelve un ArrayList de Puntos ordenados para una secuencia numérica.
     public ArrayList<Punto> generarCaminoSec(ArrayList<Punto> arr, int ini, int condicion) {
         ArrayList<Punto> camino = new ArrayList<Punto>();
         int aux = ini;
@@ -731,6 +785,7 @@ public class LaberintoC {
         return camino;
     }
 
+    //Dada una matriz, la invierte.
     public int[][] invertirMatriz(int[][] mat) {
         int[][] matInv = new int[mat.length][mat.length];
         int p = 0;
@@ -745,11 +800,13 @@ public class LaberintoC {
         return matInv;
     }
 
+    //Dado un ArrayList de Puntos, lo invierte.
     public ArrayList<Punto> invertirCamino(ArrayList<Punto> camino) {
         Collections.reverse(camino);
         return camino;
     }
 
+    //A pertir de un ArrayList de Puntos y una matriz de de enteros, devuelve todo unificado.
     public int[][] generarMatrizSec(ArrayList<Punto> camino, int[][] mat) {
         int[][] matAux = mat;
         for (int i = 0; i < matAux.length; i++) {
@@ -766,37 +823,5 @@ public class LaberintoC {
         }
 
         return matAux;
-    }
-
-    
-
-    public void dibujarCamino(ArrayList<Punto> arr) {
-        for (int i = 0; i < arr.size(); i++) {
-            System.out.println(arr.get(i).getValor());
-        }
-    }
-
-    public void dibujarOrden(ArrayList<Punto> arr) {
-        for (int i = 0; i < arr.size(); i++) {
-            System.out.println(arr.get(i).getOrden());
-        }
-    }
-
-    public void dibujarMatriz(int[][] matrix) {
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[i].length; j++) {
-                System.out.print(matrix[i][j] + " ");
-            }
-            System.out.println();
-        }
-    }
-
-    public void dibujarMatriz(char[][] matrix) {
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[i].length; j++) {
-                System.out.print(matrix[i][j] + "");
-            }
-            System.out.println();
-        }
     }
 }
