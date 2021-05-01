@@ -38,44 +38,6 @@ public class PreguntaTest {
     }
 
     /**
-     * Test of generadorP method, of class Pregunta.
-     */
-    @Test
-    public void testGeneradorP() {
-        System.out.println("generadorP");
-        String a = "a";
-        String[] b = {""};
-        boolean[] c = {true};
-        Pregunta instance = new Pregunta(a, b, c);
-        int result = instance.getAuxiliar();
-        if (result >= 0) {
-            assertEquals(result, result);
-        } else {
-            fail("The test case is a prototype.");
-        }
-        // TODO review the generated test code and remove the default call to fail.
-    }
-
-    /**
-     * Test of generadorR method, of class Pregunta.
-     */
-    @Test
-    public void testGeneradorR() {
-        System.out.println("generadorR");
-        String a = "a";
-        String[] b = {""};
-        boolean[] c = {true};
-        Pregunta instance = new Pregunta(a, b, c);
-        int x = instance.getAuxiliar();
-        String expResult = "" + x + "";
-        String result = instance.generadorR();
-        if (result != expResult) {
-            assertEquals(true, true);
-        }
-        // TODO review the generated test code and remove the default call to fail.
-    }
-
-    /**
      * Test of esperar method, of class Pregunta.
      */
     @Test

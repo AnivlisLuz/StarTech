@@ -107,20 +107,6 @@ public class MatrizTest {
     }
 
     /**
-     * Test of getCamino method, of class Matriz.
-     */
-    @Test
-    public void testGetCamino() {
-        System.out.println("getCamino");
-        Matriz instance = null;
-        ArrayList<Punto> expResult = null;
-        ArrayList<Punto> result = instance.getCamino();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
      * Test of reset method, of class Matriz.
      */
     @Test

@@ -1,1 +1,2 @@
 Nombre,10
+juan,6

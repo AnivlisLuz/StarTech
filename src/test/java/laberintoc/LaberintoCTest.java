@@ -457,57 +457,5 @@ public class LaberintoCTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
-
-    /**
-     * Test of dibujarCamino method, of class LaberintoC.
-     */
-    @Test
-    public void testDibujarCamino() {
-        System.out.println("dibujarCamino");
-        ArrayList<Punto> arr = null;
-        LaberintoC instance = null;
-        instance.dibujarCamino(arr);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of dibujarOrden method, of class LaberintoC.
-     */
-    @Test
-    public void testDibujarOrden() {
-        System.out.println("dibujarOrden");
-        ArrayList<Punto> arr = null;
-        LaberintoC instance = null;
-        instance.dibujarOrden(arr);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of dibujarMatriz method, of class LaberintoC.
-     */
-    @Test
-    public void testDibujarMatriz_intArrArr() {
-        System.out.println("dibujarMatriz");
-        int[][] matrix = null;
-        LaberintoC instance = null;
-        instance.dibujarMatriz(matrix);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of dibujarMatriz method, of class LaberintoC.
-     */
-    @Test
-    public void testDibujarMatriz_charArrArr() {
-        System.out.println("dibujarMatriz");
-        char[][] matrix = null;
-        LaberintoC instance = null;
-        instance.dibujarMatriz(matrix);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-    
+   
 }
