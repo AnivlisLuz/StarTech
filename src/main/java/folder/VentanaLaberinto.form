@@ -61,8 +61,8 @@
                       <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jLabelVida3" max="32767" attributes="0"/>
-                          <Component id="jLabelVida2" alignment="1" pref="0" max="32767" attributes="0"/>
-                          <Component id="jLabelVida1" alignment="1" pref="0" max="32767" attributes="0"/>
+                          <Component id="jLabelVida2" alignment="1" max="32767" attributes="0"/>
+                          <Component id="jLabelVida1" alignment="1" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -173,7 +173,7 @@
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name=".\src\main\java\recursos\boton men&#xfa; 1.png"/>
+              <Image iconType="2" name="C:\Users\Criss\Documents\GitHub\StarTech\src\main\java\recursos\boton men&#xfa; 1.png"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
@@ -203,21 +203,21 @@
     <Component class="javax.swing.JLabel" name="jLabelVida3">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name=".\src\main\java\recursos\VidaRojo.png"/>
+          <Image iconType="2" name="C:\Users\Criss\Documents\GitHub\StarTech\src\main\java\recursos\VidaRojo.png"/>
         </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelVida2">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name=".\src\main\java\recursos\VidaRojo.png"/>
+          <Image iconType="2" name="C:\Users\Criss\Documents\GitHub\StarTech\src\main\java\recursos\VidaRojo.png"/>
         </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelVida1">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name=".\src\main\java\recursos\VidaRojo.png"/>
+          <Image iconType="2" name="C:\Users\Criss\Documents\GitHub\StarTech\src\main\java\recursos\VidaRojo.png"/>
         </Property>
       </Properties>
     </Component>
