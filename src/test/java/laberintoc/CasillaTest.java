@@ -43,11 +43,14 @@ public class CasillaTest {
     @Test
     public void testAddVecino() {
         System.out.println("addVecino");
-        Casilla casilla = null;
-        Casilla instance = null;
+        Casilla casilla = new Casilla(1,2,true);
+        Casilla casilla1 = new Casilla(1,2,true);
+        Casilla instance = new Casilla(1,2);
+        Casilla instance1 = new Casilla(1,2);
         instance.addVecino(casilla);
+        instance1.addVecino(casilla);
+        assertEquals(instance1.vecinos, instance.vecinos);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -56,12 +59,13 @@ public class CasillaTest {
     @Test
     public void testEstaDebajo() {
         System.out.println("estaDebajo");
-        Casilla instance = null;
-        boolean expResult = false;
+        Casilla instance = new Casilla(1,3);
+        Casilla casilla = new Casilla(1,4);
+        instance.addVecino(casilla);
+        boolean expResult = true;
         boolean result = instance.estaDebajo();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -70,12 +74,13 @@ public class CasillaTest {
     @Test
     public void testEstaDerecha() {
         System.out.println("estaDerecha");
-        Casilla instance = null;
-        boolean expResult = false;
+        Casilla instance = new Casilla(1,3);
+        Casilla casilla = new Casilla(2,3);
+        instance.addVecino(casilla);
+        boolean expResult = true;
         boolean result = instance.estaDerecha();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -84,12 +89,11 @@ public class CasillaTest {
     @Test
     public void testEsCasilla() {
         System.out.println("esCasilla");
-        Casilla instance = null;
+        Casilla instance = new Casilla(1,2);
         boolean expResult = false;
         boolean result = instance.esCasilla();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -98,12 +102,11 @@ public class CasillaTest {
     @Test
     public void testToString() {
         System.out.println("toString");
-        Casilla instance = null;
-        String expResult = "";
+        Casilla instance = new Casilla(1,2);
+        String expResult = "Casilla(1, 2)";
         String result = instance.toString();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -112,13 +115,12 @@ public class CasillaTest {
     @Test
     public void testEquals() {
         System.out.println("equals");
-        Object casilla = null;
-        Casilla instance = null;
+        Object casilla = new Object();
+        Casilla instance = new Casilla(1,2);
         boolean expResult = false;
         boolean result = instance.equals(casilla);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -127,12 +129,11 @@ public class CasillaTest {
     @Test
     public void testHashCode() {
         System.out.println("hashCode");
-        Casilla instance = null;
-        int expResult = 0;
+        Casilla instance = new Casilla(1,2);
+        int expResult = 1+2*256;
         int result = instance.hashCode();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
     
 }
