@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class UserSaver {
 
     final private String filePAth = "./usuario.txt";
-
+     //Metodo que permite crear el archivo de texto y escribir en el añadiendo al usuario en cada línea.
     public void escritura(Usuario usuario) {
 
         try {
@@ -43,7 +43,7 @@ public class UserSaver {
         }
 
     }
-
+    // Metodo que permite leer el contenido del archivo de texto y seleccionar al usuario.
     public ArrayList<Usuario> lectura() {
         ArrayList<Usuario> result = new ArrayList<Usuario>();
         try {
