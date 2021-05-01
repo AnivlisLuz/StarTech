@@ -1,25 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package folder;
 
-/**
- *
- * @author Criss
- */
-public class Resta extends Matriz{
-    
-    private int condicion;
-    
-    public Resta(int tamaño, int condicion){
+public class Resta extends Matriz {
+
+    private int condicion;//condición para avanzar en el laberinto
+
+    public Resta(int tamaño, int condicion) {
         super(tamaño);
         this.condicion = condicion;
     }
-    
-    public void rellenarLaberinto(){
-//        laberinto = lab.generarCamino(matriz, condicion);       
+
+    //Método para crear un Laberinto de restas, según la condición dada.
+    public void rellenarLaberinto() {
         laberinto = lab.rellenarJ2(matriz, condicion);
     }
 }
