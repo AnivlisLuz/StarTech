@@ -46,7 +46,7 @@ public class Category {
     public Level[] getLevels() {
         return levels;
     }
-
+    
     public Level nextLevel(Level level) {
         Level res = null;
         for (int i = 0; i < levels.length; i++) {
