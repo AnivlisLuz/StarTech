@@ -5,6 +5,7 @@
  */
 package data;
 
+import app.startech.data.CategoryManager;
 import app.startech.models.Category;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;

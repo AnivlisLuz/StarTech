@@ -5,24 +5,17 @@
  */
 package app.startech.screens;
 
+import app.startech.login.Login;
 import app.startech.models.Category;
-import forms.Login;
-import java.awt.BorderLayout;
-import static java.awt.BorderLayout.CENTER;
-import static java.awt.BorderLayout.EAST;
-import static java.awt.BorderLayout.SOUTH;
-import static java.awt.BorderLayout.NORTH;
-import static java.awt.BorderLayout.WEST;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.GridLayout;
-import javax.swing.JButton;
-import javax.swing.JPanel;
+import app.startech.preguntas.GrupoPreguntas;
+
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import preguntas.GrupoPreguntas;
+import java.awt.*;
+
+import static java.awt.BorderLayout.*;
 
 /**
- *
  * @author luzch
  */
 public class CategoryScreen extends javax.swing.JFrame {
@@ -81,7 +74,7 @@ public class CategoryScreen extends javax.swing.JFrame {
                 LevelScreen levelScreen = new LevelScreen(category, this);
                 setVisible(false);
             });
-            
+
             panel.add(button);
             buttons.add(panel);
             panel.setBackground(new Color(0, 0, 0, 0));

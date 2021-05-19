@@ -5,8 +5,9 @@
  */
 package folder;
 
+import app.startech.laberintos.Matriz;
 import java.util.ArrayList;
-import laberintoc.Punto;
+import app.startech.matriz.Punto;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;

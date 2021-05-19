@@ -5,7 +5,7 @@
  */
 package app.startech.models;
 
-import folder.Laberinto;
+import app.startech.laberintos.Laberinto;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;

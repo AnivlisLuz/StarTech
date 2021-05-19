@@ -5,7 +5,8 @@
  */
 package data;
 
-import forms.Usuario;
+import app.startech.data.DataController;
+import app.startech.login.Usuario;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;

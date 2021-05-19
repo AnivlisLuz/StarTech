@@ -1,4 +1,0 @@
-Nombre,10
-Jugador,10
-J1,12
-qwe,10

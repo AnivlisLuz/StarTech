@@ -5,6 +5,8 @@
  */
 package folder;
 
+import app.startech.laberintos.Matriz;
+import app.startech.laberintos.Laberinto;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
