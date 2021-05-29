@@ -5,6 +5,7 @@
  */
 package forms;
 
+import app.startech.login.Usuario;
 import java.util.ArrayList;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;

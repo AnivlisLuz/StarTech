@@ -5,6 +5,9 @@
  */
 package laberintoc;
 
+import app.startech.matriz.Punto;
+import app.startech.matriz.Casilla;
+import app.startech.matriz.LaberintoC;
 import java.util.ArrayList;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;

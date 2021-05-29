@@ -5,33 +5,25 @@
  */
 package app.startech.screens;
 
+import app.startech.laberintos.VentanaLaberinto;
 import app.startech.models.Category;
 import app.startech.models.Level;
-import app.startech.screens.CategoryScreen;
-import folder.VentanaLaberinto;
-import java.awt.BorderLayout;
-import static java.awt.BorderLayout.CENTER;
-import static java.awt.BorderLayout.NORTH;
-import static java.awt.BorderLayout.WEST;
-import static java.awt.BorderLayout.SOUTH;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.GridLayout;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import java.awt.*;
+
+import static java.awt.BorderLayout.*;
 
 /**
- *
  * @author luzch
  */
 public class LevelScreen extends javax.swing.JFrame {
 
     private final String title;
     private final Level[] levels;
-    private Category category;
-    private CategoryScreen ventanaCategorias;
+    private final Category category;
+    private final CategoryScreen ventanaCategorias;
 
     public LevelScreen(Category category, CategoryScreen ventanaCategorias) {
         levels = category.getLevels();
@@ -41,7 +33,7 @@ public class LevelScreen extends javax.swing.JFrame {
         initComponent();
         setLocationRelativeTo(null);
     }
-    
+
     private void initComponent() {
         // Se coloca el tamaño de la pantalla por defecto
         setSize(800, 500);
@@ -76,7 +68,7 @@ public class LevelScreen extends javax.swing.JFrame {
         JPanel options = new JPanel(new BorderLayout());
         options.setSize(new Dimension(200, 50));
         options.setBorder(new EmptyBorder(10, 10, 10, 10));
-         // Se instancia el boton de atras, que lleva a la ventana de categorias
+        // Se instancia el boton de atras, que lleva a la ventana de categorias
         JButton buton = new JButton("Atras");
         buton.addActionListener((action) -> {
             dispose();
@@ -96,6 +88,6 @@ public class LevelScreen extends javax.swing.JFrame {
         add(options, SOUTH);
 
         setVisible(true);
-        
+
     }
 }

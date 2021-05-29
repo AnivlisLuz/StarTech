@@ -6,15 +6,14 @@
 package app.startech.models;
 
 /**
- *
  * @author luzch
  */
 public class Category {
 
     private final int id;
     private final String title;
-    private boolean active;
     private final Level[] levels;
+    private boolean active;
 
     public Category(int id, String title, boolean active, Level[] level) {
         this.id = id;
@@ -46,6 +45,7 @@ public class Category {
     public Level[] getLevels() {
         return levels;
     }
+
     // Se obtiene el siguiente nivel, si esque lo tuviera
     public Level nextLevel(Level level) {
         Level res = null;
