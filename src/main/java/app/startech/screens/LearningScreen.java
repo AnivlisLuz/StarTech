@@ -10,6 +10,8 @@ import app.startech.models.Category;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 import static java.awt.BorderLayout.*;
 
@@ -20,12 +22,14 @@ import static java.awt.BorderLayout.*;
 public class LearningScreen extends javax.swing.JFrame {
 
     private String title;
+    private String image;
     private Category category;
     private CategoryScreen ventanaCategorias;
     
-    public LearningScreen(Category category, CategoryScreen ventanaCategoria){
+    public LearningScreen(Category category, CategoryScreen ventanaCategorias){
         
         title = category.getTitle();
+        image=category.getImage();
         this.ventanaCategorias = ventanaCategorias;
         this.category = category;
         initComponent();
@@ -45,6 +49,16 @@ public class LearningScreen extends javax.swing.JFrame {
         titleContainer.add(titulo);
 
         JPanel imageContainer = new JPanel();
+        
+        JLabel gifCointainer=new JLabel();
+        gifCointainer.setBorder(new EmptyBorder(0, 200, 0, 200));
+        try {
+            gifCointainer.setIcon(new javax.swing.ImageIcon(new URL(image)));
+        } catch (MalformedURLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        imageContainer.add(gifCointainer);
         JPanel optionsContainer = new JPanel();
         optionsContainer.setSize(new Dimension(200, 50));
         optionsContainer.setBorder(new EmptyBorder(10, 10, 10, 10));

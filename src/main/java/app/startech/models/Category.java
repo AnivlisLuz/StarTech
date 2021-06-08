@@ -12,12 +12,15 @@ public class Category {
 
     private final int id;
     private final String title;
+    private final String image;
+
     private final Level[] levels;
     private boolean active;
 
-    public Category(int id, String title, boolean active, Level[] level) {
+    public Category(int id, String title,String image, boolean active, Level[] level) {
         this.id = id;
         this.title = title;
+        this.image = image;
         this.active = active;
         this.levels = level;
     }
@@ -32,6 +35,10 @@ public class Category {
 
     public String getTitle() {
         return title;
+    }
+
+    public String getImage() {
+        return image;
     }
 
     public boolean getActive() {
