@@ -45,13 +45,13 @@ public class LearningScreen extends javax.swing.JFrame {
         JPanel titleContainer = new JPanel();
         JLabel titulo = new JLabel(title);
         titulo.setFont(new Font(titulo.getFont().getFamily(), titulo.getFont().getStyle(), 20));
-        titleContainer.setBorder(new EmptyBorder(10, 10, 10, 10));        
+        titleContainer.setBorder(new EmptyBorder(5, 5, 5, 5));        
         titleContainer.add(titulo);
 
         JPanel imageContainer = new JPanel();
         
         JLabel gifCointainer=new JLabel();
-        gifCointainer.setBorder(new EmptyBorder(0, 200, 0, 200));
+        gifCointainer.setBorder(new EmptyBorder(0, 500, 0, 500));
         try {
             gifCointainer.setIcon(new javax.swing.ImageIcon(new URL(image)));
         } catch (MalformedURLException e) {
@@ -59,22 +59,24 @@ public class LearningScreen extends javax.swing.JFrame {
             e.printStackTrace();
         }
         imageContainer.add(gifCointainer);
+
+
         JPanel optionsContainer = new JPanel();
-        optionsContainer.setSize(new Dimension(200, 50));
-        optionsContainer.setBorder(new EmptyBorder(10, 10, 10, 10));
+        optionsContainer.setSize(new Dimension(200, 30));
+        optionsContainer.setBorder(new EmptyBorder(5, 5, 5, 5));
         JButton atras = new JButton("Atras");
         atras.addActionListener((action) -> {
             dispose();
             ventanaCategorias.setVisible(true);
         });
-        atras.setPreferredSize(new Dimension(200, 50));
+        atras.setPreferredSize(new Dimension(150, 30));
         optionsContainer.add(atras, WEST);
         JButton start = new JButton("Jugar");
         start.addActionListener((action) -> {
        //     LevelScreen levelScreen = new LevelScreen(category, this);
             setVisible(false);
         });
-        start.setPreferredSize(new Dimension(200, 50));
+        start.setPreferredSize(new Dimension(150, 30));
         optionsContainer.add(start, EAST);
 
 
