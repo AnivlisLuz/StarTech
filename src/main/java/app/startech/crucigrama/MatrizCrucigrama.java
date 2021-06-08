@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package app.startech.crucigrama;
+import java.util.ArrayList;
 
 /**
  *
@@ -28,6 +29,7 @@ public class MatrizCrucigrama {
                         {'#','#','=','#','#','#','=','#','#','#','#','#','#'},
                         {'#','#','@','+','@','=','@','#','#','#','#','#','#'}};
     private Casilla[][] plantilla;
+    private ArrayList<Casilla> numeros;
     
     public MatrizCrucigrama()
     {
