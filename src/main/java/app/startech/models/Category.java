@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package app.startech.models;
+//import java.awt.image.BufferedImage;
 
 /**
  * @author luzch
@@ -12,14 +13,17 @@ public class Category {
 
     private final int id;
     private final String title;
+    private final String content;
+    //private final BufferedImage icon;
     private final String image;
-
     private final Level[] levels;
     private boolean active;
 
-    public Category(int id, String title,String image, boolean active, Level[] level) {
+    public Category(int id, String title, String content, String image, boolean active, Level[] level) {
         this.id = id;
         this.title = title;
+        this.content=content;
+        //this.icon = icon;
         this.image = image;
         this.active = active;
         this.levels = level;
@@ -36,6 +40,14 @@ public class Category {
     public String getTitle() {
         return title;
     }
+
+    public String getContent(){
+        return content;
+    }
+
+   // public BufferedImage getIcon(){
+   //     return icon;
+    //}
 
     public String getImage() {
         return image;
