@@ -37,7 +37,7 @@ public class LearningScreen extends javax.swing.JFrame {
     public LearningScreen(Category category, CategoryScreen ventanaCategorias) {
         title = category.getTitle();
         content = category.getContent();
-        iconOp = Images.getDivision();
+        iconOp = Images.getMultiplicacion();
         image = category.getImage();
         this.ventanaCategorias = ventanaCategorias;
         this.category = category;
@@ -54,8 +54,8 @@ public class LearningScreen extends javax.swing.JFrame {
 
         JPanel titleContainer = new JPanel();
         JLabel titulo = new JLabel(title);
-        titulo.setFont(new Font(titulo.getFont().getFamily(), titulo.getFont().getStyle(), 20));
-        titleContainer.setBorder(new EmptyBorder(10, 10, 10, 10));
+        titulo.setFont(new Font(titulo.getFont().getFamily(), titulo.getFont().getStyle(), 30));
+        titleContainer.setBorder(new EmptyBorder(0, 0, 0, 0));
         titleContainer.add(titulo);
 
         JPanel centralContainer = new JPanel();
@@ -63,23 +63,24 @@ public class LearningScreen extends javax.swing.JFrame {
         contentContainer.setLayout(new BorderLayout());
         centralContainer.add(contentContainer, NORTH);
         JTextArea contenido = new JTextArea(content);
+        contenido.setBackground(new Color(0,0,0,0));
         contenido.setWrapStyleWord(true);
         contenido.setLineWrap(true);
         contenido.setEditable(false);
         contenido.setSize(new Dimension(600, 10));
-        contenido.setBorder(new EmptyBorder(0, 00, 0, 0));
+        contenido.setBorder(new EmptyBorder(0, 0, 0, 20));
 
-        contenido.setFont(new Font(contenido.getFont().getFamily(), contenido.getFont().getStyle(), 15));
+        contenido.setFont(new Font(contenido.getFont().getFamily(), contenido.getFont().getStyle(), 20));
         contentContainer.add(contenido, CENTER);
         JLabel icon = new JLabel();
-        icon.setBorder(new EmptyBorder(0, 0, 0, 00));
+        icon.setBorder(new EmptyBorder(0, 0, 0, 20));
         icon.setIcon(new javax.swing.ImageIcon(iconOp));
         contentContainer.add(icon, EAST);
 
         JPanel imageContainer = new JPanel();
         centralContainer.add(imageContainer, SOUTH);
         JLabel gifCointainer = new JLabel();
-        gifCointainer.setBorder(new EmptyBorder(0, 500, 0, 500));
+        gifCointainer.setBorder(new EmptyBorder(0, 100, 0, 100));
         try {
             gifCointainer.setIcon(new javax.swing.ImageIcon(new URL(image)));
         } catch (MalformedURLException e) {
@@ -89,15 +90,15 @@ public class LearningScreen extends javax.swing.JFrame {
         imageContainer.add(gifCointainer);
 
         JPanel optionsContainer = new JPanel();
-        optionsContainer.setSize(new Dimension(200, 50));
-        optionsContainer.setBorder(new EmptyBorder(10, 10, 10, 10));
+        optionsContainer.setSize(new Dimension(600, 40));
+        optionsContainer.setBorder(new EmptyBorder(5, 5, 5, 5));
         JButton atras = new JButton("Atras");
         atras.addActionListener((action) -> {
             onClose();
             dispose();
             ventanaCategorias.setVisible(true);
         });
-        atras.setPreferredSize(new Dimension(150, 50));
+        atras.setPreferredSize(new Dimension(150, 40));
         optionsContainer.add(atras, WEST);
         JButton start = new JButton("Jugar");
         start.addActionListener((action) -> {
@@ -105,7 +106,7 @@ public class LearningScreen extends javax.swing.JFrame {
             // LevelScreen levelScreen = new LevelScreen(category, this);
             setVisible(false);
         });
-        start.setPreferredSize(new Dimension(150, 50));
+        start.setPreferredSize(new Dimension(150, 40));
         optionsContainer.add(start, EAST);
 
         add(titleContainer, NORTH);
