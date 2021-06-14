@@ -28,6 +28,7 @@ import static java.awt.BorderLayout.*;
 public class LearningScreen extends javax.swing.JFrame {
 
     private String title;
+    private String audio;
     private String content;
     private BufferedImage iconOp;
     private String image;
@@ -36,6 +37,7 @@ public class LearningScreen extends javax.swing.JFrame {
 
     public LearningScreen(Category category, CategoryScreen ventanaCategorias) {
         title = category.getTitle();
+        audio = category.getAudio();
         content = category.getContent();
         iconOp = Images.getMultiplicacion();
         image = category.getImage();
@@ -43,7 +45,7 @@ public class LearningScreen extends javax.swing.JFrame {
         this.category = category;
         initComponent();
 
-        playSound("https://www2.cs.uic.edu/~i101/SoundFiles/StarWars60.wav", false);
+        playSound(audio, false);
     }
 
     private void initComponent() {
@@ -114,7 +116,7 @@ public class LearningScreen extends javax.swing.JFrame {
         add(optionsContainer, SOUTH);
 
         setVisible(true);
-        playSound("https://file-examples-com.github.io/uploads/2017/11/file_example_WAV_1MG.wav", true);
+        playSound("https://github.com/AnivlisLuz/StarTech/releases/download/gifs/fondo.wav", true);
     }
 
     private ArrayList<Clip> audios = new ArrayList();
