@@ -58,7 +58,7 @@ public class CategoryScreen extends javax.swing.JFrame {
         //Esta porción de código sirve para que no se cierra el programa cuando se cierra una sola ventana
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         // Se establece el contenedor de los botones
-        JPanel buttons = new JPanel(new GridLayout(categories.length, 1));
+        JPanel buttons = new JPanel(new GridLayout(categories.length/2, 1));
         buttons.setBackground(new Color(0, 0, 0, 0));
         // Se itera categorias
         for (Category category : categories) {
