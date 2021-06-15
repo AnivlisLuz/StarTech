@@ -198,10 +198,25 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelVida3">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="2" name="C:\Users\Criss\Documents\GitHub\StarTech\src\main\java\app\startech\imagenes\VidaRojo.png"/>
+        </Property>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelVida2">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="2" name="C:\Users\Criss\Documents\GitHub\StarTech\src\main\java\app\startech\imagenes\VidaRojo.png"/>
+        </Property>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelVida1">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="2" name="C:\Users\Criss\Documents\GitHub\StarTech\src\main\java\app\startech\imagenes\VidaRojo.png"/>
+        </Property>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

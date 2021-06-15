@@ -5,21 +5,22 @@ import app.startech.models.Category;
 import app.startech.models.Level;
 import app.startech.screens.CategoryScreen;
 import app.startech.screens.LevelScreen;
+import java.awt.AWTEventMulticaster;
 import java.awt.Button;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 //Clase que se encarga de la parte visual del laberinto
 public class VentanaCrucigrama1 extends javax.swing.JFrame {
 
     private Crucigrama crucigrama;
-    private Category category;//--
-    private LevelScreen ventanaLevel;
-    private CategoryScreen ventanaCategory;//--
+    private JTextField[][] matAux;
 
-    public VentanaCrucigrama1(Category c, Level l, LevelScreen ventanaLevel, CategoryScreen ventanaCategory) {
-        this.ventanaCategory = ventanaCategory;
-        this.ventanaLevel = ventanaLevel;
-        category = c;
+    public VentanaCrucigrama1() {
+        crucigrama = new Crucigrama("Suma", "ave", 1);
         crucigrama.mostrarMatriz();        
         initComponents();
         mostrarCrucigrama();
@@ -30,47 +31,113 @@ public class VentanaCrucigrama1 extends javax.swing.JFrame {
     public void mostrarCrucigrama() {
         jLabel1.setText(crucigrama.getTitulo());//Título. Ejm: Secuencia/Suma/Resta/Multiplicación/Divición
         jLabel2.setText(crucigrama.getCondicion());//Condicion para cada nivel. Ejm: Suma de uno en uno, Resta de dos en dos
+        char [][] cruciAux = crucigrama.getMatrizAux();
         char[][] cruci = crucigrama.getMatriz();
         int tamX = cruci.length;
         int tamY = cruci[0].length;
-        int x=0, y=0, m=100, n=100;
+        int x=0, y=0, m=50, n=50;
         for(int i=0; i<tamX; i++){
             for(int j=0; j<tamY; j++){
                 char act = cruci[i][j];
-                if(act == '@'){
-                    Button a = new Button();
-                }else{
-                    
+                JTextField a = new JTextField();
+                matAux = new JTextField[tamX][tamY];
+                matAux[i][j] = a;
+                if(act != '#'){
+                    a.setBounds(x, y, m, n);
+                    a.setHorizontalAlignment(JTextField.CENTER);
+                    if(act != '@'){
+                        a.setText(""+ act);
+                        a.setEditable(false);
+                    }else{
+                        String veri = "" + cruciAux[i][j];
+                        ActionListener l = new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                String actual = a.getText();
+                                if(esNumero(actual) && actual.equals(veri)){
+                                    a.setBackground(Color.GREEN); 
+                                }else{
+                                    a.setBackground(Color.red);
+                                    ocultarVida();
+                                    crucigrama.setVidas();
+                                }
+                            }
+                        };
+                        a.addActionListener(l);
+                    }
+                    jPanel1.add(a);
                 }
                 x += m;
             }
+            x = 0;
             y += n;
         }
         setLocationRelativeTo(null);
     }
-
-    //se refresca el mismo laberinto, cambiando a su color inicial de los botones     
-    public void refresh() {
-        for (int i = 0; i < botones.length; i++) {
-            for (int j = 0; j < botones.length; j++) {
-                Boton b = botones[i][j];
-                b.setBackground(null);
-            }
+    private boolean esNumero(String a){
+        boolean res = false;
+        try {
+            int num = Integer.parseInt(a);
+            res = true;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Debes introducir un número");
         }
-        laberinto.getMatriz().reset();
+        return res;
     }
+    //se refresca el mismo laberinto, cambiando a su color inicial de los botones     
+//    public void refresh() {
+//        for (int i = 0; i < botones.length; i++) {
+//            for (int j = 0; j < botones.length; j++) {
+//                Boton b = botones[i][j];
+//                b.setBackground(null);
+//            }
+//        }
+//        laberinto.getMatriz().reset();
+//    }
 
     //Pierde una vida. De forma visual oculta el jLabel para simular que pierde una vida
     public void ocultarVida() {
-        if (laberinto.getVidas() == 3) {
+        if (crucigrama.getVidas() == 3) {
             jLabelVida1.setVisible(false);
-        } else if (laberinto.getVidas() == 2) {
+        } else if (crucigrama.getVidas() == 2) {
             jLabelVida2.setVisible(false);
         } else {
             jLabelVida3.setVisible(false);
         }
     }
 
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new VentanaCrucigrama1().setVisible(true);
+            }
+        });
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -147,6 +214,12 @@ public class VentanaCrucigrama1 extends javax.swing.JFrame {
         jLabel2.setText("jLabel2");
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
 
+        jLabelVida3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\app\\startech\\imagenes\\VidaRojo.png")); // NOI18N
+
+        jLabelVida2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\app\\startech\\imagenes\\VidaRojo.png")); // NOI18N
+
+        jLabelVida1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\app\\startech\\imagenes\\VidaRojo.png")); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -203,9 +276,9 @@ public class VentanaCrucigrama1 extends javax.swing.JFrame {
 
     //Boton para cerrar la ventana del laberinto y volver a la ventana del menú de niveles 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        laberinto.restaurarVidas();
+        crucigrama.restaurarVidas();
         dispose();
-        ventanaLevel.setVisible(true);
+        //ventanaLevel.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
