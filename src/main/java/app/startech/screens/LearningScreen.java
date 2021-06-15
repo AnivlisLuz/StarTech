@@ -62,7 +62,7 @@ public class LearningScreen extends javax.swing.JFrame {
         contentContainer.setLayout(new BorderLayout());
         centralContainer.add(contentContainer, NORTH);
         JTextArea contenido = new JTextArea(content);
-        contenido.setBackground(new Color(0,0,0,0));
+        contenido.setBackground(new Color(0, 0, 0, 0));
         contenido.setWrapStyleWord(true);
         contenido.setLineWrap(true);
         contenido.setEditable(false);
@@ -73,7 +73,8 @@ public class LearningScreen extends javax.swing.JFrame {
         contentContainer.add(contenido, CENTER);
         JLabel icon = new JLabel();
         icon.setBorder(new EmptyBorder(0, 0, 0, 20));
-        icon.setIcon(new javax.swing.ImageIcon(iconOp));
+        if (iconOp != null)
+            icon.setIcon(new javax.swing.ImageIcon(iconOp));
         contentContainer.add(icon, EAST);
 
         JPanel imageContainer = new JPanel();
