@@ -25,7 +25,7 @@ import static java.awt.BorderLayout.*;
  * @author luzch
  */
 public class LearningScreen extends javax.swing.JFrame {
-
+private Category category;
     private String title;
     private String audio;
     private String content;
@@ -34,6 +34,7 @@ public class LearningScreen extends javax.swing.JFrame {
     private CategoryScreen ventanaCategorias;
 
     public LearningScreen(Category category, CategoryScreen ventanaCategorias) {
+        this.category=category;
         title = category.getTitle();
         audio = category.getAudio();
         content = category.getContent();
@@ -102,7 +103,7 @@ public class LearningScreen extends javax.swing.JFrame {
         JButton start = new JButton("Jugar");
         start.addActionListener((action) -> {
             onClose();
-            // LevelScreen levelScreen = new LevelScreen(category, this);
+            LevelScreen levelScreen = new LevelScreen(category, ventanaCategorias);
             setVisible(false);
         });
         start.setPreferredSize(new Dimension(200, 40));
