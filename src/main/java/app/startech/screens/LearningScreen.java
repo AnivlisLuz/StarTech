@@ -12,7 +12,6 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -32,17 +31,15 @@ public class LearningScreen extends javax.swing.JFrame {
     private String content;
     private BufferedImage iconOp;
     private String image;
-    private Category category;
     private CategoryScreen ventanaCategorias;
 
     public LearningScreen(Category category, CategoryScreen ventanaCategorias) {
         title = category.getTitle();
         audio = category.getAudio();
         content = category.getContent();
-        iconOp = Images.getMultiplicacion();
+        iconOp = category.getIcon();
         image = category.getImage();
         this.ventanaCategorias = ventanaCategorias;
-        this.category = category;
         initComponent();
 
         playSound(audio, false);
@@ -86,7 +83,6 @@ public class LearningScreen extends javax.swing.JFrame {
         try {
             gifCointainer.setIcon(new javax.swing.ImageIcon(new URL(image)));
         } catch (MalformedURLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         imageContainer.add(gifCointainer);
@@ -100,7 +96,7 @@ public class LearningScreen extends javax.swing.JFrame {
             dispose();
             ventanaCategorias.setVisible(true);
         });
-        atras.setPreferredSize(new Dimension(150, 40));
+        atras.setPreferredSize(new Dimension(200, 40));
         optionsContainer.add(atras, WEST);
         JButton start = new JButton("Jugar");
         start.addActionListener((action) -> {
@@ -108,7 +104,7 @@ public class LearningScreen extends javax.swing.JFrame {
             // LevelScreen levelScreen = new LevelScreen(category, this);
             setVisible(false);
         });
-        start.setPreferredSize(new Dimension(150, 40));
+        start.setPreferredSize(new Dimension(200, 40));
         optionsContainer.add(start, EAST);
 
         add(titleContainer, NORTH);
