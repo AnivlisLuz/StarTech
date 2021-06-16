@@ -134,7 +134,14 @@ public class nuevoPerfil extends javax.swing.JFrame {
 
         if (nombre.isEmpty() || edad.isEmpty()) {
             JOptionPane.showMessageDialog(null, "usuario es incorrecto");
-
+            
+        } else if(!Usuario.esLetra(nombre))
+        {
+           
+         JOptionPane.showMessageDialog(null, "no se admite un valor mayor a 20 caracteres ni caracteres especiales");  
+        }else if(!edad.matches("-?\\d+")){
+            JOptionPane.showMessageDialog(null, "la edad no es un numero");
+        //}else if si e smayor o menor 
         } else if (!Usuario.verificarUsuario(nombre)) {
             Usuario usuario = new Usuario(nombre,edad);
             UserSaver nUser = new UserSaver();
