@@ -1,5 +1,6 @@
 package Crucigrama;
 
+import app.startech.data.DataController;
 import app.startech.laberintos.*;
 import app.startech.models.Category;
 import app.startech.models.Level;
@@ -18,10 +19,15 @@ public class VentanaCrucigrama1 extends javax.swing.JFrame {
 
     private Crucigrama crucigrama;
     private JTextField[][] matAux;
+    private int cont;
+    private final String[] mensajeContinuar = {"Continuar"};//Mensaje/Boton cuando el usuario completa un laberinto
+    private final String[] mensajeSinVidas = {"Menú"};//Mensaje/Boton para ir al menú de niveles
+    private final String[] mensajeGameOver = {"Menú", "Volver a Intentar"};//Mesaje/Boton para ir al menú de niveles o para reiniciar el laberinto
 
     public VentanaCrucigrama1() {
         crucigrama = new Crucigrama("Suma", "ave", 1);
-        crucigrama.mostrarMatriz();        
+        crucigrama.mostrarMatriz(); 
+        cont = 0;
         initComponents();
         mostrarCrucigrama();
         setLocationRelativeTo(null);
@@ -33,6 +39,7 @@ public class VentanaCrucigrama1 extends javax.swing.JFrame {
         jLabel2.setText(crucigrama.getCondicion());//Condicion para cada nivel. Ejm: Suma de uno en uno, Resta de dos en dos
         char [][] cruciAux = crucigrama.getMatrizAux();
         char[][] cruci = crucigrama.getMatriz();
+        int contAux = contar(cruci);
         int tamX = cruci.length;
         int tamY = cruci[0].length;
         int x=0, y=0, m=50, n=50;
@@ -55,11 +62,70 @@ public class VentanaCrucigrama1 extends javax.swing.JFrame {
                             public void actionPerformed(ActionEvent e) {
                                 String actual = a.getText();
                                 if(esNumero(actual) && actual.equals(veri)){
-                                    a.setBackground(Color.GREEN); 
+                                    if(a.getBackground() != Color.GREEN){
+                                        cont++;
+                                        a.setBackground(Color.GREEN); 
+                                        a.setEditable(false); 
+                                    }
+                                    if(cont == contAux){
+                                        int i = JOptionPane.showOptionDialog(null, "Lo lograste!!!", "StarTech", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE, null, mensajeContinuar, mensajeContinuar[0]);
+                                        if(i==0){
+                                            //Siguinte nivel 
+                                            Level sig = categoria.nextLevel(level);
+                                            if (sig != null) { //si el siguiente nivel es distinto de null
+                                                sig.setActive(); //el button (nivel) se activa
+                                                java.awt.EventQueue.invokeLater(new Runnable() { //nuevo hilo
+                                                    public void run() {
+                                                        ventanaCategoria = new CategoryScreen(DataController.instance.getUsuarioActual().category.getAllCategories());
+                                                        ventanaCategoria.setVisible(false);
+                                                        ventanaLevel = new LevelScreen(categoria, ventanaCategoria);
+                                                    }
+                                                });
+                                            } else { //el siguiente nivel es null, entonces se le activa la siguiente categoría
+                                                // Siguiente Categoria
+                                                Category cat = ventanaCategoria.nexCategory(categoria);
+                                                if (cat != null) { //la siguiente categoria es distinto de null
+                                                    java.awt.EventQueue.invokeLater(new Runnable() {//nuevo hilo
+                                                        public void run() {
+                                                            cat.setActive(true); //se le activa esa siguiente categoria
+                                                            cat.getLevels()[0].setActive(); //se le activa el primer nivel de la siguiente categoria
+                                                            new CategoryScreen(DataController.instance.getUsuarioActual().category.getAllCategories());
+                                                        }
+                                                    });
+                                                } else { //la siguiente categoria es null, quiere decir que acabo con todas las categorias
+                                                    JOptionPane.showMessageDialog(null, "Felicidad!!! Ganaste");
+                                                    ventanaCategoria.setVisible(true);
+                                                    //System.exit(0); 
+                                                }
+                                            }
+                                            dispose(); //Se cierra la ventana del laberinto
+                                        }
+                                    }
                                 }else{
                                     a.setBackground(Color.red);
-                                    ocultarVida();
-                                    crucigrama.setVidas();
+                                    if (crucigrama.getVidas() == 0) { //Si el usuario ya no tiene vidas
+                                        //ir a Menú
+                                        int j = JOptionPane.showOptionDialog(null, "ohh no!!! ya no tienes vidas", "Game Over", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE, null, mensajeSinVidas, mensajeSinVidas[0]);
+                                        if (j == 0) {
+                                            ventanaLevel.setVisible(true); //Se muestra la ventana de niveles
+                                            dispose();  //Se cierra la ventana del laberinto
+                                            crucigrama.restaurarVidas(); //Se restaura las vidas del usuario
+                                        }
+                                    } else { //El usuario todavia tiene vidas
+                                        int i = JOptionPane.showOptionDialog(null, "Vamos!!! tú puedes", "StarTech", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE, null, mensajeGameOver, mensajeGameOver[0]);
+                                        if (i == 0) {
+                                            //Menú principal
+                                            ventanaLevel.setVisible(true);
+                                            dispose();
+                                            crucigrama.restaurarVidas();
+                                        } else {
+                                            //volver a intentar
+                                            a.setText("");
+                                            a.setBackground(null);
+                                            ocultarVida();
+                                            crucigrama.setVidas();
+                                        }
+                                    }
                                 }
                             }
                         };
@@ -74,6 +140,18 @@ public class VentanaCrucigrama1 extends javax.swing.JFrame {
         }
         setLocationRelativeTo(null);
     }
+    private int contar(char[][] mat){
+        int res = 0;
+        for(int i = 0; i<mat.length; i++){
+            for(int j= 0; j<mat[0].length; j++){
+                char act = mat[i][j];
+                if(act == '@'){
+                    res++;
+                }
+            }
+        }
+        return res;
+    }
     private boolean esNumero(String a){
         boolean res = false;
         try {
@@ -84,16 +162,6 @@ public class VentanaCrucigrama1 extends javax.swing.JFrame {
         }
         return res;
     }
-    //se refresca el mismo laberinto, cambiando a su color inicial de los botones     
-//    public void refresh() {
-//        for (int i = 0; i < botones.length; i++) {
-//            for (int j = 0; j < botones.length; j++) {
-//                Boton b = botones[i][j];
-//                b.setBackground(null);
-//            }
-//        }
-//        laberinto.getMatriz().reset();
-//    }
 
     //Pierde una vida. De forma visual oculta el jLabel para simular que pierde una vida
     public void ocultarVida() {
