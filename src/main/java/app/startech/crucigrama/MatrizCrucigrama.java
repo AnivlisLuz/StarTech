@@ -4,49 +4,35 @@
  * and open the template in the editor.
  */
 package app.startech.crucigrama;
-import java.util.ArrayList;
 
 /**
  *
  * @author Carlos
  */
 public class MatrizCrucigrama {
-    char[][] matriz =   {{'3','+','2','=','@','#','#','#','@','+','4','=','8'},
-                        {'#','#','#','#','+','#','#','#','+','#','#','#','#'},
-                        {'#','#','#','#','1','#','#','#','5','#','6','#','#'},
-                        {'#','#','#','#','=','#','#','#','=','#','+','#','#'},
-                        {'#','#','3','#','@','+','@','=','@','#','2','#','#'},
-                        {'#','#','+','#','#','#','+','#','#','#','=','#','#'},
-                        {'#','#','2','#','#','#','@','+','@','=','@','#','#'},
-                        {'#','#','=','#','#','#','=','#','+','#','#','#','#'},
-                        {'#','#','@','+','@','=','7','#','@','+','@','=','7'},
-                        {'#','#','#','#','+','#','#','#','=','#','+','#','#'},
-                        {'#','#','#','#','6','+','@','=','9','#','4','#','#'},
-                        {'#','#','#','#','=','#','#','#','#','#','=','#','#'},
-                        {'4','+','@','=','8','#','@','+','3','=','@','#','#'},
-                        {'#','#','+','#','#','#','+','#','#','#','#','#','#'},
-                        {'#','#','2','#','#','#','5','#','#','#','#','#','#'},
-                        {'#','#','=','#','#','#','=','#','#','#','#','#','#'},
-                        {'#','#','@','+','@','=','@','#','#','#','#','#','#'}};
-    private Casilla[][] plantilla;
-    private ArrayList<Casilla> numeros;
+    /*
+    MatrizCrucigrama mat = new MatrizCrucigrama("restas");
+    char[][] matriz = mat.getMat();
+    char[][] matrizRes = mat.getRes();
+    */
     
-    public MatrizCrucigrama()
+    private char[][] mat;
+    private final char[][] matRes;
+    
+    public MatrizCrucigrama(String operacion)
     {
-        plantilla = new Plantilla(matriz).getPlantilla();
+        Plantilla plantilla = new Plantilla(operacion);
+        mat = plantilla.getMatriz();
+        matRes = plantilla.getMatizRes();
     }
     
-    public void mostrarPlantilla()
+    public char[][] getMat()
     {
-        for (int i = 0; i<plantilla.length; i++)
-        {
-            for (int j = 0; j<plantilla[i].length; j++)
-            {
-                if (!plantilla[i][j].esNumero())
-                    System.out.println(" " + "");
-                else
-                    System.out.println(plantilla[i][j].getContenido() + "");
-            }
-        }
+        return mat;
+    }
+    
+    public char[][] getMatRes()
+    {
+        return matRes;
     }
 }
