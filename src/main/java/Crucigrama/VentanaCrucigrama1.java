@@ -42,7 +42,7 @@ public class VentanaCrucigrama1 extends javax.swing.JFrame {
         int contAux = contar(cruci);
         int tamX = cruci.length;
         int tamY = cruci[0].length;
-        int x=0, y=0, m=50, n=50;
+        int x=0, y=0, m=40, n=40;
         for(int i=0; i<tamX; i++){
             for(int j=0; j<tamY; j++){
                 char act = cruci[i][j];
@@ -112,19 +112,8 @@ public class VentanaCrucigrama1 extends javax.swing.JFrame {
                                             crucigrama.restaurarVidas(); //Se restaura las vidas del usuario
                                         }
                                     } else { //El usuario todavia tiene vidas
-                                        int i = JOptionPane.showOptionDialog(null, "Vamos!!! tú puedes", "StarTech", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE, null, mensajeGameOver, mensajeGameOver[0]);
-                                        if (i == 0) {
-                                            //Menú principal
-                                            ventanaLevel.setVisible(true);
-                                            dispose();
-                                            crucigrama.restaurarVidas();
-                                        } else {
-                                            //volver a intentar
-                                            a.setText("");
-                                            a.setBackground(null);
-                                            ocultarVida();
-                                            crucigrama.setVidas();
-                                        }
+                                        ocultarVida();
+                                        crucigrama.setVidas();
                                     }
                                 }
                             }

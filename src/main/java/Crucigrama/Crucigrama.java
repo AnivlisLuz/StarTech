@@ -1,19 +1,21 @@
 
 package Crucigrama;
 
+import app.startech.crucigrama.MatrizCrucigrama;
 import app.startech.laberintos.Matriz;
 
 public class Crucigrama {
     private String titulo;
     private String condicion;
     private int nivel;
-    //private Matriz matriz;
+    private MatrizCrucigrama mat;
     private char[][] matriz;
     private char[][] matrizAux;
     private int vidas;
     
     public Crucigrama(String titulo, String condicion, int nivel){
         this.titulo = titulo;
+        
         this.condicion = condicion;
         this.nivel = 1;
         vidas = 3;
@@ -44,56 +46,53 @@ public class Crucigrama {
     
     public void mostrarMatriz(){
         if(nivel == 1){
-            matriz = generarCrucigrama(nivel);
+            mat = new MatrizCrucigrama("suma");
+            matriz = mat.getMat();
+            matrizAux = mat.getMatRes();
         }else if(nivel == 2){
-            matriz = generarCrucigrama(nivel);
+            mat = new MatrizCrucigrama("resta");
+            matriz = mat.getMat();
+            matrizAux = mat.getMatRes();
         }else if(nivel == 3){
-            matriz = generarCrucigrama(nivel);
+            mat = new MatrizCrucigrama("multiplicacion");
+            matriz = mat.getMat();
+            matrizAux = mat.getMatRes();
         }else if(nivel == 4){
-            matriz = generarCrucigrama(nivel);
+            mat = new MatrizCrucigrama("division");
+            matriz = mat.getMat();
+            matrizAux = mat.getMatRes();
         }else{
-            matriz = generarCrucigrama(nivel);
+            mat = new MatrizCrucigrama("convinados");
+            matriz = mat.getMat();
+            matrizAux = mat.getMatRes();
         }
     }
 
 //    public Matriz getMatriz() {
 //        return matriz;
 //    }
-    public char[][] generarCrucigrama(int nivel){
-        char[][] a={{'#','#','#','#','#','#','#','#','#','#','#','#','#'},
-                    {'#','@','+','3','=','7','#','#','#','#','#','#','#'},
-                    {'#','#','#','+','#','#','#','#','#','#','#','#','#'},
-                    {'#','#','#','1','+','6','=','@','#','#','#','#','#'},
-                    {'#','#','#','=','#','#','#','+','#','#','#','#','#'},
-                    {'#','2','+','@','=','@','#','2','#','#','#','#','#'},
-                    {'#','#','#','#','#','+','#','=','#','#','#','#','#'},
-                    {'#','#','#','#','#','3','#','9','#','#','#','#','#'},
-                    {'#','#','#','#','#','=','#','#','#','#','#','#','#'},
-                    {'#','#','#','#','#','9','#','#','#','#','#','#','#'},
-                    {'#','#','#','#','#','#','#','#','#','#','#','#','#'},
-                    {'#','#','#','#','#','#','#','#','#','#','#','#','#'},
-                    {'#','#','#','#','#','#','#','#','#','#','#','#','#'}};
-        return a;
-    }
+//    public char[][] generarCrucigrama(int nivel){
+//        char[][] a={{'#','#','#','#','#','#','#','#','#','#','#','#','#'},
+//                    {'#','@','+','3','=','7','#','#','#','#','#','#','#'},
+//                    {'#','#','#','+','#','#','#','#','#','#','#','#','#'},
+//                    {'#','#','#','1','+','6','=','@','#','#','#','#','#'},
+//                    {'#','#','#','=','#','#','#','+','#','#','#','#','#'},
+//                    {'#','2','+','@','=','@','#','2','#','#','#','#','#'},
+//                    {'#','#','#','#','#','+','#','=','#','#','#','#','#'},
+//                    {'#','#','#','#','#','3','#','9','#','#','#','#','#'},
+//                    {'#','#','#','#','#','=','#','#','#','#','#','#','#'},
+//                    {'#','#','#','#','#','9','#','#','#','#','#','#','#'},
+//                    {'#','#','#','#','#','#','#','#','#','#','#','#','#'},
+//                    {'#','#','#','#','#','#','#','#','#','#','#','#','#'},
+//                    {'#','#','#','#','#','#','#','#','#','#','#','#','#'}};
+//        return a;
+//    }
 
     public char[][] getMatriz() {
         return matriz;
     }
 
     char[][] getMatrizAux() {
-        matrizAux = new char[][]{{'#','#','#','#','#','#','#','#','#','#','#','#','#'},
-                                 {'#','4','+','3','=','7','#','#','#','#','#','#','#'},
-                                 {'#','#','#','+','#','#','#','#','#','#','#','#','#'},
-                                 {'#','#','#','1','+','6','=','7','#','#','#','#','#'},
-                                 {'#','#','#','=','#','#','#','+','#','#','#','#','#'},
-                                 {'#','2','+','4','=','6','#','2','#','#','#','#','#'},
-                                 {'#','#','#','#','#','+','#','=','#','#','#','#','#'},
-                                 {'#','#','#','#','#','3','#','9','#','#','#','#','#'},
-                                 {'#','#','#','#','#','=','#','#','#','#','#','#','#'},
-                                 {'#','#','#','#','#','9','#','#','#','#','#','#','#'},
-                                 {'#','#','#','#','#','#','#','#','#','#','#','#','#'},
-                                 {'#','#','#','#','#','#','#','#','#','#','#','#','#'},
-                                 {'#','#','#','#','#','#','#','#','#','#','#','#','#'}};
         return matrizAux;
     }
     
