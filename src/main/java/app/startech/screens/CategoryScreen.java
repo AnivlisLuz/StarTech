@@ -71,7 +71,7 @@ public class CategoryScreen extends javax.swing.JFrame {
             button.setEnabled(category.getActive());
             // Se ejecuta la accion al hacer click
             button.addActionListener((action) -> {
-                LevelScreen levelScreen = new LevelScreen(category, this);
+                LearningScreen learningScreen = new LearningScreen(category, this);
                 setVisible(false);
             });
 
