@@ -12,7 +12,7 @@ package app.startech.crucigrama;
 public class Main {
     public static void main(String[] args)
     {
-        MatrizCrucigrama mat = new MatrizCrucigrama("division");
+        MatrizCrucigrama mat = new MatrizCrucigrama("suma");
         char[][] matriz = mat.getMat();
         char[][] matrizRes = mat.getMatRes();
         
