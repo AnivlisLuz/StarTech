@@ -5,14 +5,13 @@
  */
 package sopa;
 
+import java.applet.AudioClip;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
-public class Boton extends JButton implements MouseListener {
+public class Boton extends JButton implements ActionListener {
 
     private final String[] mensajeContinuar = {"Continuar"};//Mensaje/Boton cuando el usuario completa un laberinto
     private final String[] mensajeSinVidas = {"Menú"};//Mensaje/Boton para ir al menú de niveles
@@ -26,6 +25,10 @@ public class Boton extends JButton implements MouseListener {
     private int primerDigito;
     private int segundoDigito;
 
+    private AudioClip sonidoI;
+    private AudioClip sonidoC;
+    
+
     public Boton(int posx, int posy, int ancho, int alto, int i, int j, Cuadro[][] cuadros, SopaDeResultados sopa, Ventana ventana) {
         this.cuadros = cuadros;
         this.sopa = sopa;
@@ -34,8 +37,11 @@ public class Boton extends JButton implements MouseListener {
         this.ventana = ventana;
         setBounds(posx, posy, ancho, alto);//posicion y tamaño del boton
         setFont(new Font("calibri", Font.ITALIC, 20));
-        addMouseListener(this);
-
+        addActionListener(this);
+        
+        sonidoI = java.applet.Applet.newAudioClip(getClass().getResource("/recursos_sopa/Error.wav"));
+        sonidoC = java.applet.Applet.newAudioClip(getClass().getResource("/recursos_sopa/Correc.wav"));
+       
     }
 
     //Método para cambiar el texto del botón
@@ -64,7 +70,7 @@ public class Boton extends JButton implements MouseListener {
         return false;
     }
 
-    public static void esperarM(int segundos) {
+    public void esperarM(int segundos) {
         try {
             Thread.sleep(segundos);
         } catch (Exception e) {
@@ -73,20 +79,25 @@ public class Boton extends JButton implements MouseListener {
     }
 
     @Override
-    public void mouseClicked(MouseEvent e) {
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
+    public void actionPerformed(ActionEvent e) {
+        ventana.error(false);
         if (sopa.getTocado()) {
             if (correcto2() && ventana.verificarMovimiento(j, i)) {
+                sonidoC.play();
+                ventana.setCorrecto();
                 sopa.setSegundoDigito(cuadros[i][j].getValor());
                 setBackground(Color.GREEN);
                 ventana.correcto((sopa.getPrimerD() * 10) + sopa.getSegundoD());
                 setEnabled(false);
             } else {
+                ventana.error(true);
+                sonidoI.play();
+                sopa.perderVida();
+                ventana.perderV(sopa.getVidas());
                 setBackground(Color.RED);
-                esperarM(500);
+               
+
+               // esperarM(500);
                 ventana.reiniciarFallo();
                 setBackground(Color.white);
 
@@ -100,29 +111,27 @@ public class Boton extends JButton implements MouseListener {
                 setEnabled(false);
                 sopa.tocoPrimero(i, j);
             } else {
+                ventana.error(true);
+                sonidoI.play();
+                sopa.perderVida();
+                ventana.perderV(sopa.getVidas());
                 setBackground(Color.RED);
-                esperarM(500);
+                
+              //  esperarM(500);
                 setBackground(Color.white);
             }
         }
         if (sopa.todoRespondido()) {
             System.out.println("Encontraste todos los numeros");
-            ventana.reiniciar();
+            ventana.final1();
+        }
+        if (sopa.getVidas() == 0) {
+            System.out.println("Encontraste todos los numeros");
+            ventana.final2();
         }
         int a = cuadros[i][j].getValor();
         System.out.println("" + a);
-    }
 
-    @Override
-    public void mouseReleased(MouseEvent e) {
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
     }
 
 }

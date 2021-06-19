@@ -7,9 +7,11 @@ package sopa;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -36,6 +38,7 @@ public class Ventana {
     private JLabel etiqueta;
     private JLabel esCorrecto;
     private JLabel titulo;
+    private JLabel error;
     private JButton boton;
     private ActionListener oyente;
     private SopaDeResultados sopa;
@@ -47,17 +50,33 @@ public class Ventana {
     private int aux = 0;
     private int bucle = 0;
 
+    private JLabel vida1;
+    private JLabel vida2;
+    private JLabel vida3;
+
+    private ImageIcon imagen;
+
     public Ventana() {
         pantalla = new JFrame();
         panel = new JPanel();
         oyente = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int p = iniX;
-                int q = iniY;
-                System.out.println(p + "gi" + q);
+                pantalla.setVisible(false);
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        Ventana ventana = new Ventana();
+                    }
+                });
             }
         };
+
+        vida1 = new JLabel();
+        vida2 = new JLabel();
+        vida3 = new JLabel();
+
+        error = new JLabel();
+        panel.add(error);
 
         sopa = new SopaDeResultados();
         matriz = sopa.generarMatriz();
@@ -98,6 +117,7 @@ public class Ventana {
         titulo();
         botones();
         juego();
+        ponerVidas();
     }
 
     public void pantalla() {
@@ -112,6 +132,24 @@ public class Ventana {
     public void panel() {
         panel.setSize(ancho, alto);
         panel.setLayout(null);
+
+        JButton botonReinicio = new JButton();
+        JButton botonCategoria = new JButton();
+
+        ImageIcon imagen = new ImageIcon(getClass().getResource("/recursos_sopa/boton_menu.png"));
+        ImageIcon imagen1 = new ImageIcon(getClass().getResource("/recursos_sopa/boton_de_reinicio.png"));
+
+        panel.add(botonReinicio);
+        panel.add(botonCategoria);
+
+        botonReinicio.setBounds(ancho - 90, alto - 120, 60, 60);
+        botonReinicio.setBackground(Color.WHITE);
+        botonReinicio.setIcon(new ImageIcon(imagen1.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH)));
+        botonReinicio.addActionListener(oyente);
+
+        botonCategoria.setBounds(0, 0, 60, 60);
+        botonCategoria.setBackground(Color.WHITE);
+        botonCategoria.setIcon(new ImageIcon(imagen.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH)));
     }
 
     public void titulo() {
@@ -223,8 +261,8 @@ public class Ventana {
         //60<101
         if (tamanoY < 8) {
             if (tamanoX < 8) {
-                posicionX = 1;
-                posicionY = 1;
+                posicionX = 0;
+                posicionY = 0;
                 aux = 2;
                 for (int i = 0; i < resultados.length; i++) {
                     matriz[posicionY][posicionX].setValor(primerDigito[i]);
@@ -257,8 +295,8 @@ public class Ventana {
                     }
                 }
             } else {
-                posicionX = 2;
-                posicionY = 1;
+                posicionX = 1;
+                posicionY = 0;
                 aux = 3;
                 for (int i = 0; i < resultados.length; i++) {
                     matriz[posicionY][posicionX].setValor(primerDigito[i]);
@@ -293,8 +331,8 @@ public class Ventana {
             }
         } else {
             if (tamanoX < 8) {
-                posicionX = 1;
-                posicionY = 2;
+                posicionX = 0;
+                posicionY = 1;
                 aux = 2;
                 for (int i = 0; i < resultados.length; i++) {
                     matriz[posicionY][posicionX].setValor(primerDigito[i]);
@@ -327,8 +365,8 @@ public class Ventana {
                     }
                 }
             } else {
-                posicionX = 2;
-                posicionY = 2;
+                posicionX = 1;
+                posicionY = 1;
                 aux = 3;
                 for (int i = 0; i < resultados.length; i++) {
                     matriz[posicionY][posicionX].setValor(primerDigito[i]);
@@ -364,8 +402,22 @@ public class Ventana {
         }
     }
 
-    public void ponerDigitoDos(int y, int x) {
+    public void error(boolean a) {
+        if (a) {
+            ImageIcon imagen = new ImageIcon(getClass().getResource("/recursos_sopa/equis.png"));
+            error.setBounds(ancho - 210, (alto / 4)-20, 70, 70);
+            error.setIcon(new ImageIcon(imagen.getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+        } else {
+            ImageIcon imagen = new ImageIcon("");
+            error.setBounds(ancho - 210, alto / 4, 70, 70);
+            error.setIcon(new ImageIcon(imagen.getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+        }
+    }
 
+    public void setCorrecto() {
+        ImageIcon imagen = new ImageIcon(getClass().getResource("/recursos_sopa/correcto.png"));
+        error.setBounds(ancho - 210, (alto / 4)-20, 100, 100);
+        error.setIcon(new ImageIcon(imagen.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH)));
     }
 
     public void correcto(int numero) {
@@ -409,27 +461,68 @@ public class Ventana {
         return false;
     }
 
-    public void reiniciar() {
+    public void final1() {
         JLabel etiquetaMenu = new JLabel();
-        JButton botonReinicio = new JButton();
-        JButton botonCategoria = new JButton();
 
         panel.add(etiquetaMenu);
-        panel.add(botonReinicio);
-        panel.add(botonCategoria);
 
         etiquetaMenu.setBounds(100, 50, 100, 50);
         etiquetaMenu.setText("Lo lograste");
         etiquetaMenu.setFont(new Font("calibri", Font.ITALIC, 20));
+        for (int i = 0; i <= y; i++) {
+            for (int j = 0; j <= x; j++) {
+                botones[i][j].setEnabled(false);
+            }
+        }
 
-        botonReinicio.setBounds(50, alto-10, 100, 50);
-        botonReinicio.setText("Reiniciar");
-        botonReinicio.setFont(new Font("calibri", Font.ITALIC, 20));
+    }
 
-        botonCategoria.setBounds(150, alto-10, 100, 50);
-        botonCategoria.setText("Ir a Categoria");
-        botonCategoria.setFont(new Font("calibri", Font.ITALIC, 20));
+    public void final2() {
+        JLabel etiquetaMenu = new JLabel();
 
+        panel.add(etiquetaMenu);
+
+        etiquetaMenu.setBounds(100, 50, 100, 50);
+        etiquetaMenu.setText("Perdiste");
+        etiquetaMenu.setFont(new Font("calibri", Font.ITALIC, 20));
+
+        for (int i = 0; i <= y; i++) {
+            for (int j = 0; j <= x; j++) {
+                botones[i][j].setEnabled(false);
+            }
+        }
+    }
+
+    public void ponerVidas() {
+        ImageIcon imagen = new ImageIcon(getClass().getResource("/recursos_sopa/VidaRojo.png"));
+
+        panel.add(vida1);
+        panel.add(vida2);
+        panel.add(vida3);
+
+        vida1.setBounds(ancho - 260, 0, 70, 70);
+        vida1.setOpaque(true);
+        vida1.setIcon(new ImageIcon(imagen.getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+
+        vida2.setBounds(ancho - 180, 0, 70, 70);
+        vida2.setOpaque(true);
+        vida2.setIcon(new ImageIcon(imagen.getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+
+        vida3.setBounds(ancho - 100, 0, 70, 70);
+        vida3.setOpaque(true);
+        vida3.setIcon(new ImageIcon(imagen.getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+
+    }
+
+    public void perderV(int x) {
+        ImageIcon imagen = new ImageIcon(getClass().getResource("/recursos_sopa/VidaBlanco.png"));
+        if (sopa.getVidas() == 2) {
+            vida1.setIcon(new ImageIcon(imagen.getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+        } else if (sopa.getVidas() == 1) {
+            vida2.setIcon(new ImageIcon(imagen.getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+        } else if (sopa.getVidas() == 0) {
+            vida3.setIcon(new ImageIcon(imagen.getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+        }
     }
 
     public static void main(String[] args) {
@@ -442,3 +535,4 @@ public class Ventana {
     }
 
 }
+//getClass().getResource("/recursos/boton_de_reinicio.png")

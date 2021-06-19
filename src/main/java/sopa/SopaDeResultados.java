@@ -23,8 +23,10 @@ public class SopaDeResultados {
     private int segundoDigito;
     private int posicionXdigitoUno;
     private int posicionYdigitoUno;
-    
+
     private int primerDigitoTomado;
+
+    private int vidas;
 
     public SopaDeResultados() {
         Random r = new Random();
@@ -32,6 +34,7 @@ public class SopaDeResultados {
         y = r.nextInt(5) + 6;
         matriz = new Matriz(x, y);
         tocado = false;
+        vidas = 3;
     }
 
     public Cuadro[][] generarMatriz() {
@@ -58,7 +61,7 @@ public class SopaDeResultados {
         int[] numero2 = new int[cuantosNumeros];
         String[] operaciones = new String[cuantosNumeros];
         resultados = new int[cuantosNumeros];
-        respondidos=new boolean[cuantosNumeros];
+        respondidos = new boolean[cuantosNumeros];
         for (int i = 0; i < cuantosNumeros; i++) {
             int num1, num2;
             int signo = r.nextInt(4);
@@ -102,8 +105,8 @@ public class SopaDeResultados {
     public int[] getResultados() {
         return resultados;
     }
-    
-    public int getResultado(int posicion){
+
+    public int getResultado(int posicion) {
         return resultados[posicion];
     }
 
@@ -122,45 +125,58 @@ public class SopaDeResultados {
     public void setSegundoDigito(int numero) {
         segundoDigito = numero;
     }
-    
-    public int getPrimerD(){
+
+    public int getPrimerD() {
         return primerDigito;
     }
-    
-    public int getSegundoD(){
+
+    public int getSegundoD() {
         return segundoDigito;
     }
-    
-    public void setRespondidos(int posicion){
-        respondidos[posicion]=true;
+
+    public void setRespondidos(int posicion) {
+        respondidos[posicion] = true;
     }
-    
-    public boolean todoRespondido(){
-        for(int i=0;i<respondidos.length;i++){
-            if(respondidos[i]==false){
+
+    public boolean todoRespondido() {
+        for (int i = 0; i < respondidos.length; i++) {
+            if (respondidos[i] == false) {
                 return false;
             }
         }
         return true;
     }
-    
-    public void tocoPrimero(int y,int x){
-        posicionXdigitoUno=x;
-        posicionYdigitoUno=y;
+
+    public void tocoPrimero(int y, int x) {
+        posicionXdigitoUno = x;
+        posicionYdigitoUno = y;
     }
-    
-    public int getTocoPrimeroX(){
+
+    public int getTocoPrimeroX() {
         return posicionXdigitoUno;
     }
-    
-    public int getTocoPrimeroY(){
+
+    public int getTocoPrimeroY() {
         return posicionYdigitoUno;
     }
-    
-    public void setPrimerDigitoTomado(int numero){
-        primerDigitoTomado=numero;
+
+    public void setPrimerDigitoTomado(int numero) {
+        primerDigitoTomado = numero;
     }
-    public int getPrimerDigitoTomado(){
-        return primerDigitoTomado*10;
+
+    public int getPrimerDigitoTomado() {
+        return primerDigitoTomado * 10;
+    }
+
+    public int getVidas() {
+        return vidas;
+    }
+
+    public void perderVida() {
+        vidas--;
+    }
+
+    public void establecerVidas() {
+        vidas = 3;
     }
 }
