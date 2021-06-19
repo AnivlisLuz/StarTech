@@ -24,6 +24,7 @@ public class Pregunta {
     public static MouseListener oyenteAccion1;
     public static MouseListener oyenteAccion2;
     public static String pregunta;
+    public static String pregunta1;
     public static String[] respuestas;
     public static boolean[] incisos;
     public static GrupoPreguntas grupo;
@@ -61,6 +62,8 @@ public class Pregunta {
                     etiqueta1.setBackground(Color.GREEN);
                     etiqueta1.setText("Correcto");
                 } else {
+                    grupo.correcion();
+                    grupo.error();
                     etiqueta1.setBackground(Color.RED);
                     etiqueta1.setText("Incorrecto");
                     if (esCorrecto == 1) {
@@ -105,6 +108,8 @@ public class Pregunta {
                     etiqueta1.setBackground(Color.GREEN);
                     etiqueta1.setText("Correcto");
                 } else {
+                    grupo.correcion();
+                    grupo.error();
                     etiqueta1.setBackground(Color.RED);
                     etiqueta1.setText("Incorrecto");
                 }
@@ -149,6 +154,8 @@ public class Pregunta {
                     etiqueta1.setBackground(Color.GREEN);
                     etiqueta1.setText("Correcto");
                 } else {
+                    grupo.correcion();
+                    grupo.error();
                     etiqueta1.setBackground(Color.RED);
                     etiqueta1.setText("Incorrecto");
                     if (esCorrecto == 0) {
@@ -362,12 +369,12 @@ public class Pregunta {
     //Establece la pregunta
     public void pregun() {
         pregunta = generadorP();
-        etiqueta1.setBounds(ancho / 2 - 100, 50, 200, 50);
+        etiqueta1.setBounds(ancho / 2 - 200, 100, 400, 100);
         etiqueta1.setBackground(Color.CYAN);
         etiqueta1.setText(generadorP());
         etiqueta1.setHorizontalAlignment(SwingConstants.CENTER);
         etiqueta1.setOpaque(true);
-        etiqueta1.setFont(new Font("calibri", Font.ITALIC, 30));
+        etiqueta1.setFont(new Font("calibri", Font.ITALIC, 60));
     }
 
     //Establece el inciso 1
@@ -404,50 +411,50 @@ public class Pregunta {
         int b = r.nextInt(10);
         if (cuestionario >= 0 && cuestionario <= 3) {
             auxiliar = a + b;
-            pregunta = "Cuanto es " + a + "+" + b;
+            pregunta = a + "+" + b;
         } else if (cuestionario >= 4 && cuestionario <= 6) {
             if (a <= b) {
                 auxiliar = b - a;
-                pregunta = "Cuanto es " + b + "-" + a;
+                pregunta = b + "-" + a;
             } else if (b < a) {
                 auxiliar = a - b;
-                pregunta = "Cuanto es " + a + "-" + b;
+                pregunta = a + "-" + b;
             }
         } else if (cuestionario >= 7 && cuestionario <= 9) {
             auxiliar = a * b;
-            pregunta = "Cuanto es " + a + "*" + b;
+            pregunta = a + "*" + b;
         } else if (cuestionario >= 10 && cuestionario <= 12) {
             int c = r.nextInt(100);
             if (c % 10 == 0) {
                 auxiliar = c / 10;
-                pregunta = "Cuanto es " + c + "/" + 10;
+                pregunta = c + "/" + 10;
             } else if (c % 9 == 0) {
                 auxiliar = c / 9;
-                pregunta = "Cuanto es " + c + "/" + 9;
+                pregunta = c + "/" + 9;
             } else if (c % 8 == 0) {
                 auxiliar = c / 8;
-                pregunta = "Cuanto es " + c + "/" + 8;
+                pregunta = c + "/" + 8;
             } else if (c % 7 == 0) {
                 auxiliar = c / 7;
-                pregunta = "Cuanto es " + c + "/" + 7;
+                pregunta = c + "/" + 7;
             } else if (c % 6 == 0) {
                 auxiliar = c / 6;
-                pregunta = "Cuanto es " + c + "/" + 6;
+                pregunta = c + "/" + 6;
             } else if (c % 5 == 0) {
                 auxiliar = c / 5;
-                pregunta = "Cuanto es " + c + "/" + 5;
+                pregunta = c + "/" + 5;
             } else if (c % 4 == 0) {
                 auxiliar = c / 4;
-                pregunta = "Cuanto es " + c + "/" + 4;
+                pregunta = c + "/" + 4;
             } else if (c % 3 == 0) {
                 auxiliar = c / 3;
-                pregunta = "Cuanto es " + c + "/" + 3;
+                pregunta = c + "/" + 3;
             } else if (c % 2 == 0) {
                 auxiliar = c / 2;
-                pregunta = "Cuanto es " + c + "/" + 2;
+                pregunta = c + "/" + 2;
             } else if (c % 1 == 0) {
                 auxiliar = c / 1;
-                pregunta = "Cuanto es " + c + "/" + 1;
+                pregunta = c + "/" + 1;
             }
         }
         return pregunta;
@@ -481,5 +488,13 @@ public class Pregunta {
         } else if (a == 2) {
             boton2.setText("" + auxiliar + "");
         }
+    }
+
+    public static String getPregunta() {
+        return pregunta;
+    }
+
+    public static int getAuxiliar() {
+        return auxiliar;
     }
 }
