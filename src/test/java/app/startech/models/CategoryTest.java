@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package app.startech.models;
-
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -43,7 +42,7 @@ public class CategoryTest {
     @Test
     public void testSetActive_0args() {
         System.out.println("setActive");
-        Category instance = new Category(1,"title",false,null);
+        Category instance = new Category(1,"title","","",null,"",false,null);
         instance.setActive();
         
         boolean expResult = true;
@@ -57,7 +56,7 @@ public class CategoryTest {
     @Test
     public void testGetId() {
         System.out.println("getId");
-        Category instance = new Category(1,"title",false,null);
+        Category instance = new Category(1,"title","","",null,"",false,null);
         
         int expResult = 1;
         int result = instance.getId();
@@ -70,7 +69,7 @@ public class CategoryTest {
     @Test
     public void testGetTitle() {
         System.out.println("getTitle");
-        Category instance = new Category(1,"title",false,null);
+        Category instance = new Category(1,"title","","",null,"",false,null);
         
         String expResult = "title";
         String result = instance.getTitle();
@@ -83,7 +82,7 @@ public class CategoryTest {
     @Test
     public void testGetActive() {
         System.out.println("getActive");
-        Category instance = new Category(1,"title",false,null);
+        Category instance = new Category(1,"title","","",null,"",false,null);
         
         boolean expResult = false;
         boolean result = instance.getActive();
@@ -97,7 +96,7 @@ public class CategoryTest {
     public void testSetActive_boolean() {
         System.out.println("setActive");
         boolean active = false;
-        Category instance = new Category(1,"title",false,null);
+        Category instance = new Category(1,"title","","",null,"",false,null);
         instance.setActive(active);
     }
 
@@ -107,7 +106,7 @@ public class CategoryTest {
     @Test
     public void testGetLevels() {
         System.out.println("getLevels");
-        Category instance = new Category(1,"title",false,null);
+        Category instance = new Category(1,"title","","",null,"",false,null);
         
         Level[] expResult = null;
         Level[] result = instance.getLevels();
@@ -121,7 +120,7 @@ public class CategoryTest {
     public void testNextLevel() {
         System.out.println("nextLevel");
         Level level = null;
-        Category instance = new Category(1,"title",false,new Level[0]);
+        Category instance = new Category(1,"title","","",null,"",false,new Level[0]);
         
         Level expResult = null;
         Level result = instance.nextLevel(level);
