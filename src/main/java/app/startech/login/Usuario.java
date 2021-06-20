@@ -61,5 +61,22 @@ public class Usuario {
     public String toFile() {
         return nombre + "," + edad;
     }
+    
+    public static boolean esLetra(String nombre)
+    {
+        if(nombre.length()>20){
+            return false;
+        }
+        for(int i =0; i< nombre.length() ; i++)
+        {
+          char letra =nombre.toUpperCase().charAt(i);
+          int valorAski =(int)letra;
+          if(valorAski != 165 &&(valorAski < 65 || valorAski > 90))
+          {
+              return  false;
+          }
+        }
+        return true;
+    }
 
 }
