@@ -30,7 +30,13 @@ public class GrupoPreguntas {
     private final JLabel etiqueta;
     private final JLabel etiqueta1;
     private final JLabel etiqueta2;
+    private final JLabel etiqueta3;
     private final Thread thread;
+    public static int[] a = new int[3];
+    public static int b = 0;
+
+    public static String[] c = new String[3];
+    public static int d = 0;
 
     public GrupoPreguntas(Pregunta[] preguntas) {
         thread = new Thread();
@@ -40,6 +46,7 @@ public class GrupoPreguntas {
         etiqueta = new JLabel();
         etiqueta1 = new JLabel();
         etiqueta2 = new JLabel();
+        etiqueta3 = new JLabel();
         imagen1 = new ImageIcon("recursos/imagenes/perdiste.jpg");
         imagen2 = new ImageIcon("recursos/imagenes/lograste.jpg");
 
@@ -53,6 +60,8 @@ public class GrupoPreguntas {
 
             public void mouseReleased(MouseEvent e) {
                 Pregunta.restQuest();
+                b = 0;
+                d = 0;
                 GrupoPreguntas grupo = new GrupoPreguntas(Cuestionario.preguntas);
             }
 
@@ -126,6 +135,8 @@ public class GrupoPreguntas {
             public void mouseReleased(MouseEvent e) {
                 Pregunta.setRestBCateg();
                 Pregunta.restQuest();
+                b = 0;
+                d = 0;
                 GrupoPreguntas grupo = new GrupoPreguntas(Cuestionario.preguntas);
 
             }
@@ -203,6 +214,7 @@ public class GrupoPreguntas {
     public void hoja() {
         panel.add(reiniciar);
         panel.add(categoria0);
+        panel.add(etiqueta3);
         panel.add(etiqueta1);
         panel.add(etiqueta);
     }
@@ -216,7 +228,7 @@ public class GrupoPreguntas {
 
     //Caja de texto que muestra los resultados del Cuestionario
     public void resp() {
-        etiqueta1.setBounds(ancho / 2 - 200, 100, 400, 200);
+        etiqueta1.setBounds(ancho / 2 - 200, 200, 400, 200);
         etiqueta1.setHorizontalAlignment(SwingConstants.CENTER);
         etiqueta1.setText(convertToMultiline("respondiste " + Pregunta.getResul() + " preguntas \n Suma " + Pregunta.getResulS() + " \n Resta " + Pregunta.getResulR() + " \n Multiplicacion " + Pregunta.getResulM() + " \n Division " + Pregunta.getResulD()));
 
@@ -231,6 +243,7 @@ public class GrupoPreguntas {
         resp();
         irCategoria();
         rst();
+        comentario();
 
         if (Pregunta.getResul() == Pregunta.getCuestio()) {
             limpiar();
@@ -247,11 +260,11 @@ public class GrupoPreguntas {
 
         } else if (Pregunta.getResul() == 0) {
             limpiar();
-            panel.add(etiqueta2);
+           // panel.add(etiqueta2);
             hoja();
             fondo();
 
-            etiqueta1.setBounds(ancho / 2 - 300, 100, 600, 50);
+            etiqueta1.setBounds(ancho / 2 - 300, 300, 600, 50);
             etiqueta1.setText("No pudiste responder ninguna pregunta");
 
             etiqueta2.setBounds(ancho / 2 - 150, alto / 2 - 150, 300, 300);
@@ -261,6 +274,7 @@ public class GrupoPreguntas {
 
         etiqueta1.setOpaque(true);
         etiqueta1.setFont(new Font("calibri", Font.ITALIC, 30));
+        etiqueta3.setFont(new Font("calibri", Font.ITALIC, 30));
 
         System.out.println(etiqueta1.getText());
 
@@ -292,5 +306,27 @@ public class GrupoPreguntas {
                 Pregunta.setResulD();
             }
         }
+    }
+
+    public void comentario() {
+        etiqueta3.setBounds(ancho / 2 - 300, 10, 600, 150);
+        etiqueta3.setHorizontalAlignment(SwingConstants.CENTER);
+        if (Pregunta.getResul() == 2 || Pregunta.getResul() == 5 || Pregunta.getResul() == 8 || Pregunta.getResul() == 11) {
+            etiqueta3.setText(convertToMultiline("la respuesta correcta es : \n" + c[0] + " = " + a[0]));
+        } else if (Pregunta.getResul() == 1 || Pregunta.getResul() == 4 || Pregunta.getResul() == 7 || Pregunta.getResul() == 10) {
+            etiqueta3.setText(convertToMultiline("las respuestas correctas son : \n" + c[0] + " = " + a[0] + "\n" + c[1] + " = " + a[1]));
+        } else if (Pregunta.getResul() == 0 || Pregunta.getResul() == 3 || Pregunta.getResul() == 6 || Pregunta.getResul() == 9) {
+            etiqueta3.setText(convertToMultiline("las respuestas correctas son : \n" + c[0] + " = " + a[0] + "\n" + c[1] + " = " + a[1] + "\n" + c[2] + " = " + a[2]));
+        }
+    }
+
+    public static void correcion() {
+        a[b] = Pregunta.getAuxiliar();
+        b++;
+    }
+
+    public static void error() {
+        c[d] = Pregunta.getPregunta();
+        d++;
     }
 }
