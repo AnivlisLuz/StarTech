@@ -111,6 +111,18 @@ public class GrupoPreguntas {
                             for (int i = 0; i < DataController.instance.getUsuarioActual().category.division.getLevels().length; i++) {
                                 DataController.instance.getUsuarioActual().category.division.getLevels()[i].setActive(true);
                             }
+                            DataController.instance.getUsuarioActual().category.combinado.setActive(true);
+                            for (int i = 0; i < DataController.instance.getUsuarioActual().category.combinado.getLevels().length; i++) {
+                                DataController.instance.getUsuarioActual().category.combinado.getLevels()[i].setActive(true);
+                            }
+                            DataController.instance.getUsuarioActual().category.crucigrama.setActive(true);
+                            for (int i = 0; i < DataController.instance.getUsuarioActual().category.crucigrama.getLevels().length; i++) {
+                                DataController.instance.getUsuarioActual().category.crucigrama.getLevels()[i].setActive(true);
+                            }
+                            DataController.instance.getUsuarioActual().category.sopaResultado.setActive(true);
+                            for (int i = 0; i < DataController.instance.getUsuarioActual().category.sopaResultado.getLevels().length; i++) {
+                                DataController.instance.getUsuarioActual().category.sopaResultado.getLevels()[i].setActive(true);
+                            }
                         }
                         CategoryScreen categoryScreen = new CategoryScreen(DataController.instance.getUsuarioActual().category.getAllCategories());
                     }
