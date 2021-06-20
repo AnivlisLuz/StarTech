@@ -69,24 +69,21 @@ public class CategoryManager {
             new Level(8, "Nivel 8", false, new Laberinto("Divición", 8, "Establece metas altas, y no te detengas hasta que llegues allí. Bo Jackson", "Para avanzar encuentra los números divisibles entre 9")),
             new Level(9, "Nivel 9", false, new Laberinto("Divición", 9, "Para tener éxito, primero debemos creer que podemos. Nikos Kazantzakis", "Para avanzar encuentra los números divisibles entre 10"))
     });
-    public Category sopaResultado = new Category(5, "Sopa de Resultados","","",null,"", false, new Level[]{
-            new Level(1, "Nivel 1", false, new Laberinto("Sopa de Resultados", 1, "Comienza donde estás. Usa lo que tienes. Haz lo que puedas. Arthur Ashe", "Para avanzar encuentra los números divisibles entre 2")),
-            new Level(2, "Nivel 2", false, new Laberinto("Sopa de Resultados", 2, "La mejor revancha es el éxito masivo. Frank Sinatra", "Para avanzar encuentra los números divisibles entre 3")),
-            new Level(3, "Nivel 3", false, new Laberinto("Sopa de Resultados", 3, "No lo pienses, solo hazlo. Horace", "Para avanzar encuentra los números divisibles entre 4")),
-            new Level(4, "Nivel 4", false, new Laberinto("Sopa de Resultados", 4, "Nunca dejes que una mala situación saque lo peor de ti. ¡Elije mantenerte positivo y ser la persona fuerte que Dios creó!", "Para avanzar encuentra los números divisibles entre 5")), 
-    });
-    public Category crucigrama = new Category(5, "Crucigramas","","",null,"", false, new Level[]{
+
+    public Category crucigrama = new Category(6, "Crucigramas","","",null,"", false, new Level[]{
             new Level(1, "Nivel 1", false, new Laberinto("Crucigramas", 1, "Comienza donde estás. Usa lo que tienes. Haz lo que puedas. Arthur Ashe", "Para avanzar encuentra los números divisibles entre 2")),
             new Level(2, "Nivel 2", false, new Laberinto("Crucigramas", 2, "La mejor revancha es el éxito masivo. Frank Sinatra", "Para avanzar encuentra los números divisibles entre 3")),
             new Level(3, "Nivel 3", false, new Laberinto("Crucigramas", 3, "No lo pienses, solo hazlo. Horace", "Para avanzar encuentra los números divisibles entre 4")),
             new Level(4, "Nivel 4", false, new Laberinto("Crucigramas", 4, "Nunca dejes que una mala situación saque lo peor de ti. ¡Elije mantenerte positivo y ser la persona fuerte que Dios creó!", "Para avanzar encuentra los números divisibles entre 5")),
     });
-    public Category combinado = new Category(5, "Combinados","","",null,"", false, new Level[]{
+    public Category combinado = new Category(7, "Combinados","","",null,"", false, new Level[]{
             new Level(1, "Nivel 1", false, new Laberinto("Combinados", 1, "Comienza donde estás. Usa lo que tienes. Haz lo que puedas. Arthur Ashe", "Para avanzar encuentra los números divisibles entre 2")),
             new Level(2, "Nivel 2", false, new Laberinto("Combinados", 2, "La mejor revancha es el éxito masivo. Frank Sinatra", "Para avanzar encuentra los números divisibles entre 3")),
             new Level(3, "Nivel 3", false, new Laberinto("Combinados", 3, "No lo pienses, solo hazlo. Horace", "Para avanzar encuentra los números divisibles entre 4")),
             new Level(4, "Nivel 4", false, new Laberinto("Combinados", 4, "Nunca dejes que una mala situación saque lo peor de ti. ¡Elije mantenerte positivo y ser la persona fuerte que Dios creó!", "Para avanzar encuentra los números divisibles entre 5")),
             new Level(5, "Nivel 5", false, new Laberinto("Combinados", 5, "Siempre parece imposible hasta que se hace. Nelson Mandela", "Para avanzar encuentra los números divisibles entre 6")),
+    });
+    public Category sopaResultado = new Category(8, "Sopa de Resultados","","",null,"", false, new Level[]{
     });
     public Category[] getAllCategories() {
         return new Category[]{secuencia, suma, resta, multiplicacion, division, sopaResultado, crucigrama, combinado};

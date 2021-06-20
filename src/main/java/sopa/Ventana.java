@@ -17,6 +17,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import app.startech.screens.CategoryScreen;
+
 /**
  *
  * @author USER
@@ -49,6 +51,7 @@ public class Ventana {
     private int auxPR = 0;
     private int aux = 0;
     private int bucle = 0;
+    private final CategoryScreen ventanaCategorias;
 
     private JLabel vida1;
     private JLabel vida2;
@@ -56,20 +59,10 @@ public class Ventana {
 
     private ImageIcon imagen;
 
-    public Ventana() {
+    public Ventana(CategoryScreen ventanaCategorias) {
+        this.ventanaCategorias = ventanaCategorias;
         pantalla = new JFrame();
         panel = new JPanel();
-        oyente = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                pantalla.setVisible(false);
-                java.awt.EventQueue.invokeLater(new Runnable() {
-                    public void run() {
-                        Ventana ventana = new Ventana();
-                    }
-                });
-            }
-        };
 
         vida1 = new JLabel();
         vida2 = new JLabel();
@@ -150,6 +143,11 @@ public class Ventana {
         botonCategoria.setBounds(0, 0, 60, 60);
         botonCategoria.setBackground(Color.WHITE);
         botonCategoria.setIcon(new ImageIcon(imagen.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH)));
+
+        botonCategoria.addActionListener((action) -> {
+            pantalla.dispose();
+            ventanaCategorias.setVisible(true);
+        });
     }
 
     public void titulo() {
@@ -525,14 +523,4 @@ public class Ventana {
         }
     }
 
-    public static void main(String[] args) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                Ventana ventana = new Ventana();
-            }
-        });
-        // Ventana ventana = new Ventana();
-    }
-
 }
-//getClass().getResource("/recursos/boton_de_reinicio.png")

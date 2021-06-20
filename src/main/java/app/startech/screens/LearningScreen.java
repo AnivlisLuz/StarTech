@@ -7,6 +7,7 @@ package app.startech.screens;
 
 import app.startech.imagenes.Images;
 import app.startech.models.Category;
+import sopa.Ventana;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -25,7 +26,7 @@ import static java.awt.BorderLayout.*;
  * @author luzch
  */
 public class LearningScreen extends javax.swing.JFrame {
-private Category category;
+    private Category category;
     private String title;
     private String audio;
     private String content;
@@ -34,7 +35,7 @@ private Category category;
     private CategoryScreen ventanaCategorias;
 
     public LearningScreen(Category category, CategoryScreen ventanaCategorias) {
-        this.category=category;
+        this.category = category;
         title = category.getTitle();
         audio = category.getAudio();
         content = category.getContent();
@@ -102,9 +103,16 @@ private Category category;
         optionsContainer.add(atras, WEST);
         JButton start = new JButton("Jugar");
         start.addActionListener((action) -> {
-            onClose();
-            LevelScreen levelScreen = new LevelScreen(category, ventanaCategorias);
-            setVisible(false);
+            if (category.getId() != 8) {
+                onClose();
+                LevelScreen levelScreen = new LevelScreen(category, ventanaCategorias);
+                setVisible(false);
+            }else{
+                onClose();
+                Ventana ventana = new Ventana(ventanaCategorias);
+                setVisible(false);
+            }
+
         });
         start.setPreferredSize(new Dimension(200, 40));
         optionsContainer.add(start, EAST);
