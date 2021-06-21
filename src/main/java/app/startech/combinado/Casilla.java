@@ -13,21 +13,46 @@ public class Casilla {
     private int x;
     private int y;
     private String contenido;
-    
-    private String resultado;
-    
-    public Casilla(int x, int y, String contenido)
-    {
+    private boolean dato;
+
+    public Casilla(int x, int y, String contenido, boolean dato) {
         this.x = x;
         this.y = y;
         this.contenido = contenido;
+        this.dato = dato;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public String getContenido() {
+        return contenido;
+    }
+
+    public void setContenido(String contenido) {
+        this.contenido = contenido;
+    }
+
+    public boolean isDato() {
+        return dato;
+    }
+
+    public void setDato(boolean dato) {
+        this.dato = dato;
     }
     
-    public Casilla(int x, int y, String contenido, String rsultado)
-    {
-        this.x = x;
-        this.y = y;
-        this.contenido = contenido;
-        this.resultado = resultado;
-    }
+    
 }
