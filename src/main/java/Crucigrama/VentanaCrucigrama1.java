@@ -23,8 +23,16 @@ public class VentanaCrucigrama1 extends javax.swing.JFrame {
     private final String[] mensajeContinuar = {"Continuar"};//Mensaje/Boton cuando el usuario completa un laberinto
     private final String[] mensajeSinVidas = {"Menú"};//Mensaje/Boton para ir al menú de niveles
     private final String[] mensajeGameOver = {"Menú", "Volver a Intentar"};//Mesaje/Boton para ir al menú de niveles o para reiniciar el laberinto
+    private CategoryScreen ventanaCategorias;
+    private final Category categoria;
+    private LevelScreen ventanaLevel;
+    private final Level level;
 
-    public VentanaCrucigrama1() {
+    public VentanaCrucigrama1(Category categoria, Level level, LevelScreen ventanaLevel, CategoryScreen ventanaCategorias) {
+        this.ventanaCategorias = ventanaCategorias;
+        this.categoria = categoria;
+        this.ventanaLevel = ventanaLevel;
+        this.level = level;
         crucigrama = new Crucigrama("Suma", "ave", 1);
         crucigrama.mostrarMatriz(); 
         cont = 0;
@@ -76,14 +84,14 @@ public class VentanaCrucigrama1 extends javax.swing.JFrame {
                                                 sig.setActive(); //el button (nivel) se activa
                                                 java.awt.EventQueue.invokeLater(new Runnable() { //nuevo hilo
                                                     public void run() {
-                                                        ventanaCategoria = new CategoryScreen(DataController.instance.getUsuarioActual().category.getAllCategories());
-                                                        ventanaCategoria.setVisible(false);
-                                                        ventanaLevel = new LevelScreen(categoria, ventanaCategoria);
+                                                        ventanaCategorias = new CategoryScreen(DataController.instance.getUsuarioActual().category.getAllCategories());
+                                                        ventanaCategorias.setVisible(false);
+                                                        ventanaLevel = new LevelScreen(categoria, ventanaCategorias);
                                                     }
                                                 });
                                             } else { //el siguiente nivel es null, entonces se le activa la siguiente categoría
                                                 // Siguiente Categoria
-                                                Category cat = ventanaCategoria.nexCategory(categoria);
+                                                Category cat = ventanaCategorias.nextCategory(categoria);
                                                 if (cat != null) { //la siguiente categoria es distinto de null
                                                     java.awt.EventQueue.invokeLater(new Runnable() {//nuevo hilo
                                                         public void run() {
@@ -94,7 +102,7 @@ public class VentanaCrucigrama1 extends javax.swing.JFrame {
                                                     });
                                                 } else { //la siguiente categoria es null, quiere decir que acabo con todas las categorias
                                                     JOptionPane.showMessageDialog(null, "Felicidad!!! Ganaste");
-                                                    ventanaCategoria.setVisible(true);
+                                                    ventanaCategorias.setVisible(true);
                                                     //System.exit(0); 
                                                 }
                                             }
@@ -163,38 +171,6 @@ public class VentanaCrucigrama1 extends javax.swing.JFrame {
         }
     }
 
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VentanaCrucigrama1().setVisible(true);
-            }
-        });
-    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

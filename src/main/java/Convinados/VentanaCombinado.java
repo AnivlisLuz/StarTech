@@ -23,8 +23,16 @@ public class VentanaCombinado extends javax.swing.JFrame {
     private final String[] mensajeContinuar = {"Continuar"};//Mensaje/Boton cuando el usuario completa un laberinto
     private final String[] mensajeSinVidas = {"Menú"};//Mensaje/Boton para ir al menú de niveles
     private final String[] mensajeGameOver = {"Menú", "Volver a Intentar"};//Mesaje/Boton para ir al menú de niveles o para reiniciar el laberinto
+    private final Category categoria;
+    private final Level level;
+    private LevelScreen ventanaLevel;
+    private CategoryScreen ventanaCategoria;
 
-    public VentanaCombinado() {
+    public VentanaCombinado(Category categoria, Level level, LevelScreen ventanaLevel, CategoryScreen ventanaCategoria) {
+        this.categoria = categoria;
+        this.level = level;
+        this.ventanaLevel = ventanaLevel;
+        this.ventanaCategoria = ventanaCategoria;
         combinado = new Combinado("Suma", "ave", 1);
         combinado.mostrarMatriz(); 
         cont = 0;
@@ -83,7 +91,7 @@ public class VentanaCombinado extends javax.swing.JFrame {
                                                 });
                                             } else { //el siguiente nivel es null, entonces se le activa la siguiente categoría
                                                 // Siguiente Categoria
-                                                Category cat = ventanaCategoria.nexCategory(categoria);
+                                                Category cat = ventanaCategoria.nextCategory(categoria);
                                                 if (cat != null) { //la siguiente categoria es distinto de null
                                                     java.awt.EventQueue.invokeLater(new Runnable() {//nuevo hilo
                                                         public void run() {
@@ -162,39 +170,7 @@ public class VentanaCombinado extends javax.swing.JFrame {
             jLabelVida3.setVisible(false);
         }
     }
-
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VentanaCombinado().setVisible(true);
-            }
-        });
-    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

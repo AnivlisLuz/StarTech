@@ -11,6 +11,9 @@ import app.startech.models.Level;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+
+import Crucigrama.VentanaCrucigrama1;
+
 import java.awt.*;
 
 import static java.awt.BorderLayout.*;
@@ -39,32 +42,35 @@ public class LevelScreen extends javax.swing.JFrame {
         setSize(800, 500);
         // Se configura el titulo
         setTitle("StarTech");
-        //Esta porción de código sirve para centrar
+        // Esta porción de código sirve para centrar
         setLocationRelativeTo(null);
-        //Esta porción de código sirve para que no se cierra el programa cuando se cierra una sola ventana
+        // Esta porción de código sirve para que no se cierra el programa cuando se
+        // cierra una sola ventana
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        //Se establece la distribución de los botones
-        JPanel buttons = new JPanel(
-                new GridLayout(
-                        levels.length <= 5
-                                ? levels.length
-                                : levels.length / 2,
-                        1)
-        );
-        //Se itiera los niveles, intanciando un panel, ponendo titulo a cada boton y estableciendo una dimensión 
+        // Se establece la distribución de los botones
+        JPanel buttons = new JPanel(new GridLayout(levels.length <= 5 ? levels.length : levels.length / 2, 1));
+        // Se itiera los niveles, intanciando un panel, ponendo titulo a cada boton y
+        // estableciendo una dimensión
         for (Level level : levels) {
             JPanel panel = new JPanel();
             JButton button = new JButton(level.getTitle());
             button.setPreferredSize(new Dimension(200, 50));
             button.setEnabled(level.active());
             button.addActionListener((action) -> {
-                new VentanaLaberinto(category, level, this, ventanaCategorias).setVisible(true);
-                setVisible(false);
+                if (category.getId() != 6 || category.getId() != 7) {
+                    new VentanaLaberinto(category, level, this, ventanaCategorias).setVisible(true);
+                    setVisible(false);
+                } else {
+                    new VentanaCrucigrama1(category, level, this, ventanaCategorias).setVisible(true);
+                    setVisible(false);
+                }
+
             });
             panel.add(button);
             buttons.add(panel);
         }
-        //Se estableceel contenedor de abajo para el boton de Atras, con dimensión y borde vacio.
+        // Se estableceel contenedor de abajo para el boton de Atras, con dimensión y
+        // borde vacio.
         JPanel options = new JPanel(new BorderLayout());
         options.setSize(new Dimension(200, 50));
         options.setBorder(new EmptyBorder(10, 10, 10, 10));
@@ -76,7 +82,8 @@ public class LevelScreen extends javax.swing.JFrame {
         });
         buton.setPreferredSize(new Dimension(200, 50));
         options.add(buton, WEST);
-        //Se establece el contenedor de arriba para el titulo dando un tamaño y un borde vacio
+        // Se establece el contenedor de arriba para el titulo dando un tamaño y un
+        // borde vacio
         JPanel titleContainer = new JPanel();
         JLabel titulo = new JLabel(title);
         titulo.setFont(new Font(titulo.getFont().getFamily(), titulo.getFont().getStyle(), 20));

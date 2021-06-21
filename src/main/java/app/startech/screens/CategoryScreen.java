@@ -28,7 +28,7 @@ public class CategoryScreen extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }
 
-    public Category nexCategory(Category categoria) {
+    public Category nextCategory(Category categoria) {
         Category res = null;
         for (int i = 0; i < categories.length; i++) {
             Category cat = categories[i];

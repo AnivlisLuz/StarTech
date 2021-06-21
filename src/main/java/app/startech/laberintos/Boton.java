@@ -63,7 +63,7 @@ public class Boton extends JButton implements ActionListener {
                         });
                     } else { //el siguiente nivel es null, entonces se le activa la siguiente categoría
                         // Siguiente Categoria
-                        Category cat = ventanaCategoria.nexCategory(categoria);
+                        Category cat = ventanaCategoria.nextCategory(categoria);
                         if (cat != null) { //la siguiente categoria es distinto de null
                             java.awt.EventQueue.invokeLater(new Runnable() {//nuevo hilo
                                 public void run() {
