@@ -12,6 +12,7 @@ import app.startech.models.Level;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
+import Convinados.VentanaCombinado;
 import Crucigrama.VentanaCrucigrama1;
 
 import java.awt.*;
@@ -61,8 +62,14 @@ public class LevelScreen extends javax.swing.JFrame {
                     new VentanaLaberinto(category, level, this, ventanaCategorias).setVisible(true);
                     setVisible(false);
                 } else {
-                    new VentanaCrucigrama1(category, level, this, ventanaCategorias).setVisible(true);
-                    setVisible(false);
+                    if(category.getId() == 6){
+                        new VentanaCrucigrama1(category, level, this, ventanaCategorias).setVisible(true);
+                        setVisible(false);
+                    }else{
+                        new VentanaCombinado(category, level, this, ventanaCategorias).setVisible(true);
+                        setVisible(false);
+                    }
+                    
                 }
 
             });
