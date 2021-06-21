@@ -58,18 +58,15 @@ public class LevelScreen extends javax.swing.JFrame {
             button.setPreferredSize(new Dimension(200, 50));
             button.setEnabled(level.active());
             button.addActionListener((action) -> {
-                if (category.getId() != 6 || category.getId() != 7) {
-                    new VentanaLaberinto(category, level, this, ventanaCategorias).setVisible(true);
+                if (category.getId() == 6) {
+                    new VentanaCrucigrama1(category, level, this, ventanaCategorias).setVisible(true);
+                    setVisible(false);
+                } else if (category.getId() == 7) {
+                    new VentanaCombinado(category, level, this, ventanaCategorias).setVisible(true);
                     setVisible(false);
                 } else {
-                    if(category.getId() == 6){
-                        new VentanaCrucigrama1(category, level, this, ventanaCategorias).setVisible(true);
-                        setVisible(false);
-                    }else{
-                        new VentanaCombinado(category, level, this, ventanaCategorias).setVisible(true);
-                        setVisible(false);
-                    }
-                    
+                    new VentanaLaberinto(category, level, this, ventanaCategorias).setVisible(true);
+                    setVisible(false);
                 }
 
             });

@@ -2,9 +2,10 @@
 package Crucigrama;
 
 import app.startech.crucigrama.MatrizCrucigrama;
+import app.startech.laberintos.Laberinto;
 import app.startech.laberintos.Matriz;
 
-public class Crucigrama {
+public class Crucigrama extends Laberinto{
     private String titulo;
     private String condicion;
     private int nivel;
@@ -14,6 +15,7 @@ public class Crucigrama {
     private int vidas;
     
     public Crucigrama(String titulo, String condicion, int nivel){
+        super(titulo,nivel,"",condicion);
         this.titulo = titulo;
         
         this.condicion = condicion;
@@ -62,7 +64,7 @@ public class Crucigrama {
             matriz = mat.getMat();
             matrizAux = mat.getMatRes();
         }else{
-            mat = new MatrizCrucigrama("convinados");
+            mat = new MatrizCrucigrama("combinados");
             matriz = mat.getMat();
             matrizAux = mat.getMatRes();
         }
@@ -88,7 +90,7 @@ public class Crucigrama {
 //        return a;
 //    }
 
-    public char[][] getMatriz() {
+    public char[][] getCrucigramaMatriz() {
         return matriz;
     }
 

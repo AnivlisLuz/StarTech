@@ -45,7 +45,7 @@ public class VentanaCombinado extends javax.swing.JFrame {
     public void mostrarCrucigrama() {
         jLabel1.setText(combinado.getTitulo());//Título. Ejm: Secuencia/Suma/Resta/Multiplicación/Divición
         jLabel2.setText(combinado.getCondicion());//Condicion para cada nivel. Ejm: Suma de uno en uno, Resta de dos en dos
-        String[][] cruci = combinado.getMatriz();
+        String[][] cruci = combinado.getCombinadoMatriz();
         String[][] cruciAux = combinado.getMatrizAux();
         int contAux = contar(cruci);
         int tamX = cruci.length;

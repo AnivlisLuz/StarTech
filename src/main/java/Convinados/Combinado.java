@@ -2,8 +2,9 @@
 package Convinados;
 
 import app.startech.combinado.MatrizCombinado;
+import app.startech.laberintos.Laberinto;
 
-public class Combinado {
+public class Combinado extends Laberinto{
     private String titulo;
     private String condicion;
     private int nivel;
@@ -13,13 +14,14 @@ public class Combinado {
     private int vidas;
     
     public Combinado(String titulo, String condicion, int nivel){
+        super(titulo,nivel,"",condicion);
         this.titulo = titulo;
         this.condicion = condicion;
         this.nivel = 1;
         vidas = 3;
     }
 
-    public String[][] getMatriz() {
+    public String[][] getCombinadoMatriz() {
         return matriz;
     }
 

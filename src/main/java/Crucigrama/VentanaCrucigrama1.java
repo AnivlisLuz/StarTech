@@ -46,7 +46,7 @@ public class VentanaCrucigrama1 extends javax.swing.JFrame {
         jLabel1.setText(crucigrama.getTitulo());//Título. Ejm: Secuencia/Suma/Resta/Multiplicación/Divición
         jLabel2.setText(crucigrama.getCondicion());//Condicion para cada nivel. Ejm: Suma de uno en uno, Resta de dos en dos
         char [][] cruciAux = crucigrama.getMatrizAux();
-        char[][] cruci = crucigrama.getMatriz();
+        char[][] cruci = crucigrama.getCrucigramaMatriz();
         int contAux = contar(cruci);
         int tamX = cruci.length;
         int tamY = cruci[0].length;
