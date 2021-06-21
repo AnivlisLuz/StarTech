@@ -5,6 +5,7 @@
  */
 package sopa;
 
+import app.startech.imagenes.Images;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
@@ -492,7 +493,7 @@ public class Ventana {
     }
 
     public void ponerVidas() {
-        ImageIcon imagen = new ImageIcon(getClass().getResource("/recursos_sopa/VidaRojo.png"));
+        ImageIcon imagen = new javax.swing.ImageIcon(Images.getVidaRojo());
 
         panel.add(vida1);
         panel.add(vida2);

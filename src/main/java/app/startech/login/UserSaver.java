@@ -48,8 +48,8 @@ public class UserSaver {
             BufferedReader bw = new BufferedReader(fr);
             String valor;
             while ((valor = bw.readLine()) != null) {
-                String[] userData = valor.split(",");
-                Usuario usuario = new Usuario(userData[0], userData[1]);
+                String[] userData = valor.split(";");
+                Usuario usuario = new Usuario(userData[0], userData[1], userData[2]);
                 result.add(usuario);
             }
         } catch (IOException e) {

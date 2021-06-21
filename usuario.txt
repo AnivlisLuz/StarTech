@@ -1,2 +1,5 @@
-Nombre,10
-juan,6
+1;Nombre;10
+2;juan;6
+3;lu;5
+4;g;5
+5;h;5

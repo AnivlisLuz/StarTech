@@ -6,6 +6,7 @@
 package app.startech.login;
 
 import app.startech.data.CategoryManager;
+import app.startech.data.DataController;
 
 import java.util.ArrayList;
 
@@ -18,11 +19,19 @@ public class Usuario {
     public CategoryManager category = new CategoryManager();
     private String nombre;
     private String edad;
+    private String id;
 
     public Usuario() {
     }
 
+    public Usuario(String id, String nombre, String edad) {
+        this.id = id;
+        this.nombre = nombre;
+        this.edad = edad;
+    }
+
     public Usuario(String nombre, String edad) {
+        this.id = DataController.instance.usuarios.size() + 1 + "";
         this.nombre = nombre;
         this.edad = edad;
     }
@@ -59,22 +68,19 @@ public class Usuario {
     }
 
     public String toFile() {
-        return nombre + "," + edad;
+        return id+";"+nombre + ";" + edad;
     }
-    
-    public static boolean esLetra(String nombre)
-    {
-        if(nombre.length()>20){
+
+    public static boolean esLetra(String nombre) {
+        if (nombre.length() > 20) {
             return false;
         }
-        for(int i =0; i< nombre.length() ; i++)
-        {
-          char letra =nombre.toUpperCase().charAt(i);
-          int valorAski =(int)letra;
-          if(valorAski != 165 &&(valorAski < 65 || valorAski > 90))
-          {
-              return  false;
-          }
+        for (int i = 0; i < nombre.length(); i++) {
+            char letra = nombre.toUpperCase().charAt(i);
+            int valorAski = (int) letra;
+            if (valorAski != 165 && (valorAski < 65 || valorAski > 90)) {
+                return false;
+            }
         }
         return true;
     }
