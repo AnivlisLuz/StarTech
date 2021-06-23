@@ -73,18 +73,17 @@ public class CategoryManager {
     });
 
     public Category crucigrama = new Category(6, "Crucigramas","","",null,"", false, new Level[]{
-            new Level(1, "Nivel 1", false, new Crucigrama("suma", "",1)),
-            new Level(2, "Nivel 2", false, new Crucigrama("resta", "",2)),
-            new Level(3, "Nivel 3", false, new Crucigrama("multiplicación", "",3)),
-            new Level(4, "Nivel 4", false, new Crucigrama("división", "",4)),
-            new Level(4, "Nivel 4", false, new Crucigrama("combinados", "",5)),
+            new Level(1, "Nivel 1", false, new Crucigrama("Suma", "",1)),
+            new Level(2, "Nivel 2", false, new Crucigrama("Resta", "",2)),
+            new Level(3, "Nivel 3", false, new Crucigrama("Multiplicación", "",3)),
+            new Level(4, "Nivel 4", false, new Crucigrama("División", "",4)),
+            new Level(4, "Nivel 5", false, new Crucigrama("Combinados", "",5)),
     });
     public Category combinado = new Category(7, "Combinados","","",null,"", false, new Level[]{
-            new Level(1, "Nivel 1", false, new Combinado("suma", "",1)),
-            new Level(2, "Nivel 2", false, new Combinado("suma", "",2)),
-            new Level(3, "Nivel 3", false, new Combinado("suma", "",3)),
-            new Level(4, "Nivel 4", false, new Combinado("suma", "",4)),
-            new Level(5, "Nivel 5", false, new Combinado("suma", "",5)),
+            new Level(1, "Nivel 1", false, new Combinado("Suma y resta", "",1)),
+            new Level(2, "Nivel 2", false, new Combinado("Multiplicación y división", "",2)),
+            new Level(3, "Nivel 3", false, new Combinado("División y suma", "",3)),
+            new Level(4, "Nivel 4", false, new Combinado("División y multiplicación", "",4)),
     });
     public Category sopaResultado = new Category(8, "Sopa de Resultados","","",null,"", false, new Level[]{
     });
