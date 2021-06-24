@@ -139,13 +139,14 @@ public class nuevoPerfil extends javax.swing.JFrame {
         } else if(!Usuario.esLetra(nombre))
         {
            
-         JOptionPane.showMessageDialog(null, "no se admite un valor mayor a 20 caracteres ni caracteres especiales");  
+         JOptionPane.showMessageDialog(null, "no se admite un valor mayor a 20y menor a 3 caracteres ni caracteres especiales");  
         }else if(!edad.matches("-?\\d+")){
             JOptionPane.showMessageDialog(null, "la edad no es un numero");
             
         }else if(Integer.parseInt(edad)>10){
         JOptionPane.showMessageDialog(null, "edad maxima 10 años");
-
+        }else if(Integer.parseInt(edad)<4){
+        JOptionPane.showMessageDialog(null, "edad minimma 4 años");
         
         } else if (!Usuario.verificarUsuario(nombre)) {
             Usuario usuario = new Usuario(nombre,edad);

@@ -67,6 +67,9 @@ public class Usuario {
         if(nombre.length()>20){
             return false;
         }
+        if(nombre.length()<3){
+            return false;
+        }
         for(int i =0; i< nombre.length() ; i++)
         {
           char letra =nombre.toUpperCase().charAt(i);
