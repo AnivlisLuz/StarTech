@@ -255,15 +255,19 @@ public class Pregunta {
     //Obtencion de booleans por cada categoria
     public static void restQuestChekPoint() {
         if (resultadoS == 3) {
+            resultado=3;
             resS = true;
         }
         if (resultadoR == 3) {
+            resultado=6;
             resR = true;
         }
         if (resultadoM == 3) {
+            resultado=9;
             resM = true;
         }
         if (resultadoD == 3) {
+            resultado=12;
             resD = true;
         }
     }

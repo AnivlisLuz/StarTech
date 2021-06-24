@@ -179,6 +179,7 @@ public class GrupoPreguntas {
             finalizarC();
             if (Pregunta.getS() && Pregunta.getR() && Pregunta.getM() && Pregunta.getD()) {
                 etiqueta1.setText("Ya respondiste todas las preguntas");
+                etiqueta3.setText("");
                 reiniciar.setText("Reiniciar todo");
                 reiniciar.addMouseListener(Denuevo);
             }
@@ -190,6 +191,10 @@ public class GrupoPreguntas {
     public static void showQuestionary() {
         Pregunta.restQuestChekPoint();
         Pregunta.restQuest();
+        b=0;
+        d=0;
+        a=new int [3];
+        c=new String[3];
         Cuestionario.DesOcultar();
         GrupoPreguntas grupo = new GrupoPreguntas(Cuestionario.preguntas);
     }
@@ -323,6 +328,10 @@ public class GrupoPreguntas {
     public void comentario() {
         etiqueta3.setBounds(ancho / 2 - 300, 10, 600, 150);
         etiqueta3.setHorizontalAlignment(SwingConstants.CENTER);
+        if(Pregunta.getResul()==12){
+            etiqueta3.setText("");
+            return;
+        }
         if (Pregunta.getResul() == 2 || Pregunta.getResul() == 5 || Pregunta.getResul() == 8 || Pregunta.getResul() == 11) {
             etiqueta3.setText(convertToMultiline("la respuesta correcta es : \n" + c[0] + " = " + a[0]));
         } else if (Pregunta.getResul() == 1 || Pregunta.getResul() == 4 || Pregunta.getResul() == 7 || Pregunta.getResul() == 10) {
@@ -341,4 +350,5 @@ public class GrupoPreguntas {
         c[d] = Pregunta.getPregunta();
         d++;
     }
+   
 }
