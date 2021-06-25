@@ -1,2 +1,17 @@
 Nombre,10
+<<<<<<< Updated upstream
 juan,6
+=======
+leo,15
+geo,216sd
+jose,15
+geo,12
+jhskdjfsdfnsdfnsfmn,15
+geo,15
+gio,5
+gio,5
+gio,5
+FABI,10
+geovana,5
+geovana,5
+>>>>>>> Stashed changes
