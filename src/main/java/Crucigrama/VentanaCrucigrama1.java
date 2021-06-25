@@ -33,8 +33,8 @@ public class VentanaCrucigrama1 extends javax.swing.JFrame {
         this.categoria = categoria;
         this.ventanaLevel = ventanaLevel;
         this.level = level;
-        crucigrama = new Crucigrama("Suma", "ave", 1);
-        crucigrama.mostrarMatriz(); 
+        crucigrama = (Crucigrama) level.getLaberinto();
+        crucigrama.mostrarMatriz();
         cont = 0;
         initComponents();
         mostrarCrucigrama();

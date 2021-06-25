@@ -1,14 +1,14 @@
 
 package Convinados;
 
-import app.startech.combinado.MatrizCombinado;
+//import app.startech.combinado.MatrizCombinado;
 import app.startech.laberintos.Laberinto;
 
 public class Combinado extends Laberinto{
     private String titulo;
     private String condicion;
     private int nivel;
-    private MatrizCombinado mat;
+  //  private MatrizCombinado mat;
     private String[][] matriz;
     private String[][] matrizAux;
     private int vidas;
@@ -68,22 +68,29 @@ public class Combinado extends Laberinto{
     
     public void mostrarMatriz(){
         if(nivel == 1){
-            mat = new MatrizCombinado(nivel);
+            //mat = new MatrizCombinado(nivel);
             //matriz = mat.getMat();
             //matrizAux = mat.getMatRes();
             matriz = generarCrucigrama(nivel);
+            matrizAux = getMatrizAux();
         }else if(nivel == 2){
-            mat = new MatrizCombinado(nivel);
+            //mat = new MatrizCombinado(nivel);
             //matriz = mat.getMat();
             //matrizAux = mat.getMatRes();
+            matriz = generarCrucigrama(nivel);
+            matrizAux = getMatrizAux();
         }else if(nivel == 3){
-            mat = new MatrizCombinado(nivel);
+            //mat = new MatrizCombinado(nivel);
             //matriz = mat.getMat();
             //matrizAux = mat.getMatRes();
+            matriz = generarCrucigrama(nivel);
+            matrizAux = getMatrizAux();
         }else{
-            mat = new MatrizCombinado(nivel);
+            //mat = new MatrizCombinado(nivel);
             //matriz = mat.getMat();
             //matrizAux = mat.getMatRes();
+            matriz = generarCrucigrama(nivel);
+            matrizAux = getMatrizAux();
         }
     }
 

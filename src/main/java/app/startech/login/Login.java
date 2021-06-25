@@ -5,9 +5,12 @@
  */
 package app.startech.login;
 
+
+import Persistencia.PersistenciaSaver;
 import app.startech.data.DataController;
 
 import app.startech.screens.CategoryScreen;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,13 +18,11 @@ import app.startech.screens.CategoryScreen;
  */
 public class Login extends javax.swing.JFrame {
 
-    /**
-     * Creaw form usuario
-     */
+    
     public Login() {
         initComponents();
         añadirUsuario();
-    
+        
        
      
     }
@@ -113,12 +114,16 @@ public class Login extends javax.swing.JFrame {
          txtUsuario.addItem(user.getNombre());
         }
      }
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int index=txtUsuario.getSelectedIndex();
-        DataController.instance.setUsuarioActual(index);
-        CategoryScreen categoryScreen = new CategoryScreen(DataController.instance.getUsuarioActual().category.getAllCategories());
-        this.dispose();
-     
+        if(txtUsuario.getSelectedItem() != null){
+            int index=txtUsuario.getSelectedIndex();
+            DataController.instance.setUsuarioActual(index);
+            CategoryScreen categoryScreen = new CategoryScreen(DataController.instance.getUsuarioActual().category.getAllCategories());
+            this.dispose(); 
+        }else{
+            JOptionPane.showMessageDialog(null, "Porfavor crea tu perfil");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
