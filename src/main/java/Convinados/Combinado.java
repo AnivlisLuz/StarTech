@@ -26,6 +26,8 @@ public class Combinado extends Laberinto{
     }
 
     public String[][] getMatrizAux() {
+        return matrizAux;
+        /*
         String[][] a={{"#","#","#","#","#","#","#","#","#","#","#","#","#"},
                     {"#","#","#","#","#","#","#","#","#","#","#","#","#"},
                     {"#","#","#","#","#","#","#","#","#","#","#","#","#"},
@@ -40,6 +42,7 @@ public class Combinado extends Laberinto{
                     {"#","#","#","#","#","#","#","#","#","#","#","#","#"},
                     {"#","#","#","#","#","#","#","#","#","#","#","#","#"}};
         return a;
+        */
 //return matrizAux;
     }
 
@@ -67,24 +70,28 @@ public class Combinado extends Laberinto{
     }
     
     public void mostrarMatriz(){
+        mat = new MatrizCombinado();
+        matriz = mat.getMatriz();
+        matrizAux = mat.getMatrizRes();
+        /*
         if(nivel == 1){
-            mat = new MatrizCombinado(nivel);
-            //matriz = mat.getMat();
-            //matrizAux = mat.getMatRes();
-            matriz = generarCrucigrama(nivel);
+            mat = new MatrizCombinado();
+            matriz = mat.getMatriz();
+            matrizAux = mat.getMatrizRes();
         }else if(nivel == 2){
-            mat = new MatrizCombinado(nivel);
+            mat = new MatrizCombinado();
             //matriz = mat.getMat();
             //matrizAux = mat.getMatRes();
         }else if(nivel == 3){
-            mat = new MatrizCombinado(nivel);
+            mat = new MatrizCombinado();
             //matriz = mat.getMat();
             //matrizAux = mat.getMatRes();
         }else{
-            mat = new MatrizCombinado(nivel);
+            mat = new MatrizCombinado();
             //matriz = mat.getMat();
             //matrizAux = mat.getMatRes();
         }
+        */
     }
 
 //    public Matriz getMatriz() {

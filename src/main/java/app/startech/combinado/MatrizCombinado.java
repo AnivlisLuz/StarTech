@@ -9,16 +9,18 @@ package app.startech.combinado;
  *
  * @author Carlos
  */
-public class Combinado {
+public class MatrizCombinado {
     private String[][] matriz;
     private String[][] matrizRes;
     
-    public Combinado()
+    public MatrizCombinado()
     {
         Plantilla plantilla = new Plantilla();
         
         matriz = plantilla.getMatriz();
+        mostrarMatrizString(matriz);
         matrizRes = plantilla.getMatrizRes();
+        mostrarMatrizString(matrizRes);
     }
 
     public String[][] getMatriz()
@@ -33,7 +35,7 @@ public class Combinado {
     
     public static void main(String[] args)
     {
-        Combinado combinado = new Combinado();
+        MatrizCombinado combinado = new MatrizCombinado();
         
         mostrarMatrizString(combinado.matriz);
         mostrarMatrizString(combinado.matrizRes);

@@ -79,8 +79,8 @@ public class CategoryManager {
             new Level(4, "Nivel 4", false, new Crucigrama("división", "",4)),
             new Level(4, "Nivel 4", false, new Crucigrama("combinados", "",5)),
     });
-    public Category combinado = new Category(7, "Combinados","","",null,"", false, new Level[]{
-            new Level(1, "Nivel 1", false, new Combinado("suma", "",1)),
+    public Category combinado = new Category(7, "Combinados","","",null,"", true, new Level[]{
+            new Level(1, "Nivel 1", true, new Combinado("suma", "",1)),
             new Level(2, "Nivel 2", false, new Combinado("suma", "",2)),
             new Level(3, "Nivel 3", false, new Combinado("suma", "",3)),
             new Level(4, "Nivel 4", false, new Combinado("suma", "",4)),
