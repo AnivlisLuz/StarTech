@@ -12,13 +12,28 @@ package app.startech.crucigrama;
 public class Main {
     public static void main(String[] args)
     {
-        MatrizCrucigrama mat = new MatrizCrucigrama("suma");
+        MatrizCrucigrama mat = new MatrizCrucigrama("resta");
         char[][] matriz = mat.getMat();
         char[][] matrizRes = mat.getMatRes();
         
-        mostrarMatriz(matriz);
+        mostrarMatriz(dibujar(matriz));
         System.out.println();
-        mostrarMatriz(matrizRes);
+        mostrarMatriz(dibujar(matrizRes));
+    }
+    
+    public static char[][] dibujar(char[][] matriz)
+    {
+        char[][] aux = new char[13][13];
+        for (int i = 0; i < 13; i++)
+            for (int j = 0; j < 13; j++)
+                if (matriz[i][j] == '#')
+                    aux[i][j] = ' ';
+                else
+                    if (matriz[i][j] == '@')
+                        aux[i][j] = '_';
+                    else
+                        aux[i][j] = matriz[i][j];
+        return aux;
     }
     
     public static void mostrarMatriz(char[][] matriz)
