@@ -36,6 +36,10 @@ public class Usuario {
         this.edad = edad;
     }
 
+    public String getId() {
+        return id;
+    }  
+
     public static ArrayList<Usuario> mostrar() {
         return usuarioSave.mostrar();
     }

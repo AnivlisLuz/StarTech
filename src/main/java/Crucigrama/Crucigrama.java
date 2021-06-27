@@ -19,8 +19,9 @@ public class Crucigrama extends Laberinto{
         this.titulo = titulo;
         
         this.condicion = condicion;
-        this.nivel = 1;
+        this.nivel = nivel;
         vidas = 3;
+        
     }
 
     public String getCondicion() {

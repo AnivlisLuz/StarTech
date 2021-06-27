@@ -2,6 +2,7 @@
 package Convinados;
 
 import app.startech.combinado.MatrizCombinado;
+//import app.startech.combinado.MatrizCombinado;
 import app.startech.laberintos.Laberinto;
 
 public class Combinado extends Laberinto{
@@ -82,14 +83,20 @@ public class Combinado extends Laberinto{
             mat = new MatrizCombinado();
             //matriz = mat.getMat();
             //matrizAux = mat.getMatRes();
+            matriz = generarCrucigrama(nivel);
+            matrizAux = getMatrizAux();
         }else if(nivel == 3){
             mat = new MatrizCombinado();
             //matriz = mat.getMat();
             //matrizAux = mat.getMatRes();
+            matriz = generarCrucigrama(nivel);
+            matrizAux = getMatrizAux();
         }else{
             mat = new MatrizCombinado();
             //matriz = mat.getMat();
             //matrizAux = mat.getMatRes();
+            matriz = generarCrucigrama(nivel);
+            matrizAux = getMatrizAux();
         }
         */
     }
