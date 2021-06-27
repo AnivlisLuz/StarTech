@@ -5,17 +5,27 @@
  */
 package app.startech.login;
 
+import java.awt.Image;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author chovis
  */
-public class creditos extends javax.swing.JPanel {
 
+public class credito extends javax.swing.JPanel {
+     
+     
     /**
-     * Creates new form creditos
+     * Creates new form credito
      */
-    public creditos() {
+    public credito() {
         initComponents();
+        ImageIcon img= new ImageIcon(getClass().getResource("/imagenes/ata.jpeg"));
+        Icon fondo = new ImageIcon(img.getImage().getScaledInstance( jLabel1.getWidth(),jLabel1.getHeight() ,Image.SCALE_DEFAULT));
+        jLabel1.setIcon(fondo);
+        this.repaint();
     }
 
     /**
@@ -27,19 +37,28 @@ public class creditos extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 551, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(801, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(66, 66, 66)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(363, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
