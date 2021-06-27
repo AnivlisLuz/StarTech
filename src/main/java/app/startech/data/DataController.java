@@ -40,9 +40,11 @@ public class DataController {
     private void gestionarUser(Usuario user, Persistencia persistencia){
         int category = Integer.parseInt(persistencia.getIdCategory());
         int level = Integer.parseInt(persistencia.getLevel());
-        user.category.getAllCategories()[category].setActive();
-        for(int i=0; i<level; i++){
-            user.category.getAllCategories()[category].getLevels()[i].setActive();
+        user.category.getAllCategories()[category-1].setActive();
+        if(category != 8){
+            for(int i=0; i<level; i++){
+                user.category.getAllCategories()[category-1].getLevels()[i].setActive();
+            }
         }
     }
 

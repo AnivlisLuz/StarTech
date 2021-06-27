@@ -91,7 +91,7 @@ public class Laberinto {
                     break;
                 }
             }
-        } else if (titulo.equals("Divición")) {         // laberinto Divición todas sus matrices son de tamaño 10
+        } else if (titulo.equals("División")) {         // laberinto Divición todas sus matrices son de tamaño 10
             for (int i = 1; i < 10; i++) {              // su condición sube de acuerdo al nivel de 2 a 10
                 if (nivel == i) {
                     matriz = new Divicion(10, i + 1);

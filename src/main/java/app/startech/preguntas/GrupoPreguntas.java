@@ -90,55 +90,57 @@ public class GrupoPreguntas {
                         if(Pregunta.getResulS() >= 1){
                             DataController.instance.getUsuarioActual().category.suma.setActive(true);
                             DataController.instance.getUsuarioActual().category.suma.getLevels()[0].setActive(true);
-                            persis.escritura(DataController.instance.getUsuarioActual(), 1, 1);
+                            persis.buscarUsuario(DataController.instance.getUsuarioActual(), 2, 1);
                         }
                         if (Pregunta.getResulS() == 3) {
                             for (int i = 0; i < DataController.instance.getUsuarioActual().category.suma.getLevels().length; i++) {
                                 DataController.instance.getUsuarioActual().category.suma.getLevels()[i].setActive(true);
                             }
-                            persis.escritura(DataController.instance.getUsuarioActual(), 1, 9);
+                            persis.buscarUsuario(DataController.instance.getUsuarioActual(), 2, 9);
                         }
                         if (Pregunta.getResulR() >= 1){
                             DataController.instance.getUsuarioActual().category.resta.setActive(true);
                             DataController.instance.getUsuarioActual().category.resta.getLevels()[0].setActive(true);
-                            persis.escritura(DataController.instance.getUsuarioActual(), 2, 1);
+                            persis.buscarUsuario(DataController.instance.getUsuarioActual(), 3, 1);
                         }
                         if (Pregunta.getResulR() == 3) {
                             for (int i = 0; i < DataController.instance.getUsuarioActual().category.resta.getLevels().length; i++) {
                                 DataController.instance.getUsuarioActual().category.resta.getLevels()[i].setActive(true);
                             }
-                            persis.escritura(DataController.instance.getUsuarioActual(), 2, 9);
+                            persis.buscarUsuario(DataController.instance.getUsuarioActual(), 3, 9);
                         }
                         if(Pregunta.getResulM() >= 1){
                             DataController.instance.getUsuarioActual().category.multiplicacion.setActive(true);
                             DataController.instance.getUsuarioActual().category.multiplicacion.getLevels()[0].setActive(true);
-                            persis.escritura(DataController.instance.getUsuarioActual(), 3, 1);
+                            persis.buscarUsuario(DataController.instance.getUsuarioActual(), 4, 1);
                         }
                         if (Pregunta.getResulM() == 3) {
                             for (int i = 0; i < DataController.instance.getUsuarioActual().category.multiplicacion.getLevels().length; i++) {
                                 DataController.instance.getUsuarioActual().category.multiplicacion.getLevels()[i].setActive(true);
                             }
-                            persis.escritura(DataController.instance.getUsuarioActual(), 3, 9);
+                            persis.buscarUsuario(DataController.instance.getUsuarioActual(), 4, 9);
                         }
                         if(Pregunta.getResulD() >= 1){
                             DataController.instance.getUsuarioActual().category.division.setActive(true);
                             DataController.instance.getUsuarioActual().category.division.getLevels()[0].setActive(true);
-                            persis.escritura(DataController.instance.getUsuarioActual(), 4, 1);
+                            persis.buscarUsuario(DataController.instance.getUsuarioActual(), 5, 1);
                         }
                         if (Pregunta.getResulD() == 3) {
                             for (int i = 0; i < DataController.instance.getUsuarioActual().category.division.getLevels().length; i++) {
                                 DataController.instance.getUsuarioActual().category.division.getLevels()[i].setActive(true);
                             }
-                            persis.escritura(DataController.instance.getUsuarioActual(), 4, 9);
-                            
-                            DataController.instance.getUsuarioActual().category.combinado.setActive(true);
-                            DataController.instance.getUsuarioActual().category.combinado.getLevels()[0].setActive(true);
+                            persis.buscarUsuario(DataController.instance.getUsuarioActual(), 5, 9);
                             
                             DataController.instance.getUsuarioActual().category.crucigrama.setActive(true);
                             DataController.instance.getUsuarioActual().category.crucigrama.getLevels()[0].setActive(true);
+                            persis.buscarUsuario(DataController.instance.getUsuarioActual(), 6, 1);
+                            
+                            DataController.instance.getUsuarioActual().category.combinado.setActive(true);
+                            DataController.instance.getUsuarioActual().category.combinado.getLevels()[0].setActive(true);
+                            persis.buscarUsuario(DataController.instance.getUsuarioActual(), 7, 1);
                             
                             DataController.instance.getUsuarioActual().category.sopaResultado.setActive(true);
-                            DataController.instance.getUsuarioActual().category.sopaResultado.getLevels()[0].setActive(true);
+                            persis.buscarUsuario(DataController.instance.getUsuarioActual(), 8, 1);
                             
                         }
                         CategoryScreen categoryScreen = new CategoryScreen(DataController.instance.getUsuarioActual().category.getAllCategories());

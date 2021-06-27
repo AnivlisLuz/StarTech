@@ -1,6 +1,7 @@
 package Convinados;
 
 import Crucigrama.*;
+import Persistencia.PersistenciaSaver;
 import app.startech.data.DataController;
 import app.startech.models.Category;
 import app.startech.models.Level;
@@ -76,11 +77,13 @@ public class VentanaCombinado extends javax.swing.JFrame {
                                         a.setEditable(false); 
                                     }
                                     if(cont == contAux){
+                                        PersistenciaSaver persis = new PersistenciaSaver();
                                         int i = JOptionPane.showOptionDialog(null, "Lo lograste!!!", "StarTech", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE, null, mensajeContinuar, mensajeContinuar[0]);
                                         if(i==0){
                                             //Siguinte nivel 
                                             Level sig = categoria.nextLevel(level);
                                             if (sig != null) { //si el siguiente nivel es distinto de null
+                                                persis.buscarUsuario(DataController.instance.getUsuarioActual(), categoria.getId(), sig.getId());
                                                 sig.setActive(); //el button (nivel) se activa
                                                 java.awt.EventQueue.invokeLater(new Runnable() { //nuevo hilo
                                                     public void run() {
@@ -93,10 +96,13 @@ public class VentanaCombinado extends javax.swing.JFrame {
                                                 // Siguiente Categoria
                                                 Category cat = ventanaCategoria.nextCategory(categoria);
                                                 if (cat != null) { //la siguiente categoria es distinto de null
+                                                    persis.buscarUsuario(DataController.instance.getUsuarioActual(), cat.getId(), 1);
                                                     java.awt.EventQueue.invokeLater(new Runnable() {//nuevo hilo
                                                         public void run() {
                                                             cat.setActive(true); //se le activa esa siguiente categoria
-                                                            cat.getLevels()[0].setActive(); //se le activa el primer nivel de la siguiente categoria
+                                                            if(cat.getId() != 8){
+                                                                cat.getLevels()[0].setActive(); //se le activa el primer nivel de la siguiente categoria
+                                                            }
                                                             new CategoryScreen(DataController.instance.getUsuarioActual().category.getAllCategories());
                                                         }
                                                     });

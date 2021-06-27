@@ -37,15 +37,15 @@ public class CategoryManager {
     });
     public Category resta = new Category(3, "Resta","https://github.com/AnivlisLuz/StarTech/releases/download/gifs/Resta.wav","La resta o sustracción es una de las operaciones básicas de la matemática. Restar quiere decir quitar, perder, gastar, separar dos o más cantidades.\nEjemplo:",Images.getResta(),"https://github.com/AnivlisLuz/StarTech/releases/download/gifs/resta.gif", false, new Level[]{
             new Level(1, "Nivel 1", false, new Laberinto("Resta", 1, "La vida me susurraba constantemente que me haría feliz, pero antes de todo me quería hacer fuerte.", "Para avanzar resta de uno en uno")),
-            new Level(1, "Nivel 2", false, new Laberinto("Resta", 2, "Eres capaz de cosas increíbles.", "Para avanzar resta de dos en dos")),
-            new Level(2, "Nivel 3", false, new Laberinto("Resta", 3, "Pronto, cuando todo este bien, vas a mirar hacia atrás y estarás contento de ver que nunca te rendiste. Brittany Burgunder", "Para avanzar resta de tres en tres")),
-            new Level(3, "Nivel 4", false, new Laberinto("Resta", 4, "Se te ha asignado esta montaña para mostrarles a otros que se puede mover.", "Para avanzar resta de cuatro en cuatro")),
-            new Level(4, "Nivel 5", false, new Laberinto("Resta", 5, "Nunca debes tener miedo de lo que estás haciendo cuando es correcto. Rosa Parks", "Para avanzar resta de cinco en cinco")),
-            new Level(5, "Nivel 6", false, new Laberinto("Resta", 6, "Cree en ti mismo y serás imparable.", "Para avanzar resta de seis en seis")),
-            new Level(6, "Nivel 7", false, new Laberinto("Resta", 7, "Estoy tan orgulloso de ti. Solo quería decírtelo en caso de que nadie lo haya hecho.", "Para avanzar resta de siete en siete")),
-            new Level(7, "Nivel 8", false, new Laberinto("Resta", 8, "Busca algo positivo en cada día, incluso cuando algunos días tengas que mirar un poco más.", "Para avanzar resta de ocho en ocho")),
-            new Level(8, "Nivel 9", false, new Laberinto("Resta", 9, "La clave está en ver a cada uno de los muros que te encuentras en el camino como escalones que se dirigen hacia tu objetivo.", "Para avanzar resta de nueve en nueve")),
-            new Level(9, "Nivel 10", false, new Laberinto("Resta", 10, "Solo fallas cuando dejas de intentarlo.", "Para avanzar resta de diez en diez uno"))
+            new Level(2, "Nivel 2", false, new Laberinto("Resta", 2, "Eres capaz de cosas increíbles.", "Para avanzar resta de dos en dos")),
+            new Level(3, "Nivel 3", false, new Laberinto("Resta", 3, "Pronto, cuando todo este bien, vas a mirar hacia atrás y estarás contento de ver que nunca te rendiste. Brittany Burgunder", "Para avanzar resta de tres en tres")),
+            new Level(4, "Nivel 4", false, new Laberinto("Resta", 4, "Se te ha asignado esta montaña para mostrarles a otros que se puede mover.", "Para avanzar resta de cuatro en cuatro")),
+            new Level(5, "Nivel 5", false, new Laberinto("Resta", 5, "Nunca debes tener miedo de lo que estás haciendo cuando es correcto. Rosa Parks", "Para avanzar resta de cinco en cinco")),
+            new Level(6, "Nivel 6", false, new Laberinto("Resta", 6, "Cree en ti mismo y serás imparable.", "Para avanzar resta de seis en seis")),
+            new Level(7, "Nivel 7", false, new Laberinto("Resta", 7, "Estoy tan orgulloso de ti. Solo quería decírtelo en caso de que nadie lo haya hecho.", "Para avanzar resta de siete en siete")),
+            new Level(8, "Nivel 8", false, new Laberinto("Resta", 8, "Busca algo positivo en cada día, incluso cuando algunos días tengas que mirar un poco más.", "Para avanzar resta de ocho en ocho")),
+            new Level(9, "Nivel 9", false, new Laberinto("Resta", 9, "La clave está en ver a cada uno de los muros que te encuentras en el camino como escalones que se dirigen hacia tu objetivo.", "Para avanzar resta de nueve en nueve")),
+            new Level(10, "Nivel 10", false, new Laberinto("Resta", 10, "Solo fallas cuando dejas de intentarlo.", "Para avanzar resta de diez en diez uno"))
 
     });
     public Category multiplicacion = new Category(4, "Multiplicación","https://github.com/AnivlisLuz/StarTech/releases/download/gifs/Multiplicacion.wav","La multiplicación es una de las operaciones básicas de la matemática. Multiplicar quiere decir juntar o repetir varias veces la misma cantidad.\nEjemplo:",Images.getMultiplicacion(),"https://github.com/AnivlisLuz/StarTech/releases/download/gifs/multiplicacion.gif", false, new Level[]{
@@ -72,23 +72,23 @@ public class CategoryManager {
             new Level(9, "Nivel 9", false, new Laberinto("División", 9, "Para tener éxito, primero debemos creer que podemos. Nikos Kazantzakis", "Para avanzar encuentra los números divisibles entre 10"))
     });
 
-    public Category crucigrama = new Category(6, "Crucigramas","","",null,"", true, new Level[]{
-            new Level(1, "Nivel 1", true, new Crucigrama("suma", "",1)),
-            new Level(2, "Nivel 2", true, new Crucigrama("resta", "",2)),
-            new Level(3, "Nivel 3", true, new Crucigrama("multiplicación", "",3)),
-            new Level(4, "Nivel 4", true, new Crucigrama("división", "",4)),
-            new Level(4, "Nivel 4", true, new Crucigrama("combinados", "",5)),
+    public Category crucigrama = new Category(6, "Crucigramas","","",null,"", false, new Level[]{
+            new Level(1, "Nivel 1", false, new Crucigrama("suma", "",1)),
+            new Level(2, "Nivel 2", false, new Crucigrama("resta", "",2)),
+            new Level(3, "Nivel 3", false, new Crucigrama("multiplicación", "",3)),
+            new Level(4, "Nivel 4", false, new Crucigrama("división", "",4)),
+            new Level(5, "Nivel 5", false, new Crucigrama("combinados", "",5)),
     });
-    public Category combinado = new Category(7, "Combinados","","",null,"", true, new Level[]{
-            new Level(1, "Nivel 1", true, new Combinado("suma", "",1)),
+    public Category combinado = new Category(7, "Combinados","","",null,"", false, new Level[]{
+            new Level(1, "Nivel 1", false, new Combinado("suma", "",1)),
             new Level(2, "Nivel 2", false, new Combinado("suma", "",2)),
             new Level(3, "Nivel 3", false, new Combinado("suma", "",3)),
             new Level(4, "Nivel 4", false, new Combinado("suma", "",4)),
             new Level(5, "Nivel 5", false, new Combinado("suma", "",5)),
     });
-    public Category sopaResultado = new Category(8, "Sopa de Resultados","","",null,"", true, new Level[]{
+    public Category sopaResultado = new Category(8, "Sopa de Resultados","","",null,"", false, new Level[]{
     });
     public Category[] getAllCategories() {
-        return new Category[]{secuencia, suma, resta, multiplicacion, division, sopaResultado, crucigrama, combinado};
+        return new Category[]{secuencia, suma, resta, multiplicacion, division, crucigrama, combinado, sopaResultado};
     }
 }
