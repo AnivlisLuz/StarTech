@@ -3,6 +3,7 @@ package Convinados;
 import Crucigrama.*;
 import Persistencia.PersistenciaSaver;
 import app.startech.data.DataController;
+import app.startech.imagenes.Images;
 import app.startech.models.Category;
 import app.startech.models.Level;
 import app.startech.screens.CategoryScreen;
@@ -253,11 +254,11 @@ public class VentanaCombinado extends javax.swing.JFrame {
         jLabel2.setText("jLabel2");
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
 
-        jLabelVida3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\app\\startech\\imagenes\\VidaRojo.png")); // NOI18N
+        jLabelVida3.setIcon(new javax.swing.ImageIcon(Images.getVidaRojo())); // NOI18N
 
-        jLabelVida2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\app\\startech\\imagenes\\VidaRojo.png")); // NOI18N
+        jLabelVida2.setIcon(new javax.swing.ImageIcon(Images.getVidaRojo())); // NOI18N
 
-        jLabelVida1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\app\\startech\\imagenes\\VidaRojo.png")); // NOI18N
+        jLabelVida1.setIcon(new javax.swing.ImageIcon(Images.getVidaRojo())); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
