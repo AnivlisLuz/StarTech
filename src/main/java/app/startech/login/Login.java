@@ -5,9 +5,12 @@
  */
 package app.startech.login;
 
+
+import Persistencia.PersistenciaSaver;
 import app.startech.data.DataController;
 
 import app.startech.screens.CategoryScreen;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,13 +18,11 @@ import app.startech.screens.CategoryScreen;
  */
 public class Login extends javax.swing.JFrame {
 
-    /**
-     * Creaw form usuario
-     */
+    
     public Login() {
         initComponents();
-         añadirUsuario();
-    
+        añadirUsuario();
+        
        
      
     }
@@ -113,17 +114,17 @@ public class Login extends javax.swing.JFrame {
          txtUsuario.addItem(user.getNombre());
         }
      }
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int index=txtUsuario.getSelectedIndex();
-        DataController.instance.setUsuarioActual(index);
-        CategoryScreen categoryScreen = new CategoryScreen(DataController.instance.getUsuarioActual().category.getAllCategories());
-        this.dispose();
-     
+        if(txtUsuario.getSelectedItem() != null){
+            int index=txtUsuario.getSelectedIndex();
+            DataController.instance.setUsuarioActual(index);
+            CategoryScreen categoryScreen = new CategoryScreen(DataController.instance.getUsuarioActual().category.getAllCategories());
+            this.dispose(); 
+        }else{
+            JOptionPane.showMessageDialog(null, "Porfavor crea tu perfil");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtUsuarioActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -131,6 +132,10 @@ public class Login extends javax.swing.JFrame {
         abrir.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUsuarioActionPerformed
 
     private void txtUsuarioItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_txtUsuarioItemStateChanged
         // TODO add your handling code here:

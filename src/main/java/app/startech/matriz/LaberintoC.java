@@ -20,10 +20,6 @@ public class LaberintoC {
     private static final ArrayList<Punto> puntos = new ArrayList<>();
 
     private ArrayList<Punto> camJ; //camino en el laberinto
-
-    private int aux1;
-    private int aux2;
-    private int[][] auxMat;
     //fin aux
     private final int X;
     private final int Y;
@@ -32,8 +28,19 @@ public class LaberintoC {
     private final char[][] mat;
     private Casilla[][] casillas;
     private final Random random = new Random();
+    
+    private int iniX;
+    private int iniY;
 
     //Constructor únicamente con el parámetro de tamaño.
+    
+    public LaberintoC(int x, int y, int iniX, int iniY)
+    {
+        this(x, y);
+        this.iniX = iniX;
+        this.iniY = iniY;
+    }
+    
     public LaberintoC(int tamano) {
         this(tamano, tamano);
     }
@@ -77,6 +84,11 @@ public class LaberintoC {
                 casillas[x][y] = new Casilla(x, y, false);
             }
         }
+    }
+    
+    private void generarLaberintoIni()
+    {
+        generarLaberinto(iniX, iniY);
     }
 
     //Parte del método para generar laberinto, este llama al método del mismo nombre pero con la coordenada inicial de (0,0)
