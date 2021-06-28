@@ -33,6 +33,8 @@ public class Plantilla {
             addMultiplicaciones(rand);
         if (operacion.equals("division"))
             addDivisiones(rand);
+        if (operacion.equals("combinados"))
+            addCombinado(rand);
         
         matriz = quitarNum(matrizRes);
         
