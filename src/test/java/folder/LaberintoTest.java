@@ -3,12 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package test.java.folder;
+package folder;
 
-import app.startech.laberintos.Laberinto;
 import app.startech.laberintos.Matriz;
-import org.junit.jupiter.api.*;
-
+import app.startech.laberintos.Laberinto;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
