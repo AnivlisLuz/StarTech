@@ -12,7 +12,7 @@ package app.startech.crucigrama;
 public class Main {
     public static void main(String[] args)
     {
-        MatrizCrucigrama mat = new MatrizCrucigrama("resta");
+        MatrizCrucigrama mat = new MatrizCrucigrama("combinados");
         char[][] matriz = mat.getMat();
         char[][] matrizRes = mat.getMatRes();
         
@@ -30,7 +30,7 @@ public class Main {
                     aux[i][j] = ' ';
                 else
                     if (matriz[i][j] == '@')
-                        aux[i][j] = '_';
+                        aux[i][j] = '%';
                     else
                         aux[i][j] = matriz[i][j];
         return aux;

@@ -34,7 +34,7 @@ public class Plantilla {
         if (operacion.equals("division"))
             addDivisiones(rand);
         if (operacion.equals("combinados"))
-            addCombinado(rand);
+            addCombinado(3);
         
         matriz = quitarNum(matrizRes);
         
@@ -148,6 +148,7 @@ public class Plantilla {
             op7.add(c1[4][6]);
             op7.add(c1[6][6]);
             op7.add(c1[8][6]);
+            /*
             ArrayList<Casilla> op8 = new ArrayList<>();
             op8.add(c1[2][4]);
             op8.add(c1[2][6]);
@@ -156,6 +157,7 @@ public class Plantilla {
             op9.add(c1[0][6]);
             op9.add(c1[2][6]);
             op9.add(c1[4][6]);
+            */
             ArrayList<Casilla> op10 = new ArrayList<>();
             op10.add(c1[8][2]);
             op10.add(c1[8][4]);
@@ -193,8 +195,8 @@ public class Plantilla {
             ops.add(op5);
             ops.add(op6);
             ops.add(op7);
-            ops.add(op8);
-            ops.add(op9);
+            //ops.add(op8);
+            //ops.add(op9);
             ops.add(op10);
             ops.add(op11);
             ops.add(op12);
@@ -215,7 +217,7 @@ public class Plantilla {
                             {'#','#','#','#','1','+','1','=','2','#','#','#','#'},//2
                             {'#','#','#','#','+','#','#','#','=','#','#','#','#'},
                             {'1','+','2','=','3','#','#','#','3','+','2','=','5'},//4
-                            {'#','#','#','#','=','#','+','#','#','#','+','#','#'},
+                            {'#','#','#','#','=','#','#','#','#','#','+','#','#'},
                             {'#','#','#','#','4','#','#','#','#','#','5','#','#'},//6  i
                             {'#','#','#','#','#','#','#','#','#','#','=','#','#'},
                             {'#','#','#','#','#','#','4','+','3','=','7','#','#'},//8
@@ -634,10 +636,12 @@ public class Plantilla {
             op6.add(c1[8][2]);
             op6.add(c1[8][4]);
             op6.add(c1[8][6]);
+            /*
             ArrayList<Casilla> op7 = new ArrayList<>();
             op7.add(c1[4][6]);
             op7.add(c1[6][6]);
             op7.add(c1[8][6]);
+            */
             ArrayList<Casilla> op8 = new ArrayList<>();
             op8.add(c1[10][4]);
             op8.add(c1[10][6]);
@@ -647,9 +651,9 @@ public class Plantilla {
             op9.add(c1[10][10]);
             op9.add(c1[10][12]);
             ArrayList<Casilla> op10 = new ArrayList<>();
+            op10.add(c1[6][12]);
             op10.add(c1[8][12]);
             op10.add(c1[10][12]);
-            op10.add(c1[12][12]);
         
             ArrayList<ArrayList<Casilla>> ops = new ArrayList<>();
             ops.add(op1);
@@ -658,7 +662,7 @@ public class Plantilla {
             ops.add(op4);
             ops.add(op5);
             ops.add(op6);
-            ops.add(op7);
+            //ops.add(op7);
             ops.add(op8);
             ops.add(op9);
             ops.add(op10);
@@ -845,10 +849,12 @@ public class Plantilla {
             op4.add(c1[4][2]);
             op4.add(c1[4][4]);
             op4.add(c1[4][6]);
+            /*
             ArrayList<Casilla> op5 = new ArrayList<>();
             op5.add(c1[0][6]);
             op5.add(c1[2][6]);
             op5.add(c1[4][6]);
+            */
             ArrayList<Casilla> op6 = new ArrayList<>();
             op6.add(c1[6][2]);
             op6.add(c1[6][4]);
@@ -875,7 +881,7 @@ public class Plantilla {
             ops.add(op2);
             ops.add(op3);
             ops.add(op4);
-            ops.add(op5);
+            //ops.add(op5);
             ops.add(op6);
             ops.add(op7);
             ops.add(op8);
@@ -947,10 +953,12 @@ public class Plantilla {
             op10.add(c1[4][8]);
             op10.add(c1[4][10]);
             op10.add(c1[4][12]);
+            /*
             ArrayList<Casilla> op11 = new ArrayList<>();
             op11.add(c1[0][12]);
             op11.add(c1[2][12]);
             op11.add(c1[4][12]);
+            */
             ArrayList<Casilla> op12 = new ArrayList<>();
             op12.add(c1[4][8]);
             op12.add(c1[6][8]);
@@ -971,7 +979,7 @@ public class Plantilla {
             ops.add(op8);
             ops.add(op9);
             ops.add(op10);
-            ops.add(op11);
+            //ops.add(op11);
             ops.add(op12);
             ops.add(op13);
             
@@ -1256,10 +1264,12 @@ public class Plantilla {
             op5.add(c1[4][8]);
             op5.add(c1[6][8]);
             op5.add(c1[8][8]);
+            /*
             ArrayList<Casilla> op6 = new ArrayList<>();
             op6.add(c1[6][8]);
             op6.add(c1[6][10]);
             op6.add(c1[6][12]);
+            */
             ArrayList<Casilla> op7 = new ArrayList<>();
             op7.add(c1[8][4]);
             op7.add(c1[8][6]);
@@ -1275,7 +1285,7 @@ public class Plantilla {
             ops.add(op3);
             ops.add(op4);
             ops.add(op5);
-            ops.add(op6);
+            //ops.add(op6);
             ops.add(op7);
             ops.add(op8);
             
@@ -1401,9 +1411,9 @@ public class Plantilla {
             op4.add(c1[2][10]);
             op4.add(c1[2][12]);
             ArrayList<Casilla> op5 = new ArrayList<>();
-            op5.add(c1[8][2]);
-            op5.add(c1[8][4]);
-            op5.add(c1[8][6]);
+            op5.add(c1[2][8]);
+            op5.add(c1[4][8]);
+            op5.add(c1[6][8]);
             ArrayList<Casilla> op6 = new ArrayList<>();
             op6.add(c1[6][6]);
             op6.add(c1[6][8]);
@@ -1418,8 +1428,8 @@ public class Plantilla {
             op8.add(c1[10][12]);
             ArrayList<Casilla> op9 = new ArrayList<>();
             op9.add(c1[8][8]);
-            op9.add(c1[8][10]);
-            op9.add(c1[8][12]);
+            op9.add(c1[10][8]);
+            op9.add(c1[12][8]);
             
             ArrayList<ArrayList<Casilla>> ops = new ArrayList<>();
             ops.add(op1);
@@ -1835,8 +1845,8 @@ public class Plantilla {
             op8.add(c1[10][10]);
             op8.add(c1[10][12]);
             ArrayList<Casilla> op9 = new ArrayList<>();
-            op9.add(c1[12][8]);
-            op9.add(c1[12][10]);
+            op9.add(c1[8][12]);
+            op9.add(c1[10][12]);
             op9.add(c1[12][12]);
             
             ArrayList<ArrayList<Casilla>> ops = new ArrayList<>();
