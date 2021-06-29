@@ -34,7 +34,7 @@ public class Plantilla {
         if (operacion.equals("division"))
             addDivisiones(rand);
         if (operacion.equals("combinados"))
-            addCombinado(3);
+            addCombinado(rand);
         
         matriz = quitarNum(matrizRes);
         
