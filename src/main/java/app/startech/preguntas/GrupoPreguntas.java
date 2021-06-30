@@ -197,8 +197,8 @@ public class GrupoPreguntas {
         } else {
             finalizarC();
             if (Pregunta.getS() && Pregunta.getR() && Pregunta.getM() && Pregunta.getD()) {
-                etiqueta1.setText("Ya respondiste todas las preguntas");
-                reiniciar.setText("Reiniciar todo");
+                etiqueta1.setText("Ya respondiste todas las preguntas.");
+                reiniciar.setText("Reiniciar todo.");
                 reiniciar.addMouseListener(Denuevo);
             }
         }
@@ -343,11 +343,11 @@ public class GrupoPreguntas {
         etiqueta3.setBounds(ancho / 2 - 300, 10, 600, 150);
         etiqueta3.setHorizontalAlignment(SwingConstants.CENTER);
         if (Pregunta.getResul() == 2 || Pregunta.getResul() == 5 || Pregunta.getResul() == 8 || Pregunta.getResul() == 11) {
-            etiqueta3.setText(convertToMultiline("la respuesta correcta es : \n" + c[0] + " = " + a[0]));
+            etiqueta3.setText(convertToMultiline("La respuesta correcta es : \n" + c[0] + " = " + a[0]));
         } else if (Pregunta.getResul() == 1 || Pregunta.getResul() == 4 || Pregunta.getResul() == 7 || Pregunta.getResul() == 10) {
-            etiqueta3.setText(convertToMultiline("las respuestas correctas son : \n" + c[0] + " = " + a[0] + "\n" + c[1] + " = " + a[1]));
+            etiqueta3.setText(convertToMultiline("Las respuestas correctas son : \n" + c[0] + " = " + a[0] + "\n" + c[1] + " = " + a[1]));
         } else if (Pregunta.getResul() == 0 || Pregunta.getResul() == 3 || Pregunta.getResul() == 6 || Pregunta.getResul() == 9) {
-            etiqueta3.setText(convertToMultiline("las respuestas correctas son : \n" + c[0] + " = " + a[0] + "\n" + c[1] + " = " + a[1] + "\n" + c[2] + " = " + a[2]));
+            etiqueta3.setText(convertToMultiline("Las respuestas correctas son : \n" + c[0] + " = " + a[0] + "\n" + c[1] + " = " + a[1] + "\n" + c[2] + " = " + a[2]));
         }
     }
 
