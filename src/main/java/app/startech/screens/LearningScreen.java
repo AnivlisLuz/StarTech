@@ -100,21 +100,6 @@ public class LearningScreen extends JFrame {
         });
         atras.setPreferredSize(new Dimension(200, 40));
         optionsContainer.add(atras, WEST);
-        JButton start = new JButton("Jugar");
-        start.addActionListener((action) -> {
-            if (category.getId() != 8) {
-                onClose();
-                LevelScreen levelScreen = new LevelScreen(category, ventanaCategorias);
-                setVisible(false);
-            }else{
-                onClose();
-                Ventana ventana = new Ventana(ventanaCategorias);
-                setVisible(false);
-            }
-
-        });
-        start.setPreferredSize(new Dimension(200, 40));
-        optionsContainer.add(start, EAST);
 
         add(titleContainer, NORTH);
         add(centralContainer, CENTER);

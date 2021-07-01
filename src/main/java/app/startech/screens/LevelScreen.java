@@ -6,6 +6,7 @@
 package app.startech.screens;
 
 import app.startech.crucigrama.VentanaCrucigrama1;
+import app.startech.imagenes.Images;
 import app.startech.laberintos.VentanaLaberinto;
 import app.startech.models.Category;
 import app.startech.models.Level;
@@ -28,11 +29,13 @@ public class LevelScreen extends JFrame {
     private final Level[] levels;
     private final Category category;
     private final CategoryScreen ventanaCategorias;
+    private final LearningScreen ventanaAprendizaje;
 
-    public LevelScreen(Category category, CategoryScreen ventanaCategorias) {
+    public LevelScreen(Category category, CategoryScreen ventanaCategorias, LearningScreen ventanaAprendizaje) {
         levels = category.getLevels();
         title = category.getTitle();
         this.ventanaCategorias = ventanaCategorias;
+        this.ventanaAprendizaje = ventanaAprendizaje;
         this.category = category;
         initComponent();
         setLocationRelativeTo(null);
@@ -79,6 +82,18 @@ public class LevelScreen extends JFrame {
         options.setSize(new Dimension(200, 50));
         options.setBorder(new EmptyBorder(10, 10, 10, 10));
         // Se instancia el boton de atras, que lleva a la ventana de categorias
+        JButton learn = new JButton();
+        learn.setIcon(new javax.swing.ImageIcon(Images.getBook()));
+        learn.addActionListener((action) -> {
+            dispose();
+            ventanaAprendizaje.setVisible(true);
+        });
+        learn.setPreferredSize(new Dimension(80, 50));
+        learn.setBorder(null);
+        learn.setBorderPainted(false);
+        learn.setContentAreaFilled(false);
+        options.add(learn, EAST);
+
         JButton buton = new JButton("Atras");
         buton.addActionListener((action) -> {
             dispose();
