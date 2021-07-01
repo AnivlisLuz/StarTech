@@ -74,9 +74,9 @@ public class credito extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         
-        Login abrir = new Login();
-        abrir.setVisible(true);
-        this.dispose();
+     //   Login abrir = new Login();
+       // abrir.setVisible(true);
+        //this.dispose();
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
