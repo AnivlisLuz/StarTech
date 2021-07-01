@@ -76,7 +76,7 @@ public class CategoryScreen extends JFrame {
             button.addActionListener((action) -> {
                     if (category.getId() != 8) {
                         //onClose();
-                        LevelScreen levelScreen = new LevelScreen(category, this,null);
+                        LevelScreen levelScreen = new LevelScreen(category, this);
                         setVisible(false);
                     }else{
                         //onClose();

@@ -31,9 +31,9 @@ public class LearningScreen extends JFrame {
     private String content;
     private BufferedImage iconOp;
     private String image;
-    private CategoryScreen ventanaCategorias;
+    private LevelScreen ventanaCategorias;
 
-    public LearningScreen(Category category, CategoryScreen ventanaCategorias) {
+    public LearningScreen(Category category, LevelScreen ventanaCategorias) {
         this.category = category;
         title = category.getTitle();
         audio = category.getAudio();

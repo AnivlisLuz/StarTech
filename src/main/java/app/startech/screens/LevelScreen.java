@@ -29,13 +29,11 @@ public class LevelScreen extends JFrame {
     private final Level[] levels;
     private final Category category;
     private final CategoryScreen ventanaCategorias;
-    private final LearningScreen ventanaAprendizaje;
 
-    public LevelScreen(Category category, CategoryScreen ventanaCategorias, LearningScreen ventanaAprendizaje) {
+    public LevelScreen(Category category, CategoryScreen ventanaCategorias) {
         levels = category.getLevels();
         title = category.getTitle();
         this.ventanaCategorias = ventanaCategorias;
-        this.ventanaAprendizaje = ventanaAprendizaje;
         this.category = category;
         initComponent();
         setLocationRelativeTo(null);
@@ -84,9 +82,9 @@ public class LevelScreen extends JFrame {
         // Se instancia el boton de atras, que lleva a la ventana de categorias
         JButton learn = new JButton();
         learn.setIcon(new javax.swing.ImageIcon(Images.getBook()));
-        learn.addActionListener((action) -> {
-            dispose();
-            ventanaAprendizaje.setVisible(true);
+        learn.addActionListener((action) -> {            
+            setVisible(false);
+            new LearningScreen(category, this);
         });
         learn.setPreferredSize(new Dimension(80, 50));
         learn.setBorder(null);
