@@ -184,9 +184,9 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
-         credito abrir= new credito();
+        Credits abrir= new Credits(this);
          abrir.setVisible(true);
-         this.dispose();
+        this.setVisible(false);
          
     }//GEN-LAST:event_jButton3ActionPerformed
 
