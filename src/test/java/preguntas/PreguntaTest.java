@@ -60,7 +60,6 @@ public class PreguntaTest {
     @Test
     public void testRestQuestChekPoint() {
         System.out.println("restQuestChekPoint");
-        Pregunta.restQuestChekPoint();
         if (Pregunta.getResulS() == 3) {
             assertEquals(Pregunta.getS(), true);
         } else {

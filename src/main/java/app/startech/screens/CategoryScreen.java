@@ -8,9 +8,6 @@ package app.startech.screens;
 import app.startech.login.Login;
 import app.startech.models.Category;
 import app.startech.preguntas.Cuestionario;
-import app.startech.preguntas.GrupoPreguntas;
-
-import static app.startech.preguntas.Cuestionario.grupos;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -91,9 +88,7 @@ public class CategoryScreen extends JFrame {
         // Se instancia el boton para hacer el test y su funcionamiento
         JButton startTest = new JButton("Realizar TEST");
         startTest.addActionListener((action) -> {
-            
-            Cuestionario test = new Cuestionario(grupos);
-            GrupoPreguntas.showQuestionary();
+            Cuestionario test = new Cuestionario();
             setVisible(false);
         });
         startTest.setPreferredSize(new Dimension(200, 50));

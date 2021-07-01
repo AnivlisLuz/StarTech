@@ -9,7 +9,6 @@ import app.startech.preguntas.Cuestionario;
 
 import javax.swing.*;
 
-import static app.startech.preguntas.Cuestionario.grupos;
 
 /**
  *
@@ -153,7 +152,7 @@ public class nuevoPerfil extends JFrame {
             UserSaver nUser = new UserSaver();
             nUser.escritura(usuario);
             JOptionPane.showMessageDialog(null, "se registro correctamente");
-            Cuestionario test = new Cuestionario(grupos);
+            Cuestionario test = new Cuestionario();
             this.dispose();
         } else {
             
