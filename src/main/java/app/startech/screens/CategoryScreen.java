@@ -9,6 +9,7 @@ import app.startech.login.Login;
 import app.startech.models.Category;
 import app.startech.preguntas.Cuestionario;
 import app.startech.preguntas.GrupoPreguntas;
+import app.startech.sopa.Ventana;
 
 import static app.startech.preguntas.Cuestionario.grupos;
 import javax.swing.*;
@@ -73,8 +74,15 @@ public class CategoryScreen extends JFrame {
             button.setEnabled(category.getActive());
             // Se ejecuta la accion al hacer click
             button.addActionListener((action) -> {
-                LearningScreen learningScreen = new LearningScreen(category, this);
-                setVisible(false);
+                    if (category.getId() != 8) {
+                        //onClose();
+                        LevelScreen levelScreen = new LevelScreen(category, this);
+                        setVisible(false);
+                    }else{
+                        //onClose();
+                        Ventana ventana = new Ventana(this);
+                        setVisible(false);
+                    }
             });
 
             panel.add(button);
