@@ -79,10 +79,11 @@ public class LevelScreen extends JFrame {
         JPanel options = new JPanel(new BorderLayout());
         options.setSize(new Dimension(200, 50));
         options.setBorder(new EmptyBorder(10, 10, 10, 10));
-        // Se instancia el boton de atras, que lleva a la ventana de categorias
+
+        // Se instancia el boton de aprendizaje, que lleva a la ventana de aprendizaje
         JButton learn = new JButton();
         learn.setIcon(new javax.swing.ImageIcon(Images.getBook()));
-        learn.addActionListener((action) -> {            
+        learn.addActionListener((action) -> {
             setVisible(false);
             new LearningScreen(category, this);
         });
@@ -90,8 +91,10 @@ public class LevelScreen extends JFrame {
         learn.setBorder(null);
         learn.setBorderPainted(false);
         learn.setContentAreaFilled(false);
-        options.add(learn, EAST);
-
+        if (category.getIcon() != null)
+            options.add(learn, EAST);
+            
+        // Se instancia el boton de atras, que lleva a la ventana de categorias 
         JButton buton = new JButton("Atras");
         buton.addActionListener((action) -> {
             dispose();

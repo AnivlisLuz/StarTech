@@ -8,8 +8,10 @@ package app.startech.login;
 
 import app.startech.Persistencia.PersistenciaSaver;
 import app.startech.data.DataController;
-
+import app.startech.imagenes.Images;
 import app.startech.screens.CategoryScreen;
+
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -78,7 +80,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\chovis\\Pictures\\sta.png")); // NOI18N
+        jLabel2.setIcon(new ImageIcon(getClass().getResource("/app/startech/imagenes/sta.png"))); // NOI18N
 
         jButton3.setText("creditos");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -87,7 +89,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\chovis\\Documents\\ete.png")); // NOI18N
+        jLabel4.setIcon(new ImageIcon(getClass().getResource("/app/startech/imagenes/VidaRojo.png"))); // NOI18N
         jLabel4.setText(" usemos mayusculas y minusculas para nuestros nombres");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -163,7 +165,7 @@ public class Login extends javax.swing.JFrame {
             CategoryScreen categoryScreen = new CategoryScreen(DataController.instance.getUsuarioActual().category.getAllCategories());
             this.dispose(); 
         }else{
-            JOptionPane.showMessageDialog(null, "Porfavor crea tu perfil");
+            JOptionPane.showMessageDialog(null, "Por favor crea tu perfil");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
