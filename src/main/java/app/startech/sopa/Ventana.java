@@ -18,6 +18,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import app.startech.screens.CategoryScreen;
+import java.awt.event.ActionEvent;
 
 /**
  *
@@ -63,6 +64,17 @@ public class Ventana {
         this.ventanaCategorias = ventanaCategorias;
         pantalla = new JFrame();
         panel = new JPanel();
+        oyente = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                pantalla.setVisible(false);
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        Ventana ventana = new Ventana(ventanaCategorias);
+                    }
+                });
+            }
+        };
 
         vida1 = new JLabel();
         vida2 = new JLabel();

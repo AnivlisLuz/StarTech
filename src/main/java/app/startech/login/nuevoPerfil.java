@@ -9,7 +9,6 @@ import app.startech.preguntas.Cuestionario;
 
 import javax.swing.*;
 
-import static app.startech.preguntas.Cuestionario.grupos;
 
 /**
  *
@@ -134,30 +133,30 @@ public class nuevoPerfil extends JFrame {
      
 
         if (nombre.isEmpty() || edad.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "usuario es incorrecto");
+            JOptionPane.showMessageDialog(null, "Usuario es incorrecto.");
             
         } else if(!Usuario.esLetra(nombre))
         {
            
-         JOptionPane.showMessageDialog(null, "no se admite un valor mayor a 20y menor a 3 caracteres ni caracteres especiales");  
+         JOptionPane.showMessageDialog(null, "No se admite un valor mayor a 20 y menor a 3 caracteres, ni caracteres especiales.");  
         }else if(!edad.matches("-?\\d+")){
-            JOptionPane.showMessageDialog(null, "la edad no es un numero");
+            JOptionPane.showMessageDialog(null, "La edad no es un número.");
             
         }else if(Integer.parseInt(edad)>10){
-        JOptionPane.showMessageDialog(null, "edad maxima 10 años");
+        JOptionPane.showMessageDialog(null, "La edad máxima es de 10 años.");
         }else if(Integer.parseInt(edad)<4){
-        JOptionPane.showMessageDialog(null, "edad minimma 4 años");
+        JOptionPane.showMessageDialog(null, "La edad mínima es de 4 años.");
         
         } else if (!Usuario.verificarUsuario(nombre)) {
             Usuario usuario = new Usuario(nombre,edad);
             UserSaver nUser = new UserSaver();
             nUser.escritura(usuario);
-            JOptionPane.showMessageDialog(null, "se registro correctamente");
-            Cuestionario test = new Cuestionario(grupos);
+            JOptionPane.showMessageDialog(null, "Se registro correctamente");
+            Cuestionario test = new Cuestionario();
             this.dispose();
         } else {
             
-            JOptionPane.showMessageDialog(null, "ya existe este usuario");
+            JOptionPane.showMessageDialog(null, "Ya existe este usuario.");
         }
 
 
