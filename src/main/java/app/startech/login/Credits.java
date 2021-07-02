@@ -10,7 +10,7 @@ import app.startech.models.Category;
 import app.startech.preguntas.Cuestionario;
 import app.startech.preguntas.GrupoPreguntas;
 
-import static app.startech.preguntas.Cuestionario.grupos;
+//import static app.startech.preguntas.Cuestionario.grupos;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -40,20 +40,21 @@ public class Credits extends JFrame {
         setLocationRelativeTo(null);
         //Esta porción de código sirve para que no se cierra el programa cuando se cierra una sola ventana
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        // Se establece el contenedor de los botones
-        JPanel buttons = new JPanel(new BorderLayout());
-        buttons.setBackground(new Color(0, 0, 0, 0));
+        // Se establece el contenedor de la imagen
+        JPanel image = new JPanel(new BorderLayout());
+        image.setBackground(new Color(0, 0, 0, 0));
+        image.setBorder(new EmptyBorder(30, 0, 0, 0));
         ImageIcon img= new ImageIcon(getClass().getResource("/app/startech/imagenes/creditos.jpg"));
         Icon fondo = new ImageIcon(img.getImage().getScaledInstance(650,358,Image.SCALE_DEFAULT));
         
         JLabel jLabel1 = new JLabel();
         jLabel1.setIcon(fondo);
-        buttons.add(jLabel1);
+        image.add(jLabel1);
        
         
-        // Se establece el contenedor de abajo para los botones atras y realizar test con la dimensión y un borde vacio
+        // Se establece el contenedor de abajo 
         JPanel options = new JPanel(new BorderLayout());
-        options.setSize(new Dimension(200, 50));
+        options.setSize(new Dimension(200, 40));
         options.setBorder(new EmptyBorder(10, 10, 10, 10));
         // Se instancia el boton de atras, que lleva al login
         JButton atras = new JButton("Atras");
@@ -62,10 +63,10 @@ public class Credits extends JFrame {
             abrir.setVisible(true);
             setVisible(false);
         });
-        atras.setPreferredSize(new Dimension(200, 50));
-        options.add(atras);
+        atras.setPreferredSize(new Dimension(200, 40));
+        options.add(atras,WEST);
         // Se estable la ubicación de los distintos contenedores
-        add(buttons, CENTER);
+        add(image, CENTER);
         add(options, SOUTH);
 
         setVisible(true);

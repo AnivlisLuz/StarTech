@@ -9,7 +9,6 @@ import app.startech.preguntas.Cuestionario;
 
 import javax.swing.*;
 
-import static app.startech.preguntas.Cuestionario.grupos;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -108,7 +107,7 @@ public class nuevoPerfil extends JFrame {
         jLabel3.setText("Nuevo Perfil");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 40, -1, -1));
 
-        jButton2.setText("cancelar");
+        jButton2.setText("Cancelar");
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,7 +117,7 @@ public class nuevoPerfil extends JFrame {
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 300, -1, -1));
 
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\app\\startech\\imagenes\\fondo 2.png")); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/startech/imagenes/fondo 2.png"))); // NOI18N
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 450));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -141,33 +140,32 @@ public class nuevoPerfil extends JFrame {
         String nombre;
         nombre = txtNombre.getText();
         String edad = intEdad.getText();
-     
 
         if (nombre.isEmpty() || edad.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "usuario es incorrecto");
+            JOptionPane.showMessageDialog(this, "El usuario es incorrecto.");
             
         } else if(!Usuario.esLetra(nombre))
         {
            
-         JOptionPane.showMessageDialog(this, "no se admite un valor mayor a 20y menor a 3 caracteres ni caracteres especiales");  
+         JOptionPane.showMessageDialog(this, "No se admite un valor mayor a 20 y menor a 3 caracteres ni caracteres especiales");  
         }else if(!edad.matches("-?\\d+")){
-            JOptionPane.showMessageDialog(this, "la edad no es un numero");
+            JOptionPane.showMessageDialog(this, "La edad no es un número");
             
         }else if(Integer.parseInt(edad)>10){
-        JOptionPane.showMessageDialog(this, "edad maxima 10 años");
+        JOptionPane.showMessageDialog(this, "La edad máxima 10 años");
         }else if(Integer.parseInt(edad)<4){
-        JOptionPane.showMessageDialog(this, "edad minimma 4 años");
+        JOptionPane.showMessageDialog(this, "La edad mínimma 4 años");
         
         } else if (!Usuario.verificarUsuario(nombre)) {
             Usuario usuario = new Usuario(nombre,edad);
             UserSaver nUser = new UserSaver();
             nUser.escritura(usuario);
-            JOptionPane.showMessageDialog(this, "se registro correctamente");
-            Cuestionario test = new Cuestionario(grupos);
+            JOptionPane.showMessageDialog(this, "Se registro correctamente");
+            Cuestionario test = new Cuestionario();
             this.dispose();
         } else {
             
-            JOptionPane.showMessageDialog(this, "ya existe este usuario");
+            JOptionPane.showMessageDialog(this, "Este usuario y existe");
         }
 
 

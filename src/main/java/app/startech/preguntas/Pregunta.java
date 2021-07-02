@@ -41,7 +41,13 @@ public class Pregunta {
     private static Boolean resD = false;
     private static int auxiliar;
     private static Thread thread;
+
     private int esCorrecto;
+    
+    private String [] resul=new String [3];
+    private static String resulT;
+    
+    private static boolean resulTB;
 
     public Pregunta(String pregunta, String[] respuesta, boolean[] correcto) {
         thread = new Thread();
@@ -58,12 +64,13 @@ public class Pregunta {
             }
 
             public void mousePressed(MouseEvent e) {
+                setPreg(resul[0]);
                 if (esCorrecto == 0) {
+                    resulTB=true;
                     etiqueta1.setBackground(Color.GREEN);
                     etiqueta1.setText("Correcto");
                 } else {
-                    grupo.correcion();
-                    grupo.error();
+                    resulTB=false;
                     etiqueta1.setBackground(Color.RED);
                     etiqueta1.setText("Incorrecto");
                     if (esCorrecto == 1) {
@@ -88,7 +95,7 @@ public class Pregunta {
                         resultadoD++;
                     }
                 }
-                GrupoPreguntas grupo = new GrupoPreguntas(Cuestionario.preguntas);
+                GrupoPreguntas grupo = new GrupoPreguntas();
             }
 
             public void mouseEntered(MouseEvent e) {
@@ -104,12 +111,13 @@ public class Pregunta {
             }
 
             public void mousePressed(MouseEvent e) {
+                setPreg(resul[1]);
                 if (esCorrecto == 1) {
+                    resulTB=true;
                     etiqueta1.setBackground(Color.GREEN);
                     etiqueta1.setText("Correcto");
                 } else {
-                    grupo.correcion();
-                    grupo.error();
+                    resulTB=false;
                     etiqueta1.setBackground(Color.RED);
                     etiqueta1.setText("Incorrecto");
                 }
@@ -134,7 +142,7 @@ public class Pregunta {
                         resultadoD++;
                     }
                 }
-                GrupoPreguntas grupo = new GrupoPreguntas(Cuestionario.preguntas);
+                GrupoPreguntas grupo = new GrupoPreguntas();
             }
 
             public void mouseEntered(MouseEvent e) {
@@ -150,12 +158,13 @@ public class Pregunta {
             }
 
             public void mousePressed(MouseEvent e) {
+                setPreg(resul[2]);
                 if (esCorrecto == 2) {
+                    resulTB=true;
                     etiqueta1.setBackground(Color.GREEN);
                     etiqueta1.setText("Correcto");
                 } else {
-                    grupo.correcion();
-                    grupo.error();
+                    resulTB=false;
                     etiqueta1.setBackground(Color.RED);
                     etiqueta1.setText("Incorrecto");
                     if (esCorrecto == 0) {
@@ -180,7 +189,7 @@ public class Pregunta {
                         resultadoD++;
                     }
                 }
-                GrupoPreguntas grupo = new GrupoPreguntas(Cuestionario.preguntas);
+                GrupoPreguntas grupo = new GrupoPreguntas();
             }
 
             public void mouseEntered(MouseEvent e) {
@@ -253,20 +262,7 @@ public class Pregunta {
     }
 
     //Obtencion de booleans por cada categoria
-    public static void restQuestChekPoint() {
-        if (resultadoS == 3) {
-            resS = true;
-        }
-        if (resultadoR == 3) {
-            resR = true;
-        }
-        if (resultadoM == 3) {
-            resM = true;
-        }
-        if (resultadoD == 3) {
-            resD = true;
-        }
-    }
+
 
     //obtener el valor de posicion actual del cuestionario
     public static int getCuestio() {
@@ -379,29 +375,35 @@ public class Pregunta {
 
     //Establece el inciso 1
     public void inciso() {
+        String pr1=generadorR();
         boton.setBounds(ancho / 4 - 75, 400, 150, 50);
-        boton.setText(generadorR());
+        boton.setText(pr1);
         boton.addMouseListener(oyenteAccion);
         boton.setOpaque(true);
         boton.setFont(new Font("calibri", Font.ITALIC, 30));
+        resul[0]=pr1;
     }
 
     //Establece el inciso 2
     public void inciso1() {
+        String pr2=generadorR();
         boton1.setBounds(ancho / 2 - 75, 400, 150, 50);
-        boton1.setText(generadorR());
+        boton1.setText(pr2);
         boton1.setOpaque(true);
         boton1.setFont(new Font("calibri", Font.ITALIC, 30));
         boton1.addMouseListener(oyenteAccion1);
+        resul[1]=pr2;
     }
 
     //Establece el inciso 3
     public void inciso2() {
+        String pr3=generadorR();
         boton2.setBounds((ancho * 3) / 4 - 75, 400, 150, 50);
-        boton2.setText(generadorR());
+        boton2.setText(pr3);
         boton2.setOpaque(true);
         boton2.setFont(new Font("calibri", Font.ITALIC, 30));
         boton2.addMouseListener(oyenteAccion2);
+        resul[2]=pr3;
     }
 
     //genera la pregunta
@@ -488,6 +490,7 @@ public class Pregunta {
         } else if (a == 2) {
             boton2.setText("" + auxiliar + "");
         }
+        resul[a]="" + auxiliar + "";
     }
 
     public static String getPregunta() {
@@ -496,5 +499,16 @@ public class Pregunta {
 
     public static int getAuxiliar() {
         return auxiliar;
+    }
+    
+    public void setPreg(String resp){
+        resulT=getPregunta()+" = "+resp;
+    }
+    public static String getPreg(){
+        return resulT;
+    }
+    
+    public static boolean getPB(){
+        return resulTB;
     }
 }

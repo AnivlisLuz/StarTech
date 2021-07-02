@@ -6,17 +6,17 @@
 package app.startech.screens;
 
 import app.startech.models.Category;
-import app.startech.sopa.Ventana;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import java.applet.AudioClip;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.io.File;
 import java.util.ArrayList;
-
-import javax.sound.sampled.*;
 
 import static java.awt.BorderLayout.*;
 
@@ -31,9 +31,9 @@ public class LearningScreen extends JFrame {
     private String content;
     private BufferedImage iconOp;
     private String image;
-    private CategoryScreen ventanaCategorias;
+    private LevelScreen ventanaCategorias;
 
-    public LearningScreen(Category category, CategoryScreen ventanaCategorias) {
+    public LearningScreen(Category category, LevelScreen ventanaCategorias) {
         this.category = category;
         title = category.getTitle();
         audio = category.getAudio();
@@ -82,11 +82,8 @@ public class LearningScreen extends JFrame {
         centralContainer.add(imageContainer, SOUTH);
         JLabel gifCointainer = new JLabel();
         gifCointainer.setBorder(new EmptyBorder(0, 100, 0, 100));
-        try {
-            gifCointainer.setIcon(new ImageIcon(new URL(image)));
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
+        gifCointainer.setIcon(new ImageIcon(getClass().getResource(image)));
+
         imageContainer.add(gifCointainer);
 
         JPanel optionsContainer = new JPanel();
@@ -100,28 +97,13 @@ public class LearningScreen extends JFrame {
         });
         atras.setPreferredSize(new Dimension(200, 40));
         optionsContainer.add(atras, WEST);
-        JButton start = new JButton("Jugar");
-        start.addActionListener((action) -> {
-            if (category.getId() != 8) {
-                onClose();
-                LevelScreen levelScreen = new LevelScreen(category, ventanaCategorias);
-                setVisible(false);
-            }else{
-                onClose();
-                Ventana ventana = new Ventana(ventanaCategorias);
-                setVisible(false);
-            }
-
-        });
-        start.setPreferredSize(new Dimension(200, 40));
-        optionsContainer.add(start, EAST);
 
         add(titleContainer, NORTH);
         add(centralContainer, CENTER);
         add(optionsContainer, SOUTH);
 
         setVisible(true);
-        playSound("https://github.com/AnivlisLuz/StarTech/releases/download/gifs/fondo.wav", true);
+        playSound("/app/startech/resources/fondo.wav", true);
     }
 
     private ArrayList<Clip> audios = new ArrayList();
@@ -129,8 +111,7 @@ public class LearningScreen extends JFrame {
     private void playSound(String url, boolean loop) {
 
         try {
-
-            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new URL(url));
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(getClass().getResource(url));
             Clip clip = AudioSystem.getClip();
             clip.open(audioInputStream);
             clip.start();

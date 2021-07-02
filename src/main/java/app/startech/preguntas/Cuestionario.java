@@ -16,17 +16,13 @@ public class Cuestionario {
     public static final int alto = 600;
     public static JPanel panel;
     public static ImageIcon imagen;
-    public static GrupoPreguntas[] grupos;
-    public static Pregunta[] preguntas;
     private static JFrame ventana;
     private final JLabel etiqueta;
     private final JButton boton;
     private final ActionListener oyenteAccion;
-    private final Thread thread;
 
     //Iniciar Cuestionario
-    public Cuestionario(GrupoPreguntas[] grupoPreguntas) {
-        thread = new Thread();
+    public Cuestionario() {
         ventana = new JFrame();
         panel = new JPanel();
         etiqueta = new JLabel();
@@ -34,7 +30,8 @@ public class Cuestionario {
         imagen = new ImageIcon("recursos/imagenes/fondo.jpg");
         oyenteAccion = new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                GrupoPreguntas grupo = new GrupoPreguntas(preguntas);
+                GrupoPreguntas grupo = new GrupoPreguntas();
+                grupo.showQuestionary();
             }
         };
         ventana();
@@ -55,7 +52,6 @@ public class Cuestionario {
 
     //Ejecuta la ventana del Cuestionario
     public void ventana() {
-        thread.start();
         ventana.setVisible(true);
         ventana.setSize(ancho, alto);
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -86,5 +82,13 @@ public class Cuestionario {
         boton.setEnabled(true);
         boton.addActionListener(oyenteAccion);
         boton.setFont(new Font("calibri", Font.ITALIC, 30));
+    }
+    public static void main(String[] args) {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                Cuestionario c = new Cuestionario();
+            }
+        });
+        // Ventana ventana = new Ventana();
     }
 }
