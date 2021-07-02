@@ -10,6 +10,9 @@ import app.startech.preguntas.Cuestionario;
 import javax.swing.*;
 
 import static app.startech.preguntas.Cuestionario.grupos;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 
 /**
  *
@@ -22,6 +25,10 @@ public class nuevoPerfil extends JFrame {
      */
     public nuevoPerfil() {
         initComponents();
+        //Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        //this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+        this.setBackground(new Color(0,0,0,0));
+        jPanel1.setBackground(new Color(0,0,0,0));
     }
 
     /**
@@ -33,17 +40,35 @@ public class nuevoPerfil extends JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jSpinner1 = new JSpinner();
-        jButton1 = new JButton();
-        jLabel1 = new JLabel();
-        jLabel2 = new JLabel();
-        txtNombre = new JTextField();
-        intEdad = new JTextField();
-        jLabel3 = new JLabel();
-        jButton2 = new JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        txtNombre = new javax.swing.JTextField();
+        intEdad = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setAlwaysOnTop(true);
+        setUndecorated(true);
         setResizable(false);
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setFont(new java.awt.Font("Leelawadee", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("X");
+        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 10, 20, 30));
 
         jButton1.setText("Aceptar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -51,24 +76,36 @@ public class nuevoPerfil extends JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 300, -1, -1));
 
+        jLabel1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Nombre");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 150, -1, -1));
 
+        jLabel2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Edad");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 190, -1, -1));
 
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombreActionPerformed(evt);
             }
         });
+        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 146, 100, -1));
 
         intEdad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 intEdadActionPerformed(evt);
             }
         });
+        jPanel1.add(intEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 190, 80, -1));
 
+        jLabel3.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Nuevo Perfil");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 40, -1, -1));
 
         jButton2.setText("cancelar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -76,50 +113,21 @@ public class nuevoPerfil extends JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 300, -1, -1));
 
-        GroupLayout layout = new GroupLayout(getContentPane());
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setIcon(new javax.swing.ImageIcon("D:\\johel\\Spitz\\StarTech\\fondo 2.png")); // NOI18N
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 450));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(66, 66, 66)
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, GroupLayout.PREFERRED_SIZE, 72, GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addComponent(intEdad)
-                    .addComponent(txtNombre))
-                .addGap(110, 110, 110))
-            .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
-                .addGap(130, 130, 130))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(85, 85, 85)
-                .addComponent(jButton1, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55)
-                .addComponent(jButton2, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(62, Short.MAX_VALUE))
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17)
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNombre, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
-                    .addComponent(intEdad, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE))
-                .addGap(83, 83, 83))
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -134,30 +142,30 @@ public class nuevoPerfil extends JFrame {
      
 
         if (nombre.isEmpty() || edad.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "usuario es incorrecto");
+            JOptionPane.showMessageDialog(this, "usuario es incorrecto");
             
         } else if(!Usuario.esLetra(nombre))
         {
            
-         JOptionPane.showMessageDialog(null, "no se admite un valor mayor a 20y menor a 3 caracteres ni caracteres especiales");  
+         JOptionPane.showMessageDialog(this, "no se admite un valor mayor a 20y menor a 3 caracteres ni caracteres especiales");  
         }else if(!edad.matches("-?\\d+")){
-            JOptionPane.showMessageDialog(null, "la edad no es un numero");
+            JOptionPane.showMessageDialog(this, "la edad no es un numero");
             
         }else if(Integer.parseInt(edad)>10){
-        JOptionPane.showMessageDialog(null, "edad maxima 10 años");
+        JOptionPane.showMessageDialog(this, "edad maxima 10 años");
         }else if(Integer.parseInt(edad)<4){
-        JOptionPane.showMessageDialog(null, "edad minimma 4 años");
+        JOptionPane.showMessageDialog(this, "edad minimma 4 años");
         
         } else if (!Usuario.verificarUsuario(nombre)) {
             Usuario usuario = new Usuario(nombre,edad);
             UserSaver nUser = new UserSaver();
             nUser.escritura(usuario);
-            JOptionPane.showMessageDialog(null, "se registro correctamente");
+            JOptionPane.showMessageDialog(this, "se registro correctamente");
             Cuestionario test = new Cuestionario(grupos);
             this.dispose();
         } else {
             
-            JOptionPane.showMessageDialog(null, "ya existe este usuario");
+            JOptionPane.showMessageDialog(this, "ya existe este usuario");
         }
 
 
@@ -181,19 +189,25 @@ public class nuevoPerfil extends JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        dispose();
+    }//GEN-LAST:event_jLabel4MouseClicked
+
     /**
      * @param args the command line arguments
      */
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private JTextField intEdad;
-    private JButton jButton1;
-    private JButton jButton2;
-    private JLabel jLabel1;
-    private JLabel jLabel2;
-    private JLabel jLabel3;
-    private JSpinner jSpinner1;
-    private JTextField txtNombre;
+    private javax.swing.JTextField intEdad;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }
