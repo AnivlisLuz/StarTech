@@ -6,6 +6,7 @@
         <element id="file-copy" path="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" />
       </element>
       <element id="module-output" name="startech" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/netbeans/external/AbsoluteLayout/RELEASE123/AbsoluteLayout-RELEASE123.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>

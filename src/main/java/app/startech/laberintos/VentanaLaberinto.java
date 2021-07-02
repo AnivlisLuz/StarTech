@@ -170,13 +170,13 @@ public class VentanaLaberinto extends javax.swing.JFrame {
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 90, 100, -1));
 
-        jLabelVida3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\app\\startech\\imagenes\\VidaRojo.png")); // NOI18N
+        jLabelVida3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/startech/imagenes/VidaRojo.png"))); // NOI18N
         jPanel3.add(jLabelVida3, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 10, -1, -1));
 
-        jLabelVida2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\app\\startech\\imagenes\\VidaRojo.png")); // NOI18N
+        jLabelVida2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/startech/imagenes/VidaRojo.png"))); // NOI18N
         jPanel3.add(jLabelVida2, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 10, -1, -1));
 
-        jLabelVida1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\app\\startech\\imagenes\\VidaRojo.png")); // NOI18N
+        jLabelVida1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/startech/imagenes/VidaRojo.png"))); // NOI18N
         jPanel3.add(jLabelVida1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 10, -1, -1));
         jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 470, 200, 210));
         jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 130, 200, 210));
