@@ -26,5 +26,7 @@ public class Cuadro {
     public int getValor(){
         return valor;
     }
-    
+    public boolean getEsCuadro() {
+        return esCuadro;
+    }
 }
