@@ -11,8 +11,7 @@ import app.startech.data.DataController;
 
 import app.startech.screens.CategoryScreen;
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Toolkit;
+import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
 
 /**
@@ -24,8 +23,6 @@ public class Login extends javax.swing.JFrame {
     
     public Login() {
         initComponents();
-        //Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        //this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
         this.setBackground(new Color(0,0,0,0));
         jPanel1.setBackground(new Color(0,0,0,0));
         añadirUsuario();
@@ -160,8 +157,19 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUsuarioItemStateChanged
 
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {                                     
        dispose();
+    }   
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+
+        Credits abrir= new Credits(this);
+         abrir.setVisible(true);
+        this.setVisible(false);
+         
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        dispose();
     }//GEN-LAST:event_jLabel2MouseClicked
 
     /**

@@ -72,20 +72,20 @@ public class CategoryManager {
             new Level(9, "Nivel 9", false, new Laberinto("División", 9, "Para tener éxito, primero debemos creer que podemos. Nikos Kazantzakis", "Para avanzar encuentra los números divisibles entre 10"))
     });
 
-    public Category crucigrama = new Category(6, "Crucigramas","","",null,"", false, new Level[]{
-            new Level(1, "Nivel 1", false, new Crucigrama("Suma", "",1)),
-            new Level(2, "Nivel 2", false, new Crucigrama("Resta", "",2)),
-            new Level(3, "Nivel 3", false, new Crucigrama("Multiplicación", "",3)),
-            new Level(4, "Nivel 4", false, new Crucigrama("División", "",4)),
-            new Level(4, "Nivel 5", false, new Crucigrama("Combinados", "",5)),
+    public Category crucigrama = new Category(6, "Crucigramas","","",null,"", true, new Level[]{
+            new Level(1, "Nivel 1", true, new Crucigrama("Suma", "",1)),
+            new Level(2, "Nivel 2", true, new Crucigrama("Resta", "",2)),
+            new Level(3, "Nivel 3", true, new Crucigrama("Multiplicación", "",3)),
+            new Level(4, "Nivel 4", true, new Crucigrama("División", "",4)),
+            new Level(4, "Nivel 5", true, new Crucigrama("Combinados", "",5)),
     });
-    public Category combinado = new Category(7, "Combinados","","",null,"", false, new Level[]{
-            new Level(1, "Nivel 1", false, new Combinado("Suma y resta", "",1)),
-            new Level(2, "Nivel 2", false, new Combinado("Multiplicación y división", "",2)),
-            new Level(3, "Nivel 3", false, new Combinado("División y suma", "",3)),
-            new Level(4, "Nivel 4", false, new Combinado("División y multiplicación", "",4)),
+    public Category combinado = new Category(7, "Combinados","","",null,"", true, new Level[]{
+            new Level(1, "Nivel 1", true, new Combinado("Suma y resta", "",1)),
+            new Level(2, "Nivel 2", true, new Combinado("Multiplicación y división", "",2)),
+            new Level(3, "Nivel 3", true, new Combinado("División y suma", "",3)),
+            new Level(4, "Nivel 4", true, new Combinado("División y multiplicación", "",4)),
     });
-    public Category sopaResultado = new Category(8, "Sopa de Resultados","","",null,"", false, new Level[]{
+    public Category sopaResultado = new Category(8, "Sopa de Resultados","","",null,"", true, new Level[]{
     });
     public Category[] getAllCategories() {
         return new Category[]{secuencia, suma, resta, multiplicacion, division, crucigrama, combinado, sopaResultado};
