@@ -7,11 +7,15 @@ package app.startech.screens;
 
 import app.startech.models.Category;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.applet.AudioClip;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.util.ArrayList;
 
 import static java.awt.BorderLayout.*;
@@ -102,15 +106,17 @@ public class LearningScreen extends JFrame {
         playSound("/app/startech/resources/fondo.wav", true);
     }
 
-    private ArrayList<AudioClip> audios = new ArrayList();
+    private ArrayList<Clip> audios = new ArrayList();
 
     private void playSound(String url, boolean loop) {
 
         try {
-            AudioClip clip=java.applet.Applet.newAudioClip(getClass().getResource(url));
-            clip.play();
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(getClass().getResource(url));
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+            clip.start();
             if (loop)
-                clip.loop();
+                clip.loop(Clip.LOOP_CONTINUOUSLY);
             audios.add(clip);
         } catch (Exception ex) {
             System.out.println("Error with playing sound.");
@@ -119,7 +125,7 @@ public class LearningScreen extends JFrame {
     }
 
     private void onClose() {
-        for (AudioClip clip : audios) {
+        for (Clip clip : audios) {
             try {
                 clip.stop();
             } catch (Exception ex) {
