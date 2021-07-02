@@ -69,7 +69,7 @@ public class nuevoPerfil extends JFrame {
 
         jLabel3.setText("Nuevo Perfil");
 
-        jButton2.setText("cancelar");
+        jButton2.setText("Cancelar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -92,7 +92,7 @@ public class nuevoPerfil extends JFrame {
                 .addGap(110, 110, 110))
             .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel3, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
                 .addGap(130, 130, 130))
             .addGroup(layout.createSequentialGroup()
                 .addGap(85, 85, 85)
@@ -105,7 +105,7 @@ public class nuevoPerfil extends JFrame {
             layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel3, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel3, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
                 .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
@@ -130,10 +130,9 @@ public class nuevoPerfil extends JFrame {
         String nombre;
         nombre = txtNombre.getText();
         String edad = intEdad.getText();
-     
 
         if (nombre.isEmpty() || edad.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Usuario es incorrecto.");
+            JOptionPane.showMessageDialog(null, "El usuario es incorrecto.");
             
         } else if(!Usuario.esLetra(nombre))
         {
