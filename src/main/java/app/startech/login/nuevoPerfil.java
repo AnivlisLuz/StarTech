@@ -115,7 +115,7 @@ public class nuevoPerfil extends JFrame {
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 300, -1, -1));
 
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\app\\startech\\imagenes\\fondo 2.png")); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/startech/imagenes/fondo 2.png"))); // NOI18N
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 450));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -145,14 +145,14 @@ public class nuevoPerfil extends JFrame {
         } else if(!Usuario.esLetra(nombre))
         {
            
-         JOptionPane.showMessageDialog(this, "no se admite un valor mayor a 20y menor a 3 caracteres ni caracteres especiales");  
+         JOptionPane.showMessageDialog(this, "No se admite un valor mayor a 20 y menor a 3 caracteres ni caracteres especiales");  
         }else if(!edad.matches("-?\\d+")){
-            JOptionPane.showMessageDialog(this, "la edad no es un numero");
+            JOptionPane.showMessageDialog(this, "La edad no es un número");
             
         }else if(Integer.parseInt(edad)>10){
-        JOptionPane.showMessageDialog(this, "edad maxima 10 años");
+        JOptionPane.showMessageDialog(this, "La edad máxima 10 años");
         }else if(Integer.parseInt(edad)<4){
-        JOptionPane.showMessageDialog(this, "edad minimma 4 años");
+        JOptionPane.showMessageDialog(this, "La edad mínimma 4 años");
         
         } else if (!Usuario.verificarUsuario(nombre)) {
             Usuario usuario = new Usuario(nombre,edad);
@@ -163,7 +163,7 @@ public class nuevoPerfil extends JFrame {
             this.dispose();
         } else {
             
-            JOptionPane.showMessageDialog(this, "ya existe este usuario");
+            JOptionPane.showMessageDialog(this, "Este usuario y existe");
         }
 
 

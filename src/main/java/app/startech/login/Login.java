@@ -38,13 +38,14 @@ public class Login extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         txtUsuario = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
@@ -83,6 +84,18 @@ public class Login extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 230, 109, 40));
+       
+        jButton3.setIcon(new ImageIcon(getClass().getResource("/app/startech/imagenes/logo2.png")));
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        // jButton3.setPreferredSize(new Dimension(80, 50));
+        jButton3.setBorder(null);
+        jButton3.setBorderPainted(false);
+        jButton3.setContentAreaFilled(false);
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 320, 190, 70));
 
         jButton2.setText("Nuevo Perfil");
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -104,17 +117,6 @@ public class Login extends javax.swing.JFrame {
                 txtUsuarioActionPerformed(evt);
             }
         });
-        JButton jButton3=new JButton();
-        jButton3.setIcon(new ImageIcon(getClass().getResource("/app/startech/imagenes/logo2.png")));
-        jButton3.addActionListener((action) -> {
-            setVisible(false);
-            new Credits(this);
-        });
-        // jButton3.setPreferredSize(new Dimension(80, 50));
-        jButton3.setBorder(null);
-        jButton3.setBorderPainted(false);
-        jButton3.setContentAreaFilled(false);
-
         jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 160, 137, 33));
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -172,7 +174,7 @@ public class Login extends javax.swing.JFrame {
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {                                     
        dispose();
     }   
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
 
         Credits abrir = new Credits(this);
         abrir.setVisible(true);
@@ -183,6 +185,7 @@ public class Login extends javax.swing.JFrame {
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         dispose();
     }//GEN-LAST:event_jLabel2MouseClicked
+
 
     /**
      * @param args the command line arguments
@@ -226,6 +229,7 @@ public class Login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
