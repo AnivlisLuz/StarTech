@@ -33,16 +33,16 @@ public class GrupoPreguntas {
     private final JLabel etiqueta1;
     private final JLabel etiqueta2;
     private final JLabel etiqueta3;
-    private final Thread thread;
-    public static int[] a = new int[3];
-    public static int b = 0;
 
     public static String[] c = new String[3];
     public static int d = 0;
 
-    public GrupoPreguntas(Pregunta[] preguntas) {
-        thread = new Thread();
-        thread.start();
+    //public static String[] resul;
+    public static String[] resul = new String[13];
+
+    public static boolean[] resulB = new boolean[13];
+
+    public GrupoPreguntas() {
         categoria0 = new JButton();
         reiniciar = new JButton();
         etiqueta = new JLabel();
@@ -62,9 +62,7 @@ public class GrupoPreguntas {
 
             public void mouseReleased(MouseEvent e) {
                 Pregunta.restQuest();
-                b = 0;
-                d = 0;
-                GrupoPreguntas grupo = new GrupoPreguntas(Cuestionario.preguntas);
+                GrupoPreguntas grupo = new GrupoPreguntas();
             }
 
             public void mouseEntered(MouseEvent e) {
@@ -87,7 +85,7 @@ public class GrupoPreguntas {
                 EventQueue.invokeLater(new Runnable() {
                     public void run() {
                         PersistenciaSaver persis = new PersistenciaSaver();
-                        if(Pregunta.getResulS() >= 1){
+                        if (Pregunta.getResulS() >= 1) {
                             DataController.instance.getUsuarioActual().category.suma.setActive(true);
                             DataController.instance.getUsuarioActual().category.suma.getLevels()[0].setActive(true);
                             persis.buscarUsuario(DataController.instance.getUsuarioActual(), 2, 1);
@@ -98,7 +96,7 @@ public class GrupoPreguntas {
                             }
                             persis.buscarUsuario(DataController.instance.getUsuarioActual(), 2, 9);
                         }
-                        if (Pregunta.getResulR() >= 1){
+                        if (Pregunta.getResulR() >= 1) {
                             DataController.instance.getUsuarioActual().category.resta.setActive(true);
                             DataController.instance.getUsuarioActual().category.resta.getLevels()[0].setActive(true);
                             persis.buscarUsuario(DataController.instance.getUsuarioActual(), 3, 1);
@@ -109,7 +107,7 @@ public class GrupoPreguntas {
                             }
                             persis.buscarUsuario(DataController.instance.getUsuarioActual(), 3, 9);
                         }
-                        if(Pregunta.getResulM() >= 1){
+                        if (Pregunta.getResulM() >= 1) {
                             DataController.instance.getUsuarioActual().category.multiplicacion.setActive(true);
                             DataController.instance.getUsuarioActual().category.multiplicacion.getLevels()[0].setActive(true);
                             persis.buscarUsuario(DataController.instance.getUsuarioActual(), 4, 1);
@@ -120,7 +118,7 @@ public class GrupoPreguntas {
                             }
                             persis.buscarUsuario(DataController.instance.getUsuarioActual(), 4, 9);
                         }
-                        if(Pregunta.getResulD() >= 1){
+                        if (Pregunta.getResulD() >= 1) {
                             DataController.instance.getUsuarioActual().category.division.setActive(true);
                             DataController.instance.getUsuarioActual().category.division.getLevels()[0].setActive(true);
                             persis.buscarUsuario(DataController.instance.getUsuarioActual(), 5, 1);
@@ -130,18 +128,18 @@ public class GrupoPreguntas {
                                 DataController.instance.getUsuarioActual().category.division.getLevels()[i].setActive(true);
                             }
                             persis.buscarUsuario(DataController.instance.getUsuarioActual(), 5, 9);
-                            
+
                             DataController.instance.getUsuarioActual().category.crucigrama.setActive(true);
                             DataController.instance.getUsuarioActual().category.crucigrama.getLevels()[0].setActive(true);
                             persis.buscarUsuario(DataController.instance.getUsuarioActual(), 6, 1);
-                            
+
                             DataController.instance.getUsuarioActual().category.combinado.setActive(true);
                             DataController.instance.getUsuarioActual().category.combinado.getLevels()[0].setActive(true);
                             persis.buscarUsuario(DataController.instance.getUsuarioActual(), 7, 1);
-                            
+
                             DataController.instance.getUsuarioActual().category.sopaResultado.setActive(true);
                             persis.buscarUsuario(DataController.instance.getUsuarioActual(), 8, 1);
-                            
+
                         }
                         CategoryScreen categoryScreen = new CategoryScreen(DataController.instance.getUsuarioActual().category.getAllCategories());
                     }
@@ -166,9 +164,7 @@ public class GrupoPreguntas {
             public void mouseReleased(MouseEvent e) {
                 Pregunta.setRestBCateg();
                 Pregunta.restQuest();
-                b = 0;
-                d = 0;
-                GrupoPreguntas grupo = new GrupoPreguntas(Cuestionario.preguntas);
+                GrupoPreguntas grupo = new GrupoPreguntas();
 
             }
 
@@ -191,6 +187,7 @@ public class GrupoPreguntas {
             } else {
                 Pregunta.setCuestionario();
                 System.out.println(Pregunta.getCuestio());
+                obtenerC();
                 Pregunta pregunta = new Pregunta(pregunta0, respuestas, incisos);
             }
 
@@ -207,10 +204,9 @@ public class GrupoPreguntas {
 
     //Metodo para iniciar el Cuestionario en categoria
     public static void showQuestionary() {
-        Pregunta.restQuestChekPoint();
         Pregunta.restQuest();
         Cuestionario.DesOcultar();
-        GrupoPreguntas grupo = new GrupoPreguntas(Cuestionario.preguntas);
+        GrupoPreguntas grupo = new GrupoPreguntas();
     }
 
     //Convierte texto de una linea a muchas lineas mas
@@ -261,7 +257,7 @@ public class GrupoPreguntas {
     public void resp() {
         etiqueta1.setBounds(ancho / 2 - 200, 200, 400, 200);
         etiqueta1.setHorizontalAlignment(SwingConstants.CENTER);
-        etiqueta1.setText(convertToMultiline("respondiste " + Pregunta.getResul() + " preguntas \n Suma " + Pregunta.getResulS() + " \n Resta " + Pregunta.getResulR() + " \n Multiplicacion " + Pregunta.getResulM() + " \n Division " + Pregunta.getResulD()));
+        // etiqueta1.setText(convertToMultiline("respondiste " + Pregunta.getResul() + " preguntas \n Suma " + Pregunta.getResulS() + " \n Resta " + Pregunta.getResulR() + " \n Multiplicacion " + Pregunta.getResulM() + " \n Division " + Pregunta.getResulD()));
 
     }
 
@@ -274,38 +270,10 @@ public class GrupoPreguntas {
         resp();
         irCategoria();
         rst();
-        comentario();
-
-        if (Pregunta.getResul() == Pregunta.getCuestio()) {
-            limpiar();
-            panel.add(etiqueta2);
-            hoja();
-            fondo();
-
-            etiqueta1.setBounds(ancho / 2 - 300, 100, 600, 50);
-            etiqueta1.setText("felicidades respondiste todas las preguntas");
-
-            etiqueta2.setBounds(ancho / 2 - 150, alto / 2 - 150, 300, 300);
-            etiqueta2.setOpaque(true);
-            etiqueta2.setIcon(new ImageIcon(imagen2.getImage().getScaledInstance(etiqueta2.getWidth(), etiqueta2.getHeight(), Image.SCALE_DEFAULT)));
-
-        } else if (Pregunta.getResul() == 0) {
-            limpiar();
-           // panel.add(etiqueta2);
-            hoja();
-            fondo();
-
-            etiqueta1.setBounds(ancho / 2 - 300, 300, 600, 50);
-            etiqueta1.setText("No pudiste responder ninguna pregunta");
-
-            etiqueta2.setBounds(ancho / 2 - 150, alto / 2 - 150, 300, 300);
-            etiqueta2.setOpaque(true);
-            etiqueta2.setIcon(new ImageIcon(imagen1.getImage().getScaledInstance(etiqueta2.getWidth(), etiqueta2.getHeight(), Image.SCALE_DEFAULT)));
-        }
+        comentarioR();
 
         etiqueta1.setOpaque(true);
         etiqueta1.setFont(new Font("calibri", Font.ITALIC, 30));
-        etiqueta3.setFont(new Font("calibri", Font.ITALIC, 30));
 
         System.out.println(etiqueta1.getText());
 
@@ -339,25 +307,36 @@ public class GrupoPreguntas {
         }
     }
 
-    public void comentario() {
-        etiqueta3.setBounds(ancho / 2 - 300, 10, 600, 150);
+
+    public static void obtenerC() {
+        resul[Pregunta.getCuestio() - 1] = Pregunta.getPreg();
+        resulB[Pregunta.getCuestio() - 1] = Pregunta.getPB();
+    }
+
+    public void comentarioR() {
+        etiqueta3.setBounds(0, 0, 500, 500);
+        etiqueta3.setBackground(Color.red);
         etiqueta3.setHorizontalAlignment(SwingConstants.CENTER);
-        if (Pregunta.getResul() == 2 || Pregunta.getResul() == 5 || Pregunta.getResul() == 8 || Pregunta.getResul() == 11) {
-            etiqueta3.setText(convertToMultiline("La respuesta correcta es : \n" + c[0] + " = " + a[0]));
-        } else if (Pregunta.getResul() == 1 || Pregunta.getResul() == 4 || Pregunta.getResul() == 7 || Pregunta.getResul() == 10) {
-            etiqueta3.setText(convertToMultiline("Las respuestas correctas son : \n" + c[0] + " = " + a[0] + "\n" + c[1] + " = " + a[1]));
-        } else if (Pregunta.getResul() == 0 || Pregunta.getResul() == 3 || Pregunta.getResul() == 6 || Pregunta.getResul() == 9) {
-            etiqueta3.setText(convertToMultiline("Las respuestas correctas son : \n" + c[0] + " = " + a[0] + "\n" + c[1] + " = " + a[1] + "\n" + c[2] + " = " + a[2]));
+        if (Pregunta.getCuestio() <= 3) {
+            etiqueta3.setFont(new Font("calibri", Font.ITALIC, 40));
+            etiqueta3.setText(convertToMultiline("resultados: \n" + resul[1] + resuB(resulB[1]) + "\n" + resul[2] + resuB(resulB[2]) + "\n" + Pregunta.getPreg() + resuB(Pregunta.getPB())));
+        } else if (Pregunta.getCuestio() <= 6) {
+            etiqueta3.setFont(new Font("calibri", Font.ITALIC, 35));
+            etiqueta3.setText(convertToMultiline("resultados: \n" + resul[1] + resuB(resulB[1]) + "\n" + resul[2] + resuB(resulB[2]) + "\n" + resul[3] + resuB(resulB[3]) + "\n" + resul[4] + resuB(resulB[4]) + "\n" + resul[5] + resuB(resulB[5]) + "\n" + Pregunta.getPreg() + resuB(Pregunta.getPB())));
+        } else if (Pregunta.getCuestio() <= 9) {
+            etiqueta3.setFont(new Font("calibri", Font.ITALIC, 30));
+            etiqueta3.setText(convertToMultiline("resultados: \n" + resul[1] + resuB(resulB[1]) + "\n" + resul[2] + resuB(resulB[2]) + "\n" + resul[3] + resuB(resulB[3]) + "\n" + resul[4] + resuB(resulB[4]) + "\n" + resul[5] + resuB(resulB[5]) + "\n" + resul[6] + resuB(resulB[6]) + "\n" + resul[7] + resuB(resulB[7]) + "\n" + resul[8] + resuB(resulB[8]) + "\n" + Pregunta.getPreg() + resuB(Pregunta.getPB())));
+        } else if (Pregunta.getCuestio() <= 12) {
+            etiqueta3.setFont(new Font("calibri", Font.ITALIC, 25));
+            etiqueta3.setText(convertToMultiline("resultados: \n" + resul[1] + resuB(resulB[1]) + "\n" + resul[2] + resuB(resulB[2]) + "\n" + resul[3] + resuB(resulB[3]) + "\n" + resul[4] + resuB(resulB[4]) + "\n" + resul[5] + resuB(resulB[5]) + "\n" + resul[6] + resuB(resulB[6]) + "\n" + resul[7] + resuB(resulB[7]) + "\n" + resul[8] + resuB(resulB[8]) + "\n" + resul[9] + resuB(resulB[9]) + "\n" + resul[10] + resuB(resulB[10]) + "\n" + resul[11] + resuB(resulB[11]) + "\n" + Pregunta.getPreg() + resuB(Pregunta.getPB())));
         }
     }
 
-    public static void correcion() {
-        a[b] = Pregunta.getAuxiliar();
-        b++;
-    }
-
-    public static void error() {
-        c[d] = Pregunta.getPregunta();
-        d++;
+    public String resuB(boolean v) {
+        if (v) {
+            return "          correcto";
+        } else {
+            return "          incorrecto";
+        }
     }
 }
