@@ -316,7 +316,7 @@ public class VentanaCrucigrama1 extends javax.swing.JFrame {
     private void jButton1ActionPerformed(ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         crucigrama.restaurarVidas();
         dispose();
-        //ventanaLevel.setVisible(true);
+        ventanaLevel.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
