@@ -319,24 +319,24 @@ public class GrupoPreguntas {
         etiqueta3.setHorizontalAlignment(SwingConstants.CENTER);
         if (Pregunta.getCuestio() <= 3) {
             etiqueta3.setFont(new Font("calibri", Font.ITALIC, 40));
-            etiqueta3.setText(convertToMultiline("resultados: \n" + resul[1] + resuB(resulB[1]) + "\n" + resul[2] + resuB(resulB[2]) + "\n" + Pregunta.getPreg() + resuB(Pregunta.getPB())));
+            etiqueta3.setText(convertToMultiline("Resultados: \n" + resul[1] + resuB(resulB[1]) + "\n" + resul[2] + resuB(resulB[2]) + "\n" + Pregunta.getPreg() + resuB(Pregunta.getPB())));
         } else if (Pregunta.getCuestio() <= 6) {
             etiqueta3.setFont(new Font("calibri", Font.ITALIC, 35));
-            etiqueta3.setText(convertToMultiline("resultados: \n" + resul[1] + resuB(resulB[1]) + "\n" + resul[2] + resuB(resulB[2]) + "\n" + resul[3] + resuB(resulB[3]) + "\n" + resul[4] + resuB(resulB[4]) + "\n" + resul[5] + resuB(resulB[5]) + "\n" + Pregunta.getPreg() + resuB(Pregunta.getPB())));
+            etiqueta3.setText(convertToMultiline("Resultados: \n" + resul[1] + resuB(resulB[1]) + "\n" + resul[2] + resuB(resulB[2]) + "\n" + resul[3] + resuB(resulB[3]) + "\n" + resul[4] + resuB(resulB[4]) + "\n" + resul[5] + resuB(resulB[5]) + "\n" + Pregunta.getPreg() + resuB(Pregunta.getPB())));
         } else if (Pregunta.getCuestio() <= 9) {
             etiqueta3.setFont(new Font("calibri", Font.ITALIC, 30));
-            etiqueta3.setText(convertToMultiline("resultados: \n" + resul[1] + resuB(resulB[1]) + "\n" + resul[2] + resuB(resulB[2]) + "\n" + resul[3] + resuB(resulB[3]) + "\n" + resul[4] + resuB(resulB[4]) + "\n" + resul[5] + resuB(resulB[5]) + "\n" + resul[6] + resuB(resulB[6]) + "\n" + resul[7] + resuB(resulB[7]) + "\n" + resul[8] + resuB(resulB[8]) + "\n" + Pregunta.getPreg() + resuB(Pregunta.getPB())));
+            etiqueta3.setText(convertToMultiline("Resultados: \n" + resul[1] + resuB(resulB[1]) + "\n" + resul[2] + resuB(resulB[2]) + "\n" + resul[3] + resuB(resulB[3]) + "\n" + resul[4] + resuB(resulB[4]) + "\n" + resul[5] + resuB(resulB[5]) + "\n" + resul[6] + resuB(resulB[6]) + "\n" + resul[7] + resuB(resulB[7]) + "\n" + resul[8] + resuB(resulB[8]) + "\n" + Pregunta.getPreg() + resuB(Pregunta.getPB())));
         } else if (Pregunta.getCuestio() <= 12) {
             etiqueta3.setFont(new Font("calibri", Font.ITALIC, 25));
-            etiqueta3.setText(convertToMultiline("resultados: \n" + resul[1] + resuB(resulB[1]) + "\n" + resul[2] + resuB(resulB[2]) + "\n" + resul[3] + resuB(resulB[3]) + "\n" + resul[4] + resuB(resulB[4]) + "\n" + resul[5] + resuB(resulB[5]) + "\n" + resul[6] + resuB(resulB[6]) + "\n" + resul[7] + resuB(resulB[7]) + "\n" + resul[8] + resuB(resulB[8]) + "\n" + resul[9] + resuB(resulB[9]) + "\n" + resul[10] + resuB(resulB[10]) + "\n" + resul[11] + resuB(resulB[11]) + "\n" + Pregunta.getPreg() + resuB(Pregunta.getPB())));
+            etiqueta3.setText(convertToMultiline("Resultados: \n" + resul[1] + resuB(resulB[1]) + "\n" + resul[2] + resuB(resulB[2]) + "\n" + resul[3] + resuB(resulB[3]) + "\n" + resul[4] + resuB(resulB[4]) + "\n" + resul[5] + resuB(resulB[5]) + "\n" + resul[6] + resuB(resulB[6]) + "\n" + resul[7] + resuB(resulB[7]) + "\n" + resul[8] + resuB(resulB[8]) + "\n" + resul[9] + resuB(resulB[9]) + "\n" + resul[10] + resuB(resulB[10]) + "\n" + resul[11] + resuB(resulB[11]) + "\n" + Pregunta.getPreg() + resuB(Pregunta.getPB())));
         }
     }
 
     public String resuB(boolean v) {
         if (v) {
-            return "          correcto";
+            return "          Correcto";
         } else {
-            return "          incorrecto";
+            return "          Incorrecto";
         }
     }
 }
