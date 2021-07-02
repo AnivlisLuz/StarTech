@@ -50,38 +50,7 @@ public class Plantilla {
         */
     }
     
-    public void setPlantilla()
-    {
-        Casilla[][] aux = new Casilla[matriz.length][matriz[0].length];
-        for (int i = 0; i < aux.length; i++)
-        {
-            for (int j = 0; j < aux[i].length; j++)
-            {
-                aux[i][j] = new Casilla(i,j,matriz[i][j]);
-            }
-        }
-        plantilla = aux;
-    }
-    
-    public void setNumeros()
-    {
-        for (int i = 0; i<plantilla.length; i++)
-            for (int j = 0; j<plantilla[i].length; j++)
-                if (plantilla[i][j].esNumero())
-                    numeros.add(plantilla[i][j]);
-    }
-    
-    public void quitarNumeros()
-    {
-        Random r = new Random();
-        for (int i = 0; i <= 8; i++)
-        {
-            int n = r.nextInt(numeros.size());
-            matriz[numeros.get(n).getX()][numeros.get(n).getY()] = '@';
-        }
-    }
-    
-    public char[][] clonar(char[][] mat)
+    private char[][] clonar(char[][] mat)
     {
         char[][] aux = new char[mat.length][mat.length];
         for (int i = 0; i<mat.length; i++)
@@ -1866,7 +1835,7 @@ public class Plantilla {
         }
     }
     
-    public char[][] quitarNum(char[][] mat)
+    private char[][] quitarNum(char[][] mat)
     {
         char[][] aux = clonar(matrizRes);
         
@@ -1879,7 +1848,7 @@ public class Plantilla {
         return aux;
     }
     
-    public Casilla[][] toCasilla(char[][] mat)
+    private Casilla[][] toCasilla(char[][] mat)
     {
         Casilla[][] aux = new Casilla[13][13];
         for (int i = 0; i < 13; i++)
@@ -1888,7 +1857,7 @@ public class Plantilla {
         return aux;
     }
     
-    public int getRandom(int min, int max) 
+    private int getRandom(int min, int max) 
     {
         return (int) ((Math.random() * (max - min)) + min);
     }   
