@@ -80,7 +80,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setIcon(new ImageIcon(getClass().getResource("/app/startech/imagenes/sta.png"))); // NOI18N
+       // jLabel2.setIcon(new ImageIcon(getClass().getResource("/app/startech/imagenes/sta.png"))); // NOI18N
 
         jButton3.setText("creditos");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -89,7 +89,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setIcon(new ImageIcon(getClass().getResource("/app/startech/imagenes/VidaRojo.png"))); // NOI18N
+        //jLabel4.setIcon(new ImageIcon(getClass().getResource("/app/startech/imagenes/sta.png"))); // NOI18N
         jLabel4.setText(" usemos mayusculas y minusculas para nuestros nombres");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
