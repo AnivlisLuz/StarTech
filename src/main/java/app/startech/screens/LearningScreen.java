@@ -82,11 +82,8 @@ public class LearningScreen extends JFrame {
         centralContainer.add(imageContainer, SOUTH);
         JLabel gifCointainer = new JLabel();
         gifCointainer.setBorder(new EmptyBorder(0, 100, 0, 100));
-        try {
-            gifCointainer.setIcon(new ImageIcon(new URL(image)));
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
+        gifCointainer.setIcon(new ImageIcon(getClass().getResource(image)));
+
         imageContainer.add(gifCointainer);
 
         JPanel optionsContainer = new JPanel();
@@ -106,7 +103,7 @@ public class LearningScreen extends JFrame {
         add(optionsContainer, SOUTH);
 
         setVisible(true);
-        playSound("https://github.com/AnivlisLuz/StarTech/releases/download/gifs/fondo.wav", true);
+        playSound("/app/startech/resources/fondo.wav", true);
     }
 
     private ArrayList<Clip> audios = new ArrayList();
@@ -114,8 +111,8 @@ public class LearningScreen extends JFrame {
     private void playSound(String url, boolean loop) {
 
         try {
-
-            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new URL(url));
+            AudioInputStream audioInputStream = AudioSystem
+                    .getAudioInputStream(LearningScreen.class.getResourceAsStream(url));
             Clip clip = AudioSystem.getClip();
             clip.open(audioInputStream);
             clip.start();

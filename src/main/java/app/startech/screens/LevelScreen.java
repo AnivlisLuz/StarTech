@@ -93,8 +93,11 @@ public class LevelScreen extends JFrame {
         learn.setContentAreaFilled(false);
         if (category.getIcon() != null)
             options.add(learn, EAST);
-            
-        // Se instancia el boton de atras, que lleva a la ventana de categorias 
+        else if (category.getId() == 1) {
+            options.add(learn, EAST);
+        }
+
+        // Se instancia el boton de atras, que lleva a la ventana de categorias
         JButton buton = new JButton("Atras");
         buton.addActionListener((action) -> {
             dispose();
