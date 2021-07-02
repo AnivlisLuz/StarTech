@@ -11,6 +11,8 @@ import app.startech.screens.LevelScreen;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -219,21 +221,21 @@ public class VentanaCrucigrama extends javax.swing.JFrame {
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, 430, 40));
 
-        jLabelVida3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\app\\startech\\imagenes\\VidaRojo.png")); // NOI18N
+        jLabelVida3.setIcon(new ImageIcon(getClass().getResource("/app/startech/imagenes/VidaRojo.png"))); // NOI18N
         jPanel3.add(jLabelVida3, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 20, -1, -1));
 
-        jLabelVida2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\app\\startech\\imagenes\\VidaRojo.png")); // NOI18N
+        jLabelVida2.setIcon(new ImageIcon(getClass().getResource("/app/startech/imagenes/VidaRojo.png"))); // NOI18N
         jPanel3.add(jLabelVida2, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 20, -1, -1));
 
-        jLabelVida1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\app\\startech\\imagenes\\VidaRojo.png")); // NOI18N
+        jLabelVida1.setIcon(new ImageIcon(getClass().getResource("/app/startech/imagenes/VidaRojo.png"))); // NOI18N
         jPanel3.add(jLabelVida1, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 20, -1, -1));
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\app\\startech\\imagenes\\decorate\\1.png")); // NOI18N
+        jLabel4.setIcon(new ImageIcon(getClass().getResource("/app/startech/imagenes/decorate/1.png"))); // NOI18N
         jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 210, 220));
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\app\\startech\\imagenes\\decorate\\2.png")); // NOI18N
+        jLabel3.setIcon(new ImageIcon(getClass().getResource("/app/startech/imagenes/decorate/2.png"))); // NOI18N
         jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 500, 210, 210));
 
         jPanel1.setBackground(new Color(0,0,0,0));
@@ -260,7 +262,7 @@ public class VentanaCrucigrama extends javax.swing.JFrame {
         jTextField1.setToolTipText("");
         jPanel3.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-6, 710, 1010, -1));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\app\\startech\\imagenes\\BTN.png")); // NOI18N
+        jLabel6.setIcon(new ImageIcon(getClass().getResource("/app/startech/imagenes/BTN.png"))); // NOI18N
         jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -269,7 +271,7 @@ public class VentanaCrucigrama extends javax.swing.JFrame {
         });
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 130, 60));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\app\\startech\\imagenes\\fondo1.1.jpg")); // NOI18N
+        jLabel5.setIcon(new ImageIcon(getClass().getResource("/app/startech/imagenes/fondo1.1.jpg"))); // NOI18N
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 740));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
