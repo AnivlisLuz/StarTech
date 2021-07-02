@@ -10,7 +10,7 @@ import app.startech.models.Category;
 import app.startech.preguntas.Cuestionario;
 import app.startech.preguntas.GrupoPreguntas;
 
-import static app.startech.preguntas.Cuestionario.grupos;
+//import static app.startech.preguntas.Cuestionario.grupos;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
