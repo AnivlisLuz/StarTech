@@ -45,8 +45,8 @@ public class VentanaCrucigrama extends javax.swing.JFrame {
     }
     public void pantalla(){
         jLabel4.setIcon(new ImageIcon(getClass().getResource(crucigrama.getDir2()))); // NOI18N
-        jLabel3.setIcon(new javax.swing.ImageIcon(crucigrama.getDir1())); // NOI18N
-        jLabel5.setIcon(new javax.swing.ImageIcon(crucigrama.getDirFondo())); // NOI18N
+        jLabel3.setIcon(new ImageIcon(getClass().getResource(crucigrama.getDir1()))); // NOI18N
+        jLabel5.setIcon(new ImageIcon(getClass().getResource(crucigrama.getDirFondo()))); // NOI18N
     }
     //Método para ordenar y mostrar el laberinto de botones
     public void mostrarCrucigrama() {

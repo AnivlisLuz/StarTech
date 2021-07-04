@@ -111,7 +111,7 @@ public class LevelScreen extends JFrame {
         // borde vacio
         JPanel titleContainer = new JPanel();
         JLabel titulo = new JLabel(title);
-        titulo.setFont(new Font(titulo.getFont().getFamily(), titulo.getFont().getStyle(), 20));
+        titulo.setFont(new java.awt.Font("Impact", 1, 45));
         titleContainer.setBorder(new EmptyBorder(10, 10, 10, 10));
         titleContainer.add(titulo);
         // se estable la ubicación de los distintos contenedores

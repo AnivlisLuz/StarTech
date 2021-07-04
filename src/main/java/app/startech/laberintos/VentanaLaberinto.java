@@ -7,6 +7,8 @@ import app.startech.screens.CategoryScreen;
 import app.startech.screens.LevelScreen;
 import java.awt.Color;
 
+import javax.swing.ImageIcon;
+
 //Clase que se encarga de la parte visual del laberinto
 public class VentanaLaberinto extends javax.swing.JFrame {
 
@@ -31,9 +33,9 @@ public class VentanaLaberinto extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }
     public void pantalla(){
-        jLabel4.setIcon(new javax.swing.ImageIcon(laberinto.getDir2())); // NOI18N
-        jLabel3.setIcon(new javax.swing.ImageIcon(laberinto.getDir1())); // NOI18N
-        jLabel5.setIcon(new javax.swing.ImageIcon(laberinto.getDirFondo())); // NOI18N
+        jLabel4.setIcon(new ImageIcon(getClass().getResource(laberinto.getDir2()))); // NOI18N
+        jLabel3.setIcon(new ImageIcon(getClass().getResource(laberinto.getDir1()))); // NOI18N
+        jLabel5.setIcon(new ImageIcon(getClass().getResource(laberinto.getDirFondo()))); // NOI18N
     }
     //Método para ordenar y mostrar el laberinto de botones
     public void mostrarLaberinto() {

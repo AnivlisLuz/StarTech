@@ -65,9 +65,9 @@ public class Laberinto {
     //Genera el laberinto según la categoría (título) y el nivel
     public void mostrarMatriz() {
         if (titulo.equals("Secuencia")) {       // laberinto Secuencia tendria las siguientes matrices:
-            dir2 = "C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\app\\startech\\imagenes\\decorate\\7.png";
-            dir1 = "C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\app\\startech\\imagenes\\decorate\\8.png";
-            dirFondo = "C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\app\\startech\\imagenes\\fondo1.4.jpg";
+            dir2 = "/app/startech/imagenes/decorate/7.png";
+            dir1 = "/app/startech/imagenes/decorate/8.png";
+            dirFondo = "/app/startech/imagenes/fondo1.4.jpg";
             if (nivel == 1) {                   // lvl 1 = tamaño 3 
                 matriz = new Secuencia(3);      // lvl 2 = tamaño 4
                 matriz.generarLaberinto();      // lvl 3 = tamaño 6
@@ -83,9 +83,9 @@ public class Laberinto {
                 }
             }
         } else if (titulo.equals("Suma")) {         // laberinto Suma todas sus matrices son de tamaño 6
-            dir2 = "C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\app\\startech\\imagenes\\decorate\\3.png";
-            dir1 = "C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\app\\startech\\imagenes\\decorate\\4.png";
-            dirFondo = "C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\app\\startech\\imagenes\\fondo1.2.jpg";
+            dir2 = "/app/startech/imagenes/decorate/3.png";
+            dir1 = "/app/startech/imagenes/decorate/4.png";
+            dirFondo = "/app/startech/imagenes/fondo1.2.jpg";
             for (int i = 1; i < 10; i++) {          // su condición sube de acuerdo al nivel de 2 a 10
                 if (nivel == i) {
                     matriz = new Suma(6, i + 1);
@@ -95,9 +95,9 @@ public class Laberinto {
                 }
             }
         } else if (titulo.equals("Resta")) {        // laberinto Resta todas sus matrices son de tamaño 6
-            dir2 = "C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\app\\startech\\imagenes\\decorate\\5.png";
-            dir1 = "C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\app\\startech\\imagenes\\decorate\\6.png";
-            dirFondo = "C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\app\\startech\\imagenes\\fondo1.3.jpg";
+            dir2 = "/app/startech/imagenes/decorate/5.png";
+            dir1 = "/app/startech/imagenes/decorate/6.png";
+            dirFondo = "/app/startech/imagenes/fondo1.3.jpg";
             for (int i = 1; i < 11; i++) {          // su condición sube de acuerdo al nivel de 1 a 10
                 if (nivel == i) {
                     matriz = new Resta(6, i);
@@ -107,9 +107,9 @@ public class Laberinto {
                 }
             }
         } else if (titulo.equals("Multiplicación")) {   // laberinto Multiplicación todas sus matrices son de tamaño 10
-            dir2 = "C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\app\\startech\\imagenes\\decorate\\1.png";
-            dir1 = "C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\app\\startech\\imagenes\\decorate\\2.png";
-            dirFondo = "C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\app\\startech\\imagenes\\fondo1.1.jpg";
+            dir2 = "/app/startech/imagenes/decorate/1.png";
+            dir1 = "/app/startech/imagenes/decorate/2.png";
+            dirFondo = "/app/startech/imagenes/fondo1.1.jpg";
             for (int i = 1; i < 10; i++) {              // su condición sube de acuerdo al nivel de 2 a 10
                 if (nivel == i) {
                     matriz = new Multiplicacion(10, i + 1);
@@ -119,9 +119,9 @@ public class Laberinto {
                 }
             }
         } else if (titulo.equals("División")) {         // laberinto Divición todas sus matrices son de tamaño 10
-            dir2 = "C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\app\\startech\\imagenes\\decorate\\9.png";
-            dir1 = "C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\app\\startech\\imagenes\\decorate\\10.png";
-            dirFondo = "C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\app\\startech\\imagenes\\fondo1.5.jpg";
+            dir2 = "/app/startech/imagenes/decorate/9.png";
+            dir1 = "/app/startech/imagenes/decorate/10.png";
+            dirFondo = "/app/startech/imagenes/fondo1.5.jpg";
             for (int i = 1; i < 10; i++) {              // su condición sube de acuerdo al nivel de 2 a 10
                 if (nivel == i) {
                     matriz = new Divicion(10, i + 1);

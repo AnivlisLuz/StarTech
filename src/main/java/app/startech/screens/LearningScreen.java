@@ -54,7 +54,7 @@ public class LearningScreen extends JFrame {
 
         JPanel titleContainer = new JPanel();
         JLabel titulo = new JLabel(title);
-        titulo.setFont(new Font(titulo.getFont().getFamily(), titulo.getFont().getStyle(), 30));
+        titulo.setFont(new java.awt.Font("Impact", 1, 38));
         titleContainer.setBorder(new EmptyBorder(0, 0, 0, 0));
         titleContainer.add(titulo);
 
@@ -67,13 +67,13 @@ public class LearningScreen extends JFrame {
         contenido.setWrapStyleWord(true);
         contenido.setLineWrap(true);
         contenido.setEditable(false);
-        contenido.setSize(new Dimension(600, 10));
-        contenido.setBorder(new EmptyBorder(0, 0, 0, 20));
+        contenido.setSize(new Dimension(610, 10));
+        contenido.setBorder(new EmptyBorder(0, 0, 0, 0)); 
 
-        contenido.setFont(new Font(contenido.getFont().getFamily(), contenido.getFont().getStyle(), 20));
+        contenido.setFont(new java.awt.Font("Comic Sans MS",0, 18));
         contentContainer.add(contenido, CENTER);
         JLabel icon = new JLabel();
-        icon.setBorder(new EmptyBorder(0, 0, 0, 20));
+        icon.setBorder(new EmptyBorder(0, 0, 0, 0));
         if (iconOp != null)
             icon.setIcon(new ImageIcon(iconOp));
         contentContainer.add(icon, EAST);
@@ -88,7 +88,7 @@ public class LearningScreen extends JFrame {
 
         JPanel optionsContainer = new JPanel();
         optionsContainer.setSize(new Dimension(600, 40));
-        optionsContainer.setBorder(new EmptyBorder(5, 5, 5, 5));
+        optionsContainer.setBorder(new EmptyBorder(0, 0, 0, 0));
         JButton atras = new JButton("Atras");
         atras.addActionListener((action) -> {
             onClose();
