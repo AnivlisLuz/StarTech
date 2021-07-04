@@ -65,6 +65,7 @@ public class Crucigrama extends Laberinto{
     public void mostrarMatriz(){
         if(nivel == 1){
             dir2 = "C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\app\\startech\\imagenes\\decorate\\7.png";
+            //ImageIcon dir2 = new ImageIcon(getClass().getResource("/app/startech/imagenes/decorate/7.png"));
             dir1 = "C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\app\\startech\\imagenes\\decorate\\8.png";
             dirFondo = "C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\app\\startech\\imagenes\\fondo1.4.jpg";
             mat = new MatrizCrucigrama("suma");
