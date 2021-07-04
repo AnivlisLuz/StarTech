@@ -17,7 +17,7 @@ import app.startech.models.Level;
  */
 public class CategoryManager {
     public Category secuencia = new Category(1, "Secuencia de números","/app/startech/resources/secuencia.wav","La secuencia o sucesión de números es un grupo de números que forman un conjunto ordenado.\n\nEjemplo:",null,"/app/startech/resources/secuencia.gif", true, new Level[]{
-            new Level(1, "Nivel 1", true, new Laberinto("Secuencia", 1, "Todo lo que necesitas para lograr tus objetivos ya está en ti.", "Avanza de uno en uno")),
+            new Level(1, "Nivel 1", true, new Laberinto("Secuencia", 1, "Todo lo que necesitas para lograr tus objetivos ya está en ti.", "Ayuda al conejito a encontrar sus zanahorias. \nAvanza de uno en uno")),
             new Level(2, "Nivel 2", false, new Laberinto("Secuencia", 2, "No vas a dominar el resto de tu vida en un día. Relájate. Domina el día. Entonces sigue haciendo eso todos los días.", "Avanza de uno en uno")),
             new Level(3, "Nivel 3", false, new Laberinto("Secuencia", 3, "No importa lo lento que vayas, siempre y cuando no te detengas.", "Avanza de uno en uno")),
             new Level(4, "Nivel 4", false, new Laberinto("Secuencia", 4, "A veces, cuando estás en un lugar oscuro, crees que has sido enterrado, pero en realidad te han plantado.", "Avanza de uno en uno")),
