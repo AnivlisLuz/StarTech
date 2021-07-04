@@ -15,7 +15,7 @@ public class Combinado extends Laberinto{
     private int vidas;
     
     public Combinado(String titulo, String condicion, int nivel){
-        super(titulo,nivel,"",condicion);
+        super(titulo,nivel,"",condicion,"");
         this.titulo = titulo;
         this.condicion = condicion;
         this.nivel = 1;
