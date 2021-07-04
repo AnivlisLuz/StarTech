@@ -27,7 +27,7 @@ public class Cuestionario {
         panel = new JPanel();
         etiqueta = new JLabel();
         boton = new JButton();
-        imagen = new ImageIcon("recursos/imagenes/fondo.jpg");
+        imagen = new ImageIcon("C:\\Users\\USER\\Documents\\StarTech\\src\\main\\java\\app\\startech\\imagenes\\fondo.jpg");
         oyenteAccion = new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 GrupoPreguntas grupo = new GrupoPreguntas();

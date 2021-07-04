@@ -267,7 +267,7 @@ public class GrupoPreguntas {
         limpiar();
         hoja();
         fondo();
-        resp();
+        //resp();
         irCategoria();
         rst();
         comentarioR();

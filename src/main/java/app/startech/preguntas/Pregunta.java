@@ -48,6 +48,8 @@ public class Pregunta {
     private static String resulT;
     
     private static boolean resulTB;
+    
+    private ImageIcon imagen1;
 
     public Pregunta(String pregunta, String[] respuesta, boolean[] correcto) {
         thread = new Thread();
@@ -57,6 +59,9 @@ public class Pregunta {
         boton = new JButton();
         boton1 = new JButton();
         boton2 = new JButton();
+        
+        imagen1=new ImageIcon("C:\\Users\\USER\\Documents\\StarTech\\src\\main\\java\\app\\startech\\imagenes\\fondo1.1.jpg");
+        
 
         //Da reaccion al boton de opcion 1
         oyenteAccion = new MouseListener() {
@@ -365,8 +370,7 @@ public class Pregunta {
     //Establece la pregunta
     public void pregun() {
         pregunta = generadorP();
-        etiqueta1.setBounds(ancho / 2 - 200, 100, 400, 100);
-        etiqueta1.setBackground(Color.CYAN);
+        etiqueta1.setBounds(ancho / 2 - 150, 100, 300, 100);
         etiqueta1.setText(generadorP());
         etiqueta1.setHorizontalAlignment(SwingConstants.CENTER);
         etiqueta1.setOpaque(true);
@@ -376,7 +380,7 @@ public class Pregunta {
     //Establece el inciso 1
     public void inciso() {
         String pr1=generadorR();
-        boton.setBounds(ancho / 4 - 75, 400, 150, 50);
+        boton.setBounds(ancho / 4 - 32, 400, 65, 50);
         boton.setText(pr1);
         boton.addMouseListener(oyenteAccion);
         boton.setOpaque(true);
@@ -387,7 +391,7 @@ public class Pregunta {
     //Establece el inciso 2
     public void inciso1() {
         String pr2=generadorR();
-        boton1.setBounds(ancho / 2 - 75, 400, 150, 50);
+        boton1.setBounds(ancho / 2 - 32, 400, 65, 50);
         boton1.setText(pr2);
         boton1.setOpaque(true);
         boton1.setFont(new Font("calibri", Font.ITALIC, 30));
@@ -398,7 +402,7 @@ public class Pregunta {
     //Establece el inciso 3
     public void inciso2() {
         String pr3=generadorR();
-        boton2.setBounds((ancho * 3) / 4 - 75, 400, 150, 50);
+        boton2.setBounds((ancho * 3) / 4 - 32, 400, 65, 50);
         boton2.setText(pr3);
         boton2.setOpaque(true);
         boton2.setFont(new Font("calibri", Font.ITALIC, 30));
