@@ -44,7 +44,7 @@ public class VentanaCrucigrama extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }
     public void pantalla(){
-        jLabel4.setIcon(new javax.swing.ImageIcon(crucigrama.getDir2())); // NOI18N
+        jLabel4.setIcon(new ImageIcon(getClass().getResource(crucigrama.getDir2()))); // NOI18N
         jLabel3.setIcon(new javax.swing.ImageIcon(crucigrama.getDir1())); // NOI18N
         jLabel5.setIcon(new javax.swing.ImageIcon(crucigrama.getDirFondo())); // NOI18N
     }

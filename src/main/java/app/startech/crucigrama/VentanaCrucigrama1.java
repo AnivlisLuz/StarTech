@@ -142,6 +142,7 @@ public class VentanaCrucigrama1 extends javax.swing.JFrame {
         }
         setLocationRelativeTo(null);
     }
+
     private int contar(char[][] mat){
         int res = 0;
         for(int i = 0; i<mat.length; i++){
