@@ -84,7 +84,7 @@ public class CategoryScreen extends JFrame {
                         setVisible(false);
                     }
             });
-
+            button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
             panel.add(button);
             buttons.add(panel);
             panel.setBackground(new Color(0, 0, 0, 0));
@@ -103,6 +103,7 @@ public class CategoryScreen extends JFrame {
             setVisible(false);
         });
         startTest.setPreferredSize(new Dimension(200, 50));
+        startTest.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         options.add(startTest, EAST);
         // Se instancia el boton de atras, que lleva al login
         JButton atras = new JButton("Atras");
@@ -112,6 +113,7 @@ public class CategoryScreen extends JFrame {
             setVisible(false);
         });
         atras.setPreferredSize(new Dimension(200, 50));
+        atras.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         options.add(atras, WEST);
         // Se estable la ubicación de los distintos contenedores
         add(buttons, CENTER);

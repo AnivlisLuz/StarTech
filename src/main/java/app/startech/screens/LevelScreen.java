@@ -73,6 +73,7 @@ public class LevelScreen extends JFrame {
                 }
 
             });
+            button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
             panel.add(button);
             buttons.add(panel);
         }
@@ -93,6 +94,7 @@ public class LevelScreen extends JFrame {
         learn.setBorder(null);
         learn.setBorderPainted(false);
         learn.setContentAreaFilled(false);
+        learn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         if (category.getIcon() != null)
             options.add(learn, EAST);
         else if (category.getId() == 1) {
@@ -106,6 +108,7 @@ public class LevelScreen extends JFrame {
             ventanaCategorias.setVisible(true);
         });
         buton.setPreferredSize(new Dimension(200, 50));
+        buton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         options.add(buton, WEST);
         // Se establece el contenedor de arriba para el titulo dando un tamaño y un
         // borde vacio

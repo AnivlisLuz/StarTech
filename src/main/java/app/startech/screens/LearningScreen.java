@@ -60,6 +60,7 @@ public class LearningScreen extends JFrame {
 
         JPanel centralContainer = new JPanel();
         JPanel contentContainer = new JPanel();
+
         contentContainer.setLayout(new BorderLayout());
         centralContainer.add(contentContainer, NORTH);
         JTextArea contenido = new JTextArea(content);
@@ -68,9 +69,9 @@ public class LearningScreen extends JFrame {
         contenido.setLineWrap(true);
         contenido.setEditable(false);
         contenido.setSize(new Dimension(610, 10));
-        contenido.setBorder(new EmptyBorder(0, 0, 0, 0)); 
+        contenido.setBorder(new EmptyBorder(0, 0, 0, 0));
 
-        contenido.setFont(new java.awt.Font("Comic Sans MS",0, 18));
+        contenido.setFont(new java.awt.Font("Comic Sans MS", 0, 18));
         contentContainer.add(contenido, CENTER);
         JLabel icon = new JLabel();
         icon.setBorder(new EmptyBorder(0, 0, 0, 0));
@@ -96,12 +97,31 @@ public class LearningScreen extends JFrame {
             ventanaCategorias.setVisible(true);
         });
         atras.setPreferredSize(new Dimension(200, 40));
+        atras.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         optionsContainer.add(atras, WEST);
 
-        add(titleContainer, NORTH);
-        add(centralContainer, CENTER);
-        add(optionsContainer, SOUTH);
+        JPanel mainContainer = new JPanel();
+        mainContainer.setLayout(new BorderLayout());
+        mainContainer.setBackground(Color.red);
+        mainContainer.add(titleContainer, NORTH);
 
+        mainContainer.add(centralContainer, CENTER);
+        mainContainer.add(optionsContainer, SOUTH);
+        JPanel mainPanel = new JPanel();
+        mainPanel.add(mainContainer);
+        mainPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        JLabel background = new JLabel();
+        //add(background);
+        // background.setLayout(new FlowLayout());
+        background.setIcon(new ImageIcon(getClass().getResource("/app/startech/imagenes/fondo.jpg")));
+        // NOI18N
+        mainPanel.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 500));
+        // add(mainContainer, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0,
+        // 1000, 1000));
+
+        //JLayeredPane jLayeredPane = new JLayeredPane();
+        //jLayeredPane.add(background);
+        add(mainContainer);
         setVisible(true);
         playSound("/app/startech/resources/fondo.wav", true);
     }
