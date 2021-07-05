@@ -191,7 +191,7 @@ public class Plantilla {
         return xy;
     }
     
-    private String getOperacion(int n, int m)
+    public String getOperacion(int n, int m)
     {
         String aux = "";
         if(n == m)
@@ -210,7 +210,7 @@ public class Plantilla {
         return aux;
     }
     
-    private int getMultiplo(int menor, int mayor)
+    public int getMultiplo(int menor, int mayor)
     {
         int multiplo = 0;
         for (int i = 1; multiplo == 0; i++)

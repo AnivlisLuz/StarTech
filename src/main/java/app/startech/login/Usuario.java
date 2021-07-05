@@ -75,23 +75,30 @@ public class Usuario {
         return id+";"+nombre + ";" + edad;
     }
 
-    public static boolean esLetra(String nombre) {
-        if (nombre.length() > 20) {
-            return false;
-        }
-        if(nombre.length()<3){
-            return false;
-        }
-        for(int i =0; i< nombre.length() ; i++)
+    public static boolean esLetra(String nombre)
+    {
+        if (nombre.length() > 40)
         {
-          char letra =nombre.toUpperCase().charAt(i);
-          int valorAski =(int)letra;
-          if(valorAski != 165 &&(valorAski < 65 || valorAski > 90))
-          {
-              return  false;
-          }
+            return false;
         }
-        return true;
+        
+        if(nombre.length()<2)
+        {
+            return false;
+        }
+        
+        boolean aux = true;
+        
+        for(int i = 0; i < nombre.length(); i++)
+        {
+            char letra = nombre.toUpperCase().charAt(i);
+            int valorAscii = (int) letra;
+            if(valorAscii != 32 && valorAscii != 165 && (valorAscii < 65 || valorAscii > 90))
+            {
+                aux = false;
+            }
+        }
+        return aux;
     }
 
 }
