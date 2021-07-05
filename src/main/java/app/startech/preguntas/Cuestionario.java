@@ -33,10 +33,10 @@ public class Cuestionario {
         etiqueta1 = new JLabel();
         boton = new JButton();
         
-        //imagen = new ImageIcon(getClass().getResource("/app/startech/preguntas/fondo.jpg"));
-        imagen = new ImageIcon("C:\\Users\\USER\\Documents\\StarTech\\src\\main\\java\\app\\startech\\preguntas\\fondo.jpg");
-        //imagen1 = new ImageIcon(getClass().getResource("/app/startech/preguntas/test.png"));
-        imagen1 = new ImageIcon("C:\\Users\\USER\\Documents\\StarTech\\src\\main\\java\\app\\startech\\preguntas\\test.png");
+        imagen = new ImageIcon(getClass().getResource("/app/startech/preguntas/fondo.jpg"));
+        //imagen = new ImageIcon("C:\\Users\\USER\\Documents\\StarTech\\src\\main\\java\\app\\startech\\preguntas\\fondo.jpg");
+        imagen1 = new ImageIcon(getClass().getResource("/app/startech/preguntas/test.png"));
+        //imagen1 = new ImageIcon("C:\\Users\\USER\\Documents\\StarTech\\src\\main\\java\\app\\startech\\preguntas\\test.png");
         oyenteAccion = new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 GrupoPreguntas grupo = new GrupoPreguntas();
@@ -102,11 +102,11 @@ public class Cuestionario {
         int b = r.nextInt(1);
         if (a == 0) {
             dec = new ImageIcon(getClass().getResource("/app/startech/preguntas/fondo.jpg"));
-            dec = new ImageIcon("C:\\Users\\USER\\Documents\\StarTech\\src\\main\\java\\app\\startech\\imagenes\\decorate\\5.png");
+            dec = new ImageIcon(getClass().getResource("/app/startech/imagenes/decorate/5.png"));
         } else if (a == 1) {
-            dec = new ImageIcon("C:\\Users\\USER\\Documents\\StarTech\\src\\main\\java\\app\\startech\\imagenes\\decorate\\7.png");
+            dec = new ImageIcon(getClass().getResource("/app/startech/imagenes/decorate/7.png"));
         } else if (a == 2) {
-            dec = new ImageIcon("C:\\Users\\USER\\Documents\\StarTech\\src\\main\\java\\app\\startech\\imagenes\\decorate\\9.png");
+            dec = new ImageIcon(getClass().getResource("/app/startech/imagenes/decorate/9.png"));
         }
         if (b == 0) {
             etiqueta1.setBounds(10, 10, 150, 150);

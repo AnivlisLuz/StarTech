@@ -49,8 +49,8 @@ public class GrupoPreguntas {
         etiqueta1 = new JLabel();
         etiqueta2 = new JLabel();
         etiqueta3 = new JLabel();
-        imagen1 = new ImageIcon("recursos/imagenes/perdiste.jpg");
-        imagen2 = new ImageIcon("recursos/imagenes/lograste.jpg");
+        //imagen1 = new ImageIcon("recursos/imagenes/creditos.jpg");
+        //imagen2 = new ImageIcon("recursos/imagenes/creditos.jpg");
 
         //Da reaccion al boton de reiniciar Cuestionario
         comando = new MouseListener() {
