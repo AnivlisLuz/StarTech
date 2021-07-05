@@ -258,7 +258,7 @@ public class VentanaCrucigrama extends javax.swing.JFrame {
         jTextField1.setBackground(new java.awt.Color(0, 0, 0));
         jTextField1.setForeground(new java.awt.Color(255, 255, 255));
         jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField1.setText("jTextField1");
+        jTextField1.setText("Comienza donde estás. Usa lo que tienes. Haz lo que puedas. Arthur Ashe");
         jTextField1.setToolTipText("");
         jPanel3.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-6, 710, 1010, -1));
 
