@@ -193,6 +193,7 @@ public class VentanaLaberinto extends javax.swing.JFrame {
         jTextField1.setToolTipText("");
         jPanel3.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-6, 706, 1010, 30));
 
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\app\\startech\\imagenes\\BTN.png")); // NOI18N
         jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -212,8 +213,6 @@ public class VentanaLaberinto extends javax.swing.JFrame {
         jLabel7.setText("jLabel2");
         jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 540, 20));
 
-        jLabel5.setFont(new java.awt.Font("Leelawadee", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\app\\startech\\imagenes\\fondo1.1.jpg")); // NOI18N
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 740));
 

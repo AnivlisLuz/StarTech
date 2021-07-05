@@ -122,15 +122,15 @@ public class Boton extends JButton implements ActionListener {
             }
         }
         if (sopa.todoRespondido()) {
-            System.out.println("Encontraste todos los números");
+            //System.out.println("Encontraste todos los números");
             ventana.final1();
         }
         if (sopa.getVidas() == 0) {
-            System.out.println("Encontraste todos los números");
+            //System.out.println("Encontraste todos los números");
             ventana.final2();
         }
         int a = cuadros[i][j].getValor();
-        System.out.println("" + a);
+        //System.out.println("" + a);
 
     }
 

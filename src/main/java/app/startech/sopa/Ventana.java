@@ -42,6 +42,7 @@ public class Ventana {
     private JLabel esCorrecto;
     private JLabel titulo;
     private JLabel error;
+    private JLabel etiquetaMenu;
     private JButton boton;
     private ActionListener oyente;
     private SopaDeResultados sopa;
@@ -57,6 +58,8 @@ public class Ventana {
     private JLabel vida1;
     private JLabel vida2;
     private JLabel vida3;
+    
+    private JLabel fondo;
 
     private ImageIcon imagen;
 
@@ -64,6 +67,7 @@ public class Ventana {
         this.ventanaCategorias = ventanaCategorias;
         pantalla = new JFrame();
         panel = new JPanel();
+        fondo = new JLabel();
         oyente = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -119,12 +123,19 @@ public class Ventana {
         obtenerMatrizJuego1();
         pantalla();
         panel();
+        fondo();
         titulo();
         botones();
         juego();
         ponerVidas();
     }
-
+    
+    public void fondo(){
+        fondo.setBounds(0,0,ancho, alto);
+        fondo.setOpaque(true);
+        //fondo.setIcon(new ImageIcon(imagen2.getImage().getScaledInstance(fondo.getWidth(), fondo.getHeight(), Image.SCALE_SMOOTH)));
+        fondo.setIcon(new ImageIcon(getClass().getResource("/app/startech/imagenes/fondo1.1.jpg")));
+    }
     public void pantalla() {
         pantalla.setVisible(true);
         pantalla.setSize(ancho, alto);
@@ -141,20 +152,28 @@ public class Ventana {
         JButton botonReinicio = new JButton();
         JButton botonCategoria = new JButton();
 
-        ImageIcon imagen = new ImageIcon(getClass().getResource("/app/startech/recursos_sopa/boton_menu.png"));
+        ImageIcon imagen = new ImageIcon(getClass().getResource("/app/startech/imagenes/BTN.png"));
         ImageIcon imagen1 = new ImageIcon(getClass().getResource("/app/startech/recursos_sopa/boton_de_reinicio.png"));
 
         panel.add(botonReinicio);
         panel.add(botonCategoria);
+        esCorrecto = new JLabel();
+        panel.add(esCorrecto);
+        etiquetaMenu = new JLabel();
+        panel.add(etiquetaMenu);
+        etiquetaMenu.setBounds(20, 50, 100, 50);
+        
 
         botonReinicio.setBounds(ancho - 90, alto - 120, 60, 60);
         botonReinicio.setBackground(Color.WHITE);
         botonReinicio.setIcon(new ImageIcon(imagen1.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH)));
         botonReinicio.addActionListener(oyente);
-
-        botonCategoria.setBounds(0, 0, 60, 60);
-        botonCategoria.setBackground(Color.WHITE);
-        botonCategoria.setIcon(new ImageIcon(imagen.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH)));
+        
+        botonCategoria.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonCategoria.setBounds(5, 5, 120, 45);
+        botonCategoria.setContentAreaFilled(false);
+        
+        botonCategoria.setIcon(imagen);
 
         botonCategoria.addActionListener((action) -> {
             pantalla.dispose();
@@ -434,8 +453,7 @@ public class Ventana {
         int aux = alto - 250;
         for (int i = 0; i < resultados.length; i++) {
             if (resultados[i] == numero) {
-                esCorrecto = new JLabel();
-                panel.add(esCorrecto);
+                //pantalla.setComponentZOrder(esCorrecto, 0);
                 esCorrecto.setBounds(ancho - 120, aux, 100, 100);
                 esCorrecto.setText("" + sopa.getResultado(i) + "");
                 esCorrecto.setFont(new Font("calibri", Font.ITALIC, 25));
@@ -472,11 +490,6 @@ public class Ventana {
     }
 
     public void final1() {
-        JLabel etiquetaMenu = new JLabel();
-
-        panel.add(etiquetaMenu);
-
-        etiquetaMenu.setBounds(100, 50, 100, 50);
         etiquetaMenu.setText("Lo lograste");
         etiquetaMenu.setFont(new Font("calibri", Font.ITALIC, 20));
         for (int i = 0; i <= y; i++) {
@@ -488,11 +501,6 @@ public class Ventana {
     }
 
     public void final2() {
-        JLabel etiquetaMenu = new JLabel();
-
-        panel.add(etiquetaMenu);
-
-        etiquetaMenu.setBounds(100, 50, 100, 50);
         etiquetaMenu.setText("Perdiste");
         etiquetaMenu.setFont(new Font("calibri", Font.ITALIC, 20));
 
@@ -509,17 +517,19 @@ public class Ventana {
         panel.add(vida1);
         panel.add(vida2);
         panel.add(vida3);
+        
+        panel.add(fondo);
 
-        vida1.setBounds(ancho - 260, 0, 70, 70);
-        vida1.setOpaque(true);
+        vida1.setBounds(ancho - 260, 10, 70, 70);
+        //vida1.setOpaque(true);
         vida1.setIcon(new ImageIcon(imagen.getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
 
-        vida2.setBounds(ancho - 180, 0, 70, 70);
-        vida2.setOpaque(true);
+        vida2.setBounds(ancho - 180, 10, 70, 70);
+        //vida2.setOpaque(true);
         vida2.setIcon(new ImageIcon(imagen.getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
 
-        vida3.setBounds(ancho - 100, 0, 70, 70);
-        vida3.setOpaque(true);
+        vida3.setBounds(ancho - 100, 10, 70, 70);
+        //vida3.setOpaque(true);
         vida3.setIcon(new ImageIcon(imagen.getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
 
     }
