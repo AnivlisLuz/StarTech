@@ -101,7 +101,7 @@ public class Cuestionario {
         int a = r.nextInt(2);
         int b = r.nextInt(1);
         if (a == 0) {
-            dec = new ImageIcon(getClass().getResource("/app/startech/preguntas/fondo.jpg"));
+            //dec = new ImageIcon(getClass().getResource("/app/startech/preguntas/fondo.jpg"));
             dec = new ImageIcon("C:\\Users\\USER\\Documents\\StarTech\\src\\main\\java\\app\\startech\\imagenes\\decorate\\5.png");
         } else if (a == 1) {
             dec = new ImageIcon("C:\\Users\\USER\\Documents\\StarTech\\src\\main\\java\\app\\startech\\imagenes\\decorate\\7.png");

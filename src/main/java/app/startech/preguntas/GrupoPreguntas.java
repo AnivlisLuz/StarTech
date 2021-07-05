@@ -19,8 +19,6 @@ import static app.startech.preguntas.Cuestionario.*;
 
 public class GrupoPreguntas {
 
-    public static ImageIcon imagen1;
-    public static ImageIcon imagen2;
     public static JButton categoria0;
     public static JButton reiniciar;
     public static MouseListener comando;
@@ -49,8 +47,6 @@ public class GrupoPreguntas {
         etiqueta1 = new JLabel();
         etiqueta2 = new JLabel();
         etiqueta3 = new JLabel();
-        imagen1 = new ImageIcon("recursos/imagenes/perdiste.jpg");
-        imagen2 = new ImageIcon("recursos/imagenes/lograste.jpg");
 
         //Da reaccion al boton de reiniciar Cuestionario
         comando = new MouseListener() {
