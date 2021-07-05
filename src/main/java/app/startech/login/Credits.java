@@ -61,7 +61,7 @@ public class Credits extends JFrame {
         atras.addActionListener((action) -> {
             Login abrir = new Login();
             abrir.setVisible(true);
-            setVisible(false);
+            dispose();
         });
         atras.setPreferredSize(new Dimension(200, 40));
         options.add(atras,WEST);

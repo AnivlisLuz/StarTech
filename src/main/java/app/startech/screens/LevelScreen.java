@@ -92,6 +92,7 @@ public class LevelScreen extends JFrame {
 
         // Se instancia el boton de aprendizaje, que lleva a la ventana de aprendizaje
         JButton learn = new JButton();
+        learn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         learn.setIcon(new javax.swing.ImageIcon(Images.getBook()));
         learn.addActionListener((action) -> {
             setVisible(false);

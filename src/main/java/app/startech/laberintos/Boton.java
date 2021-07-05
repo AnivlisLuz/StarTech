@@ -49,6 +49,7 @@ public class Boton extends JButton implements ActionListener {
         if (correcto) {
             setBackground(Color.GREEN); //button de color verde
             if (p.igual(l.getMatriz().getMeta())) { //si la posicion actual es la meta
+                l.restaurarVidas();
                 PersistenciaSaver persis = new PersistenciaSaver();
                 int i = JOptionPane.showOptionDialog(null, "Lo lograste!!!", "StarTech", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE, null, mensajeContinuar, mensajeContinuar[0]);
                 if (i == 0) {
@@ -59,8 +60,8 @@ public class Boton extends JButton implements ActionListener {
                         persis.buscarUsuario(DataController.instance.getUsuarioActual(), categoria.getId(), sig.getId());
                         EventQueue.invokeLater(new Runnable() { //nuevo hilo
                             public void run() {
-                                ventanaCategoria = new CategoryScreen(DataController.instance.getUsuarioActual().category.getAllCategories());
-                                ventanaCategoria.setVisible(false);
+                                //ventanaCategoria = new CategoryScreen(DataController.instance.getUsuarioActual().category.getAllCategories());
+                                //ventanaCategoria.setVisible(false);
                                 ventanaLevel = new LevelScreen(categoria, ventanaCategoria);
                             }
                         });

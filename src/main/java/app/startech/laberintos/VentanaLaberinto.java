@@ -1,6 +1,5 @@
 package app.startech.laberintos;
 
-import app.startech.imagenes.Images;
 import app.startech.models.Category;
 import app.startech.models.Level;
 import app.startech.screens.CategoryScreen;
@@ -41,6 +40,10 @@ public class VentanaLaberinto extends javax.swing.JFrame {
     public void mostrarLaberinto() {
         jLabel1.setText(laberinto.getTitulo());//Título. Ejm: Secuencia/Suma/Resta/Multiplicación/Divición
         jLabel2.setText(laberinto.getCondicion());//Condicion para cada nivel. Ejm: Suma de uno en uno, Resta de dos en dos
+        jLabel7.setText(laberinto.getReto());
+//        jTextArea1.setBackground(new Color(0, 0, 0, 0));
+//        jTextArea1.setWrapStyleWord(true);
+//        jTextArea1.setLineWrap(true);
         jTextField1.setText(laberinto.getMensaje());//Mensaje motivacional que aparece en cada laberinto.
         jTextField1.setOpaque(false);
         
@@ -126,7 +129,6 @@ public class VentanaLaberinto extends javax.swing.JFrame {
 
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabelVida3 = new javax.swing.JLabel();
         jLabelVida2 = new javax.swing.JLabel();
         jLabelVida1 = new javax.swing.JLabel();
@@ -135,6 +137,8 @@ public class VentanaLaberinto extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -147,29 +151,23 @@ public class VentanaLaberinto extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Impact", 1, 55)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("A");
-        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, 540, -1));
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 540, -1));
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("jLabel2");
-        jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, 430, 40));
-
-        jLabelVida3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/startech/imagenes/VidaRojo.png"))); // NOI18N
+        jLabelVida3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\app\\startech\\imagenes\\VidaRojo.png")); // NOI18N
         jPanel3.add(jLabelVida3, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 20, -1, -1));
 
-        jLabelVida2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/startech/imagenes/VidaRojo.png"))); // NOI18N
+        jLabelVida2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\app\\startech\\imagenes\\VidaRojo.png")); // NOI18N
         jPanel3.add(jLabelVida2, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 20, -1, -1));
 
-        jLabelVida1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/startech/imagenes/VidaRojo.png"))); // NOI18N
+        jLabelVida1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\app\\startech\\imagenes\\VidaRojo.png")); // NOI18N
         jPanel3.add(jLabelVida1, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 20, -1, -1));
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/startech/imagenes/decorate/1.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\app\\startech\\imagenes\\decorate\\1.png")); // NOI18N
         jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 210, 220));
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/startech/imagenes/decorate/2.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\app\\startech\\imagenes\\decorate\\2.png")); // NOI18N
         jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 500, 210, 210));
 
         jPanel1.setBackground(new Color(0,0,0,0));
@@ -189,14 +187,16 @@ public class VentanaLaberinto extends javax.swing.JFrame {
         jPanel3.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, -1, -1));
 
         jTextField1.setEditable(false);
-        jTextField1.setBackground(new java.awt.Color(0, 0, 0));
+        jTextField1.setBackground(new java.awt.Color(204, 102, 0));
+        jTextField1.setFont(new java.awt.Font("Leelawadee", 1, 14)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(255, 255, 255));
         jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField1.setText("jTextField1");
         jTextField1.setToolTipText("");
-        jPanel3.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-6, 710, 1010, -1));
+        jPanel3.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-6, 706, 1010, 30));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/startech/imagenes/BTN.png"))); // NOI18N
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\app\\startech\\imagenes\\BTN.png")); // NOI18N
         jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -205,7 +205,17 @@ public class VentanaLaberinto extends javax.swing.JFrame {
         });
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 130, 60));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/startech/imagenes/fondo1.1.jpg"))); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Leelawadee", 1, 18)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("jLabel2");
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, 460, 20));
+
+        jLabel7.setFont(new java.awt.Font("Leelawadee", 1, 14)); // NOI18N
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("jLabel2");
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 540, 20));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Criss\\Documents\\GitHub\\StarTech\\src\\main\\java\\app\\startech\\imagenes\\fondo1.1.jpg")); // NOI18N
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 740));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -236,6 +246,7 @@ public class VentanaLaberinto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabelVida1;
     private javax.swing.JLabel jLabelVida2;
     private javax.swing.JLabel jLabelVida3;

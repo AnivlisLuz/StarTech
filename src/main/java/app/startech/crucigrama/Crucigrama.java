@@ -20,7 +20,7 @@ public class Crucigrama extends Laberinto{
     private int vidas;
     
     public Crucigrama(String titulo, String condicion, int nivel){
-        super(titulo,nivel,"",condicion);
+        super(titulo,nivel,"",condicion,"");
         this.titulo = titulo;
         
         this.condicion = condicion;

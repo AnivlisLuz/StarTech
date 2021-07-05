@@ -11,9 +11,11 @@ public class Laberinto {
     private int vidas;
     private final String mensaje;
     private Matriz matriz;
+    private final String reto;
 
-    public Laberinto(String titulo, int nivel, String mensaje, String condicion) {
+    public Laberinto(String titulo, int nivel, String mensaje, String condicion, String reto) {
         this.condicion = condicion;
+        this.reto = reto;
         this.nivel = nivel;
         this.titulo = titulo;
         vidas = 3;
@@ -30,6 +32,10 @@ public class Laberinto {
 
     public String getDirFondo() {
         return dirFondo;
+    }
+    
+    public String getReto(){
+        return reto;
     }
 
     //Retorna la condición. Ejem: Suma de uno en uno
