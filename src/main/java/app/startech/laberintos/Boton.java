@@ -28,6 +28,7 @@ public class Boton extends JButton implements ActionListener {
 
     public Boton(int posx, int posy, int ancho, int alto, Laberinto l, int i, int j, Category c, Level level, VentanaLaberinto ventana, CategoryScreen ventanaCategoria, LevelScreen ventanaLevel) {
         setBounds(posx, posy, ancho, alto);//posicion y tamaño del boton
+        setFocusable(false);
         this.ventanaLevel = ventanaLevel;
         this.ventanaCategoria = ventanaCategoria;
         categoria = c;

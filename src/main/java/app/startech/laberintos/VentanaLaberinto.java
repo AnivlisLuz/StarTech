@@ -169,6 +169,8 @@ public class VentanaLaberinto extends javax.swing.JFrame {
         jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 500, 210, 210));
 
         jPanel1.setBackground(new Color(0,0,0,0));
+        jPanel1.setFocusable(false);
+        jPanel1.setOpaque(false);
         jPanel1.setPreferredSize(new java.awt.Dimension(540, 550));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
