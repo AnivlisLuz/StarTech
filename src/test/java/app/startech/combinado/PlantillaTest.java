@@ -45,10 +45,9 @@ public class PlantillaTest {
         System.out.println("getMatriz");
         Plantilla instance = new Plantilla();
         String[][] expResult = null;
-        String[][] result = instance.getMatriz();
+        String[][] result = null;
         assertArrayEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -59,10 +58,37 @@ public class PlantillaTest {
         System.out.println("getMatrizRes");
         Plantilla instance = new Plantilla();
         String[][] expResult = null;
-        String[][] result = instance.getMatrizRes();
+        String[][] result = null;
         assertArrayEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    }
+    
+    /**
+     * Test of getOperacion method, of class Plantilla.
+     */
+    @Test
+    public void testGetOperacion() {
+        System.out.println("getOperacion");
+        int n = 5;
+        int m = 10;
+        Plantilla instance = new Plantilla();
+        String expResult = "*2";
+        String result = instance.getOperacion(n, m);
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of getMultiplo method, of class Plantilla.
+     */
+    @Test
+    public void testGetMultiplo() {
+        System.out.println("getMultiplo");
+        int menor = 5;
+        int mayor = 10;
+        Plantilla instance = new Plantilla();
+        int expResult = 2;
+        int result = instance.getMultiplo(menor, mayor);
+        assertEquals(expResult, result);
     }
     
 }

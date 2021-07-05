@@ -138,40 +138,76 @@ public class nuevoPerfil extends JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         String nombre;
-        nombre = txtNombre.getText();
+        nombre = normalizarNombre(txtNombre.getText());
         String edad = intEdad.getText();
 
-        if (nombre.isEmpty() || edad.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "El usuario es incorrecto.");
-            
-        } else if(!Usuario.esLetra(nombre))
+        if (nombre.isEmpty() || edad.isEmpty())
         {
-           
-         JOptionPane.showMessageDialog(this, "No se admite un valor mayor a 20 y menor a 3 caracteres ni caracteres especiales");  
-        }else if(!edad.matches("-?\\d+")){
-            JOptionPane.showMessageDialog(this, "La edad no es un número");
+            JOptionPane.showMessageDialog(this, "El espacio del nombre o de la edad está vacío.");
             
-        }else if(Integer.parseInt(edad)>10){
-        JOptionPane.showMessageDialog(this, "La edad máxima 10 años");
-        }else if(Integer.parseInt(edad)<4){
-        JOptionPane.showMessageDialog(this, "La edad mínimma 4 años");
-        
-        } else if (!Usuario.verificarUsuario(nombre)) {
-            Usuario usuario = new Usuario(nombre,edad);
-            UserSaver nUser = new UserSaver();
-            nUser.escritura(usuario);
-            JOptionPane.showMessageDialog(this, "Se registro correctamente");
-            Cuestionario test = new Cuestionario();
-            this.dispose();
-        } else {
-            
-            JOptionPane.showMessageDialog(this, "Este usuario y existe");
         }
+        else
+            if(!Usuario.esLetra(nombre))
+            {
+                JOptionPane.showMessageDialog(this, "No se admite un valor mayor a 40 y menor a 2 caracteres ni caracteres especiales");  
+            }
+            else
+                if(!edad.matches("-?\\d+"))
+                {
+                    JOptionPane.showMessageDialog(this, "La edad ingresada no es un número");
+                }
+                else
+                    if(Integer.parseInt(edad)>10)
+                    {
+                        JOptionPane.showMessageDialog(this, "La edad máxima 10 años");
+                    }
+                    else
+                        if(Integer.parseInt(edad)<4)
+                        {
+                            JOptionPane.showMessageDialog(this, "La edad mínimma 4 años");
+                        }
+                        else
+                            if (!Usuario.verificarUsuario(nombre))
+                            {
+                                Usuario usuario = new Usuario(nombre,edad);
+                                UserSaver nUser = new UserSaver();
+                                nUser.escritura(usuario);
+                                JOptionPane.showMessageDialog(this, "Se registro correctamente");
+                                Cuestionario test = new Cuestionario();
+                                this.dispose();
+                            }
+                            else
+                            {
 
-
-        
+                                JOptionPane.showMessageDialog(this, "Este usuario y existe");
+                            }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    public String normalizarNombre(String nombre)
+    {
+        String aux = "";
+        if (nombre.contains(" "))
+        {
+            String[] arr = nombre.split(" ");
+            for (int i = 0; i < arr.length; i++)
+            {
+                arr[i] = capitalizar(arr[i]);
+                aux = aux + arr[i] + " ";
+            }
+
+        }
+        else
+        {
+            aux = capitalizar(nombre);
+        }
+        return aux;
+    }
+
+    public String capitalizar(String nombre)
+    {
+        return nombre.substring(0, 1).toUpperCase() + nombre.substring(1).toLowerCase();
+    }
+    
     private void intEdadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_intEdadActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_intEdadActionPerformed
