@@ -17,6 +17,7 @@ public class Pregunta {
 
     public static JLabel etiqueta;
     public static JLabel etiqueta1;
+    public static JLabel etiqueta2;
     public static JButton boton;
     public static JButton boton1;
     public static JButton boton2;
@@ -43,20 +44,25 @@ public class Pregunta {
     private static Thread thread;
 
     private int esCorrecto;
-    
-    private String [] resul=new String [3];
+
+    private String[] resul = new String[3];
     private static String resulT;
-    
+
     private static boolean resulTB;
+
+    private ImageIcon imagen1;
 
     public Pregunta(String pregunta, String[] respuesta, boolean[] correcto) {
         thread = new Thread();
         thread.start();
         etiqueta = new JLabel();
         etiqueta1 = new JLabel();
+        etiqueta2 = new JLabel();
         boton = new JButton();
         boton1 = new JButton();
         boton2 = new JButton();
+
+        imagen1 = new ImageIcon("C:\\Users\\USER\\Documents\\StarTech\\src\\main\\java\\app\\startech\\imagenes\\fondo1.1.jpg");
 
         //Da reaccion al boton de opcion 1
         oyenteAccion = new MouseListener() {
@@ -66,11 +72,11 @@ public class Pregunta {
             public void mousePressed(MouseEvent e) {
                 setPreg(resul[0]);
                 if (esCorrecto == 0) {
-                    resulTB=true;
+                    resulTB = true;
                     etiqueta1.setBackground(Color.GREEN);
                     etiqueta1.setText("Correcto");
                 } else {
-                    resulTB=false;
+                    resulTB = false;
                     etiqueta1.setBackground(Color.RED);
                     etiqueta1.setText("Incorrecto");
                     if (esCorrecto == 1) {
@@ -113,11 +119,11 @@ public class Pregunta {
             public void mousePressed(MouseEvent e) {
                 setPreg(resul[1]);
                 if (esCorrecto == 1) {
-                    resulTB=true;
+                    resulTB = true;
                     etiqueta1.setBackground(Color.GREEN);
                     etiqueta1.setText("Correcto");
                 } else {
-                    resulTB=false;
+                    resulTB = false;
                     etiqueta1.setBackground(Color.RED);
                     etiqueta1.setText("Incorrecto");
                 }
@@ -160,11 +166,11 @@ public class Pregunta {
             public void mousePressed(MouseEvent e) {
                 setPreg(resul[2]);
                 if (esCorrecto == 2) {
-                    resulTB=true;
+                    resulTB = true;
                     etiqueta1.setBackground(Color.GREEN);
                     etiqueta1.setText("Correcto");
                 } else {
-                    resulTB=false;
+                    resulTB = false;
                     etiqueta1.setBackground(Color.RED);
                     etiqueta1.setText("Incorrecto");
                     if (esCorrecto == 0) {
@@ -202,6 +208,7 @@ public class Pregunta {
         //Ejecuta los metodos
         limpiar();
         hoja();
+        decorate();
         fondo();
         pregun();
         inciso();
@@ -210,9 +217,29 @@ public class Pregunta {
         getVRes();
     }
 
+    public void decorate() {
+        if (cuestionario >= 0 && cuestionario < 6) {
+            
+            dec = new ImageIcon("C:\\Users\\USER\\Documents\\StarTech\\src\\main\\java\\app\\startech\\imagenes\\decorate\\5.png");
+        } else if (cuestionario >= 6 && cuestionario < 12) {
+            dec = new ImageIcon("C:\\Users\\USER\\Documents\\StarTech\\src\\main\\java\\app\\startech\\imagenes\\decorate\\7.png");
+        }
+        if (cuestionario >= 0 && cuestionario < 4) {
+            etiqueta2.setBounds(10, 10, 150, 150);
+        } else if (cuestionario >= 4 && cuestionario < 7) {
+            etiqueta2.setBounds(ancho - 160, 10, 150, 150);
+        } else if (cuestionario >= 7 && cuestionario < 10) {
+            etiqueta2.setBounds(10, 10, 150, 150);
+        } else if (cuestionario >= 10 && cuestionario < 13) {
+            etiqueta2.setBounds(ancho - 160, 10, 150, 150);
+        }
+        etiqueta2.setIcon(new ImageIcon(dec.getImage().getScaledInstance(etiqueta2.getWidth(), etiqueta2.getHeight(), Image.SCALE_SMOOTH)));
+    }
+
     //Pone el panel que contiene la pregunta
     public static void hoja() {
         panel.add(etiqueta1);
+        panel.add(etiqueta2);
         panel.add(boton);
         panel.add(boton1);
         panel.add(boton2);
@@ -222,7 +249,6 @@ public class Pregunta {
     //Establece el fondo
     public static void fondo() {
         etiqueta.setBounds(0, 0, ancho, alto);
-        etiqueta.setOpaque(true);
         etiqueta.setIcon(new ImageIcon(imagen.getImage().getScaledInstance(etiqueta.getWidth(), etiqueta.getHeight(), Image.SCALE_SMOOTH)));
     }
 
@@ -262,8 +288,6 @@ public class Pregunta {
     }
 
     //Obtencion de booleans por cada categoria
-
-
     //obtener el valor de posicion actual del cuestionario
     public static int getCuestio() {
         return cuestionario;
@@ -365,45 +389,41 @@ public class Pregunta {
     //Establece la pregunta
     public void pregun() {
         pregunta = generadorP();
-        etiqueta1.setBounds(ancho / 2 - 200, 100, 400, 100);
-        etiqueta1.setBackground(Color.CYAN);
+        etiqueta1.setBounds(ancho / 2 - 150, 100, 300, 100);
         etiqueta1.setText(generadorP());
         etiqueta1.setHorizontalAlignment(SwingConstants.CENTER);
-        etiqueta1.setOpaque(true);
         etiqueta1.setFont(new Font("calibri", Font.ITALIC, 60));
     }
 
     //Establece el inciso 1
     public void inciso() {
-        String pr1=generadorR();
-        boton.setBounds(ancho / 4 - 75, 400, 150, 50);
+        String pr1 = generadorR();
+        boton.setBounds(ancho / 4 - 32, 400, 65, 50);
         boton.setText(pr1);
         boton.addMouseListener(oyenteAccion);
-        boton.setOpaque(true);
         boton.setFont(new Font("calibri", Font.ITALIC, 30));
-        resul[0]=pr1;
+        resul[0] = pr1;
     }
 
     //Establece el inciso 2
     public void inciso1() {
-        String pr2=generadorR();
-        boton1.setBounds(ancho / 2 - 75, 400, 150, 50);
+        String pr2 = generadorR();
+        boton1.setBounds(ancho / 2 - 32, 400, 65, 50);
         boton1.setText(pr2);
-        boton1.setOpaque(true);
         boton1.setFont(new Font("calibri", Font.ITALIC, 30));
         boton1.addMouseListener(oyenteAccion1);
-        resul[1]=pr2;
+        resul[1] = pr2;
     }
 
     //Establece el inciso 3
     public void inciso2() {
-        String pr3=generadorR();
-        boton2.setBounds((ancho * 3) / 4 - 75, 400, 150, 50);
+        String pr3 = generadorR();
+        boton2.setBounds((ancho * 3) / 4 - 32, 400, 65, 50);
         boton2.setText(pr3);
-        boton2.setOpaque(true);
+        boton2.setOpaque(false);
         boton2.setFont(new Font("calibri", Font.ITALIC, 30));
         boton2.addMouseListener(oyenteAccion2);
-        resul[2]=pr3;
+        resul[2] = pr3;
     }
 
     //genera la pregunta
@@ -490,7 +510,7 @@ public class Pregunta {
         } else if (a == 2) {
             boton2.setText("" + auxiliar + "");
         }
-        resul[a]="" + auxiliar + "";
+        resul[a] = "" + auxiliar + "";
     }
 
     public static String getPregunta() {
@@ -500,15 +520,16 @@ public class Pregunta {
     public static int getAuxiliar() {
         return auxiliar;
     }
-    
-    public void setPreg(String resp){
-        resulT=getPregunta()+" = "+resp;
+
+    public void setPreg(String resp) {
+        resulT = getPregunta() + " = " + resp;
     }
-    public static String getPreg(){
+
+    public static String getPreg() {
         return resulT;
     }
-    
-    public static boolean getPB(){
+
+    public static boolean getPB() {
         return resulTB;
     }
 }

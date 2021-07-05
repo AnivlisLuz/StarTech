@@ -267,12 +267,12 @@ public class GrupoPreguntas {
         limpiar();
         hoja();
         fondo();
-        resp();
+        //resp();
         irCategoria();
         rst();
         comentarioR();
 
-        etiqueta1.setOpaque(true);
+        
         etiqueta1.setFont(new Font("calibri", Font.ITALIC, 30));
 
         System.out.println(etiqueta1.getText());
