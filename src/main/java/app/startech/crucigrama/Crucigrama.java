@@ -75,28 +75,28 @@ public class Crucigrama extends Laberinto{
         }else if(nivel == 2){
             dir2 = "/app/startech/imagenes/decorate/3.png";
             dir1 = "/app/startech/imagenes/decorate/4.png";
-            dirFondo = "/app/startech/imagenes/decorate/fondo1.2.jpg";
+            dirFondo = "/app/startech/imagenes/fondo1.2.jpg";
             mat = new MatrizCrucigrama("resta");
             matriz = mat.getMat();
             matrizAux = mat.getMatRes();
         }else if(nivel == 3){
             dir2 = "/app/startech/imagenes/decorate/5.png";
             dir1 = "/app/startech/imagenes/decorate/6.png";
-            dirFondo = "/app/startech/imagenes/decorate/fondo1.3.jpg";
+            dirFondo = "/app/startech/imagenes/fondo1.3.jpg";
             mat = new MatrizCrucigrama("multiplicacion");
             matriz = mat.getMat();
             matrizAux = mat.getMatRes();
         }else if(nivel == 4){
             dir2 = "/app/startech/imagenes/decorate/1.png";
             dir1 = "/app/startech/imagenes/decorate/2.png";
-            dirFondo = "/app/startech/imagenes/decorate/fondo1.1.jpg";
+            dirFondo = "/app/startech/imagenes/fondo1.1.jpg";
             mat = new MatrizCrucigrama("division");
             matriz = mat.getMat();
             matrizAux = mat.getMatRes();
         }else{
             dir2 = "/app/startech/imagenes/decorate/9.png";
             dir1 = "/app/startech/imagenes/decorate/10.png";
-            dirFondo = "/app/startech/imagenes/decorate/fondo1.5.jpg";
+            dirFondo = "/app/startech/imagenes/fondo1.5.jpg";
             mat = new MatrizCrucigrama("combinados");
             matriz = mat.getMat();
             matrizAux = mat.getMatRes();
